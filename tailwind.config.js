@@ -11,6 +11,12 @@ module.exports = {
         xl: "1200px",
         "2xl": "1200px",
       },
+      backgroundColor: {
+        footer: "#1D1F21",
+      },
+      textColor: {
+        "footer-low": "#ACACAC ",
+      },
     },
   },
   plugins: [],
