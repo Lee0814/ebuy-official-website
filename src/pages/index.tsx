@@ -1,7 +1,7 @@
 import { useI18n } from "@/hooks";
 import Image from "next/image";
-import { useMemo, useState } from "react";
-import { Autoplay, Navigation, Pagination } from "swiper";
+import { useCallback, useMemo, useState } from "react";
+import { Autoplay, Navigation, Pagination, Swiper as _Swiper } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
@@ -39,10 +39,17 @@ export default function Home() {
   );
   const [currentBenefitIndex, setCurrentBenefitIndex] = useState(0);
 
+  // 恢复自动播放
+  const autoPlay = useCallback((swiper: _Swiper) => {
+    setTimeout(() => {
+      swiper.autoplay.start();
+    }, 5000);
+  }, []);
+
   return (
     <main>
       <section className={`${styles.banner} bg-cover bg-bottom pt-[60px]`}>
-        <div className="container mx-auto flex h-[900px] flex-col items-center justify-center text-white">
+        <div className="container mx-auto flex h-screen flex-col items-center justify-center text-white">
           <span className="mb-[9px] whitespace-pre-wrap text-center text-[50px] font-[600] leading-[70px]">
             {t("slogan-1")}
           </span>
@@ -69,29 +76,46 @@ export default function Home() {
           </span>
           <Swiper
             modules={[Navigation, Pagination, Autoplay]}
-            className="h-[190px] w-[330px]"
+            className="h-[190px] w-[1054px]"
             pagination={{ el: ".custom-pagination", clickable: true }}
             navigation={{
               prevEl: ".left-arrow",
               nextEl: ".right-arrow",
             }}
+            onActiveIndexChange={(swiper) =>
+              setCurrentBenefitIndex(swiper.activeIndex)
+            }
+            onAutoplayPause={autoPlay}
             autoplay
             loop
           >
             {benefits.map((_, i) => (
               <SwiperSlide key={i}>
-                {benefits[i].images.map((image, j) => (
-                  <Image
-                    key={`${i}-${j}`}
-                    src={image}
-                    alt="image"
-                    width={330}
-                    height={190}
-                  />
-                ))}
+                <div className="flex h-[190px] w-[1054px] justify-between">
+                  {benefits[i].images.map((image, j) => (
+                    <Image
+                      key={`benefit-${i + 1}-${j + 1}`}
+                      alt={`benefit-${i + 1}-${j + 1}`}
+                      src={image}
+                      width={330}
+                      height={190}
+                    />
+                  ))}
+                </div>
               </SwiperSlide>
             ))}
           </Swiper>
+          <div className="custom-pagination mt-[41px] space-x-[12px]"></div>
+          <style jsx global>{`
+            .custom-pagination > .swiper-pagination-bullet {
+              width: 12px;
+              height: 12px;
+              background: #d8d8d8 !important;
+            }
+            .custom-pagination > .swiper-pagination-bullet-active {
+              background: #ed3838 !important;
+            }
+          `}</style>
         </div>
       </section>
     </main>
