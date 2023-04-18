@@ -36,7 +36,7 @@ export function t<
   L extends keyof I18n = "en",
   N extends keyof I18n[L] = "common"
 >(key: keyof I18n[L][N], lang: L = "en" as L, namespace: N = "common" as N) {
-  return useMemo(() => i18n[lang][namespace][key], [key, lang]);
+  return i18n[lang][namespace][key];
 }
 
 export function useI18n<

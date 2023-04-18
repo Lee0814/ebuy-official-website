@@ -6,8 +6,8 @@ import Link from "next/link";
 export const Header = () => {
   const t = useI18n("en", "navbar");
   return (
-    <header className="fixed top-0 w-full">
-      <div className="container mx-auto mt-[10px] flex h-[50px] items-center justify-between">
+    <header className="fixed top-0 z-10 w-full">
+      <div className="container mx-auto mt-[10px] flex h-[50px] items-center justify-between text-white">
         <Image src={logo} alt="ebuy" height={50} />
         <div className="flex items-center">
           <ul className="flex">
@@ -27,7 +27,7 @@ export const Header = () => {
               <Link href="/">{t("join")}</Link>
             </li>
           </ul>
-          <button className="rounded-[4px] bg-[#ED3838] px-[15px] py-[9px] text-white">
+          <button className="rounded-[4px] bg-[#ED3838] px-[15px] py-[9px]">
             {t("contact")}
           </button>
         </div>
