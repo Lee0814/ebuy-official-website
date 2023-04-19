@@ -23,13 +23,12 @@ export const Header = () => {
   const headerContext = useContext(HeaderContext);
 
   useEffect(() => {
-    console.log(headerRef.current, "set");
     headerContext?.setHeaderRef(headerRef.current);
   }, []);
 
   return (
-    <header ref={headerRef} className="fixed top-0 z-10 w-full text-white">
-      <div className="mx-auto mt-[10px] flex h-[50px] max-w-[1220px] items-center justify-between">
+    <header ref={headerRef} className="fixed top-0 z-50 w-full text-white">
+      <div className="mx-auto my-[10px] flex h-[50px] max-w-[1220px] items-center justify-between">
         <Image src={logo} alt="ebuy" height={50} />
         <div className="flex items-center">
           <ul className="flex">

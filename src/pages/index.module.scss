@@ -1,8 +1,9 @@
 .banner {
   background-image: url("../assets/images/home/banner-bg.png");
-  }
-  
-  .benefit {
-    background-image: url("../assets/images/home/benefit-bg.png");
-    background-size: 1440px 100%;
+  aspect-ratio: 8 / 5;
+}
+
+.benefit {
+  background-image: url("../assets/images/home/benefit-bg.png");
+  background-size: 1440px 100%;
 }

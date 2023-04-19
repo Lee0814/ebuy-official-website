@@ -38,6 +38,7 @@ const images = [
 export default function Home() {
   const t = useI18n("en", "home");
 
+  // 优势相关
   const benefits = useMemo(
     () =>
       Array.from(images, (_, i) => ({
@@ -56,27 +57,25 @@ export default function Home() {
     }, 5000);
   }, []);
 
+  // 监听滚动调整header颜色和位置变化
   const { headerRef } = useContext(HeaderContext);
-  const [document, setDocument] = useState(null);
   const benefitRef = useRef<HTMLDivElement>(null);
-  const scroll = useScroll(document);
-  useEffect(() => {
-    console.log(1);
-
-    setDocument(document);
-  }, []);
+  const scroll = useScroll();
   useEffect(() => {
     if (!scroll?.top || !benefitRef.current || !headerRef) return;
-    if (scroll.top > benefitRef.current.offsetTop - 60) {
+    if (scroll.top > benefitRef.current.offsetTop - 70) {
       headerRef.style.color = "#000";
       headerRef.style.backgroundColor = "#fff";
+    } else {
+      headerRef.style.color = "#fff";
+      headerRef.style.backgroundColor = "transparent";
     }
   }, [scroll?.top]);
 
   return (
     <main>
       <section
-        className={`${styles.banner} max-h-screen bg-cover bg-bottom pt-[60px]`}
+        className={`${styles.banner} sticky top-0 -z-10 bg-cover bg-bottom pt-[70px]`}
       >
         <div className="mx-auto flex h-full max-w-[1220px] flex-col items-center justify-center text-white">
           <span className="mb-[9px] whitespace-pre-wrap text-center text-[50px] font-[600] leading-[70px]">
