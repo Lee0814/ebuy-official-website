@@ -1,5 +1,26 @@
 import { useI18n } from "@/hooks";
 
+
+const options = [
+  { value: "chocolate", label: "Chocolate" },
+  { value: "strawberry", label: "Strawberry" },
+  { value: "vanilla", label: "Vanilla" },
+];
+
+// function Country() {
+//   const [selectedOption, setSelectedOption] = useState(null);
+
+//   return (
+//     <div className="App">
+//       <Select
+//         defaultValue={selectedOption}
+//         onChange={setSelectedOption}
+//         options={options}
+//       />
+//     </div>
+//   );
+// }
+
 export const Footer = () => {
   const t = useI18n("en", "navbar");
 
@@ -36,7 +57,9 @@ export const Footer = () => {
           <div className="flex flex-col py-4 text-2xl text-[#333333]">
             <span className="pb-4">Telephone number</span>
             <div className="flex h-[56px] items-center">
-              <div className="h-full w-[118px] bg-[#EFEFEF]">国区</div>
+              <div className="h-full w-[118px] bg-[#EFEFEF]">
+                {/* <Country /> */}
+              </div>
               <input
                 ref={"countryRef"}
                 id="countryInput"
