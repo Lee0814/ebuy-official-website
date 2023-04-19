@@ -1,18 +1,79 @@
 import { useI18n } from "@/hooks";
+import intlTelInput from "intl-tel-input";
+import { useEffect, useRef } from "react";
+
+// import "intl-tel-input/build/css/intlTelInput.css";
+
+useEffect(() => {
+  const countryRef = useRef(null);
+  const input = document.querySelector("#phone");
+  // intlTelInput(countryRef, {
+  //   utilsScript: "path/to/utils.js",
+  // });
+});
 
 export const Footer = () => {
   const t = useI18n("en", "navbar");
+
   return (
     <footer className="relative">
-      <div className="h-[634px]">
-        <img
-          className="h-full w-full"
-          src="https://lanhu-dds-backend.oss-cn-beijing.aliyuncs.com/merge_image/imgs/09b10dbd677849ce962687ebdd718750_mergeImage.png"
-          alt=""
-        />
+      <div className="container    mx-auto  box-border bg-white px-6  py-16">
+        <div className="text-[50px] font-bold">Get in touch with us</div>
+        <div className="pb-14 pt-3 text-[28px] ">
+          if you have any questions and requests, please feel free to call 9774
+          5658 or fill in the form below
+        </div>
+        <div className="flex justify-between pb-4 text-2xl text-[#333333]">
+          <div className="flex flex-col">
+            <span className="pb-4">First Name</span>
+            <input
+              style={{ border: "1px solid #DDDDDD" }}
+              className="box-border h-[56px] w-[500px] px-2 py-4  "
+              placeholder="名"
+              type="text"
+            />
+          </div>
+          <div className="flex flex-col">
+            <span className="pb-4">Last Name</span>
+            <input
+              style={{ border: "1px solid #DDDDDD" }}
+              className="box-border h-[56px] w-[500px] px-2 py-4  "
+              placeholder="姓"
+              type="text"
+            />
+          </div>
+        </div>
+
+        <div className="flex flex-col py-4 text-2xl text-[#333333]">
+          <span className="pb-4">Telephone number</span>
+          <div className="flex h-[56px] items-center">
+            <div className="h-full w-[118px] bg-[#EFEFEF]">国区</div>
+            <input
+              ref={"countryRef"}
+              id="countryInput"
+              style={{ border: "1px solid #DDDDDD" }}
+              className="box-border h-full w-full flex-1 px-2 py-4  "
+              placeholder="电话"
+              type="number"
+            />
+          </div>
+        </div>
+        <div className="flex flex-col py-4 text-2xl text-[#333333]">
+          <span className="pb-4">How cam we help you</span>
+          <textarea
+            style={{ border: "1px solid #DDDDDD" }}
+            className="box-border h-[112px] w-full px-2 py-4  "
+          />
+        </div>
+        <div className="flex items-center justify-center pt-8">
+          <button className="bg-[#ED3838] px-20 py-5 text-2xl text-white">
+            SEND
+          </button>
+        </div>
       </div>
-      <div className="box-border  h-[1066px] bg-footer pt-[690px]">
-        <div className="container mx-auto box-border flex  justify-between bg-footer   pt-14 text-[14px] text-footer-low">
+
+      <div className="box-border   bg-footer pt-[56px]">
+        <div className="container mx-auto  flex  justify-between bg-footer   pt-14 text-[14px] text-footer-low">
           <ul>
             <li className="pb-6  text-[20px] text-white">餐饮食材供应</li>
             <li className=" pb-3 ">
@@ -51,57 +112,11 @@ export const Footer = () => {
             <li>微信公众号</li>
           </ul>
         </div>
-      </div>
-      <div
-        style={{ transform: "translateX(-50%)" }}
-        className="container absolute left-1/2 top-[400px] mx-auto  box-border bg-white px-6  py-10"
-      >
-        <div className="text-[50px] font-bold">Get in touch with us</div>
-        <div className="py-14 text-[28px] ">
-          if you have any questions and requests, please feel free to call 9774
-          5658 or fill in the form below
-        </div>
-        <div className="flex justify-between pb-4 text-2xl text-[#333333]">
-          <div className="flex flex-col">
-            <span className="pb-4">First Name</span>
-            <input
-              style={{ border: "1px solid #DDDDDD" }}
-              className="box-border h-[56px] w-[500px] px-2 py-4  "
-              placeholder="名"
-              type="text"
-            />
+        <div className="flex items-center justify-center pb-9 pt-24 text-footer-low">
+          <div className="px-16">川ICP备XXXXXXX号 | 版权所有</div>
+          <div className="px-16">
+            总部地址：81AClemenceauAve,UESquare,Suite17.S239918
           </div>
-          <div className="flex flex-col">
-            <span className="pb-4">Last Name</span>
-            <input
-              style={{ border: "1px solid #DDDDDD" }}
-              className="box-border h-[56px] w-[500px] px-2 py-4  "
-              placeholder="姓"
-              type="text"
-            />
-          </div>
-        </div>
-
-        <div className="flex flex-col py-4 text-2xl text-[#333333]">
-          <span className="pb-4">Telephone number</span>
-          <input
-            style={{ border: "1px solid #DDDDDD" }}
-            className="box-border h-[56px] w-full px-2 py-4  "
-            placeholder="电话"
-            type="text"
-          />
-        </div>
-        <div className="flex flex-col py-4 text-2xl text-[#333333]">
-          <span className="pb-4">How cam we help you</span>
-          <textarea
-            style={{ border: "1px solid #DDDDDD" }}
-            className="box-border h-[112px] w-full px-2 py-4  "
-          />
-        </div>
-        <div className="flex items-center justify-center pt-8">
-          <button className="bg-[#ED3838] px-20 py-5 text-2xl text-white">
-            SEND
-          </button>
         </div>
       </div>
     </footer>
