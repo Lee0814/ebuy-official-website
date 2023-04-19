@@ -6,18 +6,7 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      container: {
-        xl: "1200px",
-        "2xl": "1200px",
-      },
-      backgroundColor: {
-        footer: "#1D1F21",
-      },
-      textColor: {
-        "footer-low": "#ACACAC ",
-      },
-    },
+    extend: {},
   },
   plugins: [],
 };

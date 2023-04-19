@@ -1,6 +1,13 @@
 import { useI18n } from "@/hooks";
 import Image from "next/image";
-import { useCallback, useMemo, useState } from "react";
+import {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 import { Autoplay, Navigation, Pagination, Swiper as _Swiper } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -19,6 +26,8 @@ import benefitImage2_3 from "@/assets/images/home/benefit-2-3.png";
 import benefitImage3_1 from "@/assets/images/home/benefit-3-1.png";
 import benefitImage3_2 from "@/assets/images/home/benefit-3-2.png";
 import benefitImage3_3 from "@/assets/images/home/benefit-3-3.png";
+import { HeaderContext } from "@/components";
+import { useScroll } from "ahooks";
 
 const images = [
   [benefitImage1_1, benefitImage1_2, benefitImage1_3],
@@ -28,6 +37,7 @@ const images = [
 
 export default function Home() {
   const t = useI18n("en", "home");
+
   const benefits = useMemo(
     () =>
       Array.from(images, (_, i) => ({
@@ -46,10 +56,29 @@ export default function Home() {
     }, 5000);
   }, []);
 
+  const { headerRef } = useContext(HeaderContext);
+  const [document, setDocument] = useState(null);
+  const benefitRef = useRef<HTMLDivElement>(null);
+  const scroll = useScroll(document);
+  useEffect(() => {
+    console.log(1);
+
+    setDocument(document);
+  }, []);
+  useEffect(() => {
+    if (!scroll?.top || !benefitRef.current || !headerRef) return;
+    if (scroll.top > benefitRef.current.offsetTop - 60) {
+      headerRef.style.color = "#000";
+      headerRef.style.backgroundColor = "#fff";
+    }
+  }, [scroll?.top]);
+
   return (
     <main>
-      <section className={`${styles.banner} bg-cover bg-bottom pt-[60px]`}>
-        <div className="container mx-auto flex h-screen flex-col items-center justify-center text-white">
+      <section
+        className={`${styles.banner} max-h-screen bg-cover bg-bottom pt-[60px]`}
+      >
+        <div className="mx-auto flex h-full max-w-[1220px] flex-col items-center justify-center text-white">
           <span className="mb-[9px] whitespace-pre-wrap text-center text-[50px] font-[600] leading-[70px]">
             {t("slogan-1")}
           </span>
@@ -62,9 +91,10 @@ export default function Home() {
         </div>
       </section>
       <section
+        ref={benefitRef}
         className={`${styles.benefit} bg-[#fff9f0] bg-center bg-no-repeat bg-blend-normal`}
       >
-        <div className="container mx-auto flex h-[582px] flex-col items-center justify-center">
+        <div className="mx-auto flex  h-[582px] max-w-[1220px] flex-col items-center justify-center">
           <span className="mb-[48px] text-[40px] font-[500] leading-[60px] text-[#E79A44]">
             {t("benefit-title")}
           </span>
