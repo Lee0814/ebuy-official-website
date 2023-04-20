@@ -16,12 +16,12 @@ function Test() {
 }
 
 export const Footer = () => {
-  const t = useI18n("en", "navbar");
+  const t = useI18n("footer");
 
   return (
-    <footer>
+    <footer className="bg-white">
       {/* start 表单 */}
-      <div className="mx-auto mb-[40px] mt-[60px] max-w-[1220px]">
+      <div className="mx-auto mb-[40px] max-w-[1220px] pt-[60px]">
         <div className="mb-[10px] text-[50px] font-bold leading-[75px] text-[#333333]">
           Get in touch with us
         </div>

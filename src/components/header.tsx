@@ -17,14 +17,16 @@ export const HeaderContext = createContext({
 });
 
 export const Header = () => {
-  const t = useI18n("en", "navbar");
+  const t = useI18n("navbar");
 
+  // 向全局注入 header ref
   const headerRef = useRef<HTMLDivElement>(null);
   const headerContext = useContext(HeaderContext);
-
   useEffect(() => {
     headerContext?.setHeaderRef(headerRef.current);
   }, []);
+
+  // 切换语言
 
   return (
     <header ref={headerRef} className="fixed top-0 z-50 w-full text-white">
@@ -48,6 +50,9 @@ export const Header = () => {
               <Link href="/">{t("join")}</Link>
             </li>
           </ul>
+          <button className="rounded-[4px] bg-[#ED3838] px-[15px] py-[9px]">
+            {t("contact")}
+          </button>
           <button className="rounded-[4px] bg-[#ED3838] px-[15px] py-[9px]">
             {t("contact")}
           </button>
