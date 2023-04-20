@@ -1,0 +1,36 @@
+.leftMist,.rightMist{
+  width: 200px;
+  height: 600px;
+  background-color: #fff;
+  position: absolute;
+}
+
+.leftMist{
+  left: 0;
+  top: 100px;
+  background: linear-gradient(270deg,hsla(0,0%,100%,0) 0,#fff);
+}
+
+.rightMist{
+  right: 0;
+  top: 100px;
+  background: linear-gradient(90deg,hsla(0,0%,100%,0) 0,#fff);
+}
+
+// .allPartner{
+//     animation:move 30s linear infinite forwards ;
+// }
+// @keyframes move{
+//   0%{
+//     transform: translateX(0);
+//   }
+//   50%{
+//     transform: translateX(-50%);
+//   }
+//   99%{
+//     transform: translateX(-99%);
+//   }
+//   100%{
+//     transform: translateX(0%);
+//   }
+// }
