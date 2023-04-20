@@ -1,63 +1,144 @@
 import logo from "@/assets/images/logo.png";
 import { useI18n } from "@/hooks";
+import { I18nContext, Lang, capitalizeTheFirstLetter, locales } from "@/utils";
+import { useClickAway } from "ahooks";
 import Image from "next/image";
-import Link from "next/link";
+import { useRouter } from "next/router";
 import {
   Dispatch,
   SetStateAction,
   createContext,
+  memo,
   useContext,
   useEffect,
   useRef,
+  useState,
 } from "react";
+import { Link } from "./link";
 
 export const HeaderContext = createContext({
-  headerRef: null as HTMLDivElement | null,
-  setHeaderRef: (() => {}) as Dispatch<SetStateAction<HTMLDivElement | null>>,
+  header: null as HTMLDivElement | null,
+  setHeader: (() => {}) as Dispatch<SetStateAction<HTMLDivElement | null>>,
+  showChangeLang: false as boolean,
+  setShowChangeLang: (() => {}) as Dispatch<SetStateAction<boolean>>,
 });
 
-export const Header = () => {
+export const Header = memo(() => {
   const t = useI18n("navbar");
 
   // 向全局注入 header ref
   const headerRef = useRef<HTMLDivElement>(null);
-  const headerContext = useContext(HeaderContext);
+  const { setHeader } = useContext(HeaderContext)!;
   useEffect(() => {
-    headerContext?.setHeaderRef(headerRef.current);
+    setHeader(headerRef.current);
   }, []);
 
-  // 切换语言
+  // start 切换语言
+  // 语言切换弹窗弹窗
+  const changeLangRef = useRef<HTMLDivElement>(null);
+  const changeLangButtonRef = useRef<HTMLButtonElement>(null);
+  const { showChangeLang, setShowChangeLang } = useContext(HeaderContext)!;
+  useClickAway(
+    () => setShowChangeLang(false),
+    [changeLangRef, changeLangButtonRef]
+  );
+
+  // 语言切换
+  const router = useRouter();
+  const { lang, setLang } = useContext(I18nContext);
+  const changeLang = (locale: Lang) => {
+    const pathLang = locales.find((l) => router.asPath.startsWith(`/${l}`));
+    if (pathLang) {
+      router.push(router.asPath.replace(`/${pathLang}`, `/${locale}`));
+    } else {
+      router.push(`/${locale}${router.asPath}`);
+    }
+    setLang(locale);
+  };
+  // end 切换语言
+
+  // start 切换样式
+  const [showReadableHeader, setShowReadableHeader] = useState(true);
 
   return (
-    <header ref={headerRef} className="fixed top-0 z-50 w-full text-white">
-      <div className="mx-auto my-[10px] flex h-[50px] max-w-[1220px] items-center justify-between">
+    <header
+      ref={headerRef}
+      className="sticky top-0 z-50 h-[70px] w-full bg-white py-[10px]"
+    >
+      <div className="mx-auto flex h-full max-w-[1220px] items-center justify-between">
         <Image src={logo} alt="ebuy" height={50} />
-        <div className="flex items-center">
-          <ul className="flex">
-            <li className="mr-6">
+        <div className="flex items-center space-x-[40px]">
+          <ul className="flex space-x-[40px]">
+            <li>
               <Link href="/">{t("home")}</Link>
             </li>
-            <li className="mr-6">
-              <Link href="/">{t("about")}</Link>
+            <li>
+              <Link href="/about">{t("about")}</Link>
             </li>
-            <li className="mr-6">
+            <li>
               <Link href="/">{t("download")}</Link>
             </li>
-            <li className="mr-6">
+            <li>
               <Link href="/">{t("cooperation")}</Link>
             </li>
-            <li className="mr-6">
+            <li>
               <Link href="/">{t("join")}</Link>
             </li>
           </ul>
-          <button className="rounded-[4px] bg-[#ED3838] px-[15px] py-[9px]">
+          <button className="rounded-[4px] bg-[#ED3838] px-[15px] py-[9px] text-[16px] font-[500] leading-[24px]">
             {t("contact")}
           </button>
-          <button className="rounded-[4px] bg-[#ED3838] px-[15px] py-[9px]">
-            {t("contact")}
-          </button>
+          <div className="relative">
+            <button
+              ref={changeLangButtonRef}
+              onClick={() => setShowChangeLang(!showChangeLang)}
+              className="rounded-[4px] border-[1px] border-white p-[8px] text-[16px] font-[500] leading-[24px]"
+            >
+              {capitalizeTheFirstLetter(lang)}
+            </button>
+            <div
+              ref={changeLangRef}
+              className={`${
+                !showChangeLang ? "invisible" : ""
+              } absolute right-0 flex w-[80px] flex-col`}
+            >
+              {locales.map((locale) => (
+                <button
+                  key={locale}
+                  className="w-full rounded-[4px] border-[1px] border-white p-[8px] text-[16px] font-[500] leading-[24px]"
+                  onClick={() => changeLang(locale)}
+                >
+                  {capitalizeTheFirstLetter(locale)}
+                </button>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
+      <style jsx>{`
+        .down-animation {
+          animation: down 0.3s ease-in-out forwards;
+        }
+        .up-animation {
+          animation: up 0.3s ease-in-out forwards;
+        }
+        @keyframes down {
+          0% {
+            transform: translateY(-100%);
+          }
+          100% {
+            transform: translateY(0);
+          }
+        }
+        @keyframes up {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-100%);
+          }
+        }
+      `}</style>
     </header>
   );
-};
+});

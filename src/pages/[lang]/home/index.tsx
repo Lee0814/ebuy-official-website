@@ -1,4 +1,7 @@
+import { HeaderContext } from "@/components";
 import { useI18n } from "@/hooks";
+import { getI18nStaticPaths, getI18nStaticProps } from "@/utils";
+import { useScroll, useSize } from "ahooks";
 import Image from "next/image";
 import {
   useCallback,
@@ -14,11 +17,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
-
 import styles from "./index.module.scss";
-
-import { HeaderContext } from "@/components";
-import { useScroll, useSize } from "ahooks";
 
 import benefitImage1_1 from "./images/benefit-1-1.png";
 import benefitImage1_2 from "./images/benefit-1-2.png";
@@ -52,26 +51,57 @@ export default function Home() {
   const [currentBenefitIndex, setCurrentBenefitIndex] = useState(0);
 
   // 恢复自动播放
+  let timer: NodeJS.Timeout;
   const autoPlay = useCallback((swiper: _Swiper) => {
-    setTimeout(() => {
-      swiper.autoplay.start();
+    timer = setTimeout(() => {
+      swiper.autoplay?.start();
     }, 5000);
   }, []);
+  useEffect(() => () => clearTimeout(timer), []);
 
-  // 监听滚动调整header颜色和位置变化
-  const { headerRef } = useContext(HeaderContext);
-  const benefitRef = useRef<HTMLDivElement>(null);
-  const scroll = useScroll();
+  // start 监听滚动调整header颜色和位置变化
+  // 复制 header 并修改样式以及页面销毁时还原
+  const { header } = useContext(HeaderContext);
+  const [newHeader, setNewHeader] = useState(header);
   useEffect(() => {
-    if (!scroll?.top || !benefitRef.current || !headerRef) return;
-    if (scroll.top > benefitRef.current.offsetTop - 70) {
-      headerRef.style.color = "#000";
-      headerRef.style.backgroundColor = "#fff";
-    } else {
-      headerRef.style.color = "#fff";
-      headerRef.style.backgroundColor = "transparent";
-    }
+    if (!header) return;
+    const newHeader = header.cloneNode(true) as HTMLDivElement;
+    setNewHeader(newHeader);
+    newHeader.style.color = "#fff";
+    newHeader.style.marginBottom = "-70px";
+    newHeader.classList.remove("bg-white");
+    header.parentNode?.insertBefore(newHeader, header);
+    header.style.transform = "translateY(-100%)";
+    return () => {
+      newHeader.remove();
+      header.style.transform = "";
+      header.classList.remove("up-animation");
+      header.classList.remove("down-animation");
+    };
+  }, [header]);
+
+  // 是否显示可读header
+  const scroll = useScroll();
+  const benefitRef = useRef<HTMLDivElement>(null);
+  const showReadableHeader = useMemo(() => {
+    if (!scroll?.top || !benefitRef.current || !header) return false;
+    return scroll.top > benefitRef.current.offsetTop - 70;
   }, [scroll?.top]);
+
+  // 切换header
+  useEffect(() => {
+    if (!header || !newHeader) return;
+    if (showReadableHeader) {
+      newHeader.style.transform = "translateY(-100%)";
+      header.classList.remove("up-animation");
+      header.classList.add("down-animation");
+    } else {
+      newHeader.style.transform = "translateY(0)";
+      header.classList.remove("down-animation");
+      header.classList.add("up-animation");
+    }
+  }, [showReadableHeader]);
+  // end 监听滚动调整header颜色和位置变化
 
   // 处理banner高度
   const ratio = 8 / 5;
@@ -85,7 +115,7 @@ export default function Home() {
     <main>
       <section
         style={{ aspectRatio: ratio }}
-        className={`${styles.banner} fixed top-0 -z-10 w-full bg-cover bg-bottom pt-[70px]`}
+        className={`${styles.banner} fixed top-0 -z-10 w-full bg-cover bg-bottom`}
       >
         <div className="mx-auto flex h-full max-w-[1220px] flex-col items-center justify-center text-white">
           <span className="mb-[9px] whitespace-pre-wrap text-center text-[50px] font-[600] leading-[70px]">
@@ -99,7 +129,7 @@ export default function Home() {
           </button>
         </div>
       </section>
-      <div style={{ aspectRatio: ratio }} className="-z-10 pt-[70px]"></div>
+      <div style={{ aspectRatio: ratio }} className="-z-10 -mb-[70px]"></div>
       <section
         ref={benefitRef}
         className={`${styles.benefit} bg-[#fff9f0] bg-center bg-no-repeat bg-blend-normal`}
@@ -188,3 +218,6 @@ export default function Home() {
     </main>
   );
 }
+
+export const getStaticProps = getI18nStaticProps;
+export const getStaticPaths = getI18nStaticPaths;

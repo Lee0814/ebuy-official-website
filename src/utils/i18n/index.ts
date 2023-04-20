@@ -1,10 +1,6 @@
-import {
-  Dispatch,
-  SetStateAction,
-  createContext,
-  useContext,
-  useMemo,
-} from "react";
+import { GetStaticPaths, GetStaticProps } from "next";
+import { Dispatch, SetStateAction, createContext } from "react";
+
 import enCommon from "./locales/en/common.json";
 import enFooter from "./locales/en/footer.json";
 import enHome from "./locales/en/home.json";
@@ -20,13 +16,15 @@ type Trans = {
   home: typeof enHome;
   footer: typeof enFooter;
 };
-
+export type Lang = "en" | "zh-CN";
 export type NS = keyof Trans;
-export type Lang = "en" | "zh";
-
-type I18n = {
+export type I18n = {
   [key in Lang]: Trans;
 };
+
+export const defaultLang = "en";
+export const defaultNS = "common";
+export const locales: Array<Lang> = ["en", "zh-CN"];
 
 const i18n: I18n = {
   en: {
@@ -35,7 +33,7 @@ const i18n: I18n = {
     home: enHome,
     footer: enFooter,
   },
-  zh: {
+  "zh-CN": {
     common: zhCommon,
     navbar: zhNavbar,
     home: zhHome,
@@ -44,33 +42,29 @@ const i18n: I18n = {
 };
 
 export const I18nContext = createContext({
-  lang: "en" as Lang,
+  lang: defaultLang as Lang,
   setLang: (() => {}) as Dispatch<SetStateAction<Lang>>,
+  defaultLang: defaultLang as Lang,
 });
 
-export function t<L extends Lang = "en", N extends NS = "common">(
-  key: keyof I18n[L][N],
-  ns: N = "common" as N,
-  lang: L = "en" as L
-) {
+export function t<
+  L extends Lang = typeof defaultLang,
+  N extends NS = typeof defaultNS
+>(key: keyof I18n[L][N], ns: N = defaultNS as N, lang: L = defaultLang as L) {
   return i18n[lang][ns][key];
 }
 
-/**
- * 使用翻译函数
- * @param ns 命名空间
- * @param lang 使用语言
- * @returns 翻译函数
- */
-export function useI18n<L extends Lang = "en", N extends NS = "common">(
-  ns?: N,
-  lang?: L
-) {
-  const { lang: contextLang } = useContext(I18nContext);
-  const _ns = ns || ("common" as N);
-  const _lang = lang || (contextLang as L) || ("en" as L);
-  return useMemo(
-    () => (key: keyof I18n[L][N]) => t(key, _ns, _lang),
-    [lang, ns]
-  );
-}
+export const getI18nStaticProps: GetStaticProps = async (context) => {
+  const lang = context.params?.lang;
+
+  return {
+    props: lang ? { lang } : {},
+  };
+};
+
+export const getI18nStaticPaths: GetStaticPaths = async () => {
+  return {
+    paths: locales.map((locale) => ({ params: { lang: locale } })),
+    fallback: false,
+  };
+};

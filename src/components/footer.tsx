@@ -1,5 +1,5 @@
 import { useI18n } from "@/hooks";
-import { useState } from "react";
+import { memo, useState } from "react";
 import ReactFlagsSelect from "react-flags-select";
 
 function Test() {
@@ -15,7 +15,7 @@ function Test() {
   );
 }
 
-export const Footer = () => {
+export const Footer = memo(() => {
   const t = useI18n("footer");
 
   return (
@@ -148,4 +148,4 @@ export const Footer = () => {
       {/* end 信息 */}
     </footer>
   );
-};
+});
