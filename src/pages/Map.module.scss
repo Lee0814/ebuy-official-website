@@ -1,0 +1,48 @@
+.country{
+  color:#666666 ;
+  cursor: pointer;
+  position: relative;
+
+  span{
+     z-index: 10
+  }
+}
+
+.activeCountry{
+  color:#333333 ;
+  cursor: pointer;
+  position: relative;
+    span{
+     z-index: 10
+  }
+}
+.country:hover{
+   color:#333333
+}
+
+.country::after{
+  content: "";
+  position: absolute;
+  width: 136px;
+  height: 20px;
+  background-color:#FFC4C4 ;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 41px;
+  z-index: 1;
+  border-radius: 3.5pt;
+}
+
+
+.activeCountry::after{
+   content: "";
+  position: absolute;
+  width: 136px;
+  height: 20px;
+   background-color:#ED3838 ;
+    left: 50%;
+  transform: translateX(-50%);
+  top: 51px;
+  z-index: 1;
+  border-radius: 3.5pt;
+}
