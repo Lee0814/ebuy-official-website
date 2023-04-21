@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { memo } from "react";
+import { memo, useEffect, useRef } from "react";
 
 import styles from "./styles.module.scss";
 
@@ -44,16 +44,30 @@ import p56 from "./images/logo-5-6.png";
 import p57 from "./images/logo-5-7.png";
 
 const partnerLogos = [
-  [p11, p12, p13, p14, p15, p16, p17],
-  [p21, p22, p23, p24, p25, p26, p27],
-  [p31, p32, p33, p34, p35, p36, p37],
-  [p41, p42, p43, p44, p45, p46, p47],
-  [p51, p52, p53, p54, p55, p56, p57],
+  [p11, p21, p31, p41, p51],
+  [p12, p22, p32, p42, p52],
+  [p13, p23, p33, p43, p53],
+  [p14, p24, p34, p44, p54],
+  [p15, p25, p35, p45, p55],
+  [p16, p26, p36, p46, p56],
+  [p17, p27, p37, p47, p57],
 ];
 
 export const Partner = memo(() => {
+  const dynamicDom = useRef<HTMLDivElement>(null);
+  let transitionX = 0;
+  let isAdd: number;
+
+  useEffect(() => {
+    let styleObj = dynamicDom.current?.style!;
+    console.log(
+      dynamicDom.current!.scrollLeft,
+      dynamicDom.current!.firstElementChild!.scrollWidth
+    );
+  });
+
   return (
-    <section className="flex justify-center bg-white">
+    <section className=" flex justify-center bg-white">
       <div className="mx-[120px] box-border w-[1440px]">
         <div className="pt-[72px] text-center">
           <span className="text-[64px] text-[#333333]">EBUY</span>
@@ -72,19 +86,50 @@ export const Partner = memo(() => {
         <div className="relative flex flex-col py-[100px]">
           <div className={styles.leftMist}></div>
           <div className={styles.rightMist}></div>
-          {partnerLogos.map((rows) => (
-            <div className="flex h-[140px] justify-between py-[10px]">
-              {rows.map((partner) => (
-                <div className="flex h-[120px] w-[120px] items-center">
-                  <Image
-                    className="max-h-[120px] w-[120px]"
-                    alt=""
-                    src={partner}
-                  ></Image>
+          {/* 视口 */}
+          <div className=" h-full w-full overflow-x-hidden">
+            {/* 滚动块 */}
+            {/* 单个图片块 */}
+            <div
+              ref={dynamicDom}
+              className={`flex w-[2880px] justify-between  ${styles.ani}`}
+            >
+              {partnerLogos.map((column, index) => (
+                <div key={index}>
+                  {column.map((src, index) => (
+                    <div
+                      key={index}
+                      className="flex h-[144px] items-center justify-center"
+                    >
+                      <Image
+                        className="max-h-[120px] w-[120px]"
+                        src={src}
+                        alt=""
+                      />
+                    </div>
+                  ))}
+                </div>
+              ))}
+              {/* {单个滚动块} */}
+              <div></div>
+              {partnerLogos.map((column, index) => (
+                <div key={index}>
+                  {column.map((src, index) => (
+                    <div
+                      key={index}
+                      className="flex h-[144px] items-center justify-center"
+                    >
+                      <Image
+                        className="max-h-[120px] w-[120px]"
+                        src={src}
+                        alt=""
+                      />
+                    </div>
+                  ))}
                 </div>
               ))}
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>
