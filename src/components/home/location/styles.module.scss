@@ -48,45 +48,33 @@
 //地图信息定位
 .cdMap {
   background: url("./images/map-china.png");
-  background-size: 100% 100%;
   width: 100%;
-  max-width: 1440px;
   height: 634px;
-  position: relative;
-
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 100% 634px;
 }
 
 .sgpMap {
   background: url("./images/map-singapore.png");
-  background-size: 100% 100%;
   width: 100%;
-  max-width: 1440px;
-  background-size: cover;
   height: 634px;
-  position: relative;
+  background-size: cover;
+  background-repeat: no-repeat;
   background-position: center center;
 }
 
 .myMap {
   background: url("./images/map-malaysia.png");
-  background-size: 100% 100%;
   width: 100%;
-  max-width: 1440px;
-  background-size: cover;
-  position: relative;
   height: 634px;
-
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center center;
-  background-size: 100% 634px;
 }
 
 .company {
   position: absolute;
-
   bottom: 38.8%;
   left: 50%;
   transform: translateX(-50%);
