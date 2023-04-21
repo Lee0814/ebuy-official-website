@@ -6,7 +6,15 @@ module.exports = {
     "./src/app/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      screens: {
+        sm: "640.1px",
+        md: "750.1px",
+        lg: "1280.1px",
+        xl: "1440.1px",
+        "2xl": "1536.1px",
+      },
+    },
   },
   plugins: [],
 };

@@ -60,26 +60,20 @@ export const Partner = memo(() => {
 
   useEffect(() => {
     let styleObj = dynamicDom.current?.style!;
-    console.log(
-      dynamicDom.current!.scrollLeft,
-      dynamicDom.current!.firstElementChild!.scrollWidth
-    );
   });
 
   return (
-    <section className=" flex justify-center bg-white">
-      <div className="mx-[120px] box-border w-[1440px]">
-        <div className="pt-[72px] text-center">
-          <span className="text-[64px] text-[#333333]">EBUY</span>
-          <span className="text-[50px]"> Grows with You</span>
-        </div>
-        <div className="text-center text-[28px] leading-[44px]">
+    <section className="bg-white pt-[72px]">
+      <div className="ebuy-container text-center">
+        <span className="text-[44px] text-[#333333] md:text-[64px]">EBUY</span>
+        <span className="text-[30px] md:text-[50px]"> Grows with You</span>
+        <div className="text-center text-[20px] leading-[44px] md:text-[28px]">
           As a trusted partner, we serve more than 1000 F&B businesses such as
           Haidilao Hot Pot, Putien, Wen Jia Bao and A Kitchen. Since the release
-          of{" "}
-          <span className="rounded-[8pt] bg-[#FFD4D4] px-4 py-1">
+          of
+          <span className="rounded-[8px] bg-[#FFD4D4] px-4 py-1">
             EBuy 易购生鲜 APP
-          </span>{" "}
+          </span>
           , EBUY has been striving to improve the customer experience and your
           business efficiency.
         </div>
@@ -87,7 +81,7 @@ export const Partner = memo(() => {
           <div className={styles.leftMist}></div>
           <div className={styles.rightMist}></div>
           {/* 视口 */}
-          <div className=" h-full w-full overflow-x-hidden">
+          <div className="h-full overflow-x-hidden">
             {/* 滚动块 */}
             {/* 单个图片块 */}
             <div

@@ -1,46 +1,47 @@
 import Image from "next/image";
 import { memo, useState } from "react";
-import mapChina from "./images/map-china.png";
 import location from "./images/map-location.png";
-import mapMalaysia from "./images/map-malaysia.png";
-import mapSingapore from "./images/map-singapore.png";
 import picChina from "./images/pic-china.png";
 
 import styles from "./styles.module.scss";
 
+const countries = ["Singapore", "Malaysia", "China"];
+const companyInfo = [
+  {
+    name: "Ebuy Pte Ltd",
+    address: "32 Quality Rd, Singapore 618804",
+    phone: "电话：+86-1234-1347",
+    bgMap: styles.sgpMap,
+  },
+  {
+    name: "Ebuy Sdn. Bhd",
+    address:
+      "3, Jalan Silc 1/5, Kawasan Perindustrian SILC, 79200 Iskandar Puteri, Johor, 马来西亚",
+    phone: "电话：+86-1234-1347",
+    bgMap: styles.myMap,
+  },
+  {
+    name: "成都海獭科技有限公司",
+    address: "新川路和乐一街新川路和乐一街新川路和乐一街",
+    phone: "电话：+86-1234-1347",
+    bgMap: styles.cdMap,
+  },
+];
 export const Location = memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const countries = ["Singapore", "Malaysia", "China"];
-  const companies = [mapSingapore, mapMalaysia, mapChina];
-  const companyInfo = [
-    {
-      name: "Ebuy Pte Ltd",
-      address: "32 Quality Rd, Singapore 618804",
-      phone: "电话：+86-1234-1347",
-      bg: styles.sgpMap,
-    },
-    {
-      name: "Ebuy Sdn. Bhd",
-      address:
-        "3, Jalan Silc 1/5, Kawasan Perindustrian SILC, 79200 Iskandar Puteri, Johor, 马来西亚",
-      phone: "电话：+86-1234-1347",
-      bg: styles.myMap,
-    },
-    {
-      name: "成都海獭科技有限公司",
-      address: "新川路和乐一街新川路和乐一街新川路和乐一街",
-      phone: "电话：+86-1234-1347",
-      bg: styles.cdMap,
-    },
-  ];
+
   return (
-    <section className="flex flex-col items-center bg-[#FBFBFB] pb-[43px] pt-[72px]">
-      <div className="pb-3 text-[50px] text-[#333333]">Where We Are</div>
-      <div className="box-border w-[1200px] px-5 text-center text-[28px] leading-[44px]">
-        Ebuy mainly provides online-to-offline services in Singapore and
-        Malaysia, We also have an office in China.
+    <section className="bg-[#FBFBFB] pb-[43px] pt-[72px]">
+      <div className="ebuy-container">
+        <div className="px-[32px] pb-[12px] text-[44px] text-[#333333] md:text-center md:text-[50px]">
+          Where We Are
+        </div>
+        <div className="ebuy-container box-border text-[28px] leading-[40px] md:text-center md:leading-[44px]">
+          Ebuy mainly provides online-to-offline services in Singapore and
+          Malaysia, We also have an office in China.
+        </div>
       </div>
-      <div className="box-border flex w-[1440px] justify-between px-[283px] pb-[43px] pt-14 text-[40px]">
+      <div className="ebuy-container box-border flex justify-center space-x-[104.17px] pt-14 text-[24px] md:text-[40px]">
         {countries.map((country, index) => (
           <div
             onClick={() => setCurrentIndex(index)}
@@ -54,9 +55,8 @@ export const Location = memo(() => {
           </div>
         ))}
       </div>
-      <div className={companyInfo[currentIndex].bg}>
+      <div className={companyInfo[currentIndex].bgMap}>
         {/* 卡片 */}
-
         <div
           className={`${styles.company} ${
             currentIndex == 1 ? "w-[540px]" : ""

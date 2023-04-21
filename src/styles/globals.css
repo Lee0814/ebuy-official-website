@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.ebuy-container {
+  @apply w-full max-w-[1264px] overflow-hidden px-[32px] mx-auto;
+}

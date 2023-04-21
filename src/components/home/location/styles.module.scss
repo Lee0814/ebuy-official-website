@@ -46,11 +46,11 @@
 }
 
 //地图信息定位
-
 .cdMap {
   background: url("./images/map-china.png");
   background-size: 100% 100%;
-  width: 1440px;
+  width: 100%;
+  max-width: 1440px;
   height: 634px;
   position: relative;
 }
@@ -58,14 +58,19 @@
 .sgpMap {
   background: url("./images/map-singapore.png");
   background-size: 100% 100%;
-  width: 1440px;
+  width: 100%;
+  max-width: 1440px;
+  background-size: cover;
   height: 634px;
   position: relative;
 }
+
 .myMap {
   background: url("./images/map-malaysia.png");
   background-size: 100% 100%;
-  width: 1440px;
+  width: 100%;
+  max-width: 1440px;
+  background-size: cover;
   height: 634px;
   position: relative;
 }
@@ -76,8 +81,10 @@
   left: 50%;
   transform: translate(-50%, -50%);
   background: #fff;
+  background-size: cover;
   display: flex;
 }
+
 .position {
   position: absolute;
   left: 50%;

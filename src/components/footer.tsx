@@ -21,7 +21,7 @@ export const Footer = memo(() => {
   return (
     <footer className="bg-white">
       {/* start 表单 */}
-      <div className="mx-auto mb-[40px] max-w-[1220px] pt-[60px]">
+      <div className="ebuy-container mb-[40px] pt-[60px]">
         <div className="mb-[10px] text-[50px] font-bold leading-[75px] text-[#333333]">
           Get in touch with us
         </div>
@@ -91,7 +91,7 @@ export const Footer = memo(() => {
       {/* end 表单 */}
       {/* start 信息 */}
       <div className="bg-[#1d1f21]">
-        <div className="mx-auto flex max-w-[1220px] justify-between pb-[34px] pt-[56px] text-[14px] leading-[20px] text-[#acacac] text-[400]">
+        <div className="ebuy-container flex justify-between pb-[34px] pt-[56px] text-[14px] leading-[20px] text-[#acacac] text-[400]">
           <ul className="space-y-[12px]">
             <li className="mb-[25px] text-[20px] leading-[28px] text-[600] text-white">
               餐饮食材供应

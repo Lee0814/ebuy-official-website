@@ -100,19 +100,19 @@ export const Benefit = memo(() => {
       header.classList.remove("down-animation");
       header.classList.add("up-animation");
     }
-  }, [showReadableHeader]);
+  }, [showReadableHeader, header, newHeader]);
   // end 监听滚动调整header颜色和位置变化
 
   return (
     <section
       ref={benefitRef}
-      className={`${styles.benefit} bg-[#fff9f0] bg-center bg-no-repeat bg-blend-normal`}
+      className={`${styles.benefit} bg-[#fff9f0] bg-center bg-no-repeat pb-[40px] pt-[64px] bg-blend-normal`}
     >
-      <div className="relative mx-auto flex max-w-[1220px] flex-col items-center justify-center">
-        <span className="mb-[48px] mt-[64px] text-[40px] font-[500] leading-[60px] text-[#E79A44]">
+      <div className="ebuy-container relative flex flex-col items-center justify-center">
+        <span className="mb-[48px] text-[28px] font-[400] leading-[40px] text-[#E79A44] md:text-[40px] md:font-[500] md:leading-[60px]">
           {t("benefit-title")}
         </span>
-        <button className="left-arrow absolute bottom-[151px] left-0 flex h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white">
+        <button className="left-arrow absolute bottom-[151px] left-0 hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:flex">
           <svg
             fill="#ed3838"
             width="32px"
@@ -124,7 +124,7 @@ export const Benefit = memo(() => {
           </svg>
         </button>
         <Swiper
-          className="max-w-[1054px]"
+          className="w-full max-w-[1054px]"
           modules={[Navigation, Pagination, Autoplay]}
           pagination={{ el: ".custom-pagination", clickable: true }}
           navigation={{
@@ -139,31 +139,30 @@ export const Benefit = memo(() => {
           loop
         >
           {benefits.map((_, i) => (
-            <SwiperSlide key={i}>
+            <SwiperSlide key={`benefit-${i + 1}`}>
               <div className="flex max-w-[1054px] flex-col items-center">
-                <span className="mb-[24px] text-[50px] font-bold leading-[75px] text-[#333333]">
+                <span className="mb-[24px] text-[44px] font-[600] leading-[62px] text-[#333333] md:text-[50px] md:font-bold md:leading-[75px]">
                   {benefits[currentBenefitIndex].title}
                 </span>
-                <span className="mb-[45px] text-[28px] font-[500] leading-[42px] text-[#333333]">
+                <span className="mb-[45px] text-center text-[28px] font-[400] leading-[40px] text-[#333333] md:font-[500] md:leading-[42px]">
                   {benefits[currentBenefitIndex].description}
                 </span>
                 <div className="flex h-[190px] w-full justify-between">
                   {benefits[i].images.map((image, j) => (
                     <Image
+                      className="max-w-[330px]"
                       key={`benefit-${i + 1}-${j + 1}`}
                       alt={`benefit-${i + 1}-${j + 1}`}
                       src={image}
-                      width={330}
-                      height={190}
                     />
                   ))}
                 </div>
               </div>
             </SwiperSlide>
           ))}
-          <div className="custom-pagination mb-[40px] mt-[41px] flex justify-center space-x-[12px]"></div>
+          <div className="custom-pagination mt-[41px] flex justify-center !space-x-[24px] md:!space-x-[12px]"></div>
         </Swiper>
-        <button className="right-arrow absolute bottom-[151px] right-0 flex h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white">
+        <button className="right-arrow absolute bottom-[151px] right-0 hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:flex">
           <svg
             fill="#ed3838"
             width="32px"
@@ -182,6 +181,13 @@ export const Benefit = memo(() => {
           }
           .custom-pagination > .swiper-pagination-bullet-active {
             background: #ed3838 !important;
+          }
+          @media (max-width: 750.1px) {
+            .custom-pagination > .swiper-pagination-bullet {
+              width: 17%;
+              height: 12px;
+              border-radius: 12px;
+            }
           }
         `}</style>
       </div>

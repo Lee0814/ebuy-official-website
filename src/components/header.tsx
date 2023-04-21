@@ -12,7 +12,6 @@ import {
   useContext,
   useEffect,
   useRef,
-  useState,
 } from "react";
 import { Link } from "./link";
 
@@ -57,13 +56,10 @@ export const Header = memo(() => {
   };
   // end 切换语言
 
-  // start 切换样式
-  const [showReadableHeader, setShowReadableHeader] = useState(true);
-
   return (
     <header
       ref={headerRef}
-      className="sticky top-0 z-50 h-[70px] w-full bg-white py-[10px]"
+      className="sticky top-0 z-50 h-[70px] w-full overflow-hidden bg-white py-[10px]"
     >
       <div className="mx-auto flex h-full max-w-[1220px] items-center justify-between">
         <Image src={logo} alt="ebuy" height={50} />
