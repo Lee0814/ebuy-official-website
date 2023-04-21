@@ -1,20 +1,21 @@
-.leftMist,.rightMist{
+.leftMist,
+.rightMist {
   width: 200px;
   height: 600px;
   background-color: #fff;
   position: absolute;
 }
 
-.leftMist{
+.leftMist {
   left: 0;
   top: 100px;
-  background: linear-gradient(270deg,hsla(0,0%,100%,0) 0,#fff);
+  background: linear-gradient(270deg, hsla(0, 0%, 100%, 0) 0, #fff);
 }
 
-.rightMist{
+.rightMist {
   right: 0;
   top: 100px;
-  background: linear-gradient(90deg,hsla(0,0%,100%,0) 0,#fff);
+  background: linear-gradient(90deg, hsla(0, 0%, 100%, 0) 0, #fff);
 }
 
 // .allPartner{

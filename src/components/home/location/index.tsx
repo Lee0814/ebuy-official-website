@@ -1,40 +1,42 @@
 import Image from "next/image";
-import { useState } from "react";
-import cd2 from "../images/cd-2.png";
-import cdImg from "../images/cd.png";
-import location from "../images/locationLogo.png";
-import myImg from "../images/my.png";
-import sgpImg from "../images/sgp.png";
-import map from "./Map.module.scss";
-export default () => {
+import { memo, useState } from "react";
+import mapChina from "./images/map-china.png";
+import location from "./images/map-location.png";
+import mapMalaysia from "./images/map-malaysia.png";
+import mapSingapore from "./images/map-singapore.png";
+import picChina from "./images/pic-china.png";
+
+import styles from "./styles.module.scss";
+
+export const Location = memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const countries = ["Singapore", "Malaysia", "China"];
-  const companies = [sgpImg, myImg, cdImg];
+  const companies = [mapSingapore, mapMalaysia, mapChina];
   const companyInfo = [
     {
       name: "Ebuy Pte Ltd",
       address: "32 Quality Rd, Singapore 618804",
       phone: "电话：+86-1234-1347",
-      bg: map.sgpMap,
+      bg: styles.sgpMap,
     },
     {
       name: "Ebuy Sdn. Bhd",
       address:
         "3, Jalan Silc 1/5, Kawasan Perindustrian SILC, 79200 Iskandar Puteri, Johor, 马来西亚",
       phone: "电话：+86-1234-1347",
-      bg: map.myMap,
+      bg: styles.myMap,
     },
     {
       name: "成都海獭科技有限公司",
       address: "新川路和乐一街新川路和乐一街新川路和乐一街",
       phone: "电话：+86-1234-1347",
-      bg: map.cdMap,
+      bg: styles.cdMap,
     },
   ];
   return (
     <section className="flex flex-col items-center bg-[#FBFBFB] pb-[43px] pt-[72px]">
-      <div className="  pb-3 text-[50px] text-[#333333]">Where We Are</div>
-      <div className="box-border w-[1200px]  px-5  text-center  text-[28px]  leading-[44px]">
+      <div className="pb-3 text-[50px] text-[#333333]">Where We Are</div>
+      <div className="box-border w-[1200px] px-5 text-center text-[28px] leading-[44px]">
         Ebuy mainly provides online-to-offline services in Singapore and
         Malaysia, We also have an office in China.
       </div>
@@ -42,11 +44,13 @@ export default () => {
         {countries.map((country, index) => (
           <div
             onClick={() => setCurrentIndex(index)}
-            className={currentIndex === index ? map.activeCountry : map.country}
+            className={
+              currentIndex === index ? styles.activeCountry : styles.country
+            }
             key={index}
           >
             <span>{country}</span>
-            <span className={map.countryBg}></span>
+            <span className={styles.countryBg}></span>
           </div>
         ))}
       </div>
@@ -54,10 +58,12 @@ export default () => {
         {/* 卡片 */}
 
         <div
-          className={`${map.company} ${currentIndex == 1 ? "w-[540px]" : ""}`}
+          className={`${styles.company} ${
+            currentIndex == 1 ? "w-[540px]" : ""
+          }`}
         >
           <div className="h-[140px] w-[140px]">
-            <Image className="h-full w-full " alt="" src={cd2}></Image>
+            <Image className="h-full w-full" alt="" src={picChina}></Image>
           </div>
           {/* 公司描述 */}
           <div
@@ -81,7 +87,7 @@ export default () => {
           </div>
         </div>
         <div
-          className={`${map.position}  ${
+          className={`${styles.position}  ${
             currentIndex == 1 ? "bottom-[196px]" : ""
           }`}
         >
@@ -90,4 +96,4 @@ export default () => {
       </div>
     </section>
   );
-};
+});
