@@ -78,7 +78,7 @@ export const Footer = memo(() => {
             <span>How cam we help you?</span>
             <textarea
               style={{ border: "1px solid #DDDDDD" }}
-              className="h-[56px] w-full rounded-[4px] px-2 py-4"
+              className="h-[112px] w-full rounded-[4px] px-2 py-4"
             />
           </div>
         </div>

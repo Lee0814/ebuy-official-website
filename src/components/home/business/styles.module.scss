@@ -1,0 +1,29 @@
+.normalBusiness{
+  @apply cursor-pointer pl-[68px] pt-14 text-[32px] font-bold text-[#3A2D18] ;
+   .businessTitle{
+
+    @apply flex items-center pb-6  text-[32px] font-bold text-[#3A2D1B];
+  }
+  .businessIntro{
+    @apply hidden
+  }
+  .specialTitle{
+      @apply pl-3 text-[28px] text-[#B6863E]
+  }
+}
+
+.activeBusiness{
+
+   @apply cursor-pointer rounded-2xl bg-[#1D1F21] py-8 pl-[68px] pr-6 ;
+  .businessTitle{
+    @apply pb-6  text-[32px] font-bold text-[#fff];
+  }
+
+.businessIntro{
+  @apply text-[24px]  text-[#bdbdbd] w-[896px]
+}
+
+}
+.normalBusiness:nth-child(1){
+  padding-top: 10px !important;
+}

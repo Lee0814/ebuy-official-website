@@ -55,11 +55,32 @@ const partnerLogos = [
 
 export const Partner = memo(() => {
   const dynamicDom = useRef<HTMLDivElement>(null);
-  let transitionX = 0;
-  let isAdd: number;
-
+  let node: Node;
   useEffect(() => {
     let styleObj = dynamicDom.current?.style!;
+    let transitionX = 0;
+
+    let isAdd: number = 0;
+    console.log(
+      dynamicDom.current!.scrollLeft,
+      dynamicDom.current!.firstElementChild!.scrollWidth
+    );
+    const moveFn = () => {
+      styleObj.transform = `translateX(-${(transitionX += 1)}px)`;
+
+      // if (
+      //   transitionX >
+      //   dynamicDom.current!.firstElementChild!.scrollWidth + 20
+      // ) {
+      //   dynamicDom.current!.appendChild(dynamicDom.current!.firstElementChild!);
+      // }
+
+      isAdd = requestAnimationFrame(moveFn);
+    };
+
+    if (!isAdd) {
+      moveFn();
+    }
   });
 
   return (

@@ -53,6 +53,10 @@
   max-width: 1440px;
   height: 634px;
   position: relative;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 634px;
 }
 
 .sgpMap {
@@ -63,6 +67,7 @@
   background-size: cover;
   height: 634px;
   position: relative;
+  background-position: center center;
 }
 
 .myMap {
@@ -71,15 +76,20 @@
   width: 100%;
   max-width: 1440px;
   background-size: cover;
-  height: 634px;
   position: relative;
+  height: 634px;
+
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 100% 634px;
 }
 
 .company {
   position: absolute;
-  top: 50%;
+
+  bottom: 38.8%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateX(-50%);
   background: #fff;
   background-size: cover;
   display: flex;
@@ -89,5 +99,5 @@
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 202px;
+  top: 63%;
 }
