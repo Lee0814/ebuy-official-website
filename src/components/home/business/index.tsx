@@ -49,9 +49,9 @@ const Business = () => {
 
   return (
     <section className=" min-h-[1012px] w-full  bg-[#fbfbfb]">
-      <div className=" mx-auto w-full max-w-[1224px]   pb-[100px] pt-[72px]">
+      <div className="    pb-[100px] pt-[72px]">
         {/* 标题 */}
-        <div className="pb-[72px]">
+        <div className="mx-auto w-full max-w-[1224px] px-3 pb-[72px]">
           <div className="text-[50px] font-bold  text-[#3A2D1B]">
             What We Do ?
           </div>
@@ -59,55 +59,57 @@ const Business = () => {
             24/7 operation for ordering, packing, delivery and customer service.
           </div>
         </div>
-        {/* 选择栏 */}
-        <div className="flex">
-          {/* 左侧 */}
-          <div className={`${styles.left} box-border`}>
-            {/* 单个 */}
+        <div className="mx-auto max-w-[1440px]">
+          {/* 选择栏 */}
+          <div className="  ml-[96px]  flex max-w-[1224px] ">
+            {/* 左侧 */}
+            <div className={`${styles.left} box-border`}>
+              {/* 单个 */}
 
-            {buninessList.map((business, index) => (
-              <div
-                key={index}
-                className={`${
-                  currentIndex === index
-                    ? styles.activeBusiness
-                    : styles.normalBusiness
-                } flex`}
-                onMouseOver={() => setCurrentIndex(index)}
-              >
-                <div className="pl-6 pr-3 pt-1">
-                  <Image
-                    className="w-8 "
-                    alt=""
-                    src={
-                      currentIndex === index
-                        ? buninessList[index].icon
-                        : buninessList[index].iconh
-                    }
-                  ></Image>
-                </div>
-                <div>
-                  <div className={`${styles.businessTitle}`}>
-                    <span>{business.title}</span>
-                    <span className={`${styles.specialTitle}`}>
-                      {currentIndex === index
-                        ? `${business.title2 ? `【${business.title2}】` : ""}`
-                        : business.title2}
-                    </span>
+              {buninessList.map((business, index) => (
+                <div
+                  key={index}
+                  className={`${
+                    currentIndex === index
+                      ? styles.activeBusiness
+                      : styles.normalBusiness
+                  } flex`}
+                  onMouseOver={() => setCurrentIndex(index)}
+                >
+                  <div className="pl-6 pr-3 pt-1">
+                    <Image
+                      className="w-8 max-w-[unset]"
+                      alt=""
+                      src={
+                        currentIndex === index
+                          ? buninessList[index].icon
+                          : buninessList[index].iconh
+                      }
+                    ></Image>
                   </div>
-                  <div className={`${styles.businessIntro}`}>
-                    {business.intro}
+                  <div>
+                    <div className={`${styles.businessTitle}`}>
+                      <span>{business.title}</span>
+                      <span className={`${styles.specialTitle}`}>
+                        {currentIndex === index
+                          ? `${business.title2 ? `【${business.title2}】` : ""}`
+                          : business.title2}
+                      </span>
+                    </div>
+                    <div className={`${styles.businessIntro}`}>
+                      {business.intro}
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
-          </div>
-          <div className="flex max-w-[290px] items-center justify-center">
-            <Image
-              className="max-h-[540px] w-full"
-              alt=""
-              src={images[currentIndex]}
-            />
+              ))}
+            </div>
+            <div className="flex max-w-[290px] items-center justify-center">
+              <Image
+                className="max-h-[540px] w-full"
+                alt=""
+                src={images[currentIndex]}
+              />
+            </div>
           </div>
         </div>
       </div>
