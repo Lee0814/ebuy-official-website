@@ -61,10 +61,6 @@ export const Partner = memo(() => {
     let transitionX = 0;
 
     let isAdd: number = 0;
-    console.log(
-      dynamicDom.current!.scrollLeft,
-      dynamicDom.current!.firstElementChild!.scrollWidth
-    );
     const moveFn = () => {
       styleObj.transform = `translateX(-${(transitionX += 1)}px)`;
 

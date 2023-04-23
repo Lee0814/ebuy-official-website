@@ -1,5 +1,6 @@
-import { I18n, I18nContext, Lang, NS, defaultNS, t } from "@/utils";
-import { useContext, useMemo } from "react";
+import { useI18nContext } from "@/states";
+import { I18n, Lang, NS, defaultLang, defaultNS, t } from "@/utils";
+import { useMemo } from "react";
 
 /**
  * 使用翻译函数
@@ -11,9 +12,9 @@ export function useI18n<
   L extends Lang = typeof defaultLang,
   N extends NS = typeof defaultNS
 >(ns?: N, lang?: L) {
-  const { lang: contextLang, defaultLang } = useContext(I18nContext);
+  const { lang: contextLang, detectedLang } = useI18nContext();
   const _ns = ns || (defaultNS as N);
-  const _lang = lang || (contextLang as L) || (defaultLang as L);
+  const _lang = lang || ((contextLang || detectedLang || defaultLang) as L);
   return useMemo(
     () => (key: keyof I18n[L][N]) => t(key, _ns, _lang),
     [_lang, _ns]

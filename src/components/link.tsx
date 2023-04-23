@@ -1,11 +1,12 @@
-import { I18nContext, locales } from "@/utils";
+import { useI18nContext } from "@/states";
+import { locales } from "@/utils";
 import NextLink, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
-import { PropsWithChildren, memo, useContext } from "react";
+import { PropsWithChildren, memo } from "react";
 
 export const Link = memo((props: PropsWithChildren<LinkProps>) => {
   const router = useRouter();
-  const { lang } = useContext(I18nContext);
+  const { lang } = useI18nContext();
   const needAddLang = locales.some((l) => router.asPath.startsWith(`/${l}`));
 
   return (

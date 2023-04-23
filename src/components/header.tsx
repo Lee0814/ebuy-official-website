@@ -1,33 +1,24 @@
-import logo from "@/assets/images/logo.png";
 import { useI18n } from "@/hooks";
-import { I18nContext, Lang, capitalizeTheFirstLetter, locales } from "@/utils";
+import { useHeaderContext, useI18nContext } from "@/states";
+import { Lang, capitalizeTheFirstLetter, locales } from "@/utils";
 import { useClickAway } from "ahooks";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import {
-  Dispatch,
-  SetStateAction,
-  createContext,
   memo,
-  useContext,
   useEffect,
-  useRef,
+  useRef
 } from "react";
 import { Link } from "./link";
 
-export const HeaderContext = createContext({
-  header: null as HTMLDivElement | null,
-  setHeader: (() => {}) as Dispatch<SetStateAction<HTMLDivElement | null>>,
-  showChangeLang: false as boolean,
-  setShowChangeLang: (() => {}) as Dispatch<SetStateAction<boolean>>,
-});
+import logo from "@/assets/images/logo.png";
 
 export const Header = memo(() => {
   const t = useI18n("navbar");
 
   // 向全局注入 header ref
   const headerRef = useRef<HTMLDivElement>(null);
-  const { setHeader } = useContext(HeaderContext)!;
+  const { setHeader } = useHeaderContext();
   useEffect(() => {
     setHeader(headerRef.current);
   }, []);
@@ -36,7 +27,7 @@ export const Header = memo(() => {
   // 语言切换弹窗弹窗
   const changeLangRef = useRef<HTMLDivElement>(null);
   const changeLangButtonRef = useRef<HTMLButtonElement>(null);
-  const { showChangeLang, setShowChangeLang } = useContext(HeaderContext)!;
+  const { showChangeLang, setShowChangeLang } = useHeaderContext();
   useClickAway(
     () => setShowChangeLang(false),
     [changeLangRef, changeLangButtonRef]
@@ -44,7 +35,7 @@ export const Header = memo(() => {
 
   // 语言切换
   const router = useRouter();
-  const { lang, setLang } = useContext(I18nContext);
+  const { lang, setLang } = useI18nContext();
   const changeLang = (locale: Lang) => {
     const pathLang = locales.find((l) => router.asPath.startsWith(`/${l}`));
     if (pathLang) {

@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps } from "next";
-import { Dispatch, SetStateAction, createContext } from "react";
 
 import enCommon from "./locales/en/common.json";
 import enFooter from "./locales/en/footer.json";
@@ -40,12 +39,6 @@ const i18n: I18n = {
     footer: zhFooter,
   },
 };
-
-export const I18nContext = createContext({
-  lang: defaultLang as Lang,
-  setLang: (() => {}) as Dispatch<SetStateAction<Lang>>,
-  defaultLang: defaultLang as Lang,
-});
 
 export function t<
   L extends Lang = typeof defaultLang,

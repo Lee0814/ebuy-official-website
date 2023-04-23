@@ -44,18 +44,18 @@ export const Location = memo(() => {
       <div className="ebuy-container box-border flex justify-center space-x-[104.17px] pt-14 text-[24px] md:text-[40px]">
         {countries.map((country, index) => (
           <div
+            key={index}
             onClick={() => setCurrentIndex(index)}
             className={
               currentIndex === index ? styles.activeCountry : styles.country
             }
-            key={index}
           >
             <span>{country}</span>
             <span className={styles.countryBg}></span>
           </div>
         ))}
       </div>
-      <div className={companyInfo[currentIndex].bgMap}>
+      <div className={`${companyInfo[currentIndex].bgMap} relative`}>
         {/* 卡片 */}
         <div
           className={`${styles.company} ${

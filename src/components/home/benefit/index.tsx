@@ -1,15 +1,14 @@
-import { HeaderContext } from "@/components";
 import { useI18n } from "@/hooks";
+import { useHeaderContext } from "@/states";
 import { useScroll } from "ahooks";
 import Image from "next/image";
 import {
   memo,
   useCallback,
-  useContext,
   useEffect,
   useMemo,
   useRef,
-  useState,
+  useState
 } from "react";
 import { Autoplay, Navigation, Pagination, Swiper as _Swiper } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -61,7 +60,7 @@ export const Benefit = memo(() => {
 
   // start 监听滚动调整header颜色和位置变化
   // 复制 header 并修改样式以及页面销毁时还原
-  const { header } = useContext(HeaderContext);
+  const { header } = useHeaderContext();
   const [newHeader, setNewHeader] = useState(header);
   useEffect(() => {
     if (!header) return;
