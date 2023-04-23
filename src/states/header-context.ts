@@ -8,11 +8,15 @@ import {
   useState,
 } from "react";
 
+type HeaderType = "transparent" | "frosted-glass" | "white";
+
 export const HeaderContext = createContext({
   showChangeLang: false as boolean,
   setShowChangeLang: (() => {}) as Dispatch<SetStateAction<boolean>>,
-  showTransparentHeader: undefined as boolean | undefined,
-  setShowTransparentHeader: (() => {}) as Dispatch<SetStateAction<boolean | undefined>>,
+  showHeader: true as boolean,
+  setShowHeader: (() => {}) as Dispatch<SetStateAction<boolean>>,
+  headerType: undefined as HeaderType | undefined,
+  setHeaderType: (() => {}) as Dispatch<SetStateAction<HeaderType | undefined>>,
 });
 
 export const useProvideHeader = (): UseProvideReturn<
@@ -20,33 +24,46 @@ export const useProvideHeader = (): UseProvideReturn<
   typeof HeaderContext
 > => {
   const [showChangeLang, setShowChangeLang] = useState<boolean>(false);
-  const [showTransparentHeader, setShowTransparentHeader] = useState<boolean>();
+  const [showHeader, setShowHeader] = useState<boolean>(true);
+  const [headerType, setHeaderType] = useState<HeaderType | undefined>("white");
 
   return {
     HeaderProvider: HeaderContext.Provider,
     HeaderValue: {
       showChangeLang,
       setShowChangeLang,
-      showTransparentHeader,
-      setShowTransparentHeader,
+      showHeader,
+      setShowHeader,
+      headerType,
+      setHeaderType,
     },
   };
 };
 
 export interface HeaderContextProps {
-  showTransparentHeader?: boolean;
+  showHeader?: boolean;
+  headerType?: HeaderType;
 }
 export const useHeaderContext = ({
-  showTransparentHeader,
+  showHeader,
+  headerType,
 }: HeaderContextProps = {}) => {
   const headerContext = useContext(HeaderContext);
-  showTransparentHeader &&
+  showHeader &&
     useEffect(() => {
-      const showTransparentHeader = headerContext.showTransparentHeader;
-      headerContext.setShowTransparentHeader(showTransparentHeader);
+      const _showHeader = headerContext.showHeader;
+      headerContext.setShowHeader(showHeader);
       return () => {
-        headerContext.setShowTransparentHeader(showTransparentHeader);
+        headerContext.setShowHeader(_showHeader);
       };
-    }, [showTransparentHeader]);
+    }, [showHeader]);
+  headerType &&
+    useEffect(() => {
+      const _headerType = headerContext.headerType;
+      headerContext.setHeaderType(headerType);
+      return () => {
+        headerContext.setHeaderType(_headerType);
+      };
+    }, [headerType]);
   return headerContext;
 };

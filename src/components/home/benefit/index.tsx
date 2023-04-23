@@ -34,9 +34,9 @@ export const Benefit = memo(() => {
   const benefits = useMemo(
     () =>
       Array.from(allImages, (_, i) => ({
+        images: allImages[i],
         title: t(`benefit-${i + 1}-title` as any),
         description: t(`benefit-${i + 1}-description` as any),
-        images: allImages[i],
       })),
     [t]
   );
@@ -51,9 +51,6 @@ export const Benefit = memo(() => {
   }, []);
   useEffect(() => () => clearTimeout(timer), []);
 
-  // start 监听滚动调整header颜色和位置变化
-  // 复制 header 并修改样式以及页面销毁时还原
-
   // 是否显示可读header
   const scroll = useScroll();
   const benefitRef = useRef<HTMLDivElement>(null);
@@ -62,15 +59,13 @@ export const Benefit = memo(() => {
     return scroll.top > benefitRef.current.offsetTop - 70;
   }, [scroll?.top]);
 
-  // 切换header
-  const { setShowTransparentHeader } = useHeaderContext({
-    showTransparentHeader: true,
+  // 设置 header 样式
+  const { setHeaderType } = useHeaderContext({
+    headerType: "transparent",
   });
-  useEffect(
-    () => setShowTransparentHeader(showReadableHeader),
-    [showReadableHeader]
-  );
-  // end 监听滚动调整header颜色和位置变化
+  useEffect(() => {
+    setHeaderType(showReadableHeader ? "frosted-glass" : "transparent");
+  }, [showReadableHeader]);
 
   return (
     <section
