@@ -20,7 +20,7 @@ export const I18nContext = createContext({
 export const useProvideI18n = (
   pageLang?: Lang
 ): UseProvideReturn<"I18n", typeof I18nContext> => {
-  const [lang, setLang] = useState<Lang>(defaultLang);
+  const [lang, setLang] = useState<Lang>(pageLang || defaultLang);
   const [detectedLang, setDetectedLang] = useState<Lang>();
 
   useEffect(() => {
@@ -39,7 +39,11 @@ export const useProvideI18n = (
     I18nProvider: I18nContext.Provider,
     I18nValue: {
       lang,
-      setLang,
+      setLang: (_lang: Lang | ((lang: Lang) => Lang)) => {
+        const __lang = typeof _lang === "string" ? _lang : _lang(lang);
+        document.querySelector("html")?.setAttribute("lang", __lang);
+        setLang(__lang);
+      },
       detectedLang,
       setDetectedLang,
     },

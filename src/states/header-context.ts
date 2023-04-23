@@ -4,32 +4,49 @@ import {
   SetStateAction,
   createContext,
   useContext,
+  useEffect,
   useState,
 } from "react";
 
 export const HeaderContext = createContext({
-  header: null as HTMLDivElement | null,
-  setHeader: (() => {}) as Dispatch<SetStateAction<HTMLDivElement | null>>,
   showChangeLang: false as boolean,
   setShowChangeLang: (() => {}) as Dispatch<SetStateAction<boolean>>,
+  showTransparentHeader: undefined as boolean | undefined,
+  setShowTransparentHeader: (() => {}) as Dispatch<SetStateAction<boolean | undefined>>,
 });
 
 export const useProvideHeader = (): UseProvideReturn<
   "Header",
   typeof HeaderContext
 > => {
-  const [header, setHeader] = useState<HTMLDivElement | null>(null);
   const [showChangeLang, setShowChangeLang] = useState<boolean>(false);
+  const [showTransparentHeader, setShowTransparentHeader] = useState<boolean>();
 
   return {
     HeaderProvider: HeaderContext.Provider,
     HeaderValue: {
-      header,
-      setHeader,
       showChangeLang,
       setShowChangeLang,
+      showTransparentHeader,
+      setShowTransparentHeader,
     },
   };
 };
 
-export const useHeaderContext = () => useContext(HeaderContext);
+export interface HeaderContextProps {
+  showTransparentHeader?: boolean;
+}
+export const useHeaderContext = ({
+  showTransparentHeader,
+}: HeaderContextProps = {}) => {
+  const headerContext = useContext(HeaderContext);
+  showTransparentHeader &&
+    useEffect(() => {
+      const showTransparentHeader = headerContext.showTransparentHeader;
+      headerContext.setShowTransparentHeader(showTransparentHeader);
+      return () => {
+        headerContext.setShowTransparentHeader(showTransparentHeader);
+      };
+    }, [showTransparentHeader]);
+  return headerContext;
+};

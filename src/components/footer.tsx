@@ -23,16 +23,15 @@ export const Footer = memo(() => {
       {/* start 表单 */}
       <div className="ebuy-container mb-[40px] pt-[60px]">
         <div className="mb-[10px] text-[50px] font-bold leading-[75px] text-[#333333]">
-          Get in touch with us
+          {t("contact")}
         </div>
         <div className="mb-[56px] text-[28px] font-[500] leading-[44px]">
-          if you have any questions and requests, please feel free to call 9774
-          5658 or fill in the form below
+          {t("detail")}
         </div>
         <div className="space-y-[32px] px-[24px] text-[24px] font-[400] leading-[36px] text-[#333333]">
           <div className="flex">
             <div className="flex flex-1 flex-col space-y-[16px]">
-              <span>First Name</span>
+              <span>{t("first-name")}</span>
               <input
                 style={{ border: "1px solid #DDDDDD" }}
                 className="h-[56px] w-full max-w-[500px] rounded-[4px] px-2 py-4"
@@ -41,7 +40,7 @@ export const Footer = memo(() => {
             </div>
             <div className="flex flex-1 flex-col items-end">
               <div className="w-full max-w-[500px] space-y-[16px]">
-                <span>Last Name</span>
+                <span>{t("last-name")}</span>
                 <input
                   style={{ border: "1px solid #DDDDDD" }}
                   className="h-[56px] w-full rounded-[4px] px-2 py-4"
@@ -52,12 +51,9 @@ export const Footer = memo(() => {
           </div>
           <div className="flex flex-col space-y-[16px]">
             <span className="after:ml-[4px] after:text-[24px] after:font-[500] after:leading-[36px] after:text-[#ed3838] after:content-['*']">
-              Telephone number
+              {t("telephone")}
             </span>
             <div className="flex h-[56px] items-center">
-              {/* <div className="flex h-full w-[118px] items-center justify-center bg-[#EFEFEF]">
-                中 +86
-              </div> */}
               <Test />
               <input
                 style={{ border: "1px solid #DDDDDD" }}
@@ -67,7 +63,7 @@ export const Footer = memo(() => {
             </div>
           </div>
           <div className="flex flex-col space-y-[16px]">
-            <span>E-mail</span>
+            <span>{t("email")}</span>
             <input
               style={{ border: "1px solid #DDDDDD" }}
               className="h-[56px] w-full rounded-[4px]"
@@ -75,7 +71,7 @@ export const Footer = memo(() => {
             />
           </div>
           <div className="flex flex-col space-y-[16px]">
-            <span>How cam we help you?</span>
+            <span>{t("help")}</span>
             <textarea
               style={{ border: "1px solid #DDDDDD" }}
               className="h-[112px] w-full rounded-[4px] px-2 py-4"
@@ -84,7 +80,7 @@ export const Footer = memo(() => {
         </div>
         <div className="mt-[48px] flex items-center justify-center">
           <button className="bg-[#ED3838] px-[78px] py-[19px] text-[24px] leading-[36px] text-white">
-            SEND
+            {t("submit")}
           </button>
         </div>
       </div>

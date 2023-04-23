@@ -1,15 +1,7 @@
 import { useI18n } from "@/hooks";
-import { useHeaderContext } from "@/states";
 import { useScroll } from "ahooks";
 import Image from "next/image";
-import {
-  memo,
-  useCallback,
-  useEffect,
-  useMemo,
-  useRef,
-  useState
-} from "react";
+import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Autoplay, Navigation, Pagination, Swiper as _Swiper } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -18,6 +10,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import styles from "./styles.module.scss";
 
+import { useHeaderContext } from "@/states";
 import benefit_1_1 from "./images/benefit-1-1.png";
 import benefit_1_2 from "./images/benefit-1-2.png";
 import benefit_1_3 from "./images/benefit-1-3.png";
@@ -60,46 +53,23 @@ export const Benefit = memo(() => {
 
   // start 监听滚动调整header颜色和位置变化
   // 复制 header 并修改样式以及页面销毁时还原
-  const { header } = useHeaderContext();
-  const [newHeader, setNewHeader] = useState(header);
-  useEffect(() => {
-    if (!header) return;
-    const newHeader = header.cloneNode(true) as HTMLDivElement;
-    setNewHeader(newHeader);
-    newHeader.style.color = "#fff";
-    newHeader.style.marginBottom = "-70px";
-    newHeader.classList.remove("bg-white");
-    header.parentNode?.insertBefore(newHeader, header);
-    header.style.transform = "translateY(-100%)";
-    return () => {
-      newHeader.remove();
-      header.style.transform = "";
-      header.classList.remove("up-animation");
-      header.classList.remove("down-animation");
-    };
-  }, [header]);
 
   // 是否显示可读header
   const scroll = useScroll();
   const benefitRef = useRef<HTMLDivElement>(null);
   const showReadableHeader = useMemo(() => {
-    if (!scroll?.top || !benefitRef.current || !header) return false;
+    if (!scroll?.top || !benefitRef.current) return false;
     return scroll.top > benefitRef.current.offsetTop - 70;
   }, [scroll?.top]);
 
   // 切换header
-  useEffect(() => {
-    if (!header || !newHeader) return;
-    if (showReadableHeader) {
-      newHeader.style.transform = "translateY(-100%)";
-      header.classList.remove("up-animation");
-      header.classList.add("down-animation");
-    } else {
-      newHeader.style.transform = "translateY(0)";
-      header.classList.remove("down-animation");
-      header.classList.add("up-animation");
-    }
-  }, [showReadableHeader, header, newHeader]);
+  const { setShowTransparentHeader } = useHeaderContext({
+    showTransparentHeader: true,
+  });
+  useEffect(
+    () => setShowTransparentHeader(showReadableHeader),
+    [showReadableHeader]
+  );
   // end 监听滚动调整header颜色和位置变化
 
   return (

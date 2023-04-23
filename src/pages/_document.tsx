@@ -1,8 +1,16 @@
-import { Head, Html, Main, NextScript } from "next/document";
+import { defaultLang } from "@/utils";
+import _Document, {
+  DocumentContext,
+  DocumentProps,
+  Head,
+  Html,
+  Main,
+  NextScript,
+} from "next/document";
 
-export default function Document() {
+function Document({ lang }: DocumentProps & { lang: string }) {
   return (
-    <Html>
+    <Html lang={lang || defaultLang}>
       <Head />
       <body>
         <Main />
@@ -11,3 +19,10 @@ export default function Document() {
     </Html>
   );
 }
+
+Document.getInitialProps = async (ctx: DocumentContext) => {
+  const initialProps = await _Document.getInitialProps(ctx);
+  return { ...initialProps, lang: ctx.query.lang };
+};
+
+export default Document;
