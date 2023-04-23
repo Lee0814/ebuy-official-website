@@ -81,7 +81,7 @@ export const Benefit = memo(() => {
         <span className="mb-[48px] text-[28px] font-[400] leading-[40px] text-[#E79A44] md:text-[40px] md:font-[500] md:leading-[60px]">
           {t("benefit-title")}
         </span>
-        <button className="left-arrow absolute bottom-[151px] left-0 hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:flex">
+        <button className="left-arrow absolute bottom-[121px] left-0 mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:flex">
           <svg
             fill="#ed3838"
             width="32px"
@@ -131,7 +131,7 @@ export const Benefit = memo(() => {
           ))}
           <div className="custom-pagination mt-[41px] flex justify-center !space-x-[24px] md:!space-x-[12px]"></div>
         </Swiper>
-        <button className="right-arrow absolute bottom-[151px] right-0 hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:flex">
+        <button className=" right-arrow absolute bottom-[121px] right-0 mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:flex">
           <svg
             fill="#ed3838"
             width="32px"

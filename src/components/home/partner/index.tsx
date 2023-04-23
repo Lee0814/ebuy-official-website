@@ -87,7 +87,7 @@ export const Partner = memo(() => {
         <div className="text-center text-[20px] leading-[44px] md:text-[28px]">
           As a trusted partner, we serve more than 1000 F&B businesses such as
           Haidilao Hot Pot, Putien, Wen Jia Bao and A Kitchen. Since the release
-          of
+          of{" "}
           <span className="rounded-[8px] bg-[#FFD4D4] px-4 py-1">
             EBuy 易购生鲜 APP
           </span>

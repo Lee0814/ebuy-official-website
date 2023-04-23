@@ -1,5 +1,5 @@
 .normalBusiness{
-  @apply cursor-pointer pl-[68px] pt-14 text-[32px] font-bold text-[#3A2D18] ;
+  @apply cursor-pointer max-w-[894px] box-border   py-7 text-[32px] font-bold text-[#3A2D18] ;
    .businessTitle{
 
     @apply flex items-center pb-6  text-[32px] font-bold text-[#3A2D1B];
@@ -14,16 +14,52 @@
 
 .activeBusiness{
 
-   @apply cursor-pointer rounded-2xl bg-[#1D1F21] py-8 pl-[68px] pr-6 ;
+   @apply cursor-pointer max-w-[894px] box-border py-6 rounded-2xl bg-[#1D1F21] mb-7   mr-6 ;
   .businessTitle{
     @apply pb-6  text-[32px] font-bold text-[#fff];
   }
 
 .businessIntro{
-  @apply text-[24px]  text-[#bdbdbd] w-[896px]
+  @apply text-[24px]   text-[#bdbdbd]  whitespace-normal
 }
 
 }
 .normalBusiness:nth-child(1){
   padding-top: 10px !important;
 }
+
+@media screen and (min-width:1250px) {
+    .activeBusiness{
+      width: 894px ;
+    }}
+
+// @media screen and (min-width:750px) {
+
+// .normalBusiness{
+//   @apply  pt-10 text-[28px];
+
+//    .businessTitle{
+//   @apply pb-4 text-[28px];
+
+//   }
+//   .specialTitle{
+//     @apply pl-2 text-[24px]
+//   }
+// }
+
+// .activeBusiness{
+//     @apply py-6  pr-3;
+
+//   .businessTitle{
+//    @apply pb-3  text-[28px] ;
+//   }
+
+// .businessIntro{
+//   @apply text-[20px];
+// }
+
+// }
+// .normalBusiness:nth-child(1){
+//   padding-top: 10px !important;
+// }
+// }

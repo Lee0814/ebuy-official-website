@@ -41,7 +41,7 @@ export const Location = memo(() => {
           Malaysia, We also have an office in China.
         </div>
       </div>
-      <div className="ebuy-container box-border flex justify-center space-x-[104.17px] pt-14 text-[24px] md:text-[40px]">
+      <div className="ebuy-container box-border flex justify-center space-x-[104.17px] pb-8 pt-14 text-[24px] md:text-[40px]">
         {countries.map((country, index) => (
           <div
             key={index}
