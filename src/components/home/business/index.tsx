@@ -34,7 +34,7 @@ const Business = () => {
 
   return (
     <section className="flex h-[1000px] w-full justify-center bg-[#fbfbfb]">
-      <div className="  pb-[100px] pt-[72px]">
+      <div className=" px-24  pb-[100px] pt-[72px]">
         {/* 标题 */}
         <div className="pb-[72px]">
           <div className="text-[50px] font-bold  text-[#3A2D1B]">
