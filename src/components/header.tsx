@@ -1,13 +1,16 @@
 import { useI18n } from "@/hooks";
 import { useHeaderContext, useI18nContext } from "@/states";
 import { Lang, capitalizeTheFirstLetter, locales } from "@/utils";
+import { useClickAway, useScroll, useSize } from "ahooks";
+import classNames from "classnames";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { memo, useEffect, useRef, useState } from "react";
 import { Link } from "./link";
 
+import styles from "./header.module.scss";
+
 import logo from "@/assets/images/logo.png";
-import { useClickAway, useScroll } from "ahooks";
 
 type Position = {
   left: number;
@@ -60,16 +63,26 @@ export const Header = memo(() => {
     setLastScroll(scroll);
   }, [scroll]);
 
+  const headerRef = useRef<HTMLHeadElement>(null);
+  const size = useSize(headerRef);
+
   return (
     <header
-      className={`${showHeader ? "" : "out"} ${
-        headerType == "transparent" ? "theader" : "bheader"
-      }  header h-[70px] w-full  py-[10px] `}
+      ref={headerRef}
+      className={classNames(
+        "h-[70px] w-full py-[10px]",
+        styles["in"],
+        {
+          mobile: size && size.width <= 750,
+          [styles["out"]]: !showHeader,
+        },
+        styles[headerType!]
+      )}
     >
-      <div className="ebuy-container !md:overflow-visible flex h-full items-center justify-between overflow-hidden">
-        <Image src={logo} alt="ebuy" height={50} />
-        <div className="flex items-center space-x-[40px]">
-          <ul className="flex space-x-[40px]">
+      <div className="ebuy-container flex h-full items-center justify-between">
+        <Image src={logo} alt="ebuy" height={50} className="w-[146px] " />
+        <div className="flex flex-row-reverse items-center space-x-[21px] md:flex-row md:space-x-[40px]">
+          <ul className="flex flex-col md:flex-row md:space-x-[40px]">
             <li>
               <Link href="/">{t("home")}</Link>
             </li>
@@ -99,9 +112,12 @@ export const Header = memo(() => {
             </button>
             <div
               ref={changeLangRef}
-              className={`${
-                !showChangeLang ? "invisible" : ""
-              } absolute right-0 flex w-[80px] flex-col border-[0.5px]`}
+              className={classNames(
+                "absolute right-0 flex w-[80px] flex-col border-[0.5px]",
+                {
+                  invisible: !showChangeLang,
+                }
+              )}
             >
               {locales.map((locale) => (
                 <button
@@ -119,44 +135,6 @@ export const Header = memo(() => {
           </div>
         </div>
       </div>
-      <style jsx>{`
-        .theader {
-          color: #fff;
-          background: none;
-        }
-        .bheader {
-          background-color: #fff;
-          color: #000;
-        }
-        @keyframes in {
-          0% {
-            transform: translateY(-100%);
-          }
-          100% {
-            transform: translateY(0);
-          }
-        }
-        @keyframes out {
-          0% {
-            transform: translateY(0);
-          }
-          100% {
-            transform: translateY(-100%);
-          }
-        }
-        .out {
-          animation-name: out !important;
-          animation-duration: 0.2s !important;
-          animation-fill-mode: forwards;
-        }
-        .header {
-          position: sticky;
-          top: 0;
-          z-index: 100;
-          animation-name: in;
-          animation-duration: 0.3s;
-        }
-      `}</style>
     </header>
   );
 });

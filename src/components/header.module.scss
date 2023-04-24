@@ -1,0 +1,53 @@
+.transparent {
+  color: #fff;
+  background: none;
+}
+
+.frosted-glass {
+  backdrop-filter: blur(10px);
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.white {
+  color: #000;
+  background-color: #fff;
+}
+
+.mobile {
+  color: #000;
+  background-color: #fff;
+}
+
+@keyframes in {
+  0% {
+    transform: translateY(-100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes out {
+  0% {
+    transform: translateY(0);
+  }
+
+  100% {
+    transform: translateY(-100%);
+  }
+}
+
+.out {
+  animation-name: out !important;
+  animation-duration: 0.2s !important;
+  animation-fill-mode: forwards;
+}
+
+.in {
+  top: 0;
+  z-index: 100;
+  position: sticky;
+  animation-name: in;
+  animation-duration: 0.3s;
+}

@@ -2,6 +2,26 @@
 @tailwind components;
 @tailwind utilities;
 
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
+.custom-pagination > .swiper-pagination-bullet {
+  width: 12px;
+  height: 12px;
+  background: #d8d8d8 !important;
+}
+.custom-pagination > .swiper-pagination-bullet-active {
+  background: #ed3838 !important;
+}
+@media (max-width: 750.1px) {
+  .custom-pagination > .swiper-pagination-bullet {
+    width: 17%;
+    height: 12px;
+    border-radius: 12px;
+  }
+}
+
 .ebuy-container {
-  @apply w-full max-w-[1264px] overflow-hidden px-[32px] mx-auto;
+  @apply mx-auto w-full max-w-[1264px] overflow-hidden px-[32px];
 }

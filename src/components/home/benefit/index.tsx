@@ -1,16 +1,13 @@
 import { useI18n } from "@/hooks";
+import { useHeaderContext } from "@/states";
 import { useScroll } from "ahooks";
 import Image from "next/image";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Autoplay, Navigation, Pagination, Swiper as _Swiper } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 import styles from "./styles.module.scss";
 
-import { useHeaderContext } from "@/states";
 import benefit_1_1 from "./images/benefit-1-1.png";
 import benefit_1_2 from "./images/benefit-1-2.png";
 import benefit_1_3 from "./images/benefit-1-3.png";
@@ -137,23 +134,6 @@ export const Benefit = memo(() => {
             <path d="M5.536 21.886a1.004 1.004 0 0 0 1.033-.064l13-9a1 1 0 0 0 0-1.644l-13-9A1 1 0 0 0 5 3v18a1 1 0 0 0 .536.886z" />
           </svg>
         </button>
-        <style jsx global>{`
-          .custom-pagination > .swiper-pagination-bullet {
-            width: 12px;
-            height: 12px;
-            background: #d8d8d8 !important;
-          }
-          .custom-pagination > .swiper-pagination-bullet-active {
-            background: #ed3838 !important;
-          }
-          @media (max-width: 750.1px) {
-            .custom-pagination > .swiper-pagination-bullet {
-              width: 17%;
-              height: 12px;
-              border-radius: 12px;
-            }
-          }
-        `}</style>
       </div>
     </section>
   );
