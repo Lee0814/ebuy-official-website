@@ -9,13 +9,13 @@ import { getI18nStaticPaths, getI18nStaticProps } from "@/utils";
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Banner />
       <Benefit />
       <Business />
       <Partner />
       <Location />
-    </main>
+    </>
   );
 }
 
