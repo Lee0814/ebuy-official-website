@@ -5,7 +5,7 @@ import { useClickAway, useScroll, useSize } from "ahooks";
 import classNames from "classnames";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { memo, useEffect, useRef, useState } from "react";
+import { memo, useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "./link";
 
 import styles from "./header.module.scss";
@@ -44,6 +44,12 @@ export const Header = memo(() => {
   };
   // end 切换语言
 
+  // start 菜单切换
+  const actionRef = useRef<HTMLDivElement>(null);
+  const [showMenu, setShowMenu] = useState(false);
+  useClickAway(() => setShowMenu(false), actionRef);
+  // end 菜单切换
+
   // start 下滚隐藏头部 上滚显示头部
   const { showHeader, headerType, setShowHeader } = useHeaderContext();
   const [lastScroll, setLastScroll] = useState<Position>();
@@ -61,18 +67,20 @@ export const Header = memo(() => {
       setShowHeader(true);
     }
     setLastScroll(scroll);
+    setShowChangeLang(false);
+    setShowMenu(false);
   }, [scroll]);
   // end 下滚隐藏头部 上滚显示头部
 
   // start 手机端 header
   const headerRef = useRef<HTMLHeadElement>(null);
   const size = useSize(headerRef);
-  const isMobile = size && size.width <= 750;
+  const isMobile = useMemo(() => {
+    setShowChangeLang(false);
+    setShowMenu(false);
+    return size && size.width <= 1280;
+  }, [size]);
   // end 手机端 header
-
-  // start 菜单切换
-  const [showMenu, setShowMenu] = useState(false);
-  // end 菜单切换
 
   return (
     <header
@@ -89,9 +97,10 @@ export const Header = memo(() => {
     >
       <div className="ebuy-container flex h-full items-center justify-between">
         <Image src={logo} alt="ebuy" height={50} className="w-[146px] " />
-        <div className="flex flex-row-reverse items-center space-x-[21px] space-x-reverse md:flex-row md:space-x-[20px] lg:space-x-[40px]">
+        <div className="gap-reverse flex flex-row-reverse items-center gap-[21px] md:gap-[20px] lg:flex-row lg:gap-[40px]">
           <div className="relative">
             <div
+              ref={actionRef}
               className={classNames(styles["action-icon"], {
                 [styles["action-icon-close"]]: showMenu,
                 ["hidden"]: !isMobile,
@@ -105,9 +114,10 @@ export const Header = memo(() => {
             </div>
             <ul
               className={classNames(
-                "flex flex-col md:flex-row md:space-x-[20px] lg:space-x-[40px]",
+                "flex flex-col md:gap-[20px] lg:flex-row lg:gap-[40px]",
                 {
-                  ["absolute right-0"]: isMobile,
+                  ["absolute right-0 top-[50px] w-[200px] gap-[10px] text-ellipsis bg-white p-[10px] underline"]:
+                    isMobile,
                   ["hidden"]: isMobile && !showMenu,
                 }
               )}
@@ -145,7 +155,8 @@ export const Header = memo(() => {
               className={classNames(
                 "absolute right-0 z-50 flex w-[80px] flex-col border-[0.5px]",
                 {
-                  invisible: !showChangeLang,
+                  ["invisible"]: !showChangeLang,
+                  ["bg-white"]: isMobile,
                 }
               )}
             >
