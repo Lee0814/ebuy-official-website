@@ -51,3 +51,49 @@
   animation-name: in;
   animation-duration: 0.3s;
 }
+
+.action-icon {
+  @apply relative h-[30px] w-[35px];
+
+  span {
+    @apply absolute left-0 w-full border-[2px] rounded-full border-[#ED3838] transition-all duration-300;
+
+    &:nth-child(1) {
+      @apply top-[2px];
+    }
+
+    &:nth-child(2) {
+      @apply top-[15px];
+    }
+
+    &:nth-child(3) {
+      @apply top-[15px];
+    }
+
+    &:nth-child(4) {
+      @apply top-[28px];
+    }
+  }
+}
+
+.action-icon-close {
+  span {
+    @apply absolute left-[1.5px];
+
+    &:nth-child(1) {
+      @apply top-[30px] left-[19px] w-0 border-0;
+    }
+
+    &:nth-child(2) {
+      @apply top-[15px] w-[35px] rotate-45 transform;
+    }
+
+    &:nth-child(3) {
+      @apply top-[15px] w-[35px] -rotate-45 transform;
+    }
+
+    &:nth-child(4) {
+      @apply top-[30px] left-[19px] w-0 border-0;
+    }
+  }
+}

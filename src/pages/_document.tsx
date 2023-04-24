@@ -7,12 +7,23 @@ import _Document, {
   Main,
   NextScript,
 } from "next/document";
+import Script from "next/script";
 
 function Document({ lang }: DocumentProps & { lang: string }) {
   return (
     <Html lang={lang || defaultLang}>
       <Head />
       <body>
+        <Script strategy="beforeInteractive">{`
+          function resizeHandler() {
+            const scale = document.documentElement.clientWidth <= 750
+                ? Math.min(1, document.documentElement.clientWidth / 750)
+                : 1;
+            document.documentElement.style.fontSize = 16 * scale + "px";
+          }
+          resizeHandler();
+          addEventListener("resize", resizeHandler);
+        `}</Script>
         <Main />
         <NextScript />
       </body>

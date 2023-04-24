@@ -23,5 +23,5 @@
 }
 
 .ebuy-container {
-  @apply mx-auto w-full max-w-[1264px] overflow-hidden px-[32px];
+  @apply mx-auto w-full max-w-[1264px] px-[32px];
 }

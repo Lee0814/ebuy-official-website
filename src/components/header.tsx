@@ -62,9 +62,17 @@ export const Header = memo(() => {
     }
     setLastScroll(scroll);
   }, [scroll]);
+  // end 下滚隐藏头部 上滚显示头部
 
+  // start 手机端 header
   const headerRef = useRef<HTMLHeadElement>(null);
   const size = useSize(headerRef);
+  const isMobile = size && size.width <= 750;
+  // end 手机端 header
+
+  // start 菜单切换
+  const [showMenu, setShowMenu] = useState(false);
+  // end 菜单切换
 
   return (
     <header
@@ -73,7 +81,7 @@ export const Header = memo(() => {
         "h-[70px] w-full py-[10px]",
         styles["in"],
         {
-          mobile: size && size.width <= 750,
+          [styles["mobile"]]: isMobile,
           [styles["out"]]: !showHeader,
         },
         styles[headerType!]
@@ -81,27 +89,47 @@ export const Header = memo(() => {
     >
       <div className="ebuy-container flex h-full items-center justify-between">
         <Image src={logo} alt="ebuy" height={50} className="w-[146px] " />
-        <div className="flex flex-row-reverse items-center space-x-[21px] md:flex-row md:space-x-[40px]">
-          <ul className="flex flex-col md:flex-row md:space-x-[40px]">
-            <li>
-              <Link href="/">{t("home")}</Link>
-            </li>
-            <li>
-              <Link href="/about">{t("about")}</Link>
-            </li>
-            <li>
-              <Link href="/">{t("download")}</Link>
-            </li>
-            <li>
-              <Link href="/">{t("cooperation")}</Link>
-            </li>
-            <li>
-              <Link href="/">{t("join")}</Link>
-            </li>
-          </ul>
-          <button
-            className={`message rounded-[4px] bg-[#ED3838] px-[15px] py-[9px] text-[16px] font-[500] leading-[24px]`}
-          >
+        <div className="flex flex-row-reverse items-center space-x-[21px] space-x-reverse md:flex-row md:space-x-[20px] lg:space-x-[40px]">
+          <div className="relative">
+            <div
+              className={classNames(styles["action-icon"], {
+                [styles["action-icon-close"]]: showMenu,
+                ["hidden"]: !isMobile,
+              })}
+              onClick={() => setShowMenu(!showMenu)}
+            >
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </div>
+            <ul
+              className={classNames(
+                "flex flex-col md:flex-row md:space-x-[20px] lg:space-x-[40px]",
+                {
+                  ["absolute right-0"]: isMobile,
+                  ["hidden"]: isMobile && !showMenu,
+                }
+              )}
+            >
+              <li>
+                <Link href="/">{t("home")}</Link>
+              </li>
+              <li>
+                <Link href="/about">{t("about")}</Link>
+              </li>
+              <li>
+                <Link href="/">{t("download")}</Link>
+              </li>
+              <li>
+                <Link href="/">{t("cooperation")}</Link>
+              </li>
+              <li>
+                <Link href="/">{t("join")}</Link>
+              </li>
+            </ul>
+          </div>
+          <button className="rounded-[4px] bg-[#ED3838] px-[15px] py-[9px] text-[16px] font-[500] leading-[24px]">
             {t("contact")}
           </button>
           <div className="relative">
@@ -115,7 +143,7 @@ export const Header = memo(() => {
             <div
               ref={changeLangRef}
               className={classNames(
-                "absolute right-0 flex w-[80px] flex-col border-[0.5px]",
+                "absolute right-0 z-50 flex w-[80px] flex-col border-[0.5px]",
                 {
                   invisible: !showChangeLang,
                 }
