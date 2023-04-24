@@ -1,37 +1,35 @@
-.normalBusiness{
-  @apply leading-[32px] cursor-pointer max-w-[894px] box-border   py-7 text-[32px] font-bold text-[#3A2D18] ;
-   .businessTitle{
-
+.normalBusiness {
+  @apply box-border max-w-[894px] cursor-pointer py-7   text-[32px] font-bold leading-[32px] text-[#3A2D18];
+  .businessTitle {
     @apply flex items-center pb-6  text-[32px] font-bold text-[#3A2D1B];
   }
-  .businessIntro{
-    @apply hidden
+  .businessIntro {
+    @apply hidden;
   }
-  .specialTitle{
-      @apply pl-3 text-[28px] text-[#B6863E]
+  .specialTitle {
+    @apply pl-3 text-[28px] text-[#B6863E];
   }
 }
 
-.activeBusiness{
-
-   @apply cursor-pointer max-w-[894px] box-border pt-[30px] pb-[16px] rounded-2xl bg-[#1D1F21] mb-7   mr-6 ;
-  .businessTitle{
+.activeBusiness {
+  @apply mb-7 mr-6 box-border max-w-[894px] cursor-pointer rounded-2xl bg-[#1D1F21] pb-[16px] pt-[30px];
+  .businessTitle {
     @apply pb-6  text-[32px] font-bold text-[#fff];
   }
 
-.businessIntro{
-  @apply text-[24px]   text-[#bdbdbd]  whitespace-normal
-}
-
+  .businessIntro {
+    @apply whitespace-normal   text-[24px]  text-[#bdbdbd];
+  }
 }
 // .normalBusiness:nth-child(1){
 //   padding-top: 10px !important;
 // }
 
-@media screen and (min-width:1250px) {
-    .activeBusiness{
-      width: 894px ;
-    }}
+@media screen and (min-width: 1181.1px) {
+  .activeBusiness {
+    width: 891px;
+  }
+}
 
 // @media screen and (min-width:750px) {
 

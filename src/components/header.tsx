@@ -75,11 +75,11 @@ export const Header = memo(() => {
   // start 手机端 header
   const headerRef = useRef<HTMLHeadElement>(null);
   const size = useSize(headerRef);
-  const isMobile = useMemo(() => size && size.width <= 1280, [size]);
-  useEffect(() => {
+  const isMobile = useMemo(() => {
     setShowChangeLang(false);
     setShowMenu(false);
-  }, [size])
+    return size && size.width <= 1280;
+  }, [size]);
   // end 手机端 header
 
   return (

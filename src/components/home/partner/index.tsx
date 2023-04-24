@@ -78,7 +78,7 @@ export const Partner = memo(() => {
             <Image
               src={src}
               alt={`partner logo ${i} ${j}`}
-              className="max-h-[108px] max-w-[108px] lg:max-h-[120px] lg:max-w-[120px]"
+              className="max-h-[120px] max-w-[120px]"
             />
           </div>
         ))}
@@ -115,7 +115,7 @@ export const Partner = memo(() => {
     }
   }, [inViewport, ratio]);
   useEffect(() => {
-    if (offset + 1 >= partnerRef.current!.firstElementChild!.clientWidth) {
+    if (offset + 1 >= partnerRef.current!.clientWidth / 7) {
       setCols((cols) => {
         const _cols = [...cols];
         const _col = _cols.shift();
@@ -149,7 +149,7 @@ export const Partner = memo(() => {
             {/* 滚动块 */}
             <div
               ref={partnerRef}
-              className="grid w-full max-w-full auto-cols-[20%] grid-flow-col justify-between lg:auto-cols-[16.666666%] xl:auto-cols-[14.285714%]"
+              className="grid w-full max-w-full auto-cols-[14.285714%] grid-flow-col justify-between"
               style={{
                 transform: `translateX(-${offset}px)`,
               }}
