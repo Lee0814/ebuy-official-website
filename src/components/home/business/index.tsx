@@ -59,9 +59,9 @@ const Business = () => {
             24/7 operation for ordering, packing, delivery and customer service.
           </div>
         </div>
-        <div className="mx-auto max-w-[1440px]">
+        <div className="mx-auto max-w-[1248px]">
           {/* 选择栏 */}
-          <div className="  ml-[96px]  flex max-w-[1224px] ">
+          <div className="  flex  w-full max-w-[1224px] ">
             {/* 左侧 */}
             <div className={`${styles.left} box-border`}>
               {/* 单个 */}
