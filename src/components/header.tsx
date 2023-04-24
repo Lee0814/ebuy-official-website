@@ -87,10 +87,10 @@ export const Header = memo(() => {
       ref={headerRef}
       className={classNames(
         "h-[70px] w-full py-[10px]",
-        styles["in"],
+        styles["header"],
         {
           [styles["mobile"]]: isMobile,
-          [styles["out"]]: !showHeader,
+          [styles["header-out"]]: !showHeader,
         },
         styles[headerType!]
       )}
@@ -101,10 +101,13 @@ export const Header = memo(() => {
           <div className="relative">
             <div
               ref={actionRef}
-              className={classNames(styles["action-icon"], {
-                [styles["action-icon-close"]]: showMenu,
-                ["hidden"]: !isMobile,
-              })}
+              className={classNames(
+                styles["action-icon"],
+                "visible lg:hidden",
+                {
+                  [styles["action-icon-close"]]: showMenu,
+                }
+              )}
               onClick={() => setShowMenu(!showMenu)}
             >
               <span></span>
@@ -114,11 +117,11 @@ export const Header = memo(() => {
             </div>
             <ul
               className={classNames(
-                "flex flex-col md:gap-[20px] lg:flex-row lg:gap-[40px]",
+                "hidden flex-col md:gap-[20px] lg:flex lg:flex-row lg:gap-[40px]",
                 {
                   ["absolute right-0 top-[50px] w-[200px] gap-[10px] text-ellipsis bg-white p-[10px] underline"]:
                     isMobile,
-                  ["hidden"]: isMobile && !showMenu,
+                  ["flex"]: showMenu,
                 }
               )}
             >
@@ -139,7 +142,7 @@ export const Header = memo(() => {
               </li>
             </ul>
           </div>
-          <button className="rounded-[4px] bg-[#ED3838] px-[15px] py-[9px] text-[16px] font-[500] leading-[24px]">
+          <button className="rounded-[4px] bg-[#ED3838] px-[15px] py-[9px] text-[16px] font-[500] leading-[24px] text-white">
             {t("contact")}
           </button>
           <div className="relative">

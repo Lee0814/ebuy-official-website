@@ -42,13 +42,13 @@
   }
 }
 
-.out {
+.header-out {
   animation-name: out !important;
   animation-duration: 0.2s !important;
   animation-fill-mode: forwards;
 }
 
-.in {
+.header {
   top: 0;
   z-index: 100;
   position: sticky;
