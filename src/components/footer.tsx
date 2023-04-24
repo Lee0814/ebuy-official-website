@@ -148,7 +148,7 @@ export const Footer = memo(() => {
                 地址：32 Quallity Road,Singapore 618804
               </li>
               <li className="pt-6 leading-[100%] md:pt-0 md:leading-[20px]">
-                联系邮箱：xxxxxx@xxxxx.COM
+                联系邮箱：ebuysdnbhd@gmail.com
               </li>
               <li className="pt-6 leading-[100%] md:pt-0 md:leading-[20px]">
                 服务时间：周一至周五 9:00 am——6:00 pm
