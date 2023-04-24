@@ -48,24 +48,23 @@ const Business = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   return (
-    <section className=" min-h-[1012px] w-full  bg-[#fbfbfb]">
+    <section className="min-h-[1012px] w-full  bg-[#fbfbfb]">
       <div className="    pb-[100px] pt-[72px]">
         {/* 标题 */}
-        <div className="ebuy-container pb-[94px]">
-          <div className="text-[50px] font-bold  text-[#3A2D1B]">
+        <div className="ebuy-container  pb-[94px] text-center md:text-left">
+          <div className=" text-[50px] font-bold text-[#3A2D1B]  ">
             What We Do ?
           </div>
-          <div className=" pt-[32px] text-[28px]">
+          <div className="pt-[32px]  text-[28px] ">
             24/7 operation for ordering, packing, delivery and customer service.
           </div>
         </div>
-        <div className="mx-auto max-w-[1368px]">
-          {/* 选择栏 */}
-          <div className="  mx-3  flex w-full max-w-[1344px] ">
-            {/* 左侧 */}
-            <div className={` mt-[42px]`}>
-              {/* 单个 */}
-
+        {/* 选择栏 */}
+        <div className="mx-auto box-border max-w-[1500px] px-2">
+          {/* 左侧 */}
+          <div className=" box-border flex w-full  flex-col items-center overflow-hidden md:flex-row md:items-start md:justify-between ">
+            {/* 单个 */}
+            <div className={` mt-[42px] flex overflow-hidden md:block`}>
               {buninessList.map((business, index) => (
                 <div
                   key={index}
@@ -76,9 +75,11 @@ const Business = () => {
                   } flex`}
                   onMouseOver={() => setCurrentIndex(index)}
                 >
-                  <div className="pl-6 pr-3 pt-1">
+                  <div className="pl-6 pr-3 ">
                     <Image
-                      className="w-8 max-w-[unset]"
+                      className={`w-8 max-w-[unset] ${
+                        currentIndex === index ? "pt-[6px]" : "pt-0"
+                      }`}
                       alt=""
                       src={
                         currentIndex === index
@@ -103,8 +104,12 @@ const Business = () => {
                 </div>
               ))}
             </div>
-            <div className="flex max-w-[290px] items-center justify-center">
-              <Image className=" w-full" alt="" src={images[currentIndex]} />
+            <div className="flex    items-center justify-center">
+              <Image
+                className=" max-w-[290px]"
+                alt=""
+                src={images[currentIndex]}
+              />
             </div>
           </div>
         </div>

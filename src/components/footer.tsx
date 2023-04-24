@@ -1,7 +1,8 @@
+import qrcode from "@/assets/images/qrcode.jpg";
 import { useI18n } from "@/hooks";
+import Image from "next/image";
 import { memo, useState } from "react";
 import ReactFlagsSelect from "react-flags-select";
-
 function Test() {
   const [selected, setSelected] = useState("");
 
@@ -34,7 +35,7 @@ export const Footer = memo(() => {
               <span>{t("first-name")}</span>
               <input
                 style={{ border: "1px solid #DDDDDD" }}
-                className="h-[56px] w-full max-w-[650px] rounded-[4px] px-2 py-4"
+                className="h-[56px] w-full max-w-[650px] rounded-[4px] px-8 py-4"
                 type="text"
               />
             </div>
@@ -43,7 +44,7 @@ export const Footer = memo(() => {
                 <span>{t("last-name")}</span>
                 <input
                   style={{ border: "1px solid #DDDDDD" }}
-                  className="h-[56px] w-full rounded-[4px] px-2 py-4"
+                  className="h-[56px] w-full rounded-[4px] px-8 py-4"
                   type="text"
                 />
               </div>
@@ -79,7 +80,7 @@ export const Footer = memo(() => {
             <span>{t("help")}</span>
             <textarea
               style={{ border: "1px solid #DDDDDD" }}
-              className="h-[112px] w-full rounded-[4px] px-2 py-4"
+              className="h-[112px] w-full rounded-[4px] px-8 py-4"
             />
           </div>
         </div>
@@ -92,82 +93,86 @@ export const Footer = memo(() => {
       {/* end 表单 */}
       {/* start 信息 */}
       <div className="bg-[#1d1f21]">
-        <div className="ebuy-container flex flex-col justify-between pb-[34px] pt-[56px] text-[28px]  leading-[20px] text-[#acacac] text-[400] md:flex-row md:text-[14px]">
+        <div className="ebuy-container flex flex-col justify-between pb-[34px] pt-[72px] text-[28px]  leading-[20px] text-[#acacac] text-[400] md:flex-row md:text-[14px]">
           {/* 食材供应 */}
           <div>
             {/* 标题 */}
-            <div className="mb-8 text-[32px] text-[600] text-white md:mb-[25px] md:text-[20px] md:leading-[28px]">
+            <div className=" mb-8 text-[32px] leading-[100%] text-[600] text-white md:mb-[25px] md:text-[20px] md:leading-[28px]">
               餐饮食材供应
             </div>
 
-            <ul className="flex max-w-[568px] justify-between md:flex-col md:space-y-[12px] ">
+            <ul className="flex max-w-[568px] justify-between leading-[100%] md:flex-col md:space-y-[12px] md:leading-[20px] ">
               <li className="flex flex-col md:block md:space-x-[28px] ">
                 <span>新鲜蔬菜</span>
-                <span className="my-6 md:my-0">新鲜水果</span>
+                <span className="my-[24px] md:my-0">新鲜水果</span>
               </li>
               <li className="flex flex-col md:block md:space-x-[28px]">
                 <span>营养面食</span>
-                <span className="my-6 md:my-0">干活调料</span>
+                <span className="my-[24px] md:my-0">干活调料</span>
               </li>
               <li className="flex flex-col md:block md:space-x-[28px]">
                 <span>肉类冻品</span>
-                <span className="my-6 md:my-0">酒水饮料</span>
+                <span className="my-[24px] md:my-0">酒水饮料</span>
               </li>
             </ul>
             <li className="mt-[10px] list-none">
-              <span className="leading-[150%] ">
+              <span className="leading-[100%] ">
                 ebuy商家端订货App（最快当日送货）
               </span>
             </li>
           </div>
           {/* 第二个 */}
           <div className="mt-[72px] md:mt-0">
-            <div className="mb-8 text-[32px]  text-[600] text-white md:mb-[25px] md:text-[20px] md:leading-[28px]">
+            <div className="mb-5 text-[32px] leading-[100%]  text-[600] text-white md:mb-[25px] md:text-[20px] md:leading-[28px]">
               其他服务
             </div>
-            <ul className="flex flex-wrap justify-between   md:block md:space-y-[12px] ">
-              <li className="list-none py-3 md:py-0">批发合作</li>
+            <ul className="flex flex-wrap justify-between leading-[100%] md:block    md:space-y-[12px] md:leading-[20px] ">
+              <li className=" py-3 md:py-0">批发合作</li>
               <li className="list-none py-3 md:py-0">共享仓储</li>
               <li className="list-none py-3 md:py-0">定制化供应服务</li>
-              <li className="list-none py-3 leading-[120%] md:py-0 md:leading-[20px]">
+              <li className="list-none py-3 md:py-0 ">
                 ebuymart线上生鲜超市（次日达）
               </li>
             </ul>
           </div>
           {/* 第三个 */}
-          <div className="mt-[60px] md:mt-0">
+          <div className="mt-[50px] leading-[100%] md:mt-0 ">
             <ul className="space-y-[12px]">
               <li className=" text-[32px] text-[600] text-white md:text-[20px] md:leading-[28px]">
                 联系我们
               </li>
-              <li className="pt-8 text-[44px] text-[#ededed] text-[600] md:pt-0 md:text-[24px] md:leading-[33px]">
+              <li className="pt-8 text-[44px] leading-[100%] text-[#ededed] text-[600] md:pt-0  md:text-[24px] md:leading-[33px]">
                 9774-5658
               </li>
-              <li className="pt-8 leading-[120%] md:pt-0 md:leading-[20px]">
+              <li className="pt-6 leading-[100%] md:pt-0 md:leading-[20px]">
                 地址：32 Quallity Road,Singapore 618804
               </li>
-              <li className="pt-8 leading-[120%] md:pt-0 md:leading-[20px]">
+              <li className="pt-6 leading-[100%] md:pt-0 md:leading-[20px]">
                 联系邮箱：xxxxxx@xxxxx.COM
               </li>
-              <li className="pt-8 leading-[100%] md:pt-0 md:leading-[20px]">
+              <li className="pt-6 leading-[100%] md:pt-0 md:leading-[20px]">
                 服务时间：周一至周五 9:00 am——6:00 pm
               </li>
             </ul>
           </div>
           {/* 第四个 */}
-          <div className="mt-[72px] md:mt-0">
+          <div className="mt-[72px] md:mt-0 ">
             <ul>
               <li className="mb-[25px]  text-[32px] text-[600] text-white md:text-[20px] md:leading-[28px]">
                 关注我们
               </li>
-              <li className="mb-[8px] h-[150px] w-[150px]  bg-white md:h-[89px] md:w-[89px]"></li>
-              <li className="pt-[10px] md:pt-0">Ebuy官方微信公众号</li>
+              <li className="mb-[8px] h-[150px] w-[150px]  bg-white md:h-[89px] md:w-[89px]">
+                <Image className="h-full w-full" src={qrcode} alt=""></Image>
+              </li>
+              <li className="pt-[12px] leading-[100%] md:pt-0 md:leading-[20px]">
+                Ebuy官方微信公众号
+              </li>
             </ul>
           </div>
         </div>
-        <div className="mt-[120px] flex flex-col justify-center px-8 pb-[34px]  text-[24px] text-[#acacac] text-[400] md:mt-[100px] md:flex-row md:items-center md:space-x-[120px] md:text-[12px] md:leading-[17px]">
+        <div className="mt-[86px] flex flex-col justify-center px-8 pb-[34px]  text-[24px] text-[#acacac] text-[400] md:mt-[100px] md:flex-row md:items-center md:space-x-[120px] md:text-[12px] md:leading-[17px]">
           <div>川ICP备XXXXXXX号 | 版权所有</div>
-          <div className="pb-[6] pt-[18px] md:pb-0 md:pt-0 md:leading-10">
+          <div className="pb-[24px] pt-[12px] md:pb-0 md:pt-0 md:leading-10">
             总部地址：81AClemenceauAve,UESquare,Suite17.S239918
           </div>
         </div>
