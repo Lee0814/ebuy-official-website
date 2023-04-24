@@ -99,7 +99,9 @@ export const Header = memo(() => {
               <Link href="/">{t("join")}</Link>
             </li>
           </ul>
-          <button className="rounded-[4px] bg-[#ED3838] px-[15px] py-[9px] text-[16px] font-[500] leading-[24px]">
+          <button
+            className={`message rounded-[4px] bg-[#ED3838] px-[15px] py-[9px] text-[16px] font-[500] leading-[24px]`}
+          >
             {t("contact")}
           </button>
           <div className="relative">

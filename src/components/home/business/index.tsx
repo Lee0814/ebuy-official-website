@@ -51,19 +51,19 @@ const Business = () => {
     <section className=" min-h-[1012px] w-full  bg-[#fbfbfb]">
       <div className="    pb-[100px] pt-[72px]">
         {/* 标题 */}
-        <div className="mx-auto w-full max-w-[1224px] px-3 pb-[72px]">
+        <div className="ebuy-container pb-[94px]">
           <div className="text-[50px] font-bold  text-[#3A2D1B]">
             What We Do ?
           </div>
-          <div className=" pt-[37px] text-[28px]">
+          <div className=" pt-[32px] text-[28px]">
             24/7 operation for ordering, packing, delivery and customer service.
           </div>
         </div>
-        <div className="mx-auto max-w-[1248px]">
+        <div className="mx-auto max-w-[1368px]">
           {/* 选择栏 */}
-          <div className="  flex  w-full max-w-[1224px] ">
+          <div className="  mx-3  flex w-full max-w-[1344px] ">
             {/* 左侧 */}
-            <div className={`${styles.left} box-border`}>
+            <div className={` mt-[42px]`}>
               {/* 单个 */}
 
               {buninessList.map((business, index) => (
@@ -104,11 +104,7 @@ const Business = () => {
               ))}
             </div>
             <div className="flex max-w-[290px] items-center justify-center">
-              <Image
-                className="max-h-[540px] w-full"
-                alt=""
-                src={images[currentIndex]}
-              />
+              <Image className=" w-full" alt="" src={images[currentIndex]} />
             </div>
           </div>
         </div>

@@ -1,5 +1,5 @@
 .normalBusiness{
-  @apply cursor-pointer max-w-[894px] box-border   py-7 text-[32px] font-bold text-[#3A2D18] ;
+  @apply leading-[32px] cursor-pointer max-w-[894px] box-border   py-7 text-[32px] font-bold text-[#3A2D18] ;
    .businessTitle{
 
     @apply flex items-center pb-6  text-[32px] font-bold text-[#3A2D1B];
@@ -14,7 +14,7 @@
 
 .activeBusiness{
 
-   @apply cursor-pointer max-w-[894px] box-border py-6 rounded-2xl bg-[#1D1F21] mb-7   mr-6 ;
+   @apply cursor-pointer max-w-[894px] box-border pt-[30px] pb-[16px] rounded-2xl bg-[#1D1F21] mb-7   mr-6 ;
   .businessTitle{
     @apply pb-6  text-[32px] font-bold text-[#fff];
   }
