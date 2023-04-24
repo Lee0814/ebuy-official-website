@@ -13,7 +13,9 @@
       body {
         width: 100%;
         height: 100%;
+      background: rgb(255, 188, 3);
       }
+
       .box {
         width: 1200px;
         height: 600px;
@@ -43,10 +45,57 @@
         max-height: 200px;
         transform: translateX();
       }
+      .header{
+        width: 100%;
+        position: fixed;
+        top: 0;
+        text-align: center;
+        height: 60px;
+        line-height: 60px;
+        background-color: rgba(10, 10, 10, .1);
+        z-index: 100;
+       animation-name: in;
+      animation-duration: 0.3s;
+      }
+      .topheader{
+
+        color: #fff;
+        background: none;
+      }
+      .bottomheader{
+        background-color: #fff;
+      }
+  @keyframes in{
+      0%{
+        transform: translateY(-100%);
+      }
+      100%{
+        transform: translateY(0);
+      }
+  }
+   @keyframes out{
+      0%{
+        transform: translateY(0);
+      }
+      100%{
+        transform: translateY(-100%);
+      }
+  }
+  .out{
+      animation-name: out;
+      animation-duration: 0.2s;
+      animation-fill-mode: forwards;
+  }
     </style>
   </head>
   <body>
+      <div class="header topheader">
+        header
+      </div>
+      <div class="page1" style="width: 100%;height: 100vh;background-color: #80af7a;">page1</div>
+      <div style="width: 100%;height: 100vh;background-color: #2d94bd;">page2</div>
     <div class="box">
+
       <div class="column">
         <div>
           <img src="./src/components/home/partner/images/logo-1-1.png" alt="" />
@@ -109,19 +158,34 @@
     </div>
 
     <script>
-      const box=document.querySelector(".box")
-const columns=document.querySelectorAll(".column")
-const width=columns[2].scrollWidth
-let tranX=0
-isAdd=false
-const timer=setInterval(()=>{
+ const box=document.querySelector(".box")
+const page1=document.querySelector('.page1')
+let changeHeight=page1.scrollHeight;
+let scrolltop=0
+const header=document.querySelector(".header")
+  window.addEventListener('scroll',(e)=>{
 
-    columns.forEach((column)=>{
-      console.log(column);
-      column.style.transform=`translate(-${tranX+=0.5}px)`
-    })
+    console.log(window.scrollTop|| window.pageYOffset);
+    if(window.scrollTop||window.pageYOffset<scrolltop){
+      console.log('向上滚动');
+      header.classList.remove("out")
+      if( window.pageYOffset>changeHeight){
 
-},30)
+        header.classList.add("bottomheader")
+        header.classList.remove("topheader")
+      }else{
+        console.log();
+         header.classList.add("topheader")
+        header.classList.remove("bottomheader")
+      }
+    }
+    if(window.scrollTop||window.pageYOffset>scrolltop){
+      console.log('向下滚动')
+      header.classList.add('out')
+
+    };
+    scrolltop= window.scrollTop||window.pageYOffset
+  })
     </script>
   </body>
 </html>

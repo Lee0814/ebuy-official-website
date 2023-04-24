@@ -60,8 +60,15 @@ export const Header = memo(() => {
     setLastScroll(scroll);
   }, [scroll]);
 
+  console.log(headerType);
+  console.log(showHeader);
+
   return (
-    <header className="sticky top-0 z-50 h-[70px] w-full bg-white py-[10px] transition-transform duration-500">
+    <header
+      className={`${showHeader ? "" : "out"} ${
+        headerType == "transparent" ? "theader" : "bheader"
+      }  header h-[70px] w-full  py-[10px] `}
+    >
       <div className="ebuy-container !md:overflow-visible flex h-full items-center justify-between overflow-hidden">
         <Image src={logo} alt="ebuy" height={50} />
         <div className="flex items-center space-x-[40px]">
@@ -115,6 +122,44 @@ export const Header = memo(() => {
           </div>
         </div>
       </div>
+      <style jsx>{`
+        .theader {
+          color: #fff;
+          background: none;
+        }
+        .bheader {
+          background-color: #fff;
+          color: #000;
+        }
+        @keyframes in {
+          0% {
+            transform: translateY(-100%);
+          }
+          100% {
+            transform: translateY(0);
+          }
+        }
+        @keyframes out {
+          0% {
+            transform: translateY(0);
+          }
+          100% {
+            transform: translateY(-100%);
+          }
+        }
+        .out {
+          animation-name: out !important;
+          animation-duration: 0.2s !important;
+          animation-fill-mode: forwards;
+        }
+        .header {
+          position: sticky;
+          top: 0;
+          z-index: 100;
+          animation-name: in;
+          animation-duration: 0.3s;
+        }
+      `}</style>
     </header>
   );
 });
