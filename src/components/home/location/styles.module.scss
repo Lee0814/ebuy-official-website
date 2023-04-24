@@ -1,92 +1,12 @@
-.country {
-  color: #666666;
-  cursor: pointer;
-  position: relative;
-
-  .countryBg {
-    position: absolute;
-    width: 136px;
-    height: 20px;
-    background-color: #ffc4c4;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 41px;
-    z-index: 1;
-    border-radius: 3.5pt;
-  }
-
-  & span:first-child {
-    position: relative;
-    z-index: 10;
-    z-index: 10;
-  }
-}
-
-.activeCountry {
-  color: #333333;
-  cursor: pointer;
-  position: relative;
-  .countryBg {
-    position: absolute;
-    width: 136px;
-    height: 20px;
-    background-color: #ed3838;
-    left: 50%;
-    transform: translateX(-50%);
-    top: 41px;
-    z-index: 1;
-    border-radius: 3.5pt;
-  }
-  & span:first-child {
-    position: relative;
-    z-index: 10;
-  }
-}
-.country:hover {
-  color: #333333;
-}
-
 //地图信息定位
-.cdMap {
-  background: url("./images/map-china.png");
-  width: 100%;
-  height: 634px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+.mapCn {
+  background-image: url("./images/map-china.png");
 }
 
-.sgpMap {
-  background: url("./images/map-singapore.png");
-  width: 100%;
-  height: 634px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
+.mapSgp {
+  background-image: url("./images/map-singapore.png");
 }
 
-.myMap {
-  background: url("./images/map-malaysia.png");
-  width: 100%;
-  height: 634px;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
-.company {
-  transform: translateX(-50%);
-    background-size: cover;
-  position: absolute;
-  background: #fff;
-    display: flex;
-  bottom: 38.8%;
-  left: 50%;
-}
-
-.position {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  top: 63%;
+.mapMs {
+  background-image: url("./images/map-malaysia.png");
 }
