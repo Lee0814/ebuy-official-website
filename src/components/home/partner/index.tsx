@@ -46,20 +46,18 @@ import logo56 from "./images/logo-5-6.png";
 import logo57 from "./images/logo-5-7.png";
 
 const logos = [
-  [logo11, logo21, logo31, logo41, logo51],
-  [logo12, logo22, logo32, logo42, logo52],
-  [logo13, logo23, logo33, logo43, logo53],
-  [logo14, logo24, logo34, logo44, logo54],
-  [logo15, logo25, logo35, logo45, logo55],
-  [logo16, logo26, logo36, logo46, logo56],
-  [logo17, logo27, logo37, logo47, logo57],
-  [logo11, logo21, logo31, logo41, logo51],
-  [logo12, logo22, logo32, logo42, logo52],
-  [logo13, logo23, logo33, logo43, logo53],
-  [logo14, logo24, logo34, logo44, logo54],
-  [logo15, logo25, logo35, logo45, logo55],
-  [logo16, logo26, logo36, logo46, logo56],
-  [logo17, logo27, logo37, logo47, logo57],
+  [logo11, logo21, logo31],
+  [logo41, logo51, logo12],
+  [logo22, logo32, logo42],
+  [logo52, logo13, logo23],
+  [logo33, logo43, logo53],
+  [logo14, logo24, logo34],
+  [logo44, logo54, logo15],
+  [logo25, logo35, logo45],
+  [logo55, logo16, logo26],
+  [logo36, logo46, logo56],
+  [logo17, logo27, logo37],
+  [logo47, logo57],
 ];
 
 export const Partner = memo(() => {
@@ -115,7 +113,7 @@ export const Partner = memo(() => {
     }
   }, [inViewport, ratio]);
   useEffect(() => {
-    if (offset + 1 >= partnerRef.current!.clientWidth / 7) {
+    if (offset + 1 >= partnerRef.current!.firstElementChild!.clientWidth) {
       setCols((cols) => {
         const _cols = [...cols];
         const _col = _cols.shift();
@@ -149,7 +147,7 @@ export const Partner = memo(() => {
             {/* 滚动块 */}
             <div
               ref={partnerRef}
-              className="grid w-full max-w-full auto-cols-[14.285714%] grid-flow-col justify-between"
+              className="grid w-full max-w-full auto-cols-[20%] grid-flow-col justify-between lg:auto-cols-[16.666666%] xl:auto-cols-[14.285714%]"
               style={{
                 transform: `translateX(-${offset}px)`,
               }}

@@ -1,20 +1,9 @@
 import qrcode from "@/assets/images/qrcode.jpg";
 import { useI18n } from "@/hooks";
 import Image from "next/image";
-import { memo, useState } from "react";
-import ReactFlagsSelect from "react-flags-select";
-function Test() {
-  const [selected, setSelected] = useState("");
-
-  return (
-    <div>
-      <ReactFlagsSelect
-        selected={selected}
-        onSelect={(code) => setSelected(code)}
-      />
-    </div>
-  );
-}
+import { memo } from "react";
+import IntlTelInput from "react-intl-tel-input";
+import "react-intl-tel-input/dist/main.css";
 
 export const Footer = memo(() => {
   const t = useI18n("footer");
@@ -54,19 +43,11 @@ export const Footer = memo(() => {
             <span className="after:ml-[4px] after:text-[24px] after:font-[500] after:leading-[36px] after:text-[#ed3838] after:content-['*']">
               {t("telephone")}
             </span>
-            <div className="flex h-[56px] items-center">
-              <div className="hidden md:block">
-                <Test />
-              </div>
-              <input
-                style={{
-                  border: "1px solid #DDDDDD",
-                  transform: "translateY(-2px)",
-                }}
-                className="h-full w-full rounded-[4px]"
-                type="text"
-              />
-            </div>
+            <IntlTelInput
+              containerClassName="intl-tel-input"
+              inputClassName="form-control"
+              separateDialCode={true}
+            />
           </div>
           <div className="flex flex-col space-y-[16px]">
             <span>{t("email")}</span>
