@@ -1,4 +1,7 @@
-.normalBusiness {
+
+// 大于750px
+@media screen and (min-width:750.1px){
+  .normalBusiness {
   @apply box-border max-w-[894px] cursor-pointer py-7   text-[32px] font-bold leading-[32px] text-[#3A2D18];
   .businessTitle {
     @apply flex items-center pb-6  text-[32px] font-bold text-[#3A2D1B];
@@ -21,9 +24,7 @@
     @apply whitespace-normal   text-[24px]  text-[#bdbdbd];
   }
 }
-// .normalBusiness:nth-child(1){
-//   padding-top: 10px !important;
-// }
+}
 
 @media screen and (min-width: 1181.1px) {
   .activeBusiness {
@@ -31,33 +32,53 @@
   }
 }
 
-// @media screen and (min-width:750px) {
+//移动端适配
+@media screen and (max-width:750px){
+  .selectBox{
 
-// .normalBusiness{
-//   @apply  pt-10 text-[28px];
+  }
+  .normalBusiness,.activeBusiness{
+    @apply w-[640px] flex-1 overflow-hidden py-6;
+    max-height: 185px;
+    background: #1D1F21;
+    margin: 0 30px;
+    border-radius: 16px;
+  }
+  .icon{
+    display: none;
+  }
+   .specialTitle {
+    display: none;
+  }
+  .mobileIcon{
+    width: 32px;
+    height: 32px;
+  }
+  .businessTitle{
+    display: flex;
+      justify-content: center;
+    font-size: 32px;
+    align-items: center;
 
-//    .businessTitle{
-//   @apply pb-4 text-[28px];
+font-weight: 600;
+color: #FFFFFF;
+   img{
+    box-sizing: content-box;
+    padding-right: 20px;
+   }
+  }
+  .businessIntro{
+    text-align: center;
+    padding-top: 12px;
+    font-size: 28px;
 
-//   }
-//   .specialTitle{
-//     @apply pl-2 text-[24px]
-//   }
-// }
+font-weight: 400;
+color: #878787;
+line-height: 40px;
 
-// .activeBusiness{
-//     @apply py-6  pr-3;
-
-//   .businessTitle{
-//    @apply pb-3  text-[28px] ;
-//   }
-
-// .businessIntro{
-//   @apply text-[20px];
-// }
-
-// }
-// .normalBusiness:nth-child(1){
-//   padding-top: 10px !important;
-// }
-// }
+  }
+  // .activeBusiness{
+  //   @apply flex-1 overflow-hidden;
+  //    border: 1px solid black;
+  // }
+}

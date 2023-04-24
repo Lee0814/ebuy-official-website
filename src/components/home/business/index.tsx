@@ -62,9 +62,11 @@ const Business = () => {
         {/* 选择栏 */}
         <div className="mx-auto box-border max-w-[1500px] px-2">
           {/* 左侧 */}
-          <div className=" box-border flex w-full  flex-col items-center overflow-hidden md:flex-row md:items-start md:justify-between ">
+          <div className=" box-border flex w-full  flex-col items-center overflow-scroll  md:flex-row md:items-start md:justify-between md:overflow-hidden ">
             {/* 单个 */}
-            <div className={` mt-[42px] flex overflow-hidden md:block`}>
+            <div
+              className={`mb-[40px] mt-[42px] flex overflow-hidden md:mb-0 md:block`}
+            >
               {buninessList.map((business, index) => (
                 <div
                   key={index}
@@ -72,12 +74,12 @@ const Business = () => {
                     currentIndex === index
                       ? styles.activeBusiness
                       : styles.normalBusiness
-                  } flex`}
+                  } relative md:flex`}
                   onMouseOver={() => setCurrentIndex(index)}
                 >
-                  <div className="pl-6 pr-3 ">
+                  <div className={`pl-6 pr-3 ${styles.icon}`}>
                     <Image
-                      className={`w-8 max-w-[unset] ${
+                      className={`w-8 max-w-[unset]  ${
                         currentIndex === index ? "pt-[6px]" : "pt-0"
                       }`}
                       alt=""
@@ -86,10 +88,16 @@ const Business = () => {
                           ? buninessList[index].icon
                           : buninessList[index].iconh
                       }
-                    ></Image>
+                    />
                   </div>
                   <div>
                     <div className={`${styles.businessTitle}`}>
+                      {/* 移动端icon */}
+                      <Image
+                        className={`${styles.mobileIcon} md:hidden`}
+                        alt=""
+                        src={buninessList[index].iconh}
+                      />
                       <span>{business.title}</span>
                       <span className={`${styles.specialTitle}`}>
                         {currentIndex === index
@@ -104,9 +112,9 @@ const Business = () => {
                 </div>
               ))}
             </div>
-            <div className="flex    items-center justify-center">
+            <div className={`flex items-center justify-center `}>
               <Image
-                className=" max-w-[290px]"
+                className="max-w-[546px] md:max-w-[290px]"
                 alt=""
                 src={images[currentIndex]}
               />
