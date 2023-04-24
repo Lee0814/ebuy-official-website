@@ -148,7 +148,7 @@ export const Footer = memo(() => {
                 地址：32 Quallity Road,Singapore 618804
               </li>
               <li className="pt-6 leading-[100%] md:pt-0 md:leading-[20px]">
-                联系邮箱：ebuysdnbhd@gmail.com
+                联系邮箱：xxxxxx@xxxxx.COM
               </li>
               <li className="pt-6 leading-[100%] md:pt-0 md:leading-[20px]">
                 服务时间：周一至周五 9:00 am——6:00 pm
@@ -161,7 +161,7 @@ export const Footer = memo(() => {
               <li className="mb-[25px]  text-[32px] text-[600] text-white md:text-[20px] md:leading-[28px]">
                 关注我们
               </li>
-              <li className="mb-[8px] h-[150px] w-[150px]  bg-white md:h-[89px] md:w-[89px]">
+              <li className="mb-[8px] h-[260px] w-[260px]  bg-white md:h-[89px] md:w-[89px]">
                 <Image className="h-full w-full" src={qrcode} alt=""></Image>
               </li>
               <li className="pt-[12px] leading-[100%] md:pt-0 md:leading-[20px]">
