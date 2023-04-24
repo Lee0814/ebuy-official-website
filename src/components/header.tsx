@@ -60,9 +60,6 @@ export const Header = memo(() => {
     setLastScroll(scroll);
   }, [scroll]);
 
-  console.log(headerType);
-  console.log(showHeader);
-
   return (
     <header
       className={`${showHeader ? "" : "out"} ${
