@@ -5,7 +5,7 @@ import Image from "next/image";
 import { memo } from "react";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
-
+import header from "./header.module.scss";
 export const Footer = memo(() => {
   const t = useI18n("footer");
 
@@ -42,9 +42,9 @@ export const Footer = memo(() => {
             >
               <span>{t("first-name")}</span>
               <input
-                style={{ border: "1px solid #DDDDDD" }}
                 className={classNames(
-                  "h-[56px] w-full max-w-[650px] rounded-[4px] px-8 py-4"
+                  "h-[56px] w-full max-w-[650px] rounded-[4px] px-8 py-4",
+                  header.defaultInput
                 )}
                 type="text"
               />
@@ -57,9 +57,9 @@ export const Footer = memo(() => {
               >
                 <span>{t("last-name")}</span>
                 <input
-                  style={{ border: "1px solid #DDDDDD" }}
                   className={classNames(
-                    "h-[56px] w-full rounded-[4px] px-8 py-4"
+                    "h-[56px] w-full rounded-[4px] px-8 py-4",
+                    header.defaultInput
                   )}
                   type="text"
                 />
@@ -74,26 +74,39 @@ export const Footer = memo(() => {
             >
               {t("telephone")}
             </span>
-            <div className="w-full">
+            <div className="hidden w-full md:block">
               <PhoneInput
-                inputClassName="h-[56px] w-full rounded-[4px]"
+                className={classNames(header.defaultInput, header.container)}
+                inputClassName={classNames(` w-full `)}
                 defaultCountry="cn"
               />
             </div>
+            <input
+              className={classNames(
+                "block h-[56px] w-full rounded-[4px] px-8 md:hidden",
+                header.defaultInput
+              )}
+              type="text"
+            />
           </div>
+
           <div className={classNames("flex flex-col space-y-[16px]")}>
             <span>{t("email")}</span>
             <input
-              style={{ border: "1px solid #DDDDDD" }}
-              className={classNames("h-[56px] w-full rounded-[4px] px-8")}
+              className={classNames(
+                "h-[56px] w-full rounded-[4px] px-8",
+                header.defaultInput
+              )}
               type="text"
             />
           </div>
           <div className={classNames("flex flex-col space-y-[16px]")}>
             <span>{t("help")}</span>
             <textarea
-              style={{ border: "1px solid #DDDDDD" }}
-              className={classNames("h-[112px] w-full rounded-[4px] px-8 py-4")}
+              className={classNames(
+                "h-[112px] w-full rounded-[4px] px-8 py-4",
+                header.defaultInput
+              )}
             />
           </div>
         </div>

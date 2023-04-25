@@ -5,34 +5,31 @@ import { memo, useRef, useState } from "react";
 
 import styles from "./styles.module.scss";
 
+import { useI18n } from "@/hooks";
 import location from "./images/map-location.png";
 import picChina from "./images/pic-china.png";
 
-const countries = ["Singapore", "Malaysia", "China"];
-const companyInfo = [
+const countries = [
   {
-    name: "Ebuy Pte Ltd",
-    address: "32 Quality Rd, Singapore 618804",
-    phone: "电话：+86-1234-1347",
     mapBg: styles.mapSgp,
   },
   {
-    name: "Ebuy Sdn. Bhd",
-    address:
-      "3, Jalan Silc 1/5, Kawasan Perindustrian SILC, 79200 Iskandar Puteri, Johor, 马来西亚",
-    phone: "电话：+86-1234-1347",
     mapBg: styles.mapMs,
   },
   {
-    name: "成都海獭科技有限公司",
-    address: "新川路和乐一街新川路和乐一街新川路和乐一街",
-    phone: "电话：+86-1234-1347",
     mapBg: styles.mapCn,
   },
 ];
 
 export const Location = memo(() => {
+  const t = useI18n("home");
+
   const [currentIndex, setCurrentIndex] = useState(0);
+  const companyInfo = countries.map((country, index) => ({
+    country: t(`location-${index + 1}-country` as any),
+    name: t(`location-${index + 1}-title` as any),
+    address: t(`location-${index + 1}-address` as any),
+  }));
 
   const mapRef = useRef<HTMLDivElement>(null);
   const size = useSize(mapRef);
@@ -62,7 +59,7 @@ export const Location = memo(() => {
           "ebuy-container box-border flex justify-center space-x-[104.17px] pb-[48px] pt-[52px] text-[24px] md:text-[40px]"
         )}
       >
-        {countries.map((country, index) => (
+        {companyInfo.map((company, index) => (
           <div
             key={index}
             onClick={() => setCurrentIndex(index)}
@@ -73,7 +70,7 @@ export const Location = memo(() => {
               }
             )}
           >
-            <span className={classNames("z-40 italic")}>{country}</span>
+            <span className={classNames("z-40 italic")}>{company.country}</span>
             <span
               className={classNames(
                 "relative -top-[20px] -mb-[14px] h-[20px] w-[80%] rounded-[3.5pt] bg-[#ffc4c4]",
@@ -88,7 +85,7 @@ export const Location = memo(() => {
       <div
         ref={mapRef}
         className={classNames(
-          companyInfo[currentIndex].mapBg,
+          countries[currentIndex].mapBg,
           "flex h-[634px] w-full items-center justify-center bg-cover bg-center bg-no-repeat"
         )}
       >
@@ -126,9 +123,9 @@ export const Location = memo(() => {
             >
               {companyInfo[currentIndex].address}
             </div>
-            <div className={classNames("text-[#666666]")}>
+            {/* <div className={classNames("text-[#666666]")}>
               {companyInfo[currentIndex].phone}
-            </div>
+            </div> */}
           </div>
           <div
             className={classNames(
