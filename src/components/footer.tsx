@@ -1,6 +1,7 @@
 import { useI18n } from "@/hooks";
 import Image from "next/image";
 import { memo } from "react";
+import { PhoneInput } from "react-international-phone";
 
 import officialAccount from "@/assets/images/official-account.jpg";
 
@@ -42,12 +43,16 @@ export const Footer = memo(() => {
             <span className="after:ml-[4px] after:text-[24px] after:font-[500] after:leading-[36px] after:text-[#ed3838] after:content-['*']">
               {t("telephone")}
             </span>
+            <PhoneInput
+              inputClassName="h-[56px] w-full rounded-[4px]"
+              defaultCountry="ua"
+            />
           </div>
           <div className="flex flex-col space-y-[16px]">
             <span>{t("email")}</span>
             <input
               style={{ border: "1px solid #DDDDDD" }}
-              className="h-[56px] w-full rounded-[4px]"
+              className="h-[56px] w-full rounded-[4px] px-8"
               type="text"
             />
           </div>
