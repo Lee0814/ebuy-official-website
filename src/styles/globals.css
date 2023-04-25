@@ -27,5 +27,9 @@
 }
 
 html, body{
-  @apply w-full h-full overflow-x-hidden overflow-y-auto;
+  @apply w-full h-full;
+}
+
+body {
+  @apply overflow-x-hidden overflow-y-auto;
 }
