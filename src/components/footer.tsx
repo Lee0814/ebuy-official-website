@@ -1,9 +1,8 @@
-import qrcode from "@/assets/images/qrcode.jpg";
 import { useI18n } from "@/hooks";
 import Image from "next/image";
 import { memo } from "react";
-import IntlTelInput from "react-intl-tel-input";
-import "react-intl-tel-input/dist/main.css";
+
+import officialAccount from "@/assets/images/official-account.jpg";
 
 export const Footer = memo(() => {
   const t = useI18n("footer");
@@ -43,11 +42,6 @@ export const Footer = memo(() => {
             <span className="after:ml-[4px] after:text-[24px] after:font-[500] after:leading-[36px] after:text-[#ed3838] after:content-['*']">
               {t("telephone")}
             </span>
-            <IntlTelInput
-              containerClassName="intl-tel-input"
-              inputClassName="form-control"
-              separateDialCode={true}
-            />
           </div>
           <div className="flex flex-col space-y-[16px]">
             <span>{t("email")}</span>
@@ -143,7 +137,11 @@ export const Footer = memo(() => {
                 关注我们
               </li>
               <li className="mb-[8px] h-[260px] w-[260px]  bg-white md:h-[89px] md:w-[89px]">
-                <Image className="h-full w-full" src={qrcode} alt=""></Image>
+                <Image
+                  className="h-full w-full"
+                  src={officialAccount}
+                  alt="official account"
+                ></Image>
               </li>
               <li className="pt-[12px] leading-[100%] md:pt-0 md:leading-[20px]">
                 Ebuy官方微信公众号

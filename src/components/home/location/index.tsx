@@ -1,12 +1,12 @@
+import { useSize } from "ahooks";
 import classNames from "classnames";
 import Image from "next/image";
 import { memo, useRef, useState } from "react";
 
+import styles from "./styles.module.scss";
+
 import location from "./images/map-location.png";
 import picChina from "./images/pic-china.png";
-
-import { useSize } from "ahooks";
-import styles from "./styles.module.scss";
 
 const countries = ["Singapore", "Malaysia", "China"];
 const companyInfo = [

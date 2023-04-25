@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { useState } from "react";
+
 import one from "./images/1.png";
 import two from "./images/2.png";
 import three from "./images/3.png";
@@ -12,6 +13,7 @@ import cart from "./images/cart.png";
 import dallorh from "./images/dallor-h.png";
 import dallor from "./images/dallor.png";
 import styles from "./styles.module.scss";
+
 const Business = () => {
   const images = [one, two, three, one];
   const buninessList = [
