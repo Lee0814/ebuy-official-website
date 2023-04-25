@@ -1,9 +1,8 @@
 import { rAFWithControl } from "@/utils";
 import { useInViewport } from "ahooks";
+import classNames from "classnames";
 import Image from "next/image";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
-
-import styles from "./styles.module.scss";
 
 import logo11 from "./images/logo-1-1.png";
 import logo12 from "./images/logo-1-2.png";
@@ -45,6 +44,8 @@ import logo55 from "./images/logo-5-5.png";
 import logo56 from "./images/logo-5-6.png";
 import logo57 from "./images/logo-5-7.png";
 
+import styles from "./styles.module.scss";
+
 const logos = [
   [logo11, logo21, logo31],
   [logo41, logo51, logo12],
@@ -71,12 +72,12 @@ export const Partner = memo(() => {
         {_logos.map((src, j) => (
           <div
             key={`partner-logo-${i}-${j}`}
-            className="flex h-[144px] items-center justify-center"
+            className={classNames("flex h-[144px] items-center justify-center")}
           >
             <Image
               src={src}
               alt={`partner logo ${i} ${j}`}
-              className="max-h-[120px] max-w-[120px]"
+              className={classNames("max-h-[120px] max-w-[120px]")}
             />
           </div>
         ))}
@@ -126,28 +127,42 @@ export const Partner = memo(() => {
   useEffect(() => stopAnimation, []);
 
   return (
-    <section className="bg-white pt-[72px]">
-      <div className="ebuy-container text-center">
-        <span className="text-[44px] text-[#333333] md:text-[64px]">EBUY</span>
-        <span className="text-[30px] md:text-[50px]">Grows with You</span>
-        <div className="text-center text-[20px] leading-[44px] md:text-[28px]">
+    <section className={classNames("bg-white pt-[72px]")}>
+      <div className={classNames("ebuy-container text-center")}>
+        <span
+          className={classNames("text-[44px] text-[#333333] md:text-[64px]")}
+        >
+          EBUY
+        </span>
+        <span className={classNames("text-[30px] md:text-[50px]")}>
+          Grows with You
+        </span>
+        <div
+          className={classNames(
+            "text-center text-[20px] leading-[44px] md:text-[28px]"
+          )}
+        >
           As a trusted partner, we serve more than 1000 F&B businesses such as
           Haidilao Hot Pot, Putien, Wen Jia Bao and A Kitchen. Since the release
           of{" "}
-          <span className="rounded-[8px] bg-[#FFD4D4] px-4 py-1">
+          <span className={classNames("rounded-[8px] bg-[#FFD4D4] px-4 py-1")}>
             EBuy 易购生鲜 APP
           </span>
           , EBUY has been striving to improve the customer experience and your
           business efficiency.
         </div>
-        <div className="relative flex flex-col py-[100px]">
-          <div className={`${styles.mist} left-0 bg-gradient-to-r`}></div>
+        <div className={classNames("relative flex flex-col py-[100px]")}>
+          <div
+            className={classNames(styles.mist, "left-0 bg-gradient-to-r")}
+          ></div>
           {/* 视口 */}
-          <div className="w-full overflow-x-hidden">
+          <div className={classNames("w-full overflow-x-hidden")}>
             {/* 滚动块 */}
             <div
               ref={partnerRef}
-              className="grid w-full max-w-full auto-cols-[20%] grid-flow-col justify-between lg:auto-cols-[16.666666%] xl:auto-cols-[14.285714%]"
+              className={classNames(
+                "grid w-full max-w-full auto-cols-[20%] grid-flow-col justify-between lg:auto-cols-[16.666666%] xl:auto-cols-[14.285714%]"
+              )}
               style={{
                 transform: `translateX(-${offset}px)`,
               }}
@@ -155,7 +170,9 @@ export const Partner = memo(() => {
               {cols}
             </div>
           </div>
-          <div className={`${styles.mist} right-0 bg-gradient-to-l`}></div>
+          <div
+            className={classNames(styles.mist, "right-0 bg-gradient-to-l")}
+          ></div>
         </div>
       </div>
     </section>

@@ -1,12 +1,11 @@
 import { useI18n } from "@/hooks";
 import { useHeaderContext } from "@/states";
 import { useScroll } from "ahooks";
+import classNames from "classnames";
 import Image from "next/image";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { Autoplay, Navigation, Pagination, Swiper as _Swiper } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
-
-import styles from "./styles.module.scss";
 
 import benefit_1_1 from "./images/benefit-1-1.png";
 import benefit_1_2 from "./images/benefit-1-2.png";
@@ -17,6 +16,8 @@ import benefit_2_3 from "./images/benefit-2-3.png";
 import benefit_3_1 from "./images/benefit-3-1.png";
 import benefit_3_2 from "./images/benefit-3-2.png";
 import benefit_3_3 from "./images/benefit-3-3.png";
+
+import styles from "./styles.module.scss";
 
 const allImages = [
   [benefit_1_1, benefit_1_2, benefit_1_3],
@@ -30,10 +31,10 @@ export const Benefit = memo(() => {
   // 优势相关
   const benefits = useMemo(
     () =>
-      Array.from(allImages, (_, i) => ({
-        images: allImages[i],
-        title: t(`benefit-${i + 1}-title` as any),
-        description: t(`benefit-${i + 1}-description` as any),
+      allImages.map((images, index) => ({
+        images: images,
+        title: t(`benefit-${index + 1}-title` as any),
+        description: t(`benefit-${index + 1}-description` as any),
       })),
     [t]
   );
@@ -67,13 +68,28 @@ export const Benefit = memo(() => {
   return (
     <section
       ref={benefitRef}
-      className={`${styles.benefit} bg-[#fff9f0] bg-center bg-no-repeat pb-[40px] pt-[64px] bg-blend-normal`}
+      className={classNames(
+        styles.benefit,
+        "bg-[#fff9f0] bg-center bg-no-repeat pb-[40px] pt-[64px] bg-blend-normal"
+      )}
     >
-      <div className="ebuy-container relative flex flex-col items-center justify-center">
-        <span className="mb-[48px] text-[28px] font-[400] leading-[40px] text-[#E79A44] md:text-[40px] md:font-[500] md:leading-[60px]">
+      <div
+        className={classNames(
+          "ebuy-container relative flex flex-col items-center justify-center"
+        )}
+      >
+        <span
+          className={classNames(
+            "mb-[48px] text-[28px] font-[400] leading-[40px] text-[#E79A44] md:text-[40px] md:font-[500] md:leading-[60px]"
+          )}
+        >
           {t("benefit-title")}
         </span>
-        <button className="left-arrow absolute bottom-[121px] left-0 mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:flex">
+        <button
+          className={classNames(
+            "left-arrow absolute bottom-[121px] left-0 mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:flex"
+          )}
+        >
           <svg
             fill="#ed3838"
             width="32px"
@@ -85,7 +101,7 @@ export const Benefit = memo(() => {
           </svg>
         </button>
         <Swiper
-          className="w-full max-w-[1054px]"
+          className={classNames("w-full max-w-[1054px]")}
           modules={[Navigation, Pagination, Autoplay]}
           pagination={{ el: ".custom-pagination", clickable: true }}
           navigation={{
@@ -101,17 +117,33 @@ export const Benefit = memo(() => {
         >
           {benefits.map((_, i) => (
             <SwiperSlide key={`benefit-${i + 1}`}>
-              <div className="flex max-w-[1054px] flex-col items-center">
-                <span className="mb-[24px] text-[44px] font-[600] leading-[62px] text-[#333333] md:text-[50px] md:font-bold md:leading-[75px]">
+              <div
+                className={classNames(
+                  "flex max-w-[1054px] flex-col items-center"
+                )}
+              >
+                <span
+                  className={classNames(
+                    "mb-[24px] text-[44px] font-[600] leading-[62px] text-[#333333] md:text-[50px] md:font-bold md:leading-[75px]"
+                  )}
+                >
                   {benefits[currentBenefitIndex].title}
                 </span>
-                <span className="mb-[45px] text-center text-[28px] font-[400] leading-[40px] text-[#333333] md:font-[500] md:leading-[42px]">
+                <span
+                  className={classNames(
+                    "mb-[45px] text-center text-[28px] font-[400] leading-[40px] text-[#333333] md:font-[500] md:leading-[42px]"
+                  )}
+                >
                   {benefits[currentBenefitIndex].description}
                 </span>
-                <div className="flex max-h-[300px] w-full justify-between">
+                <div
+                  className={classNames(
+                    "flex max-h-[300px] w-full justify-between"
+                  )}
+                >
                   {benefits[i].images.map((image, j) => (
                     <Image
-                      className="aspect-square max-w-[300px]"
+                      className={classNames("aspect-square max-w-[300px]")}
                       key={`benefit-${i + 1}-${j + 1}`}
                       alt={`benefit-${i + 1}-${j + 1}`}
                       src={image}
@@ -121,9 +153,17 @@ export const Benefit = memo(() => {
               </div>
             </SwiperSlide>
           ))}
-          <div className="custom-pagination mt-[41px] flex justify-center !space-x-[24px] md:!space-x-[12px]"></div>
+          <div
+            className={classNames(
+              "custom-pagination mt-[41px] flex justify-center !space-x-[24px] md:!space-x-[12px]"
+            )}
+          ></div>
         </Swiper>
-        <button className="right-arrow absolute bottom-[121px] right-0 mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:flex">
+        <button
+          className={classNames(
+            "right-arrow absolute bottom-[121px] right-0 mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:flex"
+          )}
+        >
           <svg
             fill="#ed3838"
             width="32px"

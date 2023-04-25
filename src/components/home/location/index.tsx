@@ -33,22 +33,35 @@ const companyInfo = [
 
 export const Location = memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
+
   const mapRef = useRef<HTMLDivElement>(null);
   const size = useSize(mapRef);
   const scale = Math.max(0, (size?.width || 0) / 1440 - 1);
 
   return (
-    <section className="bg-[#FBFBFB] pb-[43px] pt-[72px]">
-      <div className="ebuy-container">
-        <div className="px-[32px] pb-[12px] text-[44px] text-[#333333] md:text-center md:text-[50px]">
+    <section className={classNames("bg-[#FBFBFB] pb-[43px] pt-[72px]")}>
+      <div className={classNames("ebuy-container")}>
+        <div
+          className={classNames(
+            "px-[32px] pb-[12px] text-[44px] text-[#333333] md:text-center md:text-[50px]"
+          )}
+        >
           Where We Are
         </div>
-        <div className="ebuy-container box-border text-[28px] leading-[40px] md:text-center md:leading-[44px]">
+        <div
+          className={classNames(
+            "ebuy-container box-border text-[28px] leading-[40px] md:text-center md:leading-[44px]"
+          )}
+        >
           Ebuy mainly provides online-to-offline services in Singapore and
           Malaysia, We also have an office in China.
         </div>
       </div>
-      <div className="ebuy-container box-border flex justify-center space-x-[104.17px] pb-[48px] pt-[52px] text-[24px] md:text-[40px]">
+      <div
+        className={classNames(
+          "ebuy-container box-border flex justify-center space-x-[104.17px] pb-[48px] pt-[52px] text-[24px] md:text-[40px]"
+        )}
+      >
         {countries.map((country, index) => (
           <div
             key={index}
@@ -60,7 +73,7 @@ export const Location = memo(() => {
               }
             )}
           >
-            <span className="z-40 italic">{country}</span>
+            <span className={classNames("z-40 italic")}>{country}</span>
             <span
               className={classNames(
                 "relative -top-[20px] -mb-[14px] h-[20px] w-[80%] rounded-[3.5pt] bg-[#ffc4c4]",
@@ -74,7 +87,10 @@ export const Location = memo(() => {
       </div>
       <div
         ref={mapRef}
-        className={`${companyInfo[currentIndex].mapBg} flex h-[634px] w-full items-center justify-center bg-cover bg-center bg-no-repeat`}
+        className={classNames(
+          companyInfo[currentIndex].mapBg,
+          "flex h-[634px] w-full items-center justify-center bg-cover bg-center bg-no-repeat"
+        )}
       >
         {/* 卡片 */}
         <div
@@ -85,26 +101,32 @@ export const Location = memo(() => {
             transform: `translateY(${scale * 100}px)`,
           }}
         >
-          <div className="h-[140px] w-[140px]">
-            <Image className="h-full w-full" alt="logo" src={picChina}></Image>
+          <div className={classNames("h-[140px] w-[140px]")}>
+            <Image
+              className={classNames("h-full w-full")}
+              alt="logo"
+              src={picChina}
+            ></Image>
           </div>
           {/* 公司描述 */}
           <div
-            className={`px-5 ${
+            className={classNames(
+              "px-5",
               currentIndex === 1 ? "flex-1 py-[15px]" : "py-6"
-            }`}
+            )}
           >
-            <div className="text-[#333333]">
+            <div className={classNames("text-[#333333]")}>
               {companyInfo[currentIndex].name}
             </div>
             <div
-              className={`pt-3 text-[#666666] ${
-                currentIndex === 1 ? "pb-1" : "py-2"
-              }`}
+              className={classNames(
+                currentIndex === 1 ? "pb-1" : "py-2",
+                "pt-3 text-[#666666]"
+              )}
             >
               {companyInfo[currentIndex].address}
             </div>
-            <div className="text-[#666666]">
+            <div className={classNames("text-[#666666]")}>
               {companyInfo[currentIndex].phone}
             </div>
           </div>
@@ -114,11 +136,11 @@ export const Location = memo(() => {
             )}
           >
             <Image
-              className="h-8 w-8"
+              className={classNames("h-8 w-8")}
               style={{
                 transform: `scale(${scale + 1})`,
               }}
-              alt="位置图标"
+              alt="location"
               src={location}
             ></Image>
           </div>

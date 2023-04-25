@@ -95,10 +95,23 @@ export const Header = memo(() => {
         styles[headerType!]
       )}
     >
-      <div className="ebuy-container flex h-full items-center justify-between">
-        <Image src={logo} alt="ebuy" height={50} className="w-[146px] " />
-        <div className="gap-reverse flex flex-row-reverse items-center gap-[21px] md:gap-[20px] lg:flex-row lg:gap-[40px]">
-          <div className="relative">
+      <div
+        className={classNames(
+          "ebuy-container flex h-full items-center justify-between"
+        )}
+      >
+        <Image
+          src={logo}
+          alt="ebuy"
+          height={50}
+          className={classNames("w-[146px] ")}
+        />
+        <div
+          className={classNames(
+            "gap-reverse flex flex-row-reverse items-center gap-[21px] md:gap-[20px] lg:flex-row lg:gap-[40px]"
+          )}
+        >
+          <div className={classNames("relative")}>
             <div
               ref={actionRef}
               className={classNames(styles["action-icon"], {
@@ -139,14 +152,20 @@ export const Header = memo(() => {
               </li>
             </ul>
           </div>
-          <button className="rounded-[4px] bg-[#ED3838] px-[15px] py-[9px] text-[16px] font-[500] leading-[24px]">
+          <button
+            className={classNames(
+              "rounded-[4px] bg-[#ED3838] px-[15px] py-[9px] text-[16px] font-[500] leading-[24px]"
+            )}
+          >
             {t("contact")}
           </button>
-          <div className="relative">
+          <div className={classNames("relative")}>
             <button
               ref={changeLangButtonRef}
               onClick={() => setShowChangeLang(!showChangeLang)}
-              className="rounded-[4px] border-[1px] border-white p-[8px] text-[16px] font-[500] leading-[24px]"
+              className={classNames(
+                "rounded-[4px] border-[1px] border-white p-[8px] text-[16px] font-[500] leading-[24px]"
+              )}
             >
               {capitalizeTheFirstLetter(lang)}
             </button>
@@ -163,7 +182,9 @@ export const Header = memo(() => {
               {locales.map((locale) => (
                 <button
                   key={locale}
-                  className="w-full rounded-[4px] p-[8px] text-[16px] font-[500] leading-[24px]"
+                  className={classNames(
+                    "w-full rounded-[4px] p-[8px] text-[16px] font-[500] leading-[24px]"
+                  )}
                   onClick={() => {
                     changeLang(locale);
                     setShowChangeLang(false);
