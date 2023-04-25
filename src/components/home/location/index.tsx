@@ -2,22 +2,22 @@ import { useSize } from "ahooks";
 import classNames from "classnames";
 import Image from "next/image";
 import { memo, useRef, useState } from "react";
-
-import styles from "./styles.module.scss";
+import mapCn from "./images/map-china.png";
+import location from "./images/map-location.png";
+// import mapMs from "./images/map-malaysia.png";
+// import mapSgp from "./images/map-singapore.png";
 
 import { useI18n } from "@/hooks";
-import location from "./images/map-location.png";
-import picChina from "./images/pic-china.png";
 
 const countries = [
   {
-    mapBg: styles.mapSgp,
+    mapBg: mapCn,
   },
   {
-    mapBg: styles.mapMs,
+    mapBg: mapCn,
   },
   {
-    mapBg: styles.mapCn,
+    mapBg: mapCn,
   },
 ];
 
@@ -27,7 +27,7 @@ export const Location = memo(() => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const companyInfo = countries.map((country, index) => ({
     country: t(`location-${index + 1}-country` as any),
-    name: t(`location-${index + 1}-title` as any),
+    name: t(`location-${index + 1}-name` as any),
     address: t(`location-${index + 1}-address` as any),
   }));
 
@@ -36,18 +36,18 @@ export const Location = memo(() => {
   const scale = Math.max(0, (size?.width || 0) / 1440 - 1);
 
   return (
-    <section className={classNames("bg-[#FBFBFB] pb-[43px] pt-[72px]")}>
+    <section className={classNames("bg-white] pb-[43px] pt-[72px]")}>
       <div className={classNames("ebuy-container")}>
         <div
           className={classNames(
-            "px-[32px] pb-[12px] text-[44px] text-[#333333] md:text-center md:text-[50px]"
+            "px-[32px] pb-[12px] text-[44px] font-bold text-[#000] md:text-center md:text-[50px]"
           )}
         >
           Where We Are
         </div>
         <div
           className={classNames(
-            "ebuy-container box-border text-[28px] leading-[40px] md:text-center md:leading-[44px]"
+            "ebuy-container box-border text-[28px] font-bold leading-[40px] text-[#333] md:text-center md:leading-[44px]"
           )}
         >
           Ebuy mainly provides online-to-offline services in Singapore and
@@ -64,13 +64,16 @@ export const Location = memo(() => {
             key={index}
             onClick={() => setCurrentIndex(index)}
             className={classNames(
-              "flex cursor-pointer flex-col items-center text-[#666]",
+              "flex cursor-pointer flex-col items-center ",
               {
                 ["text-[#333]"]: currentIndex === index,
+                ["text-[#666]"]: currentIndex != index,
               }
             )}
           >
-            <span className={classNames("z-40 italic")}>{company.country}</span>
+            <span className={classNames("Inter z-40 text-[32px]")}>
+              {company.country}
+            </span>
             <span
               className={classNames(
                 "relative -top-[20px] -mb-[14px] h-[20px] w-[80%] rounded-[3.5pt] bg-[#ffc4c4]",
@@ -82,65 +85,41 @@ export const Location = memo(() => {
           </div>
         ))}
       </div>
-      <div
-        ref={mapRef}
-        className={classNames(
-          countries[currentIndex].mapBg,
-          "flex h-[634px] w-full items-center justify-center bg-cover bg-center bg-no-repeat"
-        )}
-      >
-        {/* 卡片 */}
+      {/* 左侧公司 */}
+      <div ref={mapRef} className={classNames("ebuy-container flex")}>
         <div
-          className={classNames("relative flex w-fit bg-white bg-cover", {
-            ["w-[540px]"]: currentIndex == 1,
-          })}
-          style={{
-            transform: `translateY(${scale * 100}px)`,
-          }}
+          className={classNames(
+            "flex min-w-[280px] flex-1 flex-col items-center justify-center bg-[#f9f9f9] px-6 "
+          )}
         >
-          <div className={classNames("h-[140px] w-[140px]")}>
-            <Image
-              className={classNames("h-full w-full")}
-              alt="logo"
-              src={picChina}
-            ></Image>
-          </div>
-          {/* 公司描述 */}
           <div
             className={classNames(
-              "px-5",
-              currentIndex === 1 ? "flex-1 py-[15px]" : "py-6"
+              "pb-12 text-center text-[32px] leading-[39px] text-[#333333]"
             )}
           >
-            <div className={classNames("text-[#333333]")}>
-              {companyInfo[currentIndex].name}
-            </div>
-            <div
-              className={classNames(
-                currentIndex === 1 ? "pb-1" : "py-2",
-                "pt-3 text-[#666666]"
-              )}
-            >
-              {companyInfo[currentIndex].address}
-            </div>
-            {/* <div className={classNames("text-[#666666]")}>
-              {companyInfo[currentIndex].phone}
-            </div> */}
+            {companyInfo[currentIndex].name}
           </div>
           <div
             className={classNames(
-              "absolute -bottom-[44px] left-[50%] -translate-x-[50%]"
+              "text-center text-[24px] leading-[29px] text-[#666666]"
             )}
           >
-            <Image
-              className={classNames("h-8 w-8")}
-              style={{
-                transform: `scale(${scale + 1})`,
-              }}
-              alt="location"
-              src={location}
-            ></Image>
+            {companyInfo[currentIndex].address}
           </div>
+        </div>
+        <div className={classNames("relative h-[450px] max-w-[680px]")}>
+          <Image
+            className={classNames(
+              "absolute left-[50%] top-[50%] h-[48px] w-[48px] translate-x-[-50%] translate-y-[-19px]"
+            )}
+            alt=""
+            src={location}
+          />
+          <Image
+            className={classNames("h-full w-full")}
+            src={countries[0].mapBg}
+            alt=""
+          />
         </div>
       </div>
     </section>

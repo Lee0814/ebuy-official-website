@@ -128,7 +128,7 @@ export const Partner = memo(() => {
 
   return (
     <section className={classNames("bg-white pt-[72px]")}>
-      <div className={classNames("ebuy-container text-center")}>
+      <div className={classNames("ebuy-container text-center font-bold")}>
         <span
           className={classNames("text-[44px] text-[#333333] md:text-[64px]")}
         >

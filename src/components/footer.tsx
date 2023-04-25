@@ -76,8 +76,8 @@ export const Footer = memo(() => {
             </span>
             <div className="hidden w-full md:block">
               <PhoneInput
-                className={classNames(header.defaultInput, header.container)}
-                inputClassName={classNames(` w-full `)}
+                className={classNames(header.container)}
+                inputClassName={classNames(` w-full `, header.defaultInput)}
                 defaultCountry="cn"
               />
             </div>

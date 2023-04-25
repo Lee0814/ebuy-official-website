@@ -105,7 +105,7 @@
 .container{
   height: 56px;
   box-sizing: border-box;
-  border-radius: 4px;
+  border-radius: 4px
 }
 .defaultInput{
 border: 1px solid #DDDDDD;
@@ -115,5 +115,5 @@ transition: all 0.2s ease;
 
 .defaultInput:hover,.defaultInput:focus{
   outline: none;
-  border: 10px solid rgb(0, 0, 0);
+  border: 1px solid rgb(0, 0, 0);
 }

@@ -4,6 +4,7 @@ import {
   Business,
   Location,
   Partner,
+  Evaluation,
 } from "@/components/home";
 import { getI18nStaticPaths, getI18nStaticProps } from "@/utils";
 
@@ -14,6 +15,7 @@ export default function Home() {
       <Benefit />
       <Business />
       <Partner />
+      <Evaluation />
       <Location />
     </main>
   );
