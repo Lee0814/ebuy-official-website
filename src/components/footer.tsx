@@ -29,7 +29,7 @@ export const Footer = memo(() => {
         </div>
         <div
           className={classNames(
-            "space-y-[32px] px-[24px] text-[24px] font-[400] leading-[36px] text-[#333333]"
+            "space-y-[32px]  text-[24px] font-[400] leading-[36px] text-[#333333]"
           )}
         >
           <div
