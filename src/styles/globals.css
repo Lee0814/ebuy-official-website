@@ -34,7 +34,6 @@ body {
   @apply overflow-x-hidden overflow-y-auto;
 }
 
-
 :root{
   --react-international-phone-height:56px;
   --react-international-phone-background-color:#fff;
