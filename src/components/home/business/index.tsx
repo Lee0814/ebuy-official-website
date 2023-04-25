@@ -58,7 +58,7 @@ const Business = () => {
         {/* 标题 */}
         <div
           className={classNames(
-            "ebuy-container pb-[94px] text-center md:text-left"
+            "ebuy-container pb-[52px] text-center md:text-left"
           )}
         >
           <div className={classNames("text-[50px] font-bold text-[#3A2D1B]")}>
@@ -69,7 +69,7 @@ const Business = () => {
           </div>
         </div>
         {/* 选择栏 */}
-        <div className={classNames("mx-auto box-border max-w-[1500px] px-2")}>
+        <div className={classNames("mx-auto box-border max-w-[1264px] px-2")}>
           {/* 左侧 */}
           <div
             className={classNames(
