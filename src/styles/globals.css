@@ -39,5 +39,19 @@ body {
   --react-international-phone-background-color:#fff;
   ----react-international-phone-font-size:24px;
   --react-international-phone-border-color:#ddd;
-  --react-international-phone-font-size:24px
+  --react-international-phone-font-size:24px;
+  --react-international-phone-dropdown-item-font-size:18px
+}
+.react-international-phone-country-selector-button{
+ width: 88px;
+}
+
+.react-international-phone-country-selector-button img{
+  width: 42px;
+  margin-right: 14px;
+}
+.react-international-phone-country-selector-dropdown{
+  top:56px;
+  max-height: 300px;
+  max-width: 600px;
 }

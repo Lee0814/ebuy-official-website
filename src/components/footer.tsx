@@ -1,9 +1,9 @@
+import officialAccount from "@/assets/images/official-account.jpg";
 import { useI18n } from "@/hooks";
 import Image from "next/image";
 import { memo } from "react";
 import { PhoneInput } from "react-international-phone";
-
-import officialAccount from "@/assets/images/official-account.jpg";
+import "react-international-phone/style.css";
 
 export const Footer = memo(() => {
   const t = useI18n("footer");
@@ -43,10 +43,12 @@ export const Footer = memo(() => {
             <span className="after:ml-[4px] after:text-[24px] after:font-[500] after:leading-[36px] after:text-[#ed3838] after:content-['*']">
               {t("telephone")}
             </span>
-            <PhoneInput
-              inputClassName="h-[56px] w-full rounded-[4px]"
-              defaultCountry="ua"
-            />
+            <div className="w-full">
+              <PhoneInput
+                inputClassName="h-[56px] w-full rounded-[4px]"
+                defaultCountry="cn"
+              />
+            </div>
           </div>
           <div className="flex flex-col space-y-[16px]">
             <span>{t("email")}</span>
@@ -128,7 +130,7 @@ export const Footer = memo(() => {
                 地址：32 Quallity Road,Singapore 618804
               </li>
               <li className="pt-6 leading-[100%] md:pt-0 md:leading-[20px]">
-                联系邮箱：xxxxxx@xxxxx.COM
+                联系邮箱：ebuysdnbhd@gmail.com
               </li>
               <li className="pt-6 leading-[100%] md:pt-0 md:leading-[20px]">
                 服务时间：周一至周五 9:00 am——6:00 pm
