@@ -1,84 +1,15 @@
-
-// 大于750px
-@media screen and (min-width:750.1px){
-  .normalBusiness {
-  @apply box-border max-w-[894px] cursor-pointer py-7   text-[32px] font-bold leading-[32px] text-[#3A2D18];
-  .businessTitle {
-    @apply flex items-center pb-6  text-[32px] font-bold text-[#3A2D1B];
-  }
-  .businessIntro {
-    @apply hidden;
-  }
-  .specialTitle {
-    @apply pl-3 text-[28px] text-[#B6863E];
-  }
+.custom-swiper-slide-prev-1 {
+  display: flex;
+  height: 11.5625rem;
+  justify-content: flex-end;
+  margin-right: 1.9375rem;
+  margin-left: -1.9375rem;
+  align-items: center;
 }
 
-.activeBusiness {
-  @apply mb-7 mr-6 box-border max-w-[894px] cursor-pointer rounded-2xl bg-[#1D1F21] pb-[16px] pt-[30px];
-  .businessTitle {
-    @apply pb-6  text-[32px] font-bold text-[#fff];
-  }
-
-  .businessIntro {
-    @apply whitespace-normal   text-[24px]  text-[#bdbdbd];
-  }
-}
-}
-
-@media screen and (min-width: 1181.1px) {
-  .activeBusiness {
-    width: 891px;
-  }
-}
-
-//移动端适配
-@media screen and (max-width:750px){
-  .selectBox{
-
-  }
-  .normalBusiness,.activeBusiness{
-    @apply w-[640px] flex-1 overflow-hidden py-6;
-    max-height: 185px;
-    background: #1D1F21;
-    margin: 0 30px;
-    border-radius: 16px;
-  }
-  .icon{
-    display: none;
-  }
-   .specialTitle {
-    display: none;
-  }
-  .mobileIcon{
-    width: 32px;
-    height: 32px;
-  }
-  .businessTitle{
-    display: flex;
-      justify-content: center;
-    font-size: 32px;
-    align-items: center;
-
-font-weight: 600;
-color: #FFFFFF;
-   img{
-    box-sizing: content-box;
-    padding-right: 20px;
-   }
-  }
-  .businessIntro{
-    text-align: center;
-    padding-top: 12px;
-    font-size: 28px;
-
-font-weight: 400;
-color: #878787;
-line-height: 40px;
-
-  }
-  // .activeBusiness{
-  //   @apply flex-1 overflow-hidden;
-  //    border: 1px solid black;
-  // }
+.custom-swiper-slide-next-1 {
+  display: flex;
+  height: 11.5625rem;
+  margin-left: 1.9375rem;
+  align-items: center;
 }

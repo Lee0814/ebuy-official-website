@@ -1,11 +1,11 @@
-import { useI18n } from "@/hooks";
+import { useI18n, useResponsive } from "@/hooks";
 import { useHeaderContext, useI18nContext } from "@/states";
 import { Lang, capitalizeTheFirstLetter, locales } from "@/utils";
-import { useClickAway, useScroll, useSize } from "ahooks";
+import { useClickAway, useScroll } from "ahooks";
 import classNames from "classnames";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { memo, useEffect, useMemo, useRef, useState } from "react";
+import { memo, useEffect, useRef, useState } from "react";
 import { Link } from "./link";
 
 import styles from "./header.module.scss";
@@ -73,23 +73,16 @@ export const Header = memo(() => {
   // end 下滚隐藏头部 上滚显示头部
 
   // start 手机端 header
-  const headerRef = useRef<HTMLHeadElement>(null);
-  const size = useSize(headerRef);
-  const isMobile = useMemo(() => {
-    setShowChangeLang(false);
-    setShowMenu(false);
-    return size && size.width <= 1280;
-  }, [size]);
+  const { lg } = useResponsive();
   // end 手机端 header
 
   return (
     <header
-      ref={headerRef}
       className={classNames(
         "h-[70px] w-full py-[10px]",
         styles["in"],
         {
-          [styles["mobile"]]: isMobile,
+          [styles["mobile"]]: lg,
           [styles["out"]]: !showHeader,
         },
         styles[headerType!]
@@ -116,7 +109,7 @@ export const Header = memo(() => {
               ref={actionRef}
               className={classNames(styles["action-icon"], {
                 [styles["action-icon-close"]]: showMenu,
-                ["hidden"]: !isMobile,
+                ["hidden"]: !lg,
               })}
               onClick={() => setShowMenu(!showMenu)}
             >
@@ -130,8 +123,8 @@ export const Header = memo(() => {
                 "flex flex-col md:gap-[20px] lg:flex-row lg:gap-[40px]",
                 {
                   ["absolute right-0 top-[50px] w-[200px] gap-[10px] text-ellipsis bg-white p-[10px] underline"]:
-                    isMobile,
-                  ["hidden"]: isMobile && !showMenu,
+                    lg,
+                  ["hidden"]: lg && !showMenu,
                 }
               )}
             >
@@ -175,7 +168,7 @@ export const Header = memo(() => {
                 "absolute right-0 z-50 flex w-[80px] flex-col border-[0.5px]",
                 {
                   ["invisible"]: !showChangeLang,
-                  ["bg-white"]: isMobile,
+                  ["bg-white"]: lg,
                 }
               )}
             >

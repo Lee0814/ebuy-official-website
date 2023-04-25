@@ -109,7 +109,7 @@ export const Benefit = memo(() => {
             nextEl: ".right-arrow",
           }}
           onActiveIndexChange={(swiper) =>
-            setCurrentBenefitIndex(swiper.activeIndex)
+            setCurrentBenefitIndex(swiper.realIndex)
           }
           onAutoplayPause={autoPlay}
           autoplay

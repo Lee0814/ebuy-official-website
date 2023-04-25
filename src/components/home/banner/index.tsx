@@ -1,6 +1,6 @@
-import { useI18n } from "@/hooks";
+import { useI18n, useWindowSize } from "@/hooks";
 import classNames from "classnames";
-import { memo, useEffect, useState } from "react";
+import { memo, useMemo } from "react";
 
 import styles from "./styles.module.scss";
 
@@ -9,17 +9,11 @@ export const Banner = memo(() => {
   const t = useI18n("home");
 
   // 处理banner高度
-  const [bannerOverflow, setBannerOverflow] = useState(false);
-  useEffect(() => {
-    function resizeCallback() {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      setBannerOverflow(width / ratio > height);
-    }
-    resizeCallback();
-    window.addEventListener("resize", resizeCallback);
-    return () => window.removeEventListener("resize", resizeCallback);
-  }, [setBannerOverflow]);
+  const windowSize = useWindowSize();
+  const bannerOverflow = useMemo(
+    () => windowSize && windowSize.width / ratio > windowSize.height,
+    [windowSize]
+  );
 
   return (
     <section

@@ -16,7 +16,7 @@ function Document({ lang }: DocumentProps & { lang: string }) {
       <body>
         <Script strategy="beforeInteractive">{`
           function resizeHandler() {
-            const scale = document.documentElement.clientWidth <= 750
+            window.scale = document.documentElement.clientWidth <= 750
                 ? Math.min(1, document.documentElement.clientWidth / 750)
                 : 1;
             document.documentElement.style.fontSize = 16 * scale + "px";
