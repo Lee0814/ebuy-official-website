@@ -1,11 +1,8 @@
-import { useSize } from "ahooks";
 import classNames from "classnames";
 import Image from "next/image";
 import { memo, useRef, useState } from "react";
 import mapCn from "./images/map-china.png";
 import location from "./images/map-location.png";
-// import mapMs from "./images/map-malaysia.png";
-// import mapSgp from "./images/map-singapore.png";
 
 import { useI18n } from "@/hooks";
 
@@ -23,7 +20,7 @@ const countries = [
 
 export const Location = memo(() => {
   const t = useI18n("home");
-
+  const [outerRadio, setOuter] = useState<number>(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const companyInfo = countries.map((country, index) => ({
     country: t(`location-${index + 1}-country` as any),
@@ -32,8 +29,29 @@ export const Location = memo(() => {
   }));
 
   const mapRef = useRef<HTMLDivElement>(null);
-  const size = useSize(mapRef);
-  const scale = Math.max(0, (size?.width || 0) / 1440 - 1);
+  // const [inViewport, radio] = useInViewport(mapRef, {
+  //   threshold: [0.0, 0.01, 0.02, 0.99, 1.0],
+  // });
+  // useEffect(() => {
+  //   console.log(radio);
+
+  //   setOuter(radio!);
+
+  //   // window.addEventListener("scroll", scrollE, { passive: false });
+  //   // return () => {
+  //   //   if (outerRadio < 1) window.removeEventListener("scroll", scrollE);
+  //   // };
+  // }, [radio, inViewport]);
+
+  const scrollE = (e: Event) => {
+    console.log("监听滚动");
+
+    if (currentIndex === 2) return;
+    if (outerRadio === 1) {
+      e.preventDefault();
+      setCurrentIndex(currentIndex + 1);
+    }
+  };
 
   return (
     <section className={classNames("bg-white] pb-[43px] pt-[72px]")}>

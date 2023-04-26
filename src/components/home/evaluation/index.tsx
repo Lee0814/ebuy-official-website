@@ -4,10 +4,7 @@ import { ECard } from "./evaluatCard";
 export const Evaluation = memo(() => {
   const dom = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    console.log(dom.current?.scrollTop);
-    console.log(dom.current);
-  });
+  useEffect(() => {});
   const evaluations = [
     {
       name: "Hai Di Lao Dining Pte. Ltd",

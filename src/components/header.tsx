@@ -55,12 +55,14 @@ export const Header = memo(() => {
   const [lastScroll, setLastScroll] = useState<Position>();
   const scroll = useScroll();
   useEffect(() => {
+    //初始化
     if (!scroll) return;
     if (!lastScroll) {
       setLastScroll(scroll);
       setShowHeader(true);
       return;
     }
+    //向下滑动
     if (scroll.top > lastScroll.top) {
       setShowHeader(false);
     } else {
