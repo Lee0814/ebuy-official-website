@@ -46,7 +46,7 @@ export const Evaluation = memo(() => {
   return (
     <section
       ref={dom}
-      className={classNames("w-full bg-[#fbfbfb] pb-[72px] pt-[100px]")}
+      className={classNames("w-full bg-[#fff] pb-[72px] pt-[100px]")}
     >
       {/* 主体 */}
       <div className={classNames("ebuy-container ")}>
