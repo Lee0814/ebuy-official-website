@@ -55,7 +55,7 @@ const Business = () => {
   const desktop = (
     <div
       className={classNames(
-        "flex w-full flex-col gap-[57px] overflow-hidden md:mx-auto md:max-w-[1288px] md:flex-row md:gap-[20px] md:overflow-visible md:px-[32px] xl:gap-[43px]"
+        "hidden w-full flex-col gap-[57px] overflow-hidden md:mx-auto md:flex md:max-w-[1288px] md:flex-row md:gap-[20px] md:overflow-visible md:px-[32px] xl:gap-[43px]"
       )}
     >
       {/* 选择 */}
