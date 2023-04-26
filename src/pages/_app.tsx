@@ -1,9 +1,16 @@
 import { Footer, Header } from "@/components";
 import { useProvideHeader, useProvideI18n } from "@/states";
+import classNames from "classnames";
 import type { AppProps } from "next/app";
+import localFont from "next/font/local";
 import Head from "next/head";
 
 import "@/styles/globals.css";
+
+const Inter = localFont({
+  src: "../assets/fonts/Inter.ttf",
+  variable: "--font-inter",
+});
 
 export default function App({ Component, pageProps }: AppProps) {
   const { HeaderProvider, HeaderValue } = useProvideHeader();
@@ -16,13 +23,13 @@ export default function App({ Component, pageProps }: AppProps) {
           name="viewport"
           content="width=device-width, initial-scale=1.0, user-scalable=0"
         />
-        {/* <script src="https://unpkg.com/vconsole@latest/dist/vconsole.min.js"></script>
-        <script>vConsole = new window.VConsole();</script> */}
       </Head>
       <I18nProvider value={I18nValue}>
         <HeaderProvider value={HeaderValue}>
           <Header />
-          <Component {...pageProps} />
+          <main className={classNames(Inter.variable, "font-sans")}>
+            <Component {...pageProps} />
+          </main>
           <Footer />
         </HeaderProvider>
       </I18nProvider>

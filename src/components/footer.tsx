@@ -2,12 +2,21 @@ import officialAccount from "@/assets/images/official-account.jpg";
 import { useI18n } from "@/hooks";
 import classNames from "classnames";
 import Image from "next/image";
-import { memo } from "react";
+import { memo, useState } from "react";
 import { PhoneInput } from "react-international-phone";
 import "react-international-phone/style.css";
 import header from "./header.module.scss";
 export const Footer = memo(() => {
   const t = useI18n("footer");
+
+  const [formValue, setFormValue] = useState({
+    userName: "",
+    firstName: "",
+    lastName: "",
+    phone: "",
+    email: "",
+    help: "",
+  })
 
   return (
     <footer className={classNames("bg-white")}>
@@ -46,6 +55,8 @@ export const Footer = memo(() => {
                   "h-[56px] w-full max-w-[650px] rounded-[4px] px-8 py-4",
                   header.defaultInput
                 )}
+                value={formValue.firstName}
+                onChange={(e) => setFormValue({...formValue, firstName: e.target.value})}
                 type="text"
               />
             </div>
@@ -61,6 +72,8 @@ export const Footer = memo(() => {
                     "h-[56px] w-full rounded-[4px] px-8 py-4",
                     header.defaultInput
                   )}
+                  value={formValue.lastName}
+                  onChange={(e) => setFormValue({...formValue, lastName: e.target.value})}
                   type="text"
                 />
               </div>
@@ -79,6 +92,8 @@ export const Footer = memo(() => {
                 className={classNames(header.container)}
                 inputClassName={classNames(` w-full `, header.defaultInput)}
                 defaultCountry="cn"
+                value={formValue.phone}
+                onChange={(e) => setFormValue({...formValue, phone: e})}
               />
             </div>
             <input
@@ -86,6 +101,8 @@ export const Footer = memo(() => {
                 "block h-[56px] w-full rounded-[4px] px-8 md:hidden",
                 header.defaultInput
               )}
+              value={formValue.phone}
+              onChange={(e) => setFormValue({...formValue, phone: e.target.value})}
               type="text"
             />
           </div>
@@ -97,6 +114,8 @@ export const Footer = memo(() => {
                 "h-[56px] w-full rounded-[4px] px-8",
                 header.defaultInput
               )}
+              value={formValue.email}
+              onChange={(e) => setFormValue({...formValue, email: e.target.value})}
               type="text"
             />
           </div>
@@ -107,6 +126,8 @@ export const Footer = memo(() => {
                 "h-[112px] w-full rounded-[4px] px-8 py-4",
                 header.defaultInput
               )}
+              value={formValue.help}
+              onChange={(e) => setFormValue({...formValue, help: e.target.value})}
             />
           </div>
         </div>
@@ -114,6 +135,7 @@ export const Footer = memo(() => {
           className={classNames("mt-[48px] flex items-center justify-center")}
         >
           <button
+            onClick={() => { console.log(formValue) }}
             className={classNames(
               "bg-[#ED3838] px-[78px] py-[19px] text-[24px] leading-[36px] text-white"
             )}

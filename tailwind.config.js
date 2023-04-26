@@ -1,3 +1,5 @@
+const { fontFamily } = require("tailwindcss/defaultTheme");
+
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
@@ -13,6 +15,9 @@ module.exports = {
         lg: "1280.1px",
         xl: "1440.1px",
         "2xl": "1536.1px",
+      },
+      fontFamily: {
+        sans: ["var(--font-inter)", ...fontFamily.sans],
       },
     },
   },

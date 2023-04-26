@@ -76,7 +76,7 @@ const Business = () => {
                 className={classNames("mr-[14px] h-[30px] w-[30px]")}
                 alt={business.title}
                 src={
-                  !md && currentIndex === index
+                  currentIndex === index
                     ? business.iconNormal
                     : business.iconHighlight
                 }
@@ -137,17 +137,12 @@ const Business = () => {
   );
 
   // 移动端切换
-  const [swiper, setSwiper] = useState<_Swiper>();
   let timer: NodeJS.Timeout;
   const autoPlay = useCallback((swiper: _Swiper) => {
     timer = setTimeout(() => {
       swiper.autoplay?.start();
     }, 5000);
   }, []);
-  useEffect(() => {
-    if (!swiper || swiper.destroyed) return;
-    swiper?.slideTo(currentIndex);
-  }, [currentIndex, swiper]);
   useEffect(() => () => clearTimeout(timer), []);
 
   const mobile = (
