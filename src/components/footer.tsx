@@ -14,9 +14,23 @@ export const Footer = memo(() => {
     firstName: "",
     lastName: "",
     phone: "",
+    mobilePhone: "",
     email: "",
     help: "",
-  })
+  });
+
+  const send = () => {
+    alert("发送成功");
+    setFormValue({
+      userName: "",
+      firstName: "",
+      lastName: "",
+      phone: "",
+      mobilePhone: "",
+      email: "",
+      help: "",
+    });
+  };
 
   return (
     <footer className={classNames("bg-white")}>
@@ -56,7 +70,9 @@ export const Footer = memo(() => {
                   header.defaultInput
                 )}
                 value={formValue.firstName}
-                onChange={(e) => setFormValue({...formValue, firstName: e.target.value})}
+                onChange={(e) =>
+                  setFormValue({ ...formValue, firstName: e.target.value })
+                }
                 type="text"
               />
             </div>
@@ -73,7 +89,9 @@ export const Footer = memo(() => {
                     header.defaultInput
                   )}
                   value={formValue.lastName}
-                  onChange={(e) => setFormValue({...formValue, lastName: e.target.value})}
+                  onChange={(e) =>
+                    setFormValue({ ...formValue, lastName: e.target.value })
+                  }
                   type="text"
                 />
               </div>
@@ -93,16 +111,19 @@ export const Footer = memo(() => {
                 inputClassName={classNames(` w-full `, header.defaultInput)}
                 defaultCountry="cn"
                 value={formValue.phone}
-                onChange={(e) => setFormValue({...formValue, phone: e})}
+                onChange={(e) => setFormValue({ ...formValue, phone: e })}
               />
             </div>
+            {/* 移动端号码输入框 */}
             <input
               className={classNames(
                 "block h-[56px] w-full rounded-[4px] px-8 md:hidden",
                 header.defaultInput
               )}
-              value={formValue.phone}
-              onChange={(e) => setFormValue({...formValue, phone: e.target.value})}
+              value={formValue.mobilePhone}
+              onChange={(e) =>
+                setFormValue({ ...formValue, mobilePhone: e.target.value })
+              }
               type="text"
             />
           </div>
@@ -115,7 +136,9 @@ export const Footer = memo(() => {
                 header.defaultInput
               )}
               value={formValue.email}
-              onChange={(e) => setFormValue({...formValue, email: e.target.value})}
+              onChange={(e) =>
+                setFormValue({ ...formValue, email: e.target.value })
+              }
               type="text"
             />
           </div>
@@ -127,7 +150,9 @@ export const Footer = memo(() => {
                 header.defaultInput
               )}
               value={formValue.help}
-              onChange={(e) => setFormValue({...formValue, help: e.target.value})}
+              onChange={(e) =>
+                setFormValue({ ...formValue, help: e.target.value })
+              }
             />
           </div>
         </div>
@@ -135,9 +160,9 @@ export const Footer = memo(() => {
           className={classNames("mt-[48px] flex items-center justify-center")}
         >
           <button
-            onClick={() => { console.log(formValue) }}
+            onClick={send}
             className={classNames(
-              "bg-[#ED3838] px-[78px] py-[19px] text-[24px] leading-[36px] text-white"
+              "bg-[#ED3838] px-[78px] py-[19px] text-[24px] leading-[36px] text-white hover:bg-[#b92b2b]"
             )}
           >
             {t("submit")}
