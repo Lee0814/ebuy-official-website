@@ -131,7 +131,7 @@ export const Benefit = memo(() => {
                 </span>
                 <span
                   className={classNames(
-                    "mb-[45px] text-center text-[28px] font-[400] leading-[40px] text-[#333333] md:font-[500] md:leading-[42px]"
+                    "mb-[45px] h-[68px] text-center text-[28px] font-[400] leading-[40px] text-[#333333] md:font-[500] md:leading-[42px]"
                   )}
                 >
                   {benefits[currentBenefitIndex].description}

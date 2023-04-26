@@ -107,10 +107,13 @@ export const Header = memo(() => {
           <div className={classNames("relative")}>
             <div
               ref={actionRef}
-              className={classNames(styles["action-icon"], {
-                [styles["action-icon-close"]]: showMenu,
-                ["hidden"]: !lg,
-              })}
+              className={classNames(
+                styles["action-icon"],
+                "visible lg:hidden",
+                {
+                  [styles["action-icon-close"]]: showMenu,
+                }
+              )}
               onClick={() => setShowMenu(!showMenu)}
             >
               <span></span>
@@ -120,11 +123,11 @@ export const Header = memo(() => {
             </div>
             <ul
               className={classNames(
-                "flex flex-col md:gap-[20px] lg:flex-row lg:gap-[40px]",
+                "hidden flex-col md:gap-[20px] lg:flex lg:flex-row lg:gap-[40px]",
                 {
                   ["absolute right-0 top-[50px] w-[200px] gap-[10px] text-ellipsis bg-white p-[10px] underline"]:
                     lg,
-                  ["hidden"]: lg && !showMenu,
+                  ["!flex"]: showMenu,
                 }
               )}
             >

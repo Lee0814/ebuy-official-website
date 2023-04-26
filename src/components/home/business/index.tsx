@@ -17,8 +17,6 @@ import cart from "./images/cart.png";
 import dollarHighlight from "./images/dollar-h.png";
 import dollar from "./images/dollar.png";
 
-import styles from "./styles.module.scss";
-
 const images = [
   {
     picture: one,
@@ -52,7 +50,7 @@ const Business = () => {
     ...image,
   }));
 
-  const [currentIndex, setCurrentIndex] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
 
   const desktop = (
     <div
@@ -153,107 +151,72 @@ const Business = () => {
   useEffect(() => () => clearTimeout(timer), []);
 
   const mobile = (
-    <div
-      className={classNames(
-        "mobile flex w-full flex-col gap-[57px] overflow-hidden md:mx-auto md:max-w-[1288px] md:flex-row md:gap-[20px] md:overflow-visible md:px-[32px] xl:gap-[43px]"
-      )}
-    >
-      {/* 选择 */}
-      <Swiper
-        slidesPerView={1}
-        onSwiper={setSwiper}
-        className={classNames("w-[614px] overflow-visible")}
-        slidePrevClass={styles["custom-swiper-slide-prev-1"]}
-        slideNextClass={styles["custom-swiper-slide-next-1"]}
-      >
-        {businesses.map((business, index) => (
-          <SwiperSlide key={`business-title-${index}`}>
-            <div
-              className={classNames(
-                "business-title flex w-[500px] flex-col rounded-[16px] bg-[#1D1F21] px-[24px] py-[30px] lg:-ml-[60px]",
-                {
-                  ["!h-[185px] !w-[614px]"]: currentIndex === index,
-                  ["!h-[140px] !w-[614px]"]: currentIndex !== index,
-                }
-              )}
-              onMouseOver={() => setCurrentIndex(index)}
-            >
-              <div className={classNames("flex items-center")}>
-                <Image
-                  className={classNames("mr-[14px] h-[30px] w-[30px]")}
-                  alt={business.title}
-                  src={
-                    !md && currentIndex === index
-                      ? business.iconNormal
-                      : business.iconHighlight
-                  }
-                />
-                <span
-                  className={classNames(
-                    "text-[32px] leading-[39px] text-[#3A2D1B]",
-                    {
-                      ["text-[#F5F5F5]"]: currentIndex === index,
-                    }
-                  )}
-                >
-                  {business.title}
-                </span>
-                <span
-                  className={classNames(
-                    "ml-[8px] text-[28px] leading-[34px] text-[#B6863E]",
-                    {
-                      ["text-[#F5F5F5]"]: currentIndex === index,
-                    }
-                  )}
-                >
-                  {currentIndex === index
-                    ? `${business.title2 ? `【${business.title2}】` : ""}`
-                    : business.title2}
-                </span>
-              </div>
-              <div
-                className={classNames(
-                  "ml-[46px] text-[24px] leading-[29px] text-[#BDBDBD]",
-                  {
-                    ["hidden"]: currentIndex !== index,
-                  }
-                )}
-              >
-                {business.description}
-              </div>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      {/* 图片 */}
+    <div className={classNames("overflow-hidden")}>
       <Swiper
         slidesPerView={1}
         modules={[Pagination, Autoplay]}
         pagination={{ el: ".custom-pagination", clickable: true }}
         className={classNames("w-[614px] overflow-visible")}
-        slidePrevClass={styles["custom-swiper-slide-prev-2"]}
-        slideNextClass={styles["custom-swiper-slide-next-2"]}
-        onActiveIndexChange={(swiper) => {
-          if (swiper.realIndex < 0)
-            return setCurrentIndex(businesses.length - 1);
-          if (swiper.realIndex >= businesses.length) return setCurrentIndex(0);
-          setCurrentIndex(swiper.realIndex);
-        }}
+        onActiveIndexChange={(swiper) => setCurrentIndex(swiper.realIndex)}
         onAutoplayPause={autoPlay}
         autoplay
         loop
       >
         {businesses.map((business, index) => (
-          <SwiperSlide key={`business-pic-${index}`}>
-            <div className="flex items-center justify-center">
+          <SwiperSlide key={`business-title-${index}`}>
+            <div
+              className={classNames(
+                "mb-[60px] flex h-[185px] items-center justify-center transition-all duration-300"
+              )}
+            >
+              <div
+                className={classNames(
+                  "flex h-full w-[614px] flex-col items-center justify-center rounded-[16px] bg-[#1D1F21] px-[24px] py-[30px] transition-all duration-300",
+                  {
+                    ["!h-[140px] !w-[552px]"]: currentIndex !== index,
+                  }
+                )}
+              >
+                <div className={classNames("flex items-center pb-[12px]")}>
+                  <Image
+                    className={classNames("mr-[14px] h-[30px] w-[30px]")}
+                    alt={business.title}
+                    src={business.iconHighlight}
+                  />
+                  <span
+                    className={classNames(
+                      "text-[32px] leading-[39px] text-white"
+                    )}
+                  >
+                    {business.title}
+                  </span>
+                </div>
+                <div
+                  className={classNames(
+                    "text-center text-[24px] leading-[29px] text-[#BDBDBD]"
+                  )}
+                >
+                  {business.description}
+                </div>
+              </div>
+            </div>
+            <div
+              className={classNames(
+                "flex h-[982px] items-center justify-center transition-all duration-300",
+                {
+                  ["!justify-end"]: index === currentIndex - 1,
+                  ["!justify-start"]: index === currentIndex + 1,
+                }
+              )}
+            >
               <Image
                 loading="eager"
-                key={`business-pic-${index}`}
-                className={classNames("w-[348px]", {
-                  ["!w-[486px]"]: currentIndex !== index,
+                className={classNames("w-[348px] transition-all duration-300", {
+                  ["!w-[486px]"]: currentIndex === index,
+                  ["!max-h-[822px] !max-w-full"]: currentIndex !== index,
                 })}
-                alt={business.title}
                 src={business.picture}
+                alt={business.title}
               />
             </div>
           </SwiperSlide>
