@@ -25,7 +25,7 @@ export const Banner = memo(() => {
     >
       <div
         className={classNames(
-          "ebuy-container flex h-full flex-col items-center justify-center text-white"
+          "ebuy-container !flex h-full flex-col items-center justify-center text-white"
         )}
       >
         <span

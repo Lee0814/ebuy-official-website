@@ -23,7 +23,8 @@
 }
 
 .ebuy-container {
-  @apply mx-auto w-full max-w-[1264px] px-[32px];
+  @apply mx-auto w-full max-w-[1264px] px-[32px] grid gap-[10px];
+  grid-template-columns: repeat(24, minmax(0, 1fr))
 }
 
 html, body{

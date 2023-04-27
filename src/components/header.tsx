@@ -99,11 +99,11 @@ export const Header = memo(() => {
           src={logo}
           alt="ebuy"
           height={50}
-          className={classNames("w-[146px] ")}
+          className={classNames("col-start-1 col-end-6 w-[146px]")}
         />
         <div
           className={classNames(
-            "gap-reverse flex flex-row-reverse items-center gap-[21px] md:gap-[20px] lg:flex-row lg:gap-[40px]"
+            "gap-reverse col-start-6 col-end-25 flex flex-row-reverse items-center justify-start gap-[21px] md:gap-[20px] lg:flex-row lg:justify-end lg:gap-[52px]"
           )}
         >
           <div className={classNames("relative")}>
