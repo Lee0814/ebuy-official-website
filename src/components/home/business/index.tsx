@@ -231,7 +231,7 @@ const Business = () => {
         {/* 标题 */}
         <div
           className={classNames(
-            "ebuy-container pb-[52px] text-center md:text-left"
+            "ebuy-container-no-grid pb-[52px] text-center md:text-left"
           )}
         >
           <div className={classNames("text-[50px] font-bold text-[#3A2D1B]")}>

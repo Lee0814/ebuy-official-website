@@ -75,7 +75,7 @@ export const Benefit = memo(() => {
     >
       <div
         className={classNames(
-          "ebuy-container relative flex flex-col items-center justify-center"
+          "ebuy-container-no-grid relative flex flex-col items-center justify-center"
         )}
       >
         <span

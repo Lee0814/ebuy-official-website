@@ -101,6 +101,7 @@ export const Header = memo(() => {
           height={50}
           className={classNames("col-start-1 col-end-6 w-[146px]")}
         />
+        {/* 右侧导航 */}
         <div
           className={classNames(
             "col-start-6 col-end-25 flex flex-row-reverse items-center justify-start gap-[21px] md:gap-[20px] lg:flex-row lg:justify-end lg:gap-[52px]"
