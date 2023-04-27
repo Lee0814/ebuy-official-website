@@ -6,10 +6,9 @@
 .frosted-glass {
   backdrop-filter: blur(10px);
   background: rgba(255, 255, 255, 0.3);
-  .message{
-    color:#fff
+  .message {
+    color: #fff;
   }
-
 }
 
 .white {
@@ -60,7 +59,7 @@
   @apply relative h-[30px] w-[35px];
 
   span {
-    @apply absolute left-0 w-full border-[2px] rounded-full border-[#ED3838] transition-all duration-300;
+    @apply absolute left-0 w-full rounded-full border-[2px] border-[#ED3838] transition-all duration-300;
 
     &:nth-child(1) {
       @apply top-[2px];
@@ -85,7 +84,7 @@
     @apply absolute left-[1.5px];
 
     &:nth-child(1) {
-      @apply top-[30px] left-[19px] w-0 border-0;
+      @apply left-[19px] top-[30px] w-0 border-0;
     }
 
     &:nth-child(2) {
@@ -97,23 +96,33 @@
     }
 
     &:nth-child(4) {
-      @apply top-[30px] left-[19px] w-0 border-0;
+      @apply left-[19px] top-[30px] w-0 border-0;
     }
   }
 }
 
-.container{
+.container {
   height: 56px;
   box-sizing: border-box;
-  border-radius: 4px
-}
-.defaultInput{
-border: 1px solid #DDDDDD;
+  border-radius: 4px;
   box-sizing: border-box !important;
-transition: all 0.2s ease;
+}
+.container:hover,.container:focus {
+  --react-international-phone-height: 54px;
+  border: 1px solid rgb(0, 0, 0);
+}
+.defaultInput {
+  border: 1px solid #dddddd;
+
+  transition: all 0.2s ease;
 }
 
-.defaultInput:hover,.defaultInput:focus{
+.defaultInput:hover,
+.defaultInput:focus {
   outline: none;
   border: 1px solid rgb(0, 0, 0);
+}
+.errorForm {
+  outline: none;
+  border: 1px solid rgb(255, 0, 0);
 }

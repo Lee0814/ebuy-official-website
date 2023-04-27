@@ -1,14 +1,15 @@
 import officialAccount from "@/assets/images/official-account.jpg";
 import { useI18n } from "@/hooks";
+import axios from "axios";
 import classNames from "classnames";
 import Image from "next/image";
 import { memo, useState } from "react";
-import { PhoneInput } from "react-international-phone";
+import { PhoneInput, usePhoneValidation } from "react-international-phone";
 import "react-international-phone/style.css";
 import header from "./header.module.scss";
 export const Footer = memo(() => {
   const t = useI18n("footer");
-
+  const [isError, setError] = useState(false);
   const [formValue, setFormValue] = useState({
     userName: "",
     firstName: "",
@@ -18,18 +19,37 @@ export const Footer = memo(() => {
     email: "",
     help: "",
   });
-
+  const phoneValidation = usePhoneValidation(formValue.phone);
   const send = () => {
-    alert("发送成功");
-    setFormValue({
-      userName: "",
-      firstName: "",
-      lastName: "",
-      phone: "",
-      mobilePhone: "",
-      email: "",
-      help: "",
-    });
+    //有值
+    console.log(formValue.mobilePhone);
+    console.log(formValue.phone);
+    console.log(formValue.phone);
+
+    if (formValue.mobilePhone || formValue.phone.split(" ").length > 2) {
+      setError(true);
+      axios
+        .get("")
+        .then(() => {
+          setFormValue({
+            userName: "",
+            firstName: "",
+            lastName: "",
+            phone: "",
+            mobilePhone: "",
+            email: "",
+            help: "",
+          });
+          alert("发送成功");
+        })
+        .catch(() => {
+          alert("失败");
+        });
+      setError(false);
+    } else {
+      setError(true);
+    }
+    console.log(formValue);
   };
 
   return (
@@ -107,11 +127,14 @@ export const Footer = memo(() => {
             </span>
             <div className={classNames("hidden w-full md:block")}>
               <PhoneInput
-                className={classNames(header.container)}
-                inputClassName={classNames(` w-full `, header.defaultInput)}
+                className={classNames({
+                  [header.container]: false,
+                  [header.errorForm]: isError,
+                })}
+                inputClassName={classNames(` w-full `)}
                 defaultCountry="cn"
                 value={formValue.phone}
-                onChange={(e) => setFormValue({ ...formValue, phone: e })}
+                // onChange={(e) => setFormValue({ ...formValue, phone: e })}
               />
             </div>
             {/* 移动端号码输入框 */}
