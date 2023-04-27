@@ -1,5 +1,5 @@
 import officialAccount from "@/assets/images/official-account.jpg";
-import { useI18n, useResponsive } from "@/hooks";
+import { useI18n } from "@/hooks";
 import { useI18nContext } from "@/states";
 import axios from "axios";
 import classNames from "classnames";
@@ -16,50 +16,40 @@ import header from "./header.module.scss";
 export const Footer = memo(() => {
   const lang = useI18nContext().lang;
   const t = useI18n("footer");
-  const { md } = useResponsive();
-  const [isError, setError] = useState(false);
+
+  const [isShow, setIsShow] = useState(false);
   const [country, setCountry] = useState<CountryIso2>("cn");
+  const [countryCode, setCountryCode] = useState<string>("+86");
+  const [attention, setAttention] = useState("");
   //选择国家的回调
   const selectedCountry = (country: any) => {
     const { iso2 } = country;
-    console.log(iso2);
-    setCountry(iso2);
     let number = defaultCountries.find(
       ([name, b, short, code]) => short === iso2
     )![3];
+    setCountry(iso2);
 
-    console.log(formValue.phone.split(" ").length);
-
-    //已经填了电话号码
-    if (formValue.phone.split(" ").length >= 1) {
-      setFormValue({
-        ...formValue,
-        phone: "+" + number + " ",
-      });
-    } else if (formValue.phone.split(" ").length == 0) {
-      setFormValue({ ...formValue, phone: "+" + number + " " });
-    }
+    setCountryCode(`+${number}`);
   };
   const [formValue, setFormValue] = useState({
-    userName: "",
     firstName: "",
     lastName: "",
-    phone: "+86 ",
-    mobilePhone: "",
+    phone: "",
     email: "",
     help: "",
   });
 
   const submitForm = () => {
-    if (!formValue.phone.length) {
-      setError(true);
+    if (formValue.phone.replace(" ", "").length == 0) {
+      lang === "en"
+        ? setAttention("Telephone number cannot be empty")
+        : setAttention("电话号码不能为空");
     } else {
-      setError(false);
       axios
         .post("http://192.168.6.38/core/api/manage/contactUs", {
           fistName: formValue.firstName,
           lastName: formValue.lastName,
-          phone: formValue.phone,
+          phone: `${countryCode} ${formValue.phone}`,
           email: formValue.email,
           lang: lang,
           message: formValue.help,
@@ -68,23 +58,27 @@ export const Footer = memo(() => {
           console.log(res);
           if (res.data.code == 200) {
             setFormValue({
-              userName: "",
               firstName: "",
               lastName: "",
               phone: "",
-              mobilePhone: "",
               email: "",
               help: "",
             });
-            alert("发送成功");
+            lang === "en"
+              ? setAttention("Send successfully,we'll contact you soon!")
+              : setAttention("发送成功，客服将尽快与您联系");
           } else {
-            alert(res.data.msg);
+            setAttention(res.data.msg);
           }
         })
         .catch(() => {
-          alert("发送失败，请检查网络");
+          setAttention("发送失败，请检查网络");
         });
     }
+    setIsShow(true);
+    setTimeout(() => {
+      setIsShow(false);
+    }, 1000);
   };
 
   return (
@@ -161,18 +155,25 @@ export const Footer = memo(() => {
             >
               {t("telephone")}
             </span>
-            <div className={classNames("flex")}>
+            <div className={classNames("relative flex")}>
               <CountrySelector
                 selectedCountry={country}
                 onSelect={selectedCountry}
                 className={classNames("hidden md:block")}
               />
+              <span
+                className={classNames(
+                  "absolute left-[110px] top-[10px] hidden md:block"
+                )}
+              >
+                {countryCode}
+              </span>
               <input
                 className={classNames(
-                  "h-[56px] w-full rounded-[4px] px-8",
-                  {
-                    [header.errorForm]: isError,
-                  },
+                  "h-[56px] w-full rounded-[4px] pl-8 pr-8 md:pl-[96px]",
+                  // {
+                  //   [header.errorForm]: isError,
+                  // },
                   header.defaultInput
                 )}
                 value={formValue.phone}
@@ -213,17 +214,31 @@ export const Footer = memo(() => {
         </div>
         <div
           className={classNames(
-            "col-start-1 col-end-25 mt-[48px] flex items-center justify-center"
+            "relative col-start-1 col-end-25 mt-[48px] flex items-center justify-center"
           )}
         >
           <button
             onClick={submitForm}
             className={classNames(
-              "bg-[#ED3838] px-[78px] py-[19px] text-[24px] leading-[36px] text-white hover:bg-[#b92b2b]"
+              " bg-[#ED3838] px-[78px] py-[19px] text-[24px] leading-[36px] text-white hover:bg-[#b92b2b]"
+              // {
+              //   ["bg-[#585858]"]: !formValue.phone.length,
+              //   ["bg-[#ED3838]"]: formValue.phone.length,
+              // }
             )}
           >
             {t("submit")}
           </button>
+          {isShow && (
+            <div
+              className={classNames(
+                "absolute bottom-6 left-[59%] text-[24px]  text-red-700",
+                {}
+              )}
+            >
+              {attention}
+            </div>
+          )}
         </div>
       </div>
       {/* end 表单 */}
