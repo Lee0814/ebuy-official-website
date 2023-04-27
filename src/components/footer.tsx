@@ -134,7 +134,7 @@ export const Footer = memo(() => {
                 inputClassName={classNames(` w-full `)}
                 defaultCountry="cn"
                 value={formValue.phone}
-                // onChange={(e) => setFormValue({ ...formValue, phone: e })}
+                onChange={(e) => setFormValue({ ...formValue, phone: e })}
               />
             </div>
             {/* 移动端号码输入框 */}

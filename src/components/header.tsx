@@ -103,7 +103,7 @@ export const Header = memo(() => {
         />
         <div
           className={classNames(
-            "gap-reverse col-start-6 col-end-25 flex flex-row-reverse items-center justify-start gap-[21px] md:gap-[20px] lg:flex-row lg:justify-end lg:gap-[52px]"
+            "col-start-6 col-end-25 flex flex-row-reverse items-center justify-start gap-[21px] md:gap-[20px] lg:flex-row lg:justify-end lg:gap-[52px]"
           )}
         >
           <div className={classNames("relative")}>
