@@ -128,26 +128,22 @@ export const Partner = memo(() => {
 
   return (
     <section className={classNames("bg-[#fff] pt-[72px]")}>
-      <div
-        className={classNames("ebuy-container-no-grid text-center font-bold")}
-      >
-        <span
-          className={classNames(
-            "col-start-1 col-end-24 text-[44px]  text-[#333333] md:text-[64px]"
-          )}
-        >
-          EBUY
-        </span>
-        <span
-          className={classNames(
-            "col-start-1  col-end-24 text-[30px] md:text-[50px]"
-          )}
-        >
-          Grows with You
-        </span>
+      <div className={classNames("ebuy-container text-center font-bold")}>
+        <div className="col-start-1 col-end-25">
+          <span
+            className={classNames(
+              " text-[44px]  text-[#333333] md:text-[64px]"
+            )}
+          >
+            EBUY
+          </span>
+          <span className={classNames(" text-[30px] md:text-[50px]")}>
+            Grows with You
+          </span>
+        </div>
         <div
           className={classNames(
-            "col-start-1  col-end-24 text-center text-[20px] leading-[44px] md:text-[28px]"
+            "col-start-1  col-end-25 text-center text-[20px] leading-[44px] md:text-[28px]"
           )}
         >
           As a trusted partner, we serve more than 1000 F&B businesses such as
@@ -161,7 +157,7 @@ export const Partner = memo(() => {
         </div>
         <div
           className={classNames(
-            "relative  col-start-1 col-end-24 flex flex-col py-[100px]"
+            "relative  col-start-1 col-end-25 flex flex-col py-[100px]"
           )}
         >
           <div

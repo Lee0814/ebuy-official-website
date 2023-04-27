@@ -107,7 +107,7 @@ export const Location = memo(() => {
       <div ref={mapRef} className={classNames("col-start-1 col-end-25 flex")}>
         <div
           className={classNames(
-            " flex min-w-[280px] flex-1 flex-col items-center justify-center bg-[#f9f9f9] px-6 "
+            " flex min-w-[280px] max-w-[600px] flex-1 flex-col items-center justify-center bg-[#f9f9f9] px-6 "
           )}
         >
           <div
@@ -125,7 +125,9 @@ export const Location = memo(() => {
             {companyInfo[currentIndex].address}
           </div>
         </div>
-        <div className={classNames("relative  h-[450px] max-w-[680px]")}>
+        <div
+          className={classNames("relative flex-1 md:h-[450px] 3xl:h-[600px]")}
+        >
           <Image
             className={classNames(
               "absolute left-[50%] top-[50%] h-[48px] w-[48px] translate-x-[-50%] translate-y-[-19px]"

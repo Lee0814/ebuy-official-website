@@ -53,85 +53,87 @@ const Business = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const desktop = (
-    <div
-      className={classNames(
-        "ebuy-container hidden w-full flex-col gap-[57px] overflow-hidden md:mx-auto md:flex md:max-w-[1288px] md:flex-row md:gap-[20px] md:overflow-visible md:px-[32px] xl:gap-[43px]"
-      )}
-    >
-      {/* 选择 */}
-      <div className={classNames("flex flex-1 flex-col")}>
-        {businesses.map((business, index) => (
-          <div
-            key={`business-title-${index}`}
-            className={classNames(
-              "flex flex-col rounded-[16px] px-[24px] py-[30px] lg:-ml-[14px]",
-              {
-                ["bg-[#1D1F21] md:bg-[#3D3D3D]"]: currentIndex === index,
-              }
-            )}
-            onMouseOver={() => setCurrentIndex(index)}
-          >
-            <div className={classNames("flex items-center")}>
-              <Image
-                className={classNames("mr-[14px] h-[30px] w-[30px]")}
-                alt={business.title}
-                src={
-                  currentIndex === index
-                    ? business.iconNormal
-                    : business.iconHighlight
-                }
-              />
-              <span
-                className={classNames(
-                  "text-[32px] leading-[39px] text-[#3A2D1B]",
-                  {
-                    ["text-[#F5F5F5]"]: currentIndex === index,
-                  }
-                )}
-              >
-                {business.title}
-              </span>
-              <span
-                className={classNames(
-                  "ml-[8px] text-[28px] leading-[34px] text-[#B6863E]",
-                  {
-                    ["text-[#F5F5F5]"]: currentIndex === index,
-                  }
-                )}
-              >
-                {currentIndex === index
-                  ? `${business.title2 ? `【${business.title2}】` : ""}`
-                  : business.title2}
-              </span>
-            </div>
+    <div className="ebuy-container-no-px">
+      <div
+        className={classNames(
+          "col-start-1 col-end-25 hidden w-full flex-col gap-[57px] overflow-hidden md:mx-auto md:flex  md:flex-row md:gap-[20px] md:overflow-visible md:px-[32px] xl:gap-[43px]"
+        )}
+      >
+        {/* 选择 */}
+        <div className={classNames("flex flex-1 flex-col")}>
+          {businesses.map((business, index) => (
             <div
+              key={`business-title-${index}`}
               className={classNames(
-                "ml-[46px] text-[24px] leading-[29px] text-[#BDBDBD]",
+                "flex flex-col rounded-[16px] px-[24px] py-[30px] lg:-ml-[30px]",
                 {
-                  ["hidden"]: currentIndex !== index,
+                  ["bg-[#1D1F21] md:bg-[#3D3D3D]"]: currentIndex === index,
                 }
               )}
+              onMouseOver={() => setCurrentIndex(index)}
             >
-              {business.description}
+              <div className={classNames("flex items-center")}>
+                <Image
+                  className={classNames("mr-[14px] h-[30px] w-[30px]")}
+                  alt={business.title}
+                  src={
+                    currentIndex === index
+                      ? business.iconNormal
+                      : business.iconHighlight
+                  }
+                />
+                <span
+                  className={classNames(
+                    "text-[32px] leading-[39px] text-[#3A2D1B]",
+                    {
+                      ["text-[#F5F5F5]"]: currentIndex === index,
+                    }
+                  )}
+                >
+                  {business.title}
+                </span>
+                <span
+                  className={classNames(
+                    "ml-[8px] text-[28px] leading-[34px] text-[#B6863E]",
+                    {
+                      ["text-[#F5F5F5]"]: currentIndex === index,
+                    }
+                  )}
+                >
+                  {currentIndex === index
+                    ? `${business.title2 ? `【${business.title2}】` : ""}`
+                    : business.title2}
+                </span>
+              </div>
+              <div
+                className={classNames(
+                  "ml-[46px] text-[24px] leading-[29px] text-[#BDBDBD]",
+                  {
+                    ["hidden"]: currentIndex !== index,
+                  }
+                )}
+              >
+                {business.description}
+              </div>
             </div>
-          </div>
-        ))}
-      </div>
-      {/* 图片 */}
-      <div className={classNames("flex items-start")}>
-        {businesses.map((business, index) => (
-          <div key={`business-${index + 1}`}>
-            <Image
-              loading="eager"
-              key={`business-pic-${index}`}
-              className={classNames("max-w-[290px]", {
-                ["visible md:hidden"]: currentIndex !== index,
-              })}
-              alt={business.title}
-              src={business.picture}
-            />
-          </div>
-        ))}
+          ))}
+        </div>
+        {/* 图片 */}
+        <div className={classNames("flex items-start")}>
+          {businesses.map((business, index) => (
+            <div key={`business-${index + 1}`}>
+              <Image
+                loading="eager"
+                key={`business-pic-${index}`}
+                className={classNames("max-w-[290px]", {
+                  ["visible md:hidden"]: currentIndex !== index,
+                })}
+                alt={business.title}
+                src={business.picture}
+              />
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

@@ -101,7 +101,7 @@ export const Benefit = memo(() => {
           </svg>
         </button>
         <Swiper
-          className={classNames("col-start-2 col-end-24 w-full max-w-[1054px]")}
+          className={classNames("col-start-2 col-end-24 flex w-full ")}
           modules={[Navigation, Pagination, Autoplay]}
           pagination={{ el: ".custom-pagination", clickable: true }}
           navigation={{
@@ -117,11 +117,7 @@ export const Benefit = memo(() => {
         >
           {benefits.map((_, i) => (
             <SwiperSlide key={`benefit-${i + 1}`}>
-              <div
-                className={classNames(
-                  "flex max-w-[1054px] flex-col items-center"
-                )}
-              >
+              <div className={classNames("flex  flex-col items-center")}>
                 <span
                   className={classNames(
                     "mb-[24px] text-[44px] font-[600] leading-[62px] text-[#333333] md:text-[50px] md:font-bold md:leading-[75px]"
@@ -138,7 +134,7 @@ export const Benefit = memo(() => {
                 </span>
                 <div
                   className={classNames(
-                    "flex max-h-[300px] w-full justify-between"
+                    "flex max-h-[300px] w-full   justify-between"
                   )}
                 >
                   {benefits[i].images.map((image, j) => (

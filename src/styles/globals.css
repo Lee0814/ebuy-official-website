@@ -23,10 +23,14 @@
 }
 
 .ebuy-container {
-  @apply mx-auto w-full max-w-[1264px] px-[32px] grid gap-[10px];
+  @apply mx-auto w-full max-w-[1744px] px-[32px] grid gap-[10px];
   grid-template-columns: repeat(24, minmax(0, 1fr))
 }
 
+.ebuy-container-no-px{
+   @apply mx-auto w-full max-w-[1264px]  grid gap-[10px] 3xl:max-w-[1600px];
+  grid-template-columns: repeat(24, minmax(0, 1fr))
+}
 
 .ebuy-container-no-grid {
   @apply mx-auto w-full max-w-[1264px] px-[32px];

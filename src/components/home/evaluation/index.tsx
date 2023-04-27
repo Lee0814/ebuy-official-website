@@ -78,7 +78,7 @@ export const Evaluation = memo(() => {
         {/* 卡片 */}
         <div
           className={classNames(
-            " col-start-1 col-end-25  pr-[20px] md:col-end-12"
+            " col-start-1 col-end-25  mb-[52px] pr-[20px] md:col-end-12"
           )}
         >
           <ECard eva={evaluations[0]} />

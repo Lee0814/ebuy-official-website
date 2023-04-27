@@ -29,7 +29,7 @@ export const useResponsive = () => {
   return useMemo(() => {
     return {
       sm: windowSize && windowSize?.width < 640.1,
-      md: windowSize && windowSize?.width < 750.1,
+      md: windowSize && windowSize?.width < 768.1,
       lg: windowSize && windowSize?.width < 1280.1,
       xl: windowSize && windowSize?.width < 1440.1,
       xxl: windowSize && windowSize?.width < 1536.1,

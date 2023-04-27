@@ -90,24 +90,24 @@ export const Footer = memo(() => {
   return (
     <footer className={classNames("bg-white")}>
       {/* start 表单 */}
-      <div className={classNames("ebuy-container-no-grid mb-[40px] pt-[60px]")}>
+      <div className={classNames("ebuy-container mb-[40px] pt-[60px]")}>
         <div
           className={classNames(
-            "mb-[10px] text-[50px] font-bold leading-[75px] text-[#333333]"
+            "col-start-1 col-end-25 mb-[10px] text-[50px] font-bold leading-[75px] text-[#333333]"
           )}
         >
           {t("contact")}
         </div>
         <div
           className={classNames(
-            "mb-[56px] text-[28px] font-[500] leading-[44px]"
+            "col-start-1 col-end-25 mb-[56px] text-[28px] font-[500] leading-[44px]"
           )}
         >
           {t("detail")}
         </div>
         <div
           className={classNames(
-            "space-y-[32px]  text-[24px] font-[400] leading-[36px] text-[#333333]"
+            "col-start-1 col-end-25 space-y-[32px]  text-[24px] font-[400] leading-[36px] text-[#333333]"
           )}
         >
           <div
@@ -212,7 +212,9 @@ export const Footer = memo(() => {
           </div>
         </div>
         <div
-          className={classNames("mt-[48px] flex items-center justify-center")}
+          className={classNames(
+            "col-start-1 col-end-25 mt-[48px] flex items-center justify-center"
+          )}
         >
           <button
             onClick={submitForm}
