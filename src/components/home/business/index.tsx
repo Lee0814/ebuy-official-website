@@ -64,7 +64,7 @@ const Business = () => {
           <div
             key={`business-title-${index}`}
             className={classNames(
-              "flex flex-col rounded-[16px] px-[24px] py-[30px] lg:-ml-[60px]",
+              "flex flex-col rounded-[16px] px-[24px] py-[30px] lg:-ml-[14px]",
               {
                 ["bg-[#1D1F21] md:bg-[#3D3D3D]"]: currentIndex === index,
               }
