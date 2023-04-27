@@ -104,7 +104,7 @@ export const Header = memo(() => {
         {/* 右侧导航 */}
         <div
           className={classNames(
-            "col-start-6 col-end-25 flex flex-row-reverse items-center justify-start gap-[21px] md:gap-[20px] lg:flex-row lg:justify-end lg:gap-[52px]"
+            " col-start-6 col-end-25 flex flex-row-reverse items-center justify-start gap-[21px] md:gap-[0px] lg:flex-col-reverse lg:items-end lg:justify-end "
           )}
         >
           <div className={classNames("relative")}>
@@ -151,48 +151,49 @@ export const Header = memo(() => {
               </li>
             </ul>
           </div>
-          <button
-            className={classNames(
-              "rounded-[4px] bg-[#ED3838] px-[15px] py-[9px] text-[16px] font-[500] leading-[24px]"
-            )}
-            onClick={() => router.push(router.asPath + "#message")}
-          >
-            {t("contact")}
-          </button>
-          <div className={classNames("relative")}>
-            <button
-              ref={changeLangButtonRef}
-              onClick={() => setShowChangeLang(!showChangeLang)}
-              className={classNames(
-                "rounded-[4px] border-[1px] border-white p-[8px] text-[16px] font-[500] leading-[24px]"
-              )}
-            >
-              {capitalizeTheFirstLetter(lang)}
-            </button>
+          {/* 联系我们 */}
+          <div className={classNames("flex")}>
             <div
-              ref={changeLangRef}
-              className={classNames(
-                "absolute right-0 z-50 flex w-[80px] flex-col border-[0.5px]",
-                {
-                  ["invisible"]: !showChangeLang,
-                  ["bg-white"]: lg,
-                }
-              )}
+              className={classNames(" px-[15px]  text-[16px] font-[500] ")}
+              onClick={() => router.push(router.asPath + "#message")}
             >
-              {locales.map((locale) => (
-                <button
-                  key={locale}
-                  className={classNames(
-                    "w-full rounded-[4px] p-[8px] text-[16px] font-[500] leading-[24px]"
-                  )}
-                  onClick={() => {
-                    changeLang(locale);
-                    setShowChangeLang(false);
-                  }}
-                >
-                  {capitalizeTheFirstLetter(locale)}
-                </button>
-              ))}
+              {t("contact")}
+            </div>
+            <div>|</div>
+            {/* 语言切换dom */}
+            <div className={classNames("relative")}>
+              <div
+                ref={changeLangButtonRef}
+                onClick={() => setShowChangeLang(!showChangeLang)}
+                className={classNames(" px-[15px] text-[16px] font-[500] ")}
+              >
+                {capitalizeTheFirstLetter(lang) === "En" ? "简体" : "En"}
+              </div>
+              <div
+                ref={changeLangRef}
+                className={classNames(
+                  "absolute right-0 z-50 flex w-[80px] flex-col border-[0.5px]",
+                  {
+                    ["invisible"]: !showChangeLang,
+                    ["bg-white"]: lg,
+                  }
+                )}
+              >
+                {locales.map((locale) => (
+                  <button
+                    key={locale}
+                    className={classNames(
+                      "w-full rounded-[4px] p-[8px] text-[16px] font-[500] leading-[24px]"
+                    )}
+                    onClick={() => {
+                      changeLang(locale);
+                      setShowChangeLang(false);
+                    }}
+                  >
+                    {capitalizeTheFirstLetter(locale)}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
         </div>
