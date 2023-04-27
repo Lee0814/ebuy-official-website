@@ -3,15 +3,17 @@ import Image from "next/image";
 import { memo, useRef, useState } from "react";
 import mapCn from "./images/map-china.png";
 import location from "./images/map-location.png";
+import mapMs from "./images/map-ms.png";
+import mapSgp from "./images/map-sgp.png";
 
 import { useI18n } from "@/hooks";
 
 const countries = [
   {
-    mapBg: mapCn,
+    mapBg: mapSgp,
   },
   {
-    mapBg: mapCn,
+    mapBg: mapMs,
   },
   {
     mapBg: mapCn,
@@ -61,15 +63,14 @@ export const Location = memo(() => {
             " px-[32px] pb-[12px] text-[44px] font-bold text-[#000] md:text-center md:text-[50px]"
           )}
         >
-          Where We Are
+          {t("location-1-title")}
         </div>
         <div
           className={classNames(
             " box-border text-[28px] font-bold leading-[40px] text-[#333] md:text-center md:leading-[44px]"
           )}
         >
-          Ebuy mainly provides online-to-offline services in Singapore and
-          Malaysia, We also have an office in China.
+          {t("location-1-description")}
         </div>
       </div>
       <div
@@ -137,7 +138,7 @@ export const Location = memo(() => {
           />
           <Image
             className={classNames("h-full w-full")}
-            src={countries[0].mapBg}
+            src={countries[currentIndex].mapBg}
             alt=""
           />
         </div>

@@ -53,7 +53,7 @@ const Business = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const desktop = (
-    <div className="ebuy-container-no-px">
+    <div className="ebuy-container !px-[unset]">
       <div
         className={classNames(
           "col-start-1 col-end-25 hidden w-full flex-col gap-[57px] overflow-hidden md:mx-auto md:flex  md:flex-row md:gap-[20px] md:overflow-visible md:px-[32px] xl:gap-[43px]"

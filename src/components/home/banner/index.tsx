@@ -30,7 +30,7 @@ export const Banner = memo(() => {
       >
         <span
           className={classNames(
-            "whitespace-pre-wrap text-center text-[44px] font-[600] leading-[62px]   first-letter:mb-[9px] md:border-b-[2px] md:border-solid md:border-white md:px-[24px] md:pb-1 md:text-[50px] md:leading-[70px]"
+            "whitespace-pre-wrap text-center text-[44px] font-[600] leading-[62px]   first-letter:mb-[9px] md:border-b-[2px] md:border-solid md:border-white md:px-[24px] md:pb-3 md:text-[50px] md:leading-[70px]"
           )}
         >
           {t("slogan-1")}

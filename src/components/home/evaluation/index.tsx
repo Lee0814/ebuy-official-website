@@ -1,9 +1,10 @@
 import classNames from "classnames";
 import { memo, useEffect, useRef } from "react";
 import { ECard } from "./evaluatCard";
+import { useI18n } from "@/hooks";
 export const Evaluation = memo(() => {
   const dom = useRef<HTMLDivElement>(null);
-
+  const t = useI18n("home");
   useEffect(() => {});
   const evaluations = [
     {
@@ -58,7 +59,7 @@ export const Evaluation = memo(() => {
             "col-start-1 col-end-24 pb-[100px]  text-center text-[50px] font-bold leading-[60px] text-black"
           )}
         >
-          Customer Evaluation
+          {t("evaluation-title")}
         </div>
         {/* 评价 */}
         {/* <div className={classNames("ebuy-container  col-start-1 col-end-24")}>

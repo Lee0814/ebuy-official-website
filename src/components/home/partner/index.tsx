@@ -44,6 +44,7 @@ import logo55 from "./images/logo-5-5.png";
 import logo56 from "./images/logo-5-6.png";
 import logo57 from "./images/logo-5-7.png";
 
+import { useI18n } from "@/hooks";
 import styles from "./styles.module.scss";
 
 const logos = [
@@ -64,7 +65,7 @@ const logos = [
 export const Partner = memo(() => {
   // 滚动的偏移量
   const [offset, setOffset] = useState(0);
-
+  const t = useI18n("home");
   // 所有的列
   const [cols, setCols] = useState(
     logos.map((_logos, i) => (
@@ -131,14 +132,12 @@ export const Partner = memo(() => {
       <div className={classNames("ebuy-container text-center font-bold")}>
         <div className="col-start-1 col-end-25">
           <span
-            className={classNames(
-              " text-[44px]  text-[#333333] md:text-[64px]"
-            )}
+            className={classNames(" text-[44px]  text-[#000] md:text-[64px]")}
           >
-            EBUY
+            {t("partner-1-title")}
           </span>
           <span className={classNames(" text-[30px] md:text-[50px]")}>
-            Grows with You
+            {t("partner-2-title")}
           </span>
         </div>
         <div
@@ -146,14 +145,11 @@ export const Partner = memo(() => {
             "col-start-1  col-end-25 text-center text-[20px] leading-[44px] md:text-[28px]"
           )}
         >
-          As a trusted partner, we serve more than 1000 F&B businesses such as
-          Haidilao Hot Pot, Putien, Wen Jia Bao and A Kitchen. Since the release
-          of{" "}
+          {t("partner-1-description")}{" "}
           <span className={classNames("rounded-[8px] bg-[#FFD4D4] px-4 py-1")}>
-            EBuy 易购生鲜 APP
+            {t("partner-2-description")}
           </span>
-          , EBUY has been striving to improve the customer experience and your
-          business efficiency.
+          {t("partner-3-description")}
         </div>
         <div
           className={classNames(
