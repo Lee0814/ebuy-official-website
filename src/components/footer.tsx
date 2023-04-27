@@ -82,7 +82,7 @@ export const Footer = memo(() => {
   };
 
   return (
-    <footer className={classNames("bg-white")}>
+    <footer className={classNames("bg-white")} id="message">
       {/* start 表单 */}
       <div className={classNames("ebuy-container mb-[40px] pt-[60px]")}>
         <div

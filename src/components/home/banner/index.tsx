@@ -2,11 +2,14 @@ import { useI18n, useWindowSize } from "@/hooks";
 import classNames from "classnames";
 import { memo, useMemo } from "react";
 
+import { useRouter } from "next/router";
 import styles from "./styles.module.scss";
 
 const ratio = 8 / 5;
 export const Banner = memo(() => {
   const t = useI18n("home");
+
+  const router = useRouter();
 
   // 处理banner高度
   const windowSize = useWindowSize();
@@ -46,6 +49,7 @@ export const Banner = memo(() => {
           className={classNames(
             "rounded-[8px] border-[1px] border-solid border-white px-[20px] py-[8px] text-[28px] font-[400] leading-[40px] md:px-[48px] md:py-[18px] md:text-[32px] md:font-bold md:leading-[48px]"
           )}
+          onClick={() => router.push(router.asPath + "#message")}
         >
           {t("be-our-customer")}
         </button>

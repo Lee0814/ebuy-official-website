@@ -155,6 +155,7 @@ export const Header = memo(() => {
             className={classNames(
               "rounded-[4px] bg-[#ED3838] px-[15px] py-[9px] text-[16px] font-[500] leading-[24px]"
             )}
+            onClick={() => router.push(router.asPath + "#message")}
           >
             {t("contact")}
           </button>
