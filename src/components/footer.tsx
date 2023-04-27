@@ -4,12 +4,20 @@ import axios from "axios";
 import classNames from "classnames";
 import Image from "next/image";
 import { memo, useState } from "react";
-import { PhoneInput, usePhoneValidation } from "react-international-phone";
+import {
+  CountryIso2,
+  CountrySelector,
+  usePhoneValidation,
+} from "react-international-phone";
+
 import "react-international-phone/style.css";
 import header from "./header.module.scss";
+
 export const Footer = memo(() => {
   const t = useI18n("footer");
+
   const [isError, setError] = useState(false);
+  const [country, setCountry] = useState<CountryIso2>("cn");
   const [formValue, setFormValue] = useState({
     userName: "",
     firstName: "",
@@ -19,13 +27,9 @@ export const Footer = memo(() => {
     email: "",
     help: "",
   });
-  const phoneValidation = usePhoneValidation(formValue.phone);
-  const send = () => {
-    //有值
-    console.log(formValue.mobilePhone);
-    console.log(formValue.phone);
-    console.log(formValue.phone);
 
+  const phoneValidation = usePhoneValidation(formValue.phone);
+  const submitForm = () => {
     if (formValue.mobilePhone || formValue.phone.split(" ").length > 2) {
       setError(true);
       axios
@@ -49,7 +53,6 @@ export const Footer = memo(() => {
     } else {
       setError(true);
     }
-    console.log(formValue);
   };
 
   return (
@@ -125,32 +128,24 @@ export const Footer = memo(() => {
             >
               {t("telephone")}
             </span>
-            <div className={classNames("hidden w-full md:block")}>
-              <PhoneInput
-                className={classNames({
-                  [header.container]: false,
-                  [header.errorForm]: isError,
-                })}
-                inputClassName={classNames(` w-full `)}
-                defaultCountry="cn"
-                value={formValue.phone}
-                onChange={(e) => setFormValue({ ...formValue, phone: e })}
+            <div className={classNames("flex")}>
+              <CountrySelector
+                selectedCountry={country}
+                onSelect={({ iso2 }) => setCountry(iso2)}
+              />
+              <input
+                className={classNames(
+                  "h-[56px] w-full rounded-[4px] px-8",
+                  header.defaultInput
+                )}
+                value={formValue.mobilePhone}
+                onChange={(e) =>
+                  setFormValue({ ...formValue, mobilePhone: e.target.value })
+                }
+                type="text"
               />
             </div>
-            {/* 移动端号码输入框 */}
-            <input
-              className={classNames(
-                "block h-[56px] w-full rounded-[4px] px-8 md:hidden",
-                header.defaultInput
-              )}
-              value={formValue.mobilePhone}
-              onChange={(e) =>
-                setFormValue({ ...formValue, mobilePhone: e.target.value })
-              }
-              type="text"
-            />
           </div>
-
           <div className={classNames("flex flex-col space-y-[16px]")}>
             <span>{t("email")}</span>
             <input
@@ -183,7 +178,7 @@ export const Footer = memo(() => {
           className={classNames("mt-[48px] flex items-center justify-center")}
         >
           <button
-            onClick={send}
+            onClick={submitForm}
             className={classNames(
               "bg-[#ED3838] px-[78px] py-[19px] text-[24px] leading-[36px] text-white hover:bg-[#b92b2b]"
             )}
