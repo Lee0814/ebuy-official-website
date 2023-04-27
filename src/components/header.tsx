@@ -167,7 +167,7 @@ export const Header = memo(() => {
                 onClick={() => setShowChangeLang(!showChangeLang)}
                 className={classNames(" px-[15px] text-[16px] font-[500] ")}
               >
-                {capitalizeTheFirstLetter(lang) === "En" ? "简体" : "En"}
+                {capitalizeTheFirstLetter(lang) === "Zh-Cc" ? "En" : "简体"}
               </div>
               <div
                 ref={changeLangRef}
