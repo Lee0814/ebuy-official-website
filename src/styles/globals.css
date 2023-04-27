@@ -27,6 +27,12 @@
   grid-template-columns: repeat(24, minmax(0, 1fr))
 }
 
+
+.ebuy-container-no-grid {
+  @apply mx-auto w-full max-w-[1264px] px-[32px];
+}
+
+
 html, body{
   @apply w-full h-full;
 }

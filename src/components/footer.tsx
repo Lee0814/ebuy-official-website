@@ -55,7 +55,7 @@ export const Footer = memo(() => {
   return (
     <footer className={classNames("bg-white")}>
       {/* start 表单 */}
-      <div className={classNames("ebuy-container mb-[40px] pt-[60px]")}>
+      <div className={classNames("ebuy-container-no-grid mb-[40px] pt-[60px]")}>
         <div
           className={classNames(
             "mb-[10px] text-[50px] font-bold leading-[75px] text-[#333333]"
@@ -197,11 +197,11 @@ export const Footer = memo(() => {
       <div className={classNames("bg-[#1d1f21]")}>
         <div
           className={classNames(
-            "ebuy-container flex flex-col justify-between pb-[34px] pt-[72px] text-[28px]  leading-[20px] text-[#acacac] text-[400] md:flex-row md:text-[14px]"
+            "ebuy-container !flex flex-col justify-between pb-[34px] pt-[72px] text-[28px]  leading-[20px] text-[#acacac] text-[400] md:flex-row md:text-[14px]"
           )}
         >
           {/* 食材供应 */}
-          <div>
+          <div className={classNames(`col-start-1 col-end-6`)}>
             {/* 标题 */}
             <div
               className={classNames(
@@ -254,7 +254,9 @@ export const Footer = memo(() => {
             </li>
           </div>
           {/* 第二个 */}
-          <div className={classNames("mt-[72px] md:mt-0")}>
+          <div
+            className={classNames("col-start-8 col-end-13 mt-[72px] md:mt-0")}
+          >
             <div
               className={classNames(
                 "mb-5 text-[32px] leading-[100%] text-[600] text-white md:mb-[25px] md:text-[20px] md:leading-[28px]"
@@ -278,7 +280,11 @@ export const Footer = memo(() => {
             </ul>
           </div>
           {/* 第三个 */}
-          <div className={classNames("mt-[50px] leading-[100%] md:mt-0 ")}>
+          <div
+            className={classNames(
+              "col-start-15 col-end-21 mt-[50px] leading-[100%] md:mt-0"
+            )}
+          >
             <ul className={classNames("space-y-[12px]")}>
               <li
                 className={classNames(
@@ -318,7 +324,7 @@ export const Footer = memo(() => {
             </ul>
           </div>
           {/* 第四个 */}
-          <div className={classNames("mt-[72px] md:mt-0")}>
+          <div className={classNames("col-start-22  mt-[72px] md:mt-0")}>
             <ul>
               <li
                 className={classNames(

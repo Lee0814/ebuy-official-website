@@ -53,15 +53,15 @@ export const Evaluation = memo(() => {
         {/* 标题 */}
         <div
           className={classNames(
-            "pb-[100px]  text-center text-[50px] font-bold leading-[60px] text-black"
+            "col-start-1 col-end-24 pb-[100px]  text-center text-[50px] font-bold leading-[60px] text-black"
           )}
         >
           Customer Evaluation
         </div>
         {/* 评价 */}
-        <div className={classNames("ebuy-container ")}>
+        {/* <div className={classNames("ebuy-container  col-start-1 col-end-24")}>
           <div className={classNames("mr-[46px] flex justify-between")}>
-            {/* 卡片 */}
+
             <ECard eva={evaluations[0]} />
             <ECard eva={evaluations[1]} />
           </div>
@@ -71,6 +71,20 @@ export const Evaluation = memo(() => {
             <ECard eva={evaluations[2]} />
             <ECard eva={evaluations[3]} />
           </div>
+        </div> */}
+
+        {/* 卡片 */}
+        <div className={classNames(" col-start-1 col-end-12 px-[20px]")}>
+          <ECard eva={evaluations[0]} />
+        </div>
+        <div className={classNames(" col-start-12  col-end-23 pl-[46px]")}>
+          <ECard eva={evaluations[1]} />
+        </div>
+        <div className={classNames("col-start-2 col-end-13  px-[20px] ")}>
+          <ECard eva={evaluations[2]} />
+        </div>
+        <div className={classNames("  col-start-13 col-end-24 pl-[46px]")}>
+          <ECard eva={evaluations[3]} />
         </div>
       </div>
     </section>

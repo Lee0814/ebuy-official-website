@@ -130,16 +130,22 @@ export const Partner = memo(() => {
     <section className={classNames("bg-[#fbfbfb] pt-[72px]")}>
       <div className={classNames("ebuy-container text-center font-bold")}>
         <span
-          className={classNames("text-[44px] text-[#333333] md:text-[64px]")}
+          className={classNames(
+            "col-start-1 col-end-24 text-[44px]  text-[#333333] md:text-[64px]"
+          )}
         >
           EBUY
         </span>
-        <span className={classNames("text-[30px] md:text-[50px]")}>
+        <span
+          className={classNames(
+            "col-start-1  col-end-24 text-[30px] md:text-[50px]"
+          )}
+        >
           Grows with You
         </span>
         <div
           className={classNames(
-            "text-center text-[20px] leading-[44px] md:text-[28px]"
+            "col-start-1  col-end-24 text-center text-[20px] leading-[44px] md:text-[28px]"
           )}
         >
           As a trusted partner, we serve more than 1000 F&B businesses such as
@@ -151,12 +157,16 @@ export const Partner = memo(() => {
           , EBUY has been striving to improve the customer experience and your
           business efficiency.
         </div>
-        <div className={classNames("relative flex flex-col py-[100px]")}>
+        <div
+          className={classNames(
+            "relative  col-start-1 col-end-24 flex flex-col py-[100px]"
+          )}
+        >
           <div
             className={classNames(styles.mist, "left-0 bg-gradient-to-r")}
           ></div>
           {/* 视口 */}
-          <div className={classNames("w-full overflow-x-hidden")}>
+          <div className={classNames("w-full overflow-x-hidden ")}>
             {/* 滚动块 */}
             <div
               ref={partnerRef}
