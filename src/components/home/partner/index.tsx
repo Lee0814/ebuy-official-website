@@ -127,8 +127,10 @@ export const Partner = memo(() => {
   useEffect(() => stopAnimation, []);
 
   return (
-    <section className={classNames("bg-[#fbfbfb] pt-[72px]")}>
-      <div className={classNames("ebuy-container text-center font-bold")}>
+    <section className={classNames("bg-[#fff] pt-[72px]")}>
+      <div
+        className={classNames("ebuy-container-no-grid text-center font-bold")}
+      >
         <span
           className={classNames(
             "col-start-1 col-end-24 text-[44px]  text-[#333333] md:text-[64px]"

@@ -54,8 +54,8 @@ export const Location = memo(() => {
   };
 
   return (
-    <section className={classNames("bg-white] pb-[43px] pt-[72px]")}>
-      <div className={classNames("ebuy-container-no-grid")}>
+    <section className={classNames("ebuy-container bg-[white] py-[72px]")}>
+      <div className={classNames("col-start-1 col-end-25")}>
         <div
           className={classNames(
             " px-[32px] pb-[12px] text-[44px] font-bold text-[#000] md:text-center md:text-[50px]"
@@ -74,7 +74,7 @@ export const Location = memo(() => {
       </div>
       <div
         className={classNames(
-          " box-border flex justify-center space-x-[104.17px] pb-[48px] pt-[52px] text-[24px] md:text-[40px]"
+          "col-start-1 col-end-25 box-border flex justify-center space-x-[104.17px] pb-[48px] pt-[52px] text-[24px] md:text-[40px]"
         )}
       >
         {companyInfo.map((company, index) => (
@@ -104,10 +104,10 @@ export const Location = memo(() => {
         ))}
       </div>
       {/* 公司 + 地图 栅格布局 */}
-      <div ref={mapRef} className={classNames("ebuy-container flex")}>
+      <div ref={mapRef} className={classNames("col-start-1 col-end-25 flex")}>
         <div
           className={classNames(
-            "col-start-1 col-end-11 flex min-w-[280px] flex-1 flex-col items-center justify-center bg-[#f9f9f9] px-6 "
+            " flex min-w-[280px] flex-1 flex-col items-center justify-center bg-[#f9f9f9] px-6 "
           )}
         >
           <div
@@ -125,11 +125,7 @@ export const Location = memo(() => {
             {companyInfo[currentIndex].address}
           </div>
         </div>
-        <div
-          className={classNames(
-            "relative col-start-11 col-end-24 h-[450px] max-w-[680px]"
-          )}
-        >
+        <div className={classNames("relative  h-[450px] max-w-[680px]")}>
           <Image
             className={classNames(
               "absolute left-[50%] top-[50%] h-[48px] w-[48px] translate-x-[-50%] translate-y-[-19px]"

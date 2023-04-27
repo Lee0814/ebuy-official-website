@@ -55,7 +55,7 @@ const Business = () => {
   const desktop = (
     <div
       className={classNames(
-        "hidden w-full flex-col gap-[57px] overflow-hidden md:mx-auto md:flex md:max-w-[1288px] md:flex-row md:gap-[20px] md:overflow-visible md:px-[32px] xl:gap-[43px]"
+        "ebuy-container hidden w-full flex-col gap-[57px] overflow-hidden md:mx-auto md:flex md:max-w-[1288px] md:flex-row md:gap-[20px] md:overflow-visible md:px-[32px] xl:gap-[43px]"
       )}
     >
       {/* 选择 */}
@@ -226,18 +226,26 @@ const Business = () => {
   );
 
   return (
-    <section className={classNames("w-full")}>
-      <div className={classNames("min-h-[958px] pb-[100px] pt-[72px]")}>
-        {/* 标题 */}
+    <section className={classNames("w-full bg-[#fbfbfb]")}>
+      <div className={classNames("min-h-[968px] pb-[100px] pt-[72px]")}>
+        {/* 标题 容器*/}
         <div
           className={classNames(
-            "ebuy-container-no-grid pb-[52px] text-center md:text-left"
+            "ebuy-container  pb-[52px] text-center md:text-left"
           )}
         >
-          <div className={classNames("text-[50px] font-bold text-[#3A2D1B]")}>
+          <div
+            className={classNames(
+              "col-start-1 col-end-25 text-[50px] font-bold text-[#3A2D1B]"
+            )}
+          >
             {t("business-title")}
           </div>
-          <div className={classNames("pt-[32px] text-[28px]")}>
+          <div
+            className={classNames(
+              "col-start-1 col-end-25 pt-[32px] text-[28px]"
+            )}
+          >
             {t("business-description")}
           </div>
         </div>

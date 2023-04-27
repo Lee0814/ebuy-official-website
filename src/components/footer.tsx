@@ -1,5 +1,6 @@
 import officialAccount from "@/assets/images/official-account.jpg";
-import { useI18n } from "@/hooks";
+import { useI18n, useResponsive } from "@/hooks";
+import { useI18nContext } from "@/states";
 import axios from "axios";
 import classNames from "classnames";
 import Image from "next/image";
@@ -7,51 +8,82 @@ import { memo, useState } from "react";
 import {
   CountryIso2,
   CountrySelector,
-  usePhoneValidation,
+  defaultCountries,
 } from "react-international-phone";
-
 import "react-international-phone/style.css";
 import header from "./header.module.scss";
 
 export const Footer = memo(() => {
+  const lang = useI18nContext().lang;
   const t = useI18n("footer");
-
+  const { md } = useResponsive();
   const [isError, setError] = useState(false);
   const [country, setCountry] = useState<CountryIso2>("cn");
+  //选择国家的回调
+  const selectedCountry = (country: any) => {
+    const { iso2 } = country;
+    console.log(iso2);
+    setCountry(iso2);
+    let number = defaultCountries.find(
+      ([name, b, short, code]) => short === iso2
+    )![3];
+
+    console.log(formValue.phone.split(" ").length);
+
+    //已经填了电话号码
+    if (formValue.phone.split(" ").length >= 1) {
+      setFormValue({
+        ...formValue,
+        phone: "+" + number + " ",
+      });
+    } else if (formValue.phone.split(" ").length == 0) {
+      setFormValue({ ...formValue, phone: "+" + number + " " });
+    }
+  };
   const [formValue, setFormValue] = useState({
     userName: "",
     firstName: "",
     lastName: "",
-    phone: "",
+    phone: "+86 ",
     mobilePhone: "",
     email: "",
     help: "",
   });
 
-  const phoneValidation = usePhoneValidation(formValue.phone);
   const submitForm = () => {
-    if (formValue.mobilePhone || formValue.phone.split(" ").length > 2) {
+    if (!formValue.phone.length) {
       setError(true);
+    } else {
+      setError(false);
       axios
-        .get("")
-        .then(() => {
-          setFormValue({
-            userName: "",
-            firstName: "",
-            lastName: "",
-            phone: "",
-            mobilePhone: "",
-            email: "",
-            help: "",
-          });
-          alert("发送成功");
+        .post("http://192.168.6.38/core/api/manage/contactUs", {
+          fistName: formValue.firstName,
+          lastName: formValue.lastName,
+          phone: formValue.phone,
+          email: formValue.email,
+          lang: lang,
+          message: formValue.help,
+        })
+        .then((res) => {
+          console.log(res);
+          if (res.data.code == 200) {
+            setFormValue({
+              userName: "",
+              firstName: "",
+              lastName: "",
+              phone: "",
+              mobilePhone: "",
+              email: "",
+              help: "",
+            });
+            alert("发送成功");
+          } else {
+            alert(res.data.msg);
+          }
         })
         .catch(() => {
-          alert("失败");
+          alert("发送失败，请检查网络");
         });
-      setError(false);
-    } else {
-      setError(true);
     }
   };
 
@@ -83,6 +115,7 @@ export const Footer = memo(() => {
               "flex flex-col md:flex-row md:justify-between"
             )}
           >
+            {/* 姓 */}
             <div
               className={classNames("flex flex-col space-y-[16px] md:w-[45%]")}
             >
@@ -131,16 +164,20 @@ export const Footer = memo(() => {
             <div className={classNames("flex")}>
               <CountrySelector
                 selectedCountry={country}
-                onSelect={({ iso2 }) => setCountry(iso2)}
+                onSelect={selectedCountry}
+                className={classNames("hidden md:block")}
               />
               <input
                 className={classNames(
                   "h-[56px] w-full rounded-[4px] px-8",
+                  {
+                    [header.errorForm]: isError,
+                  },
                   header.defaultInput
                 )}
-                value={formValue.mobilePhone}
+                value={formValue.phone}
                 onChange={(e) =>
-                  setFormValue({ ...formValue, mobilePhone: e.target.value })
+                  setFormValue({ ...formValue, phone: e.target.value })
                 }
                 type="text"
               />

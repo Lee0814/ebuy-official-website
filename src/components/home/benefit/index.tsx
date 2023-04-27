@@ -75,12 +75,12 @@ export const Benefit = memo(() => {
     >
       <div
         className={classNames(
-          "ebuy-container-no-grid relative flex flex-col items-center justify-center"
+          "ebuy-container relative flex flex-col items-center justify-center"
         )}
       >
         <span
           className={classNames(
-            "mb-[48px] text-[28px] font-[400] leading-[40px] text-[#E79A44] md:text-[40px] md:font-[500] md:leading-[60px]"
+            "col-start-1 col-end-25 mb-[48px] text-center text-[28px] font-[400] leading-[40px] text-[#E79A44] md:text-[40px] md:font-[500] md:leading-[60px]"
           )}
         >
           {t("benefit-title")}
@@ -101,7 +101,7 @@ export const Benefit = memo(() => {
           </svg>
         </button>
         <Swiper
-          className={classNames("w-full max-w-[1054px]")}
+          className={classNames("col-start-2 col-end-24 w-full max-w-[1054px]")}
           modules={[Navigation, Pagination, Autoplay]}
           pagination={{ el: ".custom-pagination", clickable: true }}
           navigation={{

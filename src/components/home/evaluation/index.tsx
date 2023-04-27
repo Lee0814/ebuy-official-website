@@ -46,7 +46,9 @@ export const Evaluation = memo(() => {
   return (
     <section
       ref={dom}
-      className={classNames("w-full bg-[#fff] pb-[72px] pt-[100px]")}
+      className={classNames(
+        "w-full bg-[#fbfbfb] py-[45px] md:pb-[72px] md:pt-[72px]"
+      )}
     >
       {/* 主体 */}
       <div className={classNames("ebuy-container ")}>
@@ -74,16 +76,32 @@ export const Evaluation = memo(() => {
         </div> */}
 
         {/* 卡片 */}
-        <div className={classNames(" col-start-1 col-end-12 px-[20px]")}>
+        <div
+          className={classNames(
+            " col-start-1 col-end-25  pr-[20px] md:col-end-12"
+          )}
+        >
           <ECard eva={evaluations[0]} />
         </div>
-        <div className={classNames(" col-start-12  col-end-23 pl-[46px]")}>
+        <div
+          className={classNames(
+            "col-start-1 col-end-25   md:col-start-12   md:col-end-24 md:pl-[46px]"
+          )}
+        >
           <ECard eva={evaluations[1]} />
         </div>
-        <div className={classNames("col-start-2 col-end-13  px-[20px] ")}>
+        <div
+          className={classNames(
+            "col-start-1 col-end-25 md:col-start-2 md:col-end-13  md:pr-[20px] "
+          )}
+        >
           <ECard eva={evaluations[2]} />
         </div>
-        <div className={classNames("  col-start-13 col-end-24 pl-[46px]")}>
+        <div
+          className={classNames(
+            "col-start-1 col-end-25   md:col-start-13 md:col-end-25 md:pl-[46px]"
+          )}
+        >
           <ECard eva={evaluations[3]} />
         </div>
       </div>
