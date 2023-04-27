@@ -1,6 +1,6 @@
 import { useI18n } from "@/hooks";
 import { useHeaderContext } from "@/states";
-import { useScroll } from "ahooks";
+import { useScroll, useSize } from "ahooks";
 import classNames from "classnames";
 import Image from "next/image";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -65,6 +65,10 @@ export const Benefit = memo(() => {
     setHeaderType(showReadableHeader ? "frosted-glass" : "transparent");
   }, [showReadableHeader]);
 
+  // 同步按钮位置
+  const imageRef = useRef(null);
+  const imageSize = useSize(imageRef);
+
   return (
     <section
       ref={benefitRef}
@@ -87,8 +91,14 @@ export const Benefit = memo(() => {
         </span>
         <button
           className={classNames(
-            "left-arrow absolute bottom-[121px] left-0 mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:flex"
+            "left-arrow left-32px absolute mt-[30px] hidden h-[77px] z-[30] w-[48px] items-center justify-center rounded-[12px] bg-white md:left-[120px] md:flex",
+            {
+              "!hidden": imageSize === undefined,
+            }
           )}
+          style={{
+            bottom: (imageSize?.height || 0) / 2 + 15,
+          }}
         >
           <svg
             fill="#ed3838"
@@ -101,7 +111,7 @@ export const Benefit = memo(() => {
           </svg>
         </button>
         <Swiper
-          className={classNames("col-start-2 col-end-24 flex w-full ")}
+          className={classNames("col-start-1 col-end-25 w-full")}
           modules={[Navigation, Pagination, Autoplay]}
           pagination={{ el: ".custom-pagination", clickable: true }}
           navigation={{
@@ -117,7 +127,7 @@ export const Benefit = memo(() => {
         >
           {benefits.map((_, i) => (
             <SwiperSlide key={`benefit-${i + 1}`}>
-              <div className={classNames("flex  flex-col items-center")}>
+              <div className={classNames("flex flex-col items-center")}>
                 <span
                   className={classNames(
                     "mb-[24px] text-[44px] font-[600] leading-[62px] text-[#333333] md:text-[50px] md:font-bold md:leading-[75px]"
@@ -133,13 +143,15 @@ export const Benefit = memo(() => {
                   {benefits[currentBenefitIndex].description}
                 </span>
                 <div
-                  className={classNames(
-                    "flex max-h-[300px] w-full   justify-between"
-                  )}
+                  ref={imageRef}
+                  className={classNames("flex w-full gap-[61px] px-[101px]")}
                 >
                   {benefits[i].images.map((image, j) => (
                     <Image
-                      className={classNames("aspect-square max-w-[300px]")}
+                      className={classNames("aspect-square")}
+                      style={{
+                        width: "calc(calc(100% - 122px) / 3)",
+                      }}
                       key={`benefit-${i + 1}-${j + 1}`}
                       alt={`benefit-${i + 1}-${j + 1}`}
                       src={image}
@@ -157,8 +169,14 @@ export const Benefit = memo(() => {
         </Swiper>
         <button
           className={classNames(
-            "right-arrow absolute bottom-[121px] right-0 mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:flex"
+            "right-arrow right-32px absolute bottom-[121px] z-[30] mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:right-[120px] md:flex",
+            {
+              "!hidden": imageSize === undefined,
+            }
           )}
+          style={{
+            bottom: (imageSize?.height || 0) / 2 + 15,
+          }}
         >
           <svg
             fill="#ed3838"

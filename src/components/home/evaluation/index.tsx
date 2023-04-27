@@ -1,7 +1,7 @@
+import { useI18n } from "@/hooks";
 import classNames from "classnames";
 import { memo, useEffect, useRef } from "react";
 import { ECard } from "./evaluatCard";
-import { useI18n } from "@/hooks";
 export const Evaluation = memo(() => {
   const dom = useRef<HTMLDivElement>(null);
   const t = useI18n("home");
@@ -56,13 +56,13 @@ export const Evaluation = memo(() => {
         {/* 标题 */}
         <div
           className={classNames(
-            "col-start-1 col-end-24 pb-[100px]  text-center text-[50px] font-bold leading-[60px] text-black"
+            "col-start-1 col-end-25 pb-[100px]  text-center text-[50px] font-bold leading-[60px] text-black"
           )}
         >
           {t("evaluation-title")}
         </div>
         {/* 评价 */}
-        {/* <div className={classNames("ebuy-container  col-start-1 col-end-24")}>
+        {/* <div className={classNames("ebuy-container  col-start-1 col-end-25")}>
           <div className={classNames("mr-[46px] flex justify-between")}>
 
             <ECard eva={evaluations[0]} />
@@ -79,28 +79,28 @@ export const Evaluation = memo(() => {
         {/* 卡片 */}
         <div
           className={classNames(
-            " col-start-1 col-end-25  mb-[52px] pr-[20px] md:col-end-12"
+            "col-start-1 col-end-25 mb-[52px] pr-[20px] md:col-end-12"
           )}
         >
           <ECard eva={evaluations[0]} />
         </div>
         <div
           className={classNames(
-            "col-start-1 col-end-25   md:col-start-12   md:col-end-24 md:pl-[46px]"
+            "col-start-1 col-end-25 md:col-start-12 md:col-end-25 md:pl-[46px]"
           )}
         >
           <ECard eva={evaluations[1]} />
         </div>
         <div
           className={classNames(
-            "col-start-1 col-end-25 md:col-start-2 md:col-end-13  md:pr-[20px] "
+            "col-start-1 col-end-25 md:col-start-2 md:col-end-13 md:pr-[20px] "
           )}
         >
           <ECard eva={evaluations[2]} />
         </div>
         <div
           className={classNames(
-            "col-start-1 col-end-25   md:col-start-13 md:col-end-25 md:pl-[46px]"
+            "col-start-1 col-end-25 md:col-start-13 md:col-end-25 md:pl-[46px]"
           )}
         >
           <ECard eva={evaluations[3]} />

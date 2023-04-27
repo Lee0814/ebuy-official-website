@@ -53,19 +53,21 @@ const Business = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const desktop = (
-    <div className="ebuy-container !px-[unset]">
+    <div className="ebuy-container">
       <div
         className={classNames(
-          "col-start-1 col-end-25 hidden w-full flex-col gap-[57px] overflow-hidden md:mx-auto md:flex  md:flex-row md:gap-[20px] md:overflow-visible md:px-[32px] xl:gap-[43px]"
+          "col-start-1 col-end-25 hidden w-full grid-cols-24 md:grid"
         )}
       >
         {/* 选择 */}
-        <div className={classNames("flex flex-1 flex-col")}>
+        <div
+          className={classNames("col-start-1 col-end-13 lg:col-end-18 flex flex-1 flex-col")}
+        >
           {businesses.map((business, index) => (
             <div
               key={`business-title-${index}`}
               className={classNames(
-                "flex flex-col rounded-[16px] px-[24px] py-[30px] lg:-ml-[30px]",
+                "flex flex-col rounded-[16px] px-[24px] py-[30px] md:-ml-[24px]",
                 {
                   ["bg-[#1D1F21] md:bg-[#3D3D3D]"]: currentIndex === index,
                 }
@@ -107,7 +109,7 @@ const Business = () => {
               </div>
               <div
                 className={classNames(
-                  "ml-[46px] text-[24px] leading-[29px] text-[#BDBDBD]",
+                  "ml-[46px] pt-[24px] text-[24px] leading-[29px] text-[#BDBDBD]",
                   {
                     ["hidden"]: currentIndex !== index,
                   }
@@ -119,7 +121,7 @@ const Business = () => {
           ))}
         </div>
         {/* 图片 */}
-        <div className={classNames("flex items-start")}>
+        <div className={classNames("flex items-start col-start-14 lg:col-start-19 col-end-25")}>
           {businesses.map((business, index) => (
             <div key={`business-${index + 1}`}>
               <Image
@@ -258,3 +260,4 @@ const Business = () => {
 };
 
 export { Business };
+
