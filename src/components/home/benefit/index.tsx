@@ -1,4 +1,4 @@
-import { useI18n } from "@/hooks";
+import { useI18n, useInView } from "@/hooks";
 import { useHeaderContext } from "@/states";
 import { useScroll, useSize } from "ahooks";
 import classNames from "classnames";
@@ -69,6 +69,10 @@ export const Benefit = memo(() => {
   const imageRef = useRef(null);
   const imageSize = useSize(imageRef);
 
+  const [titleRef, titleInView] = useInView();
+
+  console.log("title", titleInView);
+
   return (
     <section
       ref={benefitRef}
@@ -83,8 +87,13 @@ export const Benefit = memo(() => {
         )}
       >
         <span
+          ref={titleRef}
           className={classNames(
-            "col-start-1 col-end-25 mb-[48px] text-center text-[28px] font-[400] leading-[40px] text-[#E79A44] md:text-[40px] md:font-[500] md:leading-[60px]"
+            "animate__animated col-start-1 col-end-25 mb-[48px] text-center text-[28px] font-[400] leading-[40px] text-[#E79A44] md:text-[40px] md:font-[500] md:leading-[60px]",
+            {
+              animate__fadeInUp: titleInView,
+              animate__fadeOutDown: !titleInView,
+            }
           )}
         >
           {t("benefit-title")}
