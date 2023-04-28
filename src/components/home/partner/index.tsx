@@ -1,9 +1,9 @@
+import { useInView } from "@/hooks";
 import { rAFWithControl } from "@/utils";
 import { useInViewport } from "ahooks";
 import classNames from "classnames";
 import Image from "next/image";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
-
 import logo11 from "./images/logo-1-1.png";
 import logo12 from "./images/logo-1-2.png";
 import logo13 from "./images/logo-1-3.png";
@@ -63,6 +63,8 @@ const logos = [
 ];
 
 export const Partner = memo(() => {
+  const [partnerRef1, titleInView1] = useInView({ triggerOnce: true });
+  const [partnerRef2, titleInView2] = useInView({ triggerOnce: true });
   // 滚动的偏移量
   const [offset, setOffset] = useState(0);
   const t = useI18n("home");
@@ -138,8 +140,9 @@ export const Partner = memo(() => {
           {t("partner-title")}
         </div>
         <div
+          ref={partnerRef2}
           className={classNames(
-            "col-start-1 col-end-25 text-center text-[22px] font-[400] leading-[32px] md:col-start-6 md:col-end-20 w-full"
+            "col-start-1 col-end-25 w-full text-center text-[22px] font-[400] leading-[32px] md:col-start-6 md:col-end-20"
           )}
         >
           {t("partner-description")}
