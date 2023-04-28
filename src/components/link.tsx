@@ -2,16 +2,15 @@ import { useI18nContext } from "@/states";
 import { locales } from "@/utils";
 import NextLink, { LinkProps } from "next/link";
 import { useRouter } from "next/router";
-import { PropsWithChildren, Ref, memo } from "react";
+import { PropsWithChildren, Ref, forwardRef, memo } from "react";
 
-export const Link = memo(
+export const Link = memo(forwardRef(
   (
     props: PropsWithChildren<
       LinkProps & {
-        ref?: Ref<HTMLAnchorElement>;
         className?: string;
       }
-    >
+    >, ref
   ) => {
     const router = useRouter();
     const { lang } = useI18nContext();
@@ -20,7 +19,7 @@ export const Link = memo(
     return (
       <NextLink
         {...props}
-        ref={props.ref}
+        ref={ref as any}
         className={props.className}
         href={needAddLang ? `/${lang}${props.href}` : props.href}
       >
@@ -28,4 +27,4 @@ export const Link = memo(
       </NextLink>
     );
   }
-);
+))
