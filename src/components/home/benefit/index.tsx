@@ -89,7 +89,7 @@ export const Benefit = memo(() => {
         <span
           ref={titleRef}
           className={classNames(
-            " col-start-1 col-end-25 mb-[48px] text-center text-[28px] font-[400] leading-[40px] text-[#E79A44] md:text-[40px] md:font-[500] md:leading-[60px]",
+            " col-start-1 col-end-25 mb-[72px] text-center text-[28px] font-[400] leading-[40px] text-[#E79A44] md:text-[26px] md:font-[500] md:leading-[31px]",
             {
               benifit1: titleInView,
             }
@@ -141,14 +141,14 @@ export const Benefit = memo(() => {
               <div className={classNames("flex flex-col items-center")}>
                 <span
                   className={classNames(
-                    "mb-[24px] text-[44px] font-[600] leading-[62px] text-[#333333] md:text-[50px] md:font-bold md:leading-[75px]"
+                    "mb-[24px] text-[44px] font-[600] leading-[62px] text-[#333333] md:text-[42px] md:font-bold md:leading-[51px]"
                   )}
                 >
                   {benefits[currentBenefitIndex].title}
                 </span>
                 <span
                   className={classNames(
-                    "mb-[45px] h-[68px] text-center text-[28px] font-[400] leading-[40px] text-[#333333] md:font-[500] md:leading-[42px]"
+                    "mb-[12px] h-[68px] text-center text-[26px] font-[400] leading-[40px] text-[#333333] md:font-[500] md:leading-[31px]"
                   )}
                 >
                   {benefits[currentBenefitIndex].description}

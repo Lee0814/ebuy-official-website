@@ -248,7 +248,7 @@ const Business = () => {
 
   return (
     <section className={classNames("w-full bg-[#fbfbfb]")}>
-      <div className={classNames("min-h-[968px] pb-[100px] pt-[72px]")}>
+      <div className={classNames("pt-[72px]")}>
         {/* 标题 容器*/}
         <div
           ref={titleRef}
