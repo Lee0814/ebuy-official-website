@@ -2,10 +2,9 @@
 
 import { useHeaderContext, useI18nContext } from "@/states";
 
-import { Lang, locales } from "@/utils";
+import { locales } from "@/utils";
 
 import { useClickAway, useScroll } from "ahooks";
-
 import classNames from "classnames";
 
 import Image from "next/image";
