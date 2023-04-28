@@ -6,6 +6,8 @@
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
 
+@import 'animate.css';
+
 .custom-pagination > .swiper-pagination-bullet {
   width: 12px;
   height: 12px;

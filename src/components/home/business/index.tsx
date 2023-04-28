@@ -1,4 +1,4 @@
-import { useI18n, useResponsive } from "@/hooks";
+import { useI18n, useInView, useResponsive } from "@/hooks";
 import classNames from "classnames";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
@@ -52,6 +52,8 @@ const Business = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const [titleRef, titleInView] = useInView();
+
   const desktop = (
     <div className="ebuy-container">
       <div
@@ -61,7 +63,9 @@ const Business = () => {
       >
         {/* 选择 */}
         <div
-          className={classNames("col-start-1 col-end-13 lg:col-end-18 flex flex-1 flex-col")}
+          className={classNames(
+            "col-start-1 col-end-13 flex flex-1 flex-col lg:col-end-18"
+          )}
         >
           {businesses.map((business, index) => (
             <div
@@ -121,7 +125,11 @@ const Business = () => {
           ))}
         </div>
         {/* 图片 */}
-        <div className={classNames("flex items-start col-start-14 lg:col-start-19 col-end-25")}>
+        <div
+          className={classNames(
+            "col-start-14 col-end-25 flex items-start lg:col-start-19"
+          )}
+        >
           {businesses.map((business, index) => (
             <div key={`business-${index + 1}`}>
               <Image
@@ -239,8 +247,12 @@ const Business = () => {
           )}
         >
           <div
+            ref={titleRef}
             className={classNames(
-              "col-start-1 col-end-25 text-[50px] font-bold text-[#3A2D1B]"
+              "col-start-1 col-end-25 text-[50px] font-bold text-[#3A2D1B]",
+              {
+                ["animate__animated animate__bounce"]: titleInView,
+              }
             )}
           >
             {t("business-title")}
@@ -260,4 +272,3 @@ const Business = () => {
 };
 
 export { Business };
-
