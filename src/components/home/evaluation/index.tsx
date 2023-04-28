@@ -5,7 +5,7 @@ import { ECard } from "./evaluatCard";
 export const Evaluation = memo(() => {
   const dom = useRef<HTMLDivElement>(null);
   const t = useI18n("home");
-  useEffect(() => {});
+  useEffect(() => { });
   const evaluations = [
     {
       name: "Hai Di Lao Dining Pte. Ltd",
@@ -48,18 +48,25 @@ export const Evaluation = memo(() => {
     <section
       ref={dom}
       className={classNames(
-        "w-full bg-[#fbfbfb] py-[45px] md:pb-[72px] md:pt-[72px]"
+        "w-full py-[45px] md:pb-[56px]"
       )}
     >
       {/* 主体 */}
-      <div className={classNames("ebuy-container ")}>
+      <div className={classNames("ebuy-container")}>
         {/* 标题 */}
         <div
           className={classNames(
-            "col-start-1 col-end-25 pb-[100px]  text-center text-[50px] font-bold leading-[60px] text-black"
+            "col-start-1 col-end-25 pb-[32px] text-center text-[42px] font-bold leading-[51px] text-black"
           )}
         >
           {t("evaluation-title")}
+        </div>
+        <div className={classNames(
+          "col-start-1 text-[22px] leading-[32px] font-[400] col-end-25 mb-[40px] text-center"
+        )}>
+          {t("evaluation-description-1")}
+          <span className="font-[600] mx-[0.5em]">{t("evaluation-description-2")}</span>
+          {t("evaluation-description-3")}
         </div>
         {/* 评价 */}
         {/* <div className={classNames("ebuy-container  col-start-1 col-end-25")}>

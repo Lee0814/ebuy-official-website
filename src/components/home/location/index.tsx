@@ -56,18 +56,18 @@ export const Location = memo(() => {
   };
 
   return (
-    <section className={classNames("ebuy-container bg-[white] py-[72px]")}>
+    <section className={classNames("ebuy-container bg-[#fbfbfb] py-[76px]")}>
       <div className={classNames("col-start-1 col-end-25")}>
         <div
           className={classNames(
-            " px-[32px] pb-[12px] text-[44px] font-bold text-[#000] md:text-center md:text-[50px]"
+            "px-[32px] pb-[32px] text-[42px] font-bold leading-[51px] text-[#000] md:text-center md:text-[50px]"
           )}
         >
           {t("location-1-title")}
         </div>
         <div
           className={classNames(
-            " box-border text-[28px] font-bold leading-[40px] text-[#333] md:text-center md:leading-[44px]"
+            "box-border text-[22px] font-[400] leading-[44px] text-[#333] md:text-center"
           )}
         >
           {t("location-1-description")}

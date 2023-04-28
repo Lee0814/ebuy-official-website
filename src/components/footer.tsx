@@ -84,20 +84,22 @@ export const Footer = memo(() => {
   return (
     <footer className={classNames("bg-white")} id="message">
       {/* start 表单 */}
-      <div className={classNames("ebuy-container mb-[40px] pt-[60px]")}>
+      <div className={classNames("ebuy-container mb-[40px] pt-[100px]")}>
         <div
           className={classNames(
-            "col-start-1 col-end-25 mb-[10px] text-[50px] font-bold leading-[75px] text-[#333333]"
+            "col-start-1 col-end-25 mb-[31px] text-[42px] font-bold leading-[51px] text-[#333333]"
           )}
         >
           {t("contact")}
         </div>
         <div
           className={classNames(
-            "col-start-1 col-end-25 mb-[56px] text-[28px] font-[500] leading-[44px]"
+            "col-start-1 col-end-25 mb-[56px] text-[26px] font-[400] leading-[44px]"
           )}
         >
-          {t("detail")}
+          {t("detail-1")}
+          <span className="text-[#ED3838]">{t("detail-2")}</span>
+          {t("detail-3")}
         </div>
         <div
           className={classNames(
@@ -221,10 +223,6 @@ export const Footer = memo(() => {
             onClick={submitForm}
             className={classNames(
               " bg-[#ED3838] px-[78px] py-[19px] text-[24px] leading-[36px] text-white hover:bg-[#b92b2b]"
-              // {
-              //   ["bg-[#585858]"]: !formValue.phone.length,
-              //   ["bg-[#ED3838]"]: formValue.phone.length,
-              // }
             )}
           >
             {t("submit")}
