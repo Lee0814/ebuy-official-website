@@ -86,7 +86,7 @@ export const Location = memo(() => {
         <div ref={mapRef} className={classNames("col-start-1 col-end-25 flex")}>
           <div
             className={classNames(
-              "flex min-w-[280px] max-w-[600px] flex-1 flex-col items-start justify-center bg-[#f9f9f9] px-6 md:pl-[40px] "
+              "flex min-w-[280px] max-w-[600px] flex-1 flex-col items-start justify-center bg-[#fff] px-6 md:pl-[40px] "
             )}
           >
             <div
