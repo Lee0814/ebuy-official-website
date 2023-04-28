@@ -41,7 +41,7 @@ export const Banner = memo(() => {
           className={classNames(
             "whitespace-pre-wrap text-center text-[44px] font-[600] leading-[62px] first-letter:mb-[9px] md:border-b-[2px] md:border-solid md:border-white md:px-[24px] md:pb-3 md:text-[50px] md:leading-[70px]",
             {
-              "animate__animated animate__fadeInUp": slogan1InView,
+              head1: slogan1InView,
             }
           )}
         >
@@ -52,7 +52,7 @@ export const Banner = memo(() => {
           className={classNames(
             "mb-[50px] whitespace-pre-wrap text-center text-[32px] font-[400] leading-[45px] md:text-[40px] md:font-[500] md:leading-[56px]",
             {
-              "animate__animated animate__fadeInUp": slogan2InView,
+              head2: slogan2InView,
             }
           )}
         >
@@ -63,7 +63,7 @@ export const Banner = memo(() => {
           className={classNames(
             "rounded-[8px] border-[1px] border-solid border-white px-[20px] py-[8px] text-[28px] font-[400] leading-[40px] md:px-[48px] md:py-[18px] md:text-[32px] md:font-bold md:leading-[48px]",
             {
-              "animate__animated animate__fadeInUp": beOurCustomerInView,
+              head3: beOurCustomerInView,
             }
           )}
           href="#message"

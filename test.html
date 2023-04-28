@@ -67,6 +67,17 @@
 }
 
 
+@keyframes moveLeft{
+   from {
+    opacity: 0;
+    transform :translateX(100%);
+  }
+  to {
+    opacity: 1;
+    transform :translateX(0%);
+  }
+}
+
 .head1{
    opacity: 0;
   animation:opacitiChange 1s 1s 1 ease forwards;
@@ -81,7 +92,20 @@
 }
 
 .benifit1{
-  animation: ;
+   opacity: 0;
+  animation:moveRight 1s 0s 1 ease forwards;
+}
+.benifit2{
+   opacity: 0;
+  animation:moveUp 1s 0s 1 ease forwards;
+}
+.business1{
+   opacity: 0;
+  animation:moveRight 2s 0s 1 ease forwards;
+}
+.business2{
+   opacity: 0;
+  animation:moveLeft 2s 0s 1 ease forwards;
 }
 </style>
 </head>
@@ -92,6 +116,10 @@
   </div >
   <div class="head2" style="color: blue;">22222222222</div>
 <div class="head3">333333333</div>
+<div class="benifit1">4444444</div>
+<div class="benifit2">5555</div>
+<div class="business1">6666</div>
+<div class="business2">66666</div>
 
 </div>
 

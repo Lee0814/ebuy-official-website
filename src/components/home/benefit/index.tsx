@@ -87,10 +87,9 @@ export const Benefit = memo(() => {
         <span
           ref={titleRef}
           className={classNames(
-            "animate__animated col-start-1 col-end-25 mb-[48px] text-center text-[28px] font-[400] leading-[40px] text-[#E79A44] md:text-[40px] md:font-[500] md:leading-[60px]",
+            " col-start-1 col-end-25 mb-[48px] text-center text-[28px] font-[400] leading-[40px] text-[#E79A44] md:text-[40px] md:font-[500] md:leading-[60px]",
             {
-              animate__fadeInUp: titleInView,
-              animate__fadeOutDown: !titleInView,
+              benifit1: titleInView,
             }
           )}
         >

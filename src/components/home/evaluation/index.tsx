@@ -5,7 +5,7 @@ import { ECard } from "./evaluatCard";
 export const Evaluation = memo(() => {
   const dom = useRef<HTMLDivElement>(null);
   const t = useI18n("home");
-  useEffect(() => { });
+  useEffect(() => {});
   const evaluations = [
     {
       name: "Hai Di Lao Dining Pte. Ltd",
@@ -33,24 +33,22 @@ export const Evaluation = memo(() => {
     },
   ];
 
-  // const imgs=[]
-  // const news = []
-  //    for(let i=0;i<4;i++){
-  //   news.push({
-  //       name:t(`evaluation-${i}-customer-company`),
-  //     desc:t(`evaluation-${i}-customer-people`),
-  //     text:t(`evaluation-${i}-customer-text`),
-  //     img: "https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPngcb45e33c055d2e6fd779884efdfcd0fe8f1fe7b32c7d8a00272a0ef67872b6c3",
-  //   })
-  // }
+  // 所有的列
+  const [cols, setCols] = useState(
+    evalutionProps.map((column, index) => (
+      <div key={index} className={classNames("!min-w-[500px] ")}>
+        <div className={classNames("mb-[76px] min-h-[276px] md:mr-[100px]")}>
+          <ECard eva={evalutionProps[index][0]} />
+        </div>
+        <div className={classNames(" md:ml-[100px]")}>
+          <ECard eva={evalutionProps[index][1]} />
+        </div>
+      </div>
+    ))
+  );
 
   return (
-    <section
-      ref={dom}
-      className={classNames(
-        "w-full py-[45px] md:pb-[56px]"
-      )}
-    >
+    <section ref={dom} className={classNames("w-full py-[45px] md:pb-[56px]")}>
       {/* 主体 */}
       <div className={classNames("ebuy-container")}>
         {/* 标题 */}
@@ -61,11 +59,15 @@ export const Evaluation = memo(() => {
         >
           {t("evaluation-title")}
         </div>
-        <div className={classNames(
-          "col-start-1 text-[22px] leading-[32px] font-[400] col-end-25 mb-[40px] text-center"
-        )}>
+        <div
+          className={classNames(
+            "col-start-1 col-end-25 mb-[40px] text-center text-[22px] font-[400] leading-[32px]"
+          )}
+        >
           {t("evaluation-description-1")}
-          <span className="font-[600] mx-[0.5em]">{t("evaluation-description-2")}</span>
+          <span className="mx-[0.5em] font-[600]">
+            {t("evaluation-description-2")}
+          </span>
           {t("evaluation-description-3")}
         </div>
         {/* 评价 */}
@@ -96,21 +98,19 @@ export const Evaluation = memo(() => {
             "col-start-1 col-end-25 md:col-start-12 md:col-end-25 md:pl-[46px]"
           )}
         >
-          <ECard eva={evaluations[1]} />
-        </div>
-        <div
-          className={classNames(
-            "col-start-1 col-end-25 md:col-start-2 md:col-end-13 md:pr-[20px] "
-          )}
-        >
-          <ECard eva={evaluations[2]} />
-        </div>
-        <div
-          className={classNames(
-            "col-start-1 col-end-25 md:col-start-13 md:col-end-25 md:pl-[46px]"
-          )}
-        >
-          <ECard eva={evaluations[3]} />
+          {/* 超出部分 */}
+          <div
+            ref={partnerRef}
+            className={classNames(
+              "h-max-full grid w-full  grid-flow-col justify-between "
+            )}
+            style={{
+              transform: `translateX(-${offset}px)`,
+            }}
+          >
+            {/* 每一列 */}
+            {cols}
+          </div>
         </div>
       </div>
     </section>
