@@ -23,23 +23,27 @@ export const Header = memo(() => {
   // start 切换语言
   // 语言切换弹窗弹窗
   const changeLangRef = useRef<HTMLDivElement>(null);
-  const changeLangButtonRef = useRef<HTMLButtonElement>(null);
+  const changeLangButtonRef = useRef<HTMLDivElement>(null);
   const { showChangeLang, setShowChangeLang } = useHeaderContext();
-  useClickAway(
-    () => setShowChangeLang(false),
-    [changeLangRef, changeLangButtonRef]
-  );
+  // useClickAway(
+  //   () => setShowChangeLang(false),
+  //   [changeLangRef, changeLangButtonRef]
+  // );
 
   // 语言切换
   const router = useRouter();
   const { lang, setLang } = useI18nContext();
+
   const changeLang = (locale: Lang) => {
     const pathLang = locales.find((l) => router.asPath.startsWith(`/${l}`));
-    if (pathLang) {
-      router.push(router.asPath.replace(`/${pathLang}`, `/${locale}`));
-    } else {
+    console.log(pathLang);
+
+    if (pathLang === "en") locale = "zh-CN";
+    else if (pathLang === "zh-CN") locale = "en";
+    else {
       router.push(`/${locale}${router.asPath}`);
     }
+    router.push(router.asPath.replace(`/${pathLang}`, `/${locale}`));
     setLang(locale);
   };
   // end 切换语言
@@ -81,7 +85,7 @@ export const Header = memo(() => {
   return (
     <header
       className={classNames(
-        "h-[70px] w-full py-[10px]",
+        "h-[70px] w-full py-[10px] lg:h-[114px]",
         styles["in"],
         {
           [styles["mobile"]]: lg,
@@ -99,12 +103,12 @@ export const Header = memo(() => {
           src={logo}
           alt="ebuy"
           height={50}
-          className={classNames("col-start-1 col-end-6 w-[146px]")}
+          className={classNames(" col-start-1 col-end-6 w-[146px]")}
         />
         {/* 右侧导航 */}
         <div
           className={classNames(
-            " col-start-6 col-end-25 flex flex-row-reverse items-center justify-start gap-[21px] md:gap-[0px] lg:flex-col-reverse lg:items-end lg:justify-end "
+            "col-start-6 col-end-25  flex h-full flex-row-reverse items-center justify-start gap-[21px] md:gap-[0px] lg:flex-col-reverse lg:items-end lg:justify-between lg:py-[12px] "
           )}
         >
           <div className={classNames("relative")}>
@@ -152,7 +156,7 @@ export const Header = memo(() => {
             </ul>
           </div>
           {/* 联系我们 */}
-          <div className={classNames("flex")}>
+          <div className={classNames("flex text-[16px] ", styles["contract"])}>
             <div
               className={classNames(" px-[15px]  text-[16px] font-[500] ")}
               onClick={() => router.push(router.asPath + "#message")}
@@ -164,10 +168,13 @@ export const Header = memo(() => {
             <div className={classNames("relative")}>
               <div
                 ref={changeLangButtonRef}
-                onClick={() => setShowChangeLang(!showChangeLang)}
-                className={classNames(" px-[15px] text-[16px] font-[500] ")}
+                // onClick={() => setShowChangeLang(!showChangeLang)}
+                onClick={() => {
+                  changeLang(lang);
+                }}
+                className={classNames(" pl-[15px]  font-[500] ")}
               >
-                {capitalizeTheFirstLetter(lang) === "Zh-Cc" ? "En" : "简体"}
+                {lang === "zh-CN" ? "En" : "简体"}
               </div>
               <div
                 ref={changeLangRef}
@@ -183,7 +190,7 @@ export const Header = memo(() => {
                   <button
                     key={locale}
                     className={classNames(
-                      "w-full rounded-[4px] p-[8px] text-[16px] font-[500] leading-[24px]"
+                      "w-full rounded-[4px] p-[8px] font-[500] leading-[24px]"
                     )}
                     onClick={() => {
                       changeLang(locale);
