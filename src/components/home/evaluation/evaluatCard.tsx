@@ -12,7 +12,7 @@ const ECard = (props: {
   return (
     <div
       style={{
-        background: "linear-gradient(180deg, #FFFBFB 0%, #FFFFFF 100%)",
+        background: "h-full linear-gradient(180deg, #FFFBFB 0%, #FFFFFF 100%)",
       }}
       className={classNames("  rounded-[8px] px-6 py-6")}
     >
