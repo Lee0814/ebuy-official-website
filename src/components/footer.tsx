@@ -229,7 +229,7 @@ export const Footer = memo(() => {
           {isShow && (
             <div
               className={classNames(
-                "absolute bottom-6 left-[59%] text-[24px]  text-red-700",
+                "absolute bottom-6 left-[70%] text-[24px]  text-[#ED3838]",
                 {}
               )}
             >

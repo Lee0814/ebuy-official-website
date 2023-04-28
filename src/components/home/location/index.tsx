@@ -33,7 +33,7 @@ export const Location = memo(() => {
   const mapRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className={classNames(" bg-[#fff] ")}>
+    <section className={classNames(" bg-[#fbfbfb] ")}>
       <div className={classNames("ebuy-container py-[76px]")}>
         <div className={classNames("col-start-1 col-end-25")}>
           <div

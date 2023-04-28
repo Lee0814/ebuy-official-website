@@ -1,5 +1,14 @@
-.mist {
+.mistLeft {
   @apply w-[200px]
-   absolute z-10 top-[72px] from-[#fbfbfb];
-   height: calc(100% - 72px);
+   absolute z-10 top-[200px];
+   height: calc(100% - 200px);
+   background: linear-gradient(270deg,hsla(0,0%,100%,0) 0,#fff);
+   left: 120px
+}
+.miseRight{
+   @apply w-[200px]
+   absolute z-10 top-[200px];
+   height: calc(100% - 200px);
+   right: 120px;
+   background: linear-gradient(90deg,hsla(0,0%,100%,0) 0,#fff);
 }

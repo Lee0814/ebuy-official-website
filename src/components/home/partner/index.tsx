@@ -130,7 +130,7 @@ export const Partner = memo(() => {
   useEffect(() => stopAnimation, []);
 
   return (
-    <section className={classNames("bg-[#fff] pt-[100px]")}>
+    <section className={classNames("bg-[#fbfbfb] pt-[100px]")}>
       <div className={classNames("ebuy-container text-center font-bold")}>
         <div
           className={classNames(
