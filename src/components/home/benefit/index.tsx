@@ -71,8 +71,6 @@ export const Benefit = memo(() => {
 
   const [titleRef, titleInView] = useInView();
 
-  console.log("title", titleInView);
-
   return (
     <section
       ref={benefitRef}
