@@ -104,8 +104,6 @@ export const Evaluation = memo(() => {
     >
       {/* 主体 */}
       <div className={classNames("ebuy-container relative ")}>
-        <div className="w-200[px]"></div>
-        <div className="w-200[px]"></div>
         {/* 标题 */}
         <div className="col-start-1 col-end-25 mb-[32px] text-center text-[42px] font-bold text-black">
           <span
@@ -135,12 +133,8 @@ export const Evaluation = memo(() => {
           {t("evaluation-description-3")}
         </div>
         {/* 白布 */}
-        <div
-          className={classNames(styles.mist, "left-0 bg-gradient-to-r")}
-        ></div>
-        <div
-          className={classNames(styles.mist, "right-0 bg-gradient-to-l")}
-        ></div>
+        <div className={classNames(styles.mistLeft)}></div>
+        <div className={classNames(styles.miseRight)}></div>
         {/* 固定窗口 */}
         <div
           className={classNames(
