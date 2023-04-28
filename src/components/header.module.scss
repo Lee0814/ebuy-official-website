@@ -2,9 +2,9 @@
 .transparent {
   color: #ffffff;
   background: none;
-  .contract{
-  color: #D1D1D1;
-}
+  .contract {
+    color: #d1d1d1;
+  }
 }
 
 .frosted-glass {
@@ -111,7 +111,8 @@
   border-radius: 4px;
   box-sizing: border-box !important;
 }
-.container:hover,.container:focus {
+.container:hover,
+.container:focus {
   --react-international-phone-height: 54px;
   border: 1px solid rgb(0, 0, 0);
 }

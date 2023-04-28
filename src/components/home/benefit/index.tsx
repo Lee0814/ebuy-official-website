@@ -91,7 +91,7 @@ export const Benefit = memo(() => {
         </span>
         <button
           className={classNames(
-            "left-arrow left-32px absolute mt-[30px] hidden h-[77px] z-[30] w-[48px] items-center justify-center rounded-[12px] bg-white md:left-[120px] md:flex",
+            "left-arrow left-32px absolute z-[30] mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:left-[64px] md:flex lg:left-[120px]",
             {
               "!hidden": imageSize === undefined,
             }
@@ -169,7 +169,7 @@ export const Benefit = memo(() => {
         </Swiper>
         <button
           className={classNames(
-            "right-arrow right-32px absolute bottom-[121px] z-[30] mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:right-[120px] md:flex",
+            "right-arrow right-32px absolute bottom-[121px] z-[30] mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:right-[64px] md:flex lg:right-[120px]",
             {
               "!hidden": imageSize === undefined,
             }

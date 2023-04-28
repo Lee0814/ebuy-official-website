@@ -16,7 +16,7 @@
 .custom-pagination > .swiper-pagination-bullet-active {
   background: #ed3838 !important;
 }
-@media (max-width: 750.1px) {
+@media (max-width: 768.1px) {
   .custom-pagination > .swiper-pagination-bullet {
     width: 17%;
     height: 12px;

@@ -1,6 +1,6 @@
 import { useI18n, useResponsive } from "@/hooks";
 import { useHeaderContext, useI18nContext } from "@/states";
-import { Lang, capitalizeTheFirstLetter, locales } from "@/utils";
+import { Lang, locales } from "@/utils";
 import { useClickAway, useScroll } from "ahooks";
 import classNames from "classnames";
 import Image from "next/image";
@@ -21,23 +21,11 @@ export const Header = memo(() => {
   const t = useI18n("navbar");
 
   // start 切换语言
-  // 语言切换弹窗弹窗
-  const changeLangRef = useRef<HTMLDivElement>(null);
-  const changeLangButtonRef = useRef<HTMLDivElement>(null);
-  const { showChangeLang, setShowChangeLang } = useHeaderContext();
-  // useClickAway(
-  //   () => setShowChangeLang(false),
-  //   [changeLangRef, changeLangButtonRef]
-  // );
-
-  // 语言切换
   const router = useRouter();
   const { lang, setLang } = useI18nContext();
 
   const changeLang = (locale: Lang) => {
     const pathLang = locales.find((l) => router.asPath.startsWith(`/${l}`));
-    console.log(pathLang);
-
     if (pathLang === "en") locale = "zh-CN";
     else if (pathLang === "zh-CN") locale = "en";
     else {
@@ -73,7 +61,6 @@ export const Header = memo(() => {
       setShowHeader(true);
     }
     setLastScroll(scroll);
-    setShowChangeLang(false);
     setShowMenu(false);
   }, [scroll]);
   // end 下滚隐藏头部 上滚显示头部
@@ -108,7 +95,7 @@ export const Header = memo(() => {
         {/* 右侧导航 */}
         <div
           className={classNames(
-            "col-start-6 col-end-25  flex h-full flex-row-reverse items-center justify-start gap-[21px] md:gap-[0px] lg:flex-col-reverse lg:items-end lg:justify-between lg:py-[12px] "
+            "col-start-6 col-end-25  flex h-full flex-row-reverse items-center justify-start gap-[21px] lg:flex-col-reverse lg:items-end lg:justify-between lg:gap-[0px] lg:py-[12px] "
           )}
         >
           <div className={classNames("relative")}>
@@ -156,9 +143,9 @@ export const Header = memo(() => {
             </ul>
           </div>
           {/* 联系我们 */}
-          <div className={classNames("flex text-[16px] ", styles["contract"])}>
+          <div className={classNames("flex text-[16px]", styles["contract"])}>
             <div
-              className={classNames(" px-[15px]  text-[16px] font-[500] ")}
+              className={classNames("px-[15px] text-[16px] font-[500]")}
               onClick={() => router.push(router.asPath + "#message")}
             >
               {t("contact")}
@@ -167,39 +154,10 @@ export const Header = memo(() => {
             {/* 语言切换dom */}
             <div className={classNames("relative")}>
               <div
-                ref={changeLangButtonRef}
-                // onClick={() => setShowChangeLang(!showChangeLang)}
-                onClick={() => {
-                  changeLang(lang);
-                }}
-                className={classNames(" pl-[15px]  font-[500] ")}
+                onClick={() => changeLang(lang)}
+                className={classNames("pl-[15px] font-[500]")}
               >
                 {lang === "zh-CN" ? "En" : "简体"}
-              </div>
-              <div
-                ref={changeLangRef}
-                className={classNames(
-                  "absolute right-0 z-50 flex w-[80px] flex-col border-[0.5px]",
-                  {
-                    ["invisible"]: !showChangeLang,
-                    ["bg-white"]: lg,
-                  }
-                )}
-              >
-                {locales.map((locale) => (
-                  <button
-                    key={locale}
-                    className={classNames(
-                      "w-full rounded-[4px] p-[8px] font-[500] leading-[24px]"
-                    )}
-                    onClick={() => {
-                      changeLang(locale);
-                      setShowChangeLang(false);
-                    }}
-                  >
-                    {capitalizeTheFirstLetter(locale)}
-                  </button>
-                ))}
               </div>
             </div>
           </div>
