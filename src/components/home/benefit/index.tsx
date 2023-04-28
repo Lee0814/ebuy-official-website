@@ -120,7 +120,7 @@ export const Benefit = memo(() => {
         </button>
         <Swiper
           ref={swiperRef}
-          className={classNames("col-start-1 col-end-25 w-full", {
+          className={classNames("col-start-1 col-end-25 w-full opacity-0", {
             ["benifit2"]: swiperInView,
           })}
           modules={[Navigation, Pagination, Autoplay]}
