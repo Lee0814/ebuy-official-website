@@ -17,6 +17,7 @@ import cart from "./images/cart.png";
 import dollarHighlight from "./images/dollar-h.png";
 import dollar from "./images/dollar.png";
 
+
 const images = [
   {
     picture: one,
@@ -52,7 +53,9 @@ const Business = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const [titleRef, titleInView] = useInView();
+  const [titleRef, titleInView] = useInView({ triggerOnce: true });
+  const [textRef, textInView] = useInView({ triggerOnce: true });
+  const [imgRef, imgInView] = useInView({ triggerOnce: true });
 
   const desktop = (
     <div className="ebuy-container">
@@ -63,8 +66,12 @@ const Business = () => {
       >
         {/* 选择 */}
         <div
+          ref={textRef}
           className={classNames(
-            "col-start-1 col-end-13 flex flex-1 flex-col lg:col-end-18"
+            "col-start-1 col-end-13 flex flex-1 flex-col md:opacity-0  lg:col-end-18",
+            {
+              business1: textInView,
+            }
           )}
         >
           {businesses.map((business, index) => (
@@ -126,8 +133,10 @@ const Business = () => {
         </div>
         {/* 图片 */}
         <div
+          ref={imgRef}
           className={classNames(
-            "col-start-14 col-end-25 flex items-start lg:col-start-19"
+            "col-start-14 col-end-25 flex items-start md:opacity-0 lg:col-start-19",
+            { business2: imgInView }
           )}
         >
           {businesses.map((business, index) => (
@@ -242,17 +251,17 @@ const Business = () => {
       <div className={classNames("min-h-[968px] pb-[100px] pt-[72px]")}>
         {/* 标题 容器*/}
         <div
+          ref={titleRef}
           className={classNames(
-            "ebuy-container  pb-[52px] text-center md:text-left"
+            "ebuy-container  pb-[52px] text-center opacity-0 md:text-left",
+            {
+              ["business0"]: titleInView,
+            }
           )}
         >
           <div
-            ref={titleRef}
             className={classNames(
-              "col-start-1 col-end-25 text-[50px] font-bold text-[#3A2D1B]",
-              {
-                ["animate__animated animate__bounce"]: titleInView,
-              }
+              "col-start-1 col-end-25 text-[50px] font-bold text-[#3A2D1B]"
             )}
           >
             {t("business-title")}

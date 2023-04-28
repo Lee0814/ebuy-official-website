@@ -31,116 +31,95 @@ export const Location = memo(() => {
   }));
 
   const mapRef = useRef<HTMLDivElement>(null);
-  // const [inViewport, radio] = useInViewport(mapRef, {
-  //   threshold: [0.0, 0.01, 0.02, 0.99, 1.0],
-  // });
-  // useEffect(() => {
-  //   console.log(radio);
-
-  //   setOuter(radio!);
-
-  //   // window.addEventListener("scroll", scrollE, { passive: false });
-  //   // return () => {
-  //   //   if (outerRadio < 1) window.removeEventListener("scroll", scrollE);
-  //   // };
-  // }, [radio, inViewport]);
-
-  const scrollE = (e: Event) => {
-    console.log("监听滚动");
-
-    if (currentIndex === 2) return;
-    if (outerRadio === 1) {
-      e.preventDefault();
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
 
   return (
-    <section className={classNames("ebuy-container bg-[#fbfbfb] py-[76px]")}>
-      <div className={classNames("col-start-1 col-end-25")}>
-        <div
-          className={classNames(
-            "px-[32px] pb-[32px] text-[42px] font-bold leading-[51px] text-[#000] md:text-center md:text-[50px]"
-          )}
-        >
-          {t("location-1-title")}
-        </div>
-        <div
-          className={classNames(
-            "box-border text-[22px] font-[400] leading-[44px] text-[#333] md:text-center"
-          )}
-        >
-          {t("location-1-description")}
-        </div>
-      </div>
-      <div
-        className={classNames(
-          "col-start-1 col-end-25 box-border flex justify-center space-x-[104.17px] pb-[48px] pt-[52px] text-[24px] md:text-[40px]"
-        )}
-      >
-        {companyInfo.map((company, index) => (
+    <section className={classNames(" bg-[#fff] ")}>
+      <div className={classNames("ebuy-container py-[76px]")}>
+        <div className={classNames("col-start-1 col-end-25")}>
           <div
-            key={index}
-            onClick={() => setCurrentIndex(index)}
             className={classNames(
-              "flex cursor-pointer flex-col items-center ",
-              {
-                ["text-[#333]"]: currentIndex === index,
-                ["text-[#666]"]: currentIndex != index,
-              }
+              "px-[32px] pb-[32px] text-[42px] font-bold leading-[51px] text-[#000] md:text-center md:text-[50px]"
             )}
           >
-            <span className={classNames("Inter z-40 text-[32px]")}>
-              {company.country}
-            </span>
-            <span
+            {t("location-1-title")}
+          </div>
+          <div
+            className={classNames(
+              "box-border text-[22px] font-[400] leading-[44px] text-[#333] md:text-center"
+            )}
+          >
+            {t("location-1-description")}
+          </div>
+        </div>
+        <div
+          className={classNames(
+            "col-start-1 col-end-25 box-border flex justify-center space-x-[104.17px] pb-[48px] pt-[52px] text-[24px] md:text-[40px]"
+          )}
+        >
+          {companyInfo.map((company, index) => (
+            <div
+              key={index}
+              onClick={() => setCurrentIndex(index)}
               className={classNames(
-                "relative -top-[20px] -mb-[14px] h-[20px] w-[80%] rounded-[3.5pt] bg-[#ffc4c4]",
+                "flex cursor-pointer flex-col items-center ",
                 {
-                  ["!bg-[#ed3838]"]: currentIndex === index,
+                  ["text-[#333]"]: currentIndex === index,
+                  ["text-[#666]"]: currentIndex != index,
                 }
               )}
-            ></span>
-          </div>
-        ))}
-      </div>
-      {/* 公司 + 地图 栅格布局 */}
-      <div ref={mapRef} className={classNames("col-start-1 col-end-25 flex")}>
-        <div
-          className={classNames(
-            " flex min-w-[280px] max-w-[600px] flex-1 flex-col items-center justify-center bg-[#f9f9f9] px-6 "
-          )}
-        >
-          <div
-            className={classNames(
-              "pb-12 text-center text-[32px] leading-[39px] text-[#333333]"
-            )}
-          >
-            {companyInfo[currentIndex].name}
-          </div>
-          <div
-            className={classNames(
-              "text-center text-[24px] leading-[29px] text-[#666666]"
-            )}
-          >
-            {companyInfo[currentIndex].address}
-          </div>
+            >
+              <span className={classNames("Inter z-40 text-[32px]")}>
+                {company.country}
+              </span>
+              <span
+                className={classNames(
+                  "relative -top-[20px] -mb-[14px] h-[20px] w-[80%] rounded-[3.5pt] bg-[#ffc4c4]",
+                  {
+                    ["!bg-[#ed3838]"]: currentIndex === index,
+                  }
+                )}
+              ></span>
+            </div>
+          ))}
         </div>
-        <div
-          className={classNames("relative flex-1 md:h-[450px] 3xl:h-[600px]")}
-        >
-          <Image
+        {/* 公司 + 地图 栅格布局 */}
+        <div ref={mapRef} className={classNames("col-start-1 col-end-25 flex")}>
+          <div
             className={classNames(
-              "absolute left-[50%] top-[50%] h-[48px] w-[48px] translate-x-[-50%] translate-y-[-19px]"
+              "flex min-w-[280px] max-w-[600px] flex-1 flex-col items-start justify-center bg-[#f9f9f9] px-6 md:pl-[40px] "
             )}
-            alt=""
-            src={location}
-          />
-          <Image
-            className={classNames("h-full w-full")}
-            src={countries[currentIndex].mapBg}
-            alt=""
-          />
+          >
+            <div
+              className={classNames(
+                "pb-12 text-center text-[32px] leading-[39px] text-[#333333]"
+              )}
+            >
+              {companyInfo[currentIndex].name}
+            </div>
+            <div
+              className={classNames(
+                "text-center text-[24px] leading-[29px] text-[#666666]"
+              )}
+            >
+              {companyInfo[currentIndex].address}
+            </div>
+          </div>
+          <div
+            className={classNames("relative flex-1 md:h-[450px] 3xl:h-[600px]")}
+          >
+            <Image
+              className={classNames(
+                "absolute left-[50%] top-[50%] h-[48px] w-[48px] translate-x-[-50%] translate-y-[-19px]"
+              )}
+              alt=""
+              src={location}
+            />
+            <Image
+              className={classNames("h-full w-full")}
+              src={countries[currentIndex].mapBg}
+              alt=""
+            />
+          </div>
         </div>
       </div>
     </section>

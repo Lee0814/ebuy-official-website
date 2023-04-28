@@ -58,18 +58,21 @@ export const Banner = memo(() => {
         >
           {t("slogan-2")}
         </span>
-        <Link
+        <div
           ref={beOurCustomerRef}
-          className={classNames(
-            "rounded-[8px] border-[1px] border-solid border-white px-[20px] py-[8px] text-[28px] font-[400] leading-[40px] md:px-[48px] md:py-[18px] md:text-[32px] md:font-bold md:leading-[48px]",
-            {
-              head3: beOurCustomerInView,
-            }
-          )}
-          href="#message"
+          className={classNames({
+            head3: beOurCustomerInView,
+          })}
         >
-          {t("be-our-customer")}
-        </Link>
+          <Link
+            className={classNames(
+              "rounded-[8px] border-[1px] border-solid border-white px-[20px] py-[8px] text-[28px] font-[400] leading-[40px] md:px-[48px] md:py-[18px] md:text-[32px] md:font-bold md:leading-[48px]"
+            )}
+            href="#message"
+          >
+            {t("be-our-customer")}
+          </Link>
+        </div>
       </div>
     </section>
   );

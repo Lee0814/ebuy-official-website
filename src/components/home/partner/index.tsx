@@ -132,17 +132,23 @@ export const Partner = memo(() => {
       <div className={classNames("ebuy-container text-center font-bold")}>
         <div className="col-start-1 col-end-25 mb-[32px]">
           <span
-            className={classNames("text-[44px] text-[#000] md:text-[48px] md:leading-[59px]")}
+            className={classNames(
+              "text-[44px] text-[#000] md:text-[48px] md:leading-[59px]"
+            )}
           >
             {t("partner-1-title")}
           </span>
-          <span className={classNames("text-[30px] md:text-[42px] md:leading-[51px]")}>
+          <span
+            className={classNames(
+              "text-[30px] md:text-[42px] md:leading-[51px]"
+            )}
+          >
             {t("partner-2-title")}
           </span>
         </div>
         <div
           className={classNames(
-            "col-start-1 col-end-25 font-[400] text-center text-[20px] leading-[44px] md:text-[22px] md:leading-[32px]"
+            "col-start-1 col-end-25 text-center text-[20px] font-[400] leading-[44px] md:col-start-6 md:col-end-20 md:text-[22px] md:leading-[32px]"
           )}
         >
           {t("partner-1-description")}

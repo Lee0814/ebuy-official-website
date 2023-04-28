@@ -144,11 +144,16 @@ body {
 
 .benifit1{
    opacity: 0;
-  animation:moveRight 1s 0s 1 ease forwards;
+  animation:moveRight 2s 0s 1 ease forwards;
 }
 .benifit2{
    opacity: 0;
-  animation:moveUp 1s 0s 1 ease forwards;
+  /* animation:moveUp 1s 0s 1 ease forwards; */
+   animation:opacitiChange 1s 0s 1 ease forwards;
+}
+.business0{
+   opacity: 0;
+   animation:opacitiChange 1s 1s 1 ease forwards;
 }
 .business1{
    opacity: 0;

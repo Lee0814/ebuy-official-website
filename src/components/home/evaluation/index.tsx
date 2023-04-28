@@ -4,6 +4,7 @@ import { useInViewport } from "ahooks";
 import classNames from "classnames";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { ECard } from "./evaluatCard";
+import styles from "./styles.module.scss";
 export const Evaluation = memo(() => {
   const dom = useRef<HTMLDivElement>(null);
   const t = useI18n("home");
@@ -102,7 +103,9 @@ export const Evaluation = memo(() => {
       )}
     >
       {/* 主体 */}
-      <div className={classNames("ebuy-container ")}>
+      <div className={classNames("ebuy-container relative ")}>
+        <div className="w-200[px]"></div>
+        <div className="w-200[px]"></div>
         {/* 标题 */}
         <div
           className={classNames(
@@ -113,7 +116,7 @@ export const Evaluation = memo(() => {
         </div>
         <div
           className={classNames(
-            "col-start-1 col-end-25 mb-[40px] text-center text-[22px] font-[400] leading-[32px]"
+            "col-start-1 col-end-25 mb-[40px] text-center text-[22px] font-[400] leading-[32px] md:col-start-6 md:col-end-20"
           )}
         >
           {t("evaluation-description-1")}
@@ -122,6 +125,13 @@ export const Evaluation = memo(() => {
           </span>
           {t("evaluation-description-3")}
         </div>
+        {/* 白布 */}
+        <div
+          className={classNames(styles.mist, "left-0 bg-gradient-to-r")}
+        ></div>
+        <div
+          className={classNames(styles.mist, "right-0 bg-gradient-to-l")}
+        ></div>
         {/* 固定窗口 */}
         <div
           className={classNames(

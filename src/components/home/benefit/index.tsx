@@ -52,6 +52,7 @@ export const Benefit = memo(() => {
   // 是否显示可读header
   const scroll = useScroll();
   const benefitRef = useRef<HTMLDivElement>(null);
+
   const showReadableHeader = useMemo(() => {
     if (!scroll?.top || !benefitRef.current) return false;
     return scroll.top > benefitRef.current.offsetTop - 70;
@@ -70,6 +71,7 @@ export const Benefit = memo(() => {
   const imageSize = useSize(imageRef);
 
   const [titleRef, titleInView] = useInView();
+  const [swiperRef, swiperInView] = useInView();
 
   return (
     <section
@@ -117,7 +119,10 @@ export const Benefit = memo(() => {
           </svg>
         </button>
         <Swiper
-          className={classNames("col-start-1 col-end-25 w-full")}
+          ref={swiperRef}
+          className={classNames("col-start-1 col-end-25 w-full", {
+            ["benifit2"]: swiperInView,
+          })}
           modules={[Navigation, Pagination, Autoplay]}
           pagination={{ el: ".custom-pagination", clickable: true }}
           navigation={{
