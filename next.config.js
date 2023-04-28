@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: "export",
-  basePath: "/out",
+  basePath: "/ebuy-official-website/out",
   reactStrictMode: true,
   images: {
     unoptimized: true,
