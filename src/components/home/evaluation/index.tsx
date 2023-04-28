@@ -70,7 +70,6 @@ export const Evaluation = memo(() => {
   );
   const startAnimation = useCallback(() => {
     animation.start();
-    console.log("222");
   }, [animation]);
   const stopAnimation = useCallback(() => {
     animation.stop();
@@ -99,7 +98,7 @@ export const Evaluation = memo(() => {
     <section
       ref={dom}
       className={classNames(
-        "w-full bg-[#fbfbfb] py-[45px] md:pb-[72px] md:pt-[72px]"
+        "w-full bg-[#fbfbfb] py-[45px]  md:pb-[100px] md:pt-[72px]"
       )}
     >
       {/* 主体 */}
@@ -107,10 +106,17 @@ export const Evaluation = memo(() => {
         {/* 标题 */}
         <div
           className={classNames(
-            "col-start-1 col-end-25 pb-[100px]  text-center text-[50px] font-bold leading-[60px] text-black"
+            "col-start-1 col-end-25   text-center text-[42px] font-bold leading-[51px] text-black"
           )}
         >
           {t("evaluation-title")}
+        </div>
+        <div
+          className={classNames(
+            "col-start-1 col-end-25  pb-[60px] pt-8  text-center text-[22px] leading-[32px] text-black"
+          )}
+        >
+          {t("evaluation-description")}
         </div>
         {/* 固定窗口 */}
         <div

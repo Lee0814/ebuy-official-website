@@ -55,7 +55,6 @@ export const Footer = memo(() => {
           message: formValue.help,
         })
         .then((res) => {
-          console.log(res);
           if (res.data.code == 200) {
             setFormValue({
               firstName: "",

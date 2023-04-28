@@ -129,20 +129,20 @@ export const Partner = memo(() => {
 
   return (
     <section className={classNames("bg-[#fff] pt-[72px]")}>
-      <div className={classNames("ebuy-container text-center font-bold")}>
-        <div className="col-start-1 col-end-25">
+      <div className={classNames("ebuy-container text-center ")}>
+        <div className="col-start-1 col-end-25 font-bold">
           <span
-            className={classNames(" text-[44px]  text-[#000] md:text-[64px]")}
+            className={classNames(" text-[44px]  text-[#000] md:text-[48px]")}
           >
             {t("partner-1-title")}
           </span>
-          <span className={classNames(" text-[30px] md:text-[50px]")}>
+          <span className={classNames(" text-[30px] md:text-[42px]")}>
             {t("partner-2-title")}
           </span>
         </div>
         <div
           className={classNames(
-            "col-start-1  col-end-25 text-center text-[20px] leading-[44px] md:text-[28px]"
+            "col-start-1  col-end-25 text-center text-[20px] leading-[32px] md:text-[22px]"
           )}
         >
           {t("partner-1-description")}{" "}

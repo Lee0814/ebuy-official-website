@@ -2,6 +2,7 @@ import { useI18n, useInView, useWindowSize } from "@/hooks";
 import classNames from "classnames";
 import { memo, useMemo } from "react";
 
+import { Link } from "@/components/link";
 import { useRouter } from "next/router";
 import styles from "./styles.module.scss";
 
@@ -57,7 +58,7 @@ export const Banner = memo(() => {
         >
           {t("slogan-2")}
         </span>
-        <button
+        <Link
           ref={beOurCustomerRef}
           className={classNames(
             "rounded-[8px] border-[1px] border-solid border-white px-[20px] py-[8px] text-[28px] font-[400] leading-[40px] md:px-[48px] md:py-[18px] md:text-[32px] md:font-bold md:leading-[48px]",
@@ -65,10 +66,10 @@ export const Banner = memo(() => {
               "animate__animated animate__fadeInUp": beOurCustomerInView,
             }
           )}
-          onClick={() => router.push(router.asPath + "#message")}
+          href="#message"
         >
           {t("be-our-customer")}
-        </button>
+        </Link>
       </div>
     </section>
   );

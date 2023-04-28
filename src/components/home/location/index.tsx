@@ -31,29 +31,6 @@ export const Location = memo(() => {
   }));
 
   const mapRef = useRef<HTMLDivElement>(null);
-  // const [inViewport, radio] = useInViewport(mapRef, {
-  //   threshold: [0.0, 0.01, 0.02, 0.99, 1.0],
-  // });
-  // useEffect(() => {
-  //   console.log(radio);
-
-  //   setOuter(radio!);
-
-  //   // window.addEventListener("scroll", scrollE, { passive: false });
-  //   // return () => {
-  //   //   if (outerRadio < 1) window.removeEventListener("scroll", scrollE);
-  //   // };
-  // }, [radio, inViewport]);
-
-  const scrollE = (e: Event) => {
-    console.log("监听滚动");
-
-    if (currentIndex === 2) return;
-    if (outerRadio === 1) {
-      e.preventDefault();
-      setCurrentIndex(currentIndex + 1);
-    }
-  };
 
   return (
     <section className={classNames("ebuy-container bg-[white] py-[72px]")}>
@@ -67,7 +44,7 @@ export const Location = memo(() => {
         </div>
         <div
           className={classNames(
-            " box-border text-[28px] font-bold leading-[40px] text-[#333] md:text-center md:leading-[44px]"
+            " box-border text-[22px]  leading-[40px] text-[#333] md:text-center md:leading-[44px]"
           )}
         >
           {t("location-1-description")}
