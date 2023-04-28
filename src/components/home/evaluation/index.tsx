@@ -8,7 +8,7 @@ import styles from "./styles.module.scss";
 export const Evaluation = memo(() => {
   const dom = useRef<HTMLDivElement>(null);
   const t = useI18n("home");
-  useEffect(() => {});
+  useEffect(() => { });
   const evaluations = [
     "https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPngcb45e33c055d2e6fd779884efdfcd0fe8f1fe7b32c7d8a00272a0ef67872b6c3",
 
@@ -99,7 +99,7 @@ export const Evaluation = memo(() => {
     <section
       ref={dom}
       className={classNames(
-        "w-full bg-[#fbfbfb] py-[45px]  md:pb-[100px] md:pt-[72px]"
+        "w-full bg-[#fff] py-[45px]  md:pb-[100px] md:pt-[72px]"
       )}
     >
       {/* 主体 */}
@@ -107,12 +107,21 @@ export const Evaluation = memo(() => {
         <div className="w-200[px]"></div>
         <div className="w-200[px]"></div>
         {/* 标题 */}
-        <div
-          className={classNames(
-            "col-start-1 col-end-25 pb-[32px] text-center text-[42px] font-bold leading-[51px] text-black"
-          )}
-        >
-          {t("evaluation-title")}
+        <div className="col-start-1 col-end-25 mb-[32px] text-center text-[42px] font-bold text-black">
+          <span
+            className={classNames(
+              "text-[44px] text-[#000] md:text-[48px] md:leading-[59px]"
+            )}
+          >
+            {t("evaluation-title-1")}
+          </span>
+          <span
+            className={classNames(
+              "text-[30px] md:text-[42px] md:leading-[51px]"
+            )}
+          >
+            {t("evaluation-title-2")}
+          </span>
         </div>
         <div
           className={classNames(
