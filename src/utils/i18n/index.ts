@@ -1,19 +1,21 @@
 import { GetStaticPaths, GetStaticProps } from "next";
 
+import enAbout from "./locales/en/about.json";
 import enCommon from "./locales/en/common.json";
 import enFooter from "./locales/en/footer.json";
 import enHome from "./locales/en/home.json";
 import enNavbar from "./locales/en/navbar.json";
+import zhAbout from "./locales/zh/about.json";
 import zhCommon from "./locales/zh/common.json";
 import zhFooter from "./locales/zh/footer.json";
 import zhHome from "./locales/zh/home.json";
 import zhNavbar from "./locales/zh/navbar.json";
-
 type Trans = {
   common: typeof enCommon;
   navbar: typeof enNavbar;
   home: typeof enHome;
   footer: typeof enFooter;
+  about: typeof enAbout;
 };
 export type Lang = "en" | "zh-CN";
 export type NS = keyof Trans;
@@ -31,12 +33,14 @@ const i18n: I18n = {
     navbar: enNavbar,
     home: enHome,
     footer: enFooter,
+    about: enAbout,
   },
   "zh-CN": {
     common: zhCommon,
     navbar: zhNavbar,
     home: zhHome,
     footer: zhFooter,
+    about: zhAbout,
   },
 };
 

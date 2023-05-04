@@ -35,7 +35,7 @@ const images = [
     iconHighlight: carHighlight,
   },
   {
-    picture: three,
+    picture: one,
     iconNormal: dollar,
     iconHighlight: dollarHighlight,
   },
@@ -53,9 +53,13 @@ const Business = () => {
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const [titleRef, titleInView] = useInView({ triggerOnce: true });
-  const [textRef, textInView] = useInView({ triggerOnce: true });
-  const [imgRef, imgInView] = useInView({ triggerOnce: true });
+  const [titleRef, titleInView] = useInView({ type: "title" });
+  // const [textRef, textInView] = useInView({
+  //   type: "context",
+  // });
+  // const [imgRef, imgInView] = useInView({ type: "context" });
+
+  const afterMouse = (index: number) => {};
 
   const desktop = (
     <div className="ebuy-container">
@@ -66,11 +70,11 @@ const Business = () => {
       >
         {/* 选择 */}
         <div
-          ref={textRef}
+          // ref={textRef}
           className={classNames(
-            "col-start-1 col-end-13 flex flex-1 flex-col md:opacity-0  lg:col-end-18",
+            "col-start-1 col-end-13 flex flex-1 flex-col pt-[20px]   lg:col-end-18",
             {
-              business1: textInView,
+              // business1: textInView,
             }
           )}
         >
@@ -97,7 +101,7 @@ const Business = () => {
                 />
                 <span
                   className={classNames(
-                    "text-[32px] leading-[39px] text-[#3A2D1B]",
+                    "text-[26px] leading-[39px] text-[#3A2D1B]",
                     {
                       ["text-[#F5F5F5]"]: currentIndex === index,
                     }
@@ -107,7 +111,7 @@ const Business = () => {
                 </span>
                 <span
                   className={classNames(
-                    "ml-[8px] text-[28px] leading-[34px] text-[#B6863E]",
+                    "ml-[8px] text-[18px] leading-[34px] text-[#B6863E]",
                     {
                       ["text-[#F5F5F5]"]: currentIndex === index,
                     }
@@ -120,7 +124,7 @@ const Business = () => {
               </div>
               <div
                 className={classNames(
-                  "ml-[46px] pt-[24px] text-[24px] leading-[29px] text-[#BDBDBD]",
+                  "ml-[46px] pt-[24px] text-[18px] leading-[29px] text-[#BDBDBD]",
                   {
                     ["hidden"]: currentIndex !== index,
                   }
@@ -133,10 +137,10 @@ const Business = () => {
         </div>
         {/* 图片 */}
         <div
-          ref={imgRef}
+          // ref={imgRef}
           className={classNames(
-            "col-start-14 col-end-25 flex items-start md:opacity-0 lg:col-start-19",
-            { business2: imgInView }
+            " col-start-14 col-end-25 flex items-start  lg:col-start-19"
+            // { business2: imgInView }
           )}
         >
           {businesses.map((business, index) => (
@@ -146,6 +150,7 @@ const Business = () => {
                 key={`business-pic-${index}`}
                 className={classNames("max-w-[290px]", {
                   ["visible md:hidden"]: currentIndex !== index,
+                  ["business2"]: currentIndex == index,
                 })}
                 alt={business.title}
                 src={business.picture}
@@ -167,7 +172,7 @@ const Business = () => {
   useEffect(() => () => clearTimeout(timer), []);
 
   const mobile = (
-    <div className={classNames("overflow-hidden")}>
+    <div className={classNames("overflow-hidden pb-[40px] md:pb-[unset]")}>
       <Swiper
         slidesPerView={1}
         modules={[Pagination, Autoplay]}
@@ -201,7 +206,7 @@ const Business = () => {
                   />
                   <span
                     className={classNames(
-                      "text-[32px] leading-[39px] text-white"
+                      "text-[26px] leading-[39px] text-white"
                     )}
                   >
                     {business.title}
@@ -209,7 +214,7 @@ const Business = () => {
                 </div>
                 <div
                   className={classNames(
-                    "text-center text-[24px] leading-[29px] text-[#BDBDBD]"
+                    "text-center text-[18px] leading-[29px] text-[#BDBDBD]"
                   )}
                 >
                   {business.description}
@@ -247,7 +252,7 @@ const Business = () => {
   );
 
   return (
-    <section className={classNames("w-full bg-[#fbfbfb]")}>
+    <section className={classNames("w-full bg-[#fbfbfb] md:min-h-[900px]")}>
       <div className={classNames("pt-[72px]")}>
         {/* 标题 容器*/}
         <div
@@ -261,14 +266,14 @@ const Business = () => {
         >
           <div
             className={classNames(
-              "col-start-1 col-end-25 text-[50px] font-bold text-[#3A2D1B]"
+              "col-start-1 col-end-25 text-[42px] font-bold text-[#3A2D1B]"
             )}
           >
             {t("business-title")}
           </div>
           <div
             className={classNames(
-              "col-start-1 col-end-25 pt-[32px] text-[28px]"
+              "col-start-1 col-end-25 pt-[24px] text-[26px]"
             )}
           >
             {t("business-description")}

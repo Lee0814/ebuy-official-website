@@ -47,24 +47,40 @@ import logo57 from "./images/logo-5-7.png";
 import { useI18n } from "@/hooks";
 import styles from "./styles.module.scss";
 
+// const logos = [
+//   [logo11, logo21, logo31],
+//   [logo41, logo51, logo12],
+//   [logo22, logo32, logo42],
+//   [logo52, logo13, logo23],
+//   [logo33, logo43, logo53],
+//   [logo14, logo24, logo34],
+//   [logo44, logo54, logo15],
+//   [logo25, logo35, logo45],
+//   [logo55, logo16, logo26],
+//   [logo36, logo46, logo56],
+//   [logo17, logo27, logo37],
+//   [logo47, logo57],
+// ];
 const logos = [
-  [logo11, logo21, logo31],
-  [logo41, logo51, logo12],
-  [logo22, logo32, logo42],
-  [logo52, logo13, logo23],
-  [logo33, logo43, logo53],
-  [logo14, logo24, logo34],
-  [logo44, logo54, logo15],
-  [logo25, logo35, logo45],
-  [logo55, logo16, logo26],
-  [logo36, logo46, logo56],
-  [logo17, logo27, logo37],
-  [logo47, logo57],
+  [logo11, logo21, logo31, logo41, logo51],
+  [logo12, logo22, logo32, logo42, logo52],
+  [logo13, logo23, logo33, logo43, logo53],
+  [logo14, logo24, logo34, logo44, logo54],
+  [logo15, logo25, logo35, logo45, logo55],
+  [logo16, logo26, logo36, logo46, logo56],
+  [logo17, logo27, logo37, logo47, logo57],
+  [logo11, logo21, logo31, logo41, logo51],
+  [logo12, logo22, logo32, logo42, logo52],
 ];
 
+
 export const Partner = memo(() => {
-  const [partnerRef1, titleInView1] = useInView({ triggerOnce: true });
-  const [partnerRef2, titleInView2] = useInView({ triggerOnce: true });
+  const [partnerRef1, titleInView1] = useInView({
+    type: "title",
+  });
+  const [partnerRef2, titleInView2] = useInView({
+    type: "title",
+  });
   // 滚动的偏移量
   const [offset, setOffset] = useState(0);
   const t = useI18n("home");
@@ -133,8 +149,10 @@ export const Partner = memo(() => {
     <section className={classNames("bg-[#fff] pt-[100px]")}>
       <div className={classNames("ebuy-container text-center font-bold")}>
         <div
+          ref={partnerRef1}
           className={classNames(
-            "col-start-1 col-end-25 pb-[32px] text-center text-[42px] font-bold leading-[51px] text-black"
+            "col-start-1 col-end-25 pb-[32px] text-center text-[42px] font-bold leading-[51px] text-black opacity-0",
+            { partner1: titleInView1 }
           )}
         >
           {t("partner-title")}
@@ -142,7 +160,8 @@ export const Partner = memo(() => {
         <div
           ref={partnerRef2}
           className={classNames(
-            "col-start-1 col-end-25 w-full text-center text-[22px] font-[400] leading-[32px] md:col-start-6 md:col-end-20"
+            "col-start-1 col-end-25 w-full text-center text-[22px] font-[400] leading-[32px] opacity-0 md:col-start-6 md:col-end-20",
+            { partner2: titleInView2 }
           )}
         >
           {t("partner-description")}

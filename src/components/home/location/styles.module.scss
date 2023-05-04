@@ -1,12 +1,7 @@
-//地图信息定位
-.mapCn {
-  background-image: url("./images/map-china.png");
+.countrySelect{
+  transition:transform 0.5s ease;
 }
 
-.mapSgp {
-  background-image: url("./images/map-singapore.png");
-}
-
-.mapMs {
-  background-image: url("./images/map-malaysia.png");
+.countrySelect:hover{
+  transform: translateY(-4px);
 }

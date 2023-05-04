@@ -77,7 +77,7 @@ export const Footer = memo(() => {
     setIsShow(true);
     setTimeout(() => {
       setIsShow(false);
-    }, 1000);
+    }, 2000);
   };
 
   return (
@@ -102,7 +102,7 @@ export const Footer = memo(() => {
         </div>
         <div
           className={classNames(
-            "col-start-1 col-end-25 space-y-[32px]  text-[24px] font-[400] leading-[36px] text-[#333333]"
+            "col-start-1 col-end-25 space-y-[32px]  text-[24px] font-[400] leading-[36px] text-[#666666]"
           )}
         >
           <div
@@ -226,16 +226,16 @@ export const Footer = memo(() => {
           >
             {t("submit")}
           </button>
-          {isShow && (
+          {
             <div
               className={classNames(
-                "absolute bottom-6 left-[70%] text-[24px]  text-[#ED3838]",
-                {}
+                "absolute left-[70%] top-[50%] translate-y-[-50%] text-[24px]  text-[#ED3838]",
+                isShow ? "footerattentionIn" : "footerattentionOut"
               )}
             >
               {attention}
             </div>
-          )}
+          }
         </div>
       </div>
       {/* end 表单 */}

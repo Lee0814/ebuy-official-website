@@ -17,7 +17,7 @@ import { Link } from "./link";
 
 import styles from "./header.module.scss";
 
-import logo from "@/assets/images/logo.png";
+import logo from "@/assets/images/logo.svg";
 
 type Position = {
   left: number;
@@ -171,7 +171,7 @@ export const Header = memo(() => {
 
             <ul
               className={classNames(
-                "hidden flex-col md:gap-[20px] lg:flex lg:flex-row lg:gap-[40px]",
+                "hidden flex-col text-[17px] md:gap-[20px] lg:flex lg:flex-row lg:gap-[40px]",
 
                 {
                   ["absolute right-0 top-[50px] w-[200px] gap-[10px] text-ellipsis bg-white p-[10px] underline"]:
@@ -220,7 +220,7 @@ export const Header = memo(() => {
             <div className={classNames("relative")}>
               <div
                 onClick={changeLang}
-                className={classNames("pl-[15px] font-[500]")}
+                className={classNames("cursor-pointer pl-[15px] font-[500]")}
               >
                 {lang === "zh-CN" ? "En" : "简体"}
               </div>

@@ -2,11 +2,11 @@ import classNames from "classnames";
 import Image from "next/image";
 import { memo, useRef, useState } from "react";
 import mapCn from "./images/map-china.png";
-import location from "./images/map-location.png";
 import mapMs from "./images/map-ms.png";
 import mapSgp from "./images/map-sgp.png";
+import styles from "./styles.module.scss";
 
-import { useI18n } from "@/hooks";
+import { useI18n, useInView } from "@/hooks";
 
 const countries = [
   {
@@ -21,6 +21,8 @@ const countries = [
 ];
 
 export const Location = memo(() => {
+  const [locationRef1, titleInView1] = useInView({ type: "title" });
+  const [locationRef2, titleInView2] = useInView({ type: "title" });
   const t = useI18n("home");
   const [outerRadio, setOuter] = useState<number>(0);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,15 +39,19 @@ export const Location = memo(() => {
       <div className={classNames("ebuy-container py-[76px]")}>
         <div className={classNames("col-start-1 col-end-25")}>
           <div
+            ref={locationRef1}
             className={classNames(
-              "px-[32px] pb-[32px] text-[42px] font-bold leading-[51px] text-[#000] md:text-center md:text-[50px]"
+              "px-[32px] pb-[32px] text-center text-[42px] font-bold leading-[51px] text-[#000] opacity-0 md:text-center ",
+              { location1: titleInView1 }
             )}
           >
             {t("location-1-title")}
           </div>
           <div
+            ref={locationRef2}
             className={classNames(
-              "box-border text-[22px] font-[400] leading-[44px] text-[#333] md:text-center"
+              "box-border text-center text-[22px] font-[400] leading-[44px] text-[#333] opacity-0 md:text-center",
+              { location2: titleInView1 }
             )}
           >
             {t("location-1-description")}
@@ -61,19 +67,20 @@ export const Location = memo(() => {
               key={index}
               onClick={() => setCurrentIndex(index)}
               className={classNames(
-                "flex cursor-pointer flex-col items-center ",
+                "flex cursor-pointer flex-col items-center  ",
+                styles["countrySelect"],
                 {
                   ["text-[#333]"]: currentIndex === index,
                   ["text-[#666]"]: currentIndex != index,
                 }
               )}
             >
-              <span className={classNames("Inter z-40 text-[32px]")}>
+              <span className={classNames("Inter z-40 text-[28px]")}>
                 {company.country}
               </span>
               <span
                 className={classNames(
-                  "relative -top-[20px] -mb-[14px] h-[20px] w-[80%] rounded-[3.5pt] bg-[#ffc4c4]",
+                  "relative -top-[20px] -mb-[14px] h-[20px] w-[80%] rounded-[3.5pt] bg-[#EFEFEF]",
                   {
                     ["!bg-[#ed3838]"]: currentIndex === index,
                   }
@@ -83,42 +90,37 @@ export const Location = memo(() => {
           ))}
         </div>
         {/* 公司 + 地图 栅格布局 */}
-        <div ref={mapRef} className={classNames("col-start-1 col-end-25 flex")}>
+        <div
+          ref={mapRef}
+          className={classNames("relative col-start-1 col-end-25 ")}
+        >
+          <Image
+            className={classNames("h-full w-full")}
+            src={countries[currentIndex].mapBg}
+            alt=""
+          />
           <div
             className={classNames(
-              "flex min-w-[280px] max-w-[600px] flex-1 flex-col items-start justify-center bg-[#fff] px-6 md:pl-[40px] "
+              "absolute  left-[50px] top-[40px] flex w-[35%] flex-col items-start   justify-between bg-[#fff] px-2 py-[20px] md:px-6 md:py-[40px]  "
             )}
+            style={{
+              boxShadow: "0px 2px 15px 0px rgba(11,36,40,0.28)",
+            }}
           >
             <div
               className={classNames(
-                "pb-12 text-center text-[32px] leading-[39px] text-[#333333]"
+                "pb-[32px] text-center  text-[16px]  leading-[39px] text-[#333333] md:text-[24px]"
               )}
             >
               {companyInfo[currentIndex].name}
             </div>
             <div
               className={classNames(
-                "text-center text-[24px] leading-[29px] text-[#666666]"
+                " text-[12px] leading-[29px] text-[#666666] md:text-[20px]"
               )}
             >
               {companyInfo[currentIndex].address}
             </div>
-          </div>
-          <div
-            className={classNames("relative flex-1 md:h-[450px] 3xl:h-[600px]")}
-          >
-            <Image
-              className={classNames(
-                "absolute left-[50%] top-[50%] h-[48px] w-[48px] translate-x-[-50%] translate-y-[-19px]"
-              )}
-              alt=""
-              src={location}
-            />
-            <Image
-              className={classNames("h-full w-full")}
-              src={countries[currentIndex].mapBg}
-              alt=""
-            />
           </div>
         </div>
       </div>

@@ -1,17 +1,21 @@
 // 透明的
 .transparent {
-  color: #ffffff;
-  background: none;
+  color: #000;
+  background: #fff;
   .contract {
-    color: #d1d1d1;
+    color: #7a7a7a;
+    // color: #d1d1d1;
   }
 }
 
 .frosted-glass {
   backdrop-filter: blur(10px);
-  background: rgba(255, 255, 255, 0.3);
-  .message {
-    color: #fff;
+  // background: rgba(255, 255, 255, 0.3);
+   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+  background: #fff;
+  .contract {
+    color: #7a7a7a;
+    // color: #d1d1d1;
   }
 }
 

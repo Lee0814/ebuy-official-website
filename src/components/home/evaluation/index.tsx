@@ -1,4 +1,4 @@
-import { useI18n } from "@/hooks";
+import { useI18n, useInView } from "@/hooks";
 import { rAFWithControl } from "@/utils";
 import { useInViewport } from "ahooks";
 import classNames from "classnames";
@@ -8,7 +8,10 @@ import styles from "./styles.module.scss";
 export const Evaluation = memo(() => {
   const dom = useRef<HTMLDivElement>(null);
   const t = useI18n("home");
-  useEffect(() => { });
+
+  const [evaluationRef1, titleInView1] = useInView({ type: "title" });
+  const [evaluationRef2, titleInView2] = useInView({ type: "title" });
+
   const evaluations = [
     "https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPngcb45e33c055d2e6fd779884efdfcd0fe8f1fe7b32c7d8a00272a0ef67872b6c3",
 
@@ -105,7 +108,13 @@ export const Evaluation = memo(() => {
       {/* 主体 */}
       <div className={classNames("ebuy-container relative ")}>
         {/* 标题 */}
-        <div className="col-start-1 col-end-25 mb-[32px] text-center text-[42px] font-bold text-black">
+        <div
+          ref={evaluationRef1}
+          className={classNames(
+            "col-start-1 col-end-25 mb-[32px] text-center text-[42px] font-bold text-black md:opacity-0",
+            { evaluation1: titleInView1 }
+          )}
+        >
           <span
             className={classNames(
               "text-[44px] text-[#000] md:text-[48px] md:leading-[59px]"
@@ -122,8 +131,10 @@ export const Evaluation = memo(() => {
           </span>
         </div>
         <div
+          ref={evaluationRef2}
           className={classNames(
-            "col-start-1 col-end-25 mb-[40px] text-center text-[22px] font-[400] leading-[32px] md:col-start-6 md:col-end-20"
+            "col-start-1 col-end-25 mb-[40px] text-center text-[22px] font-[400] leading-[32px] md:col-start-6 md:col-end-20 md:opacity-0",
+            { evaluation2: titleInView2 }
           )}
         >
           {t("evaluation-description-1")}
@@ -132,27 +143,30 @@ export const Evaluation = memo(() => {
           </span>
           {t("evaluation-description-3")}
         </div>
-        {/* 白布 */}
-        <div className={classNames(styles.mistLeft)}></div>
-        <div className={classNames(styles.miseRight)}></div>
-        {/* 固定窗口 */}
-        <div
-          className={classNames(
-            "col-start-1 col-end-25 w-full overflow-x-hidden "
-          )}
-        >
-          {/* 超出部分 */}
+        {/* 大盒子 */}
+        <div className={classNames("relative col-start-1 col-end-25 w-full ")}>
+          {/* 白布 */}
+          <div className={classNames(styles.mistLeft)}></div>
+          <div className={classNames(styles.miseRight)}></div>
+          {/* 固定窗口 */}
           <div
-            ref={partnerRef}
             className={classNames(
-              "h-max-full grid w-full  grid-flow-col justify-between "
+              "col-start-1 col-end-25 w-full overflow-x-hidden "
             )}
-            style={{
-              transform: `translateX(-${offset}px)`,
-            }}
           >
-            {/* 每一列 */}
-            {cols}
+            {/* 超出部分 */}
+            <div
+              ref={partnerRef}
+              className={classNames(
+                "h-max-full grid w-full  grid-flow-col justify-between "
+              )}
+              style={{
+                transform: `translateX(-${offset}px)`,
+              }}
+            >
+              {/* 每一列 */}
+              {cols}
+            </div>
           </div>
         </div>
       </div>

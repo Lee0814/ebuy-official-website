@@ -71,7 +71,7 @@ export const Benefit = memo(() => {
   const imageSize = useSize(imageRef);
 
   const [titleRef, titleInView] = useInView();
-  const [swiperRef, swiperInView] = useInView();
+  const [swiperRef, swiperInView] = useInView({ type: "context" });
 
   return (
     <section
@@ -89,19 +89,17 @@ export const Benefit = memo(() => {
         <span
           ref={titleRef}
           className={classNames(
-            " col-start-1 col-end-25 mb-[72px] text-center text-[28px] font-[400] leading-[40px] text-[#E79A44] md:text-[26px] md:font-[500] md:leading-[31px]",
-            {
-              benifit1: titleInView,
-            }
+            " col-start-1 col-end-25 mb-[72px] text-center text-[28px] font-[400] leading-[40px] text-[#E79A44] md:text-[26px] md:font-[500] md:leading-[31px]"
           )}
         >
           {t("benefit-title")}
         </span>
         <button
           className={classNames(
-            "left-arrow left-32px absolute z-[30] mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:left-[64px] md:flex lg:left-[120px]",
+            "left-arrow left-32px absolute z-[30] mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:left-[64px] md:flex md:opacity-0 lg:left-[120px]",
             {
               "!hidden": imageSize === undefined,
+              ["benifit2"]: swiperInView,
             }
           )}
           style={{
@@ -120,9 +118,12 @@ export const Benefit = memo(() => {
         </button>
         <Swiper
           ref={swiperRef}
-          className={classNames("col-start-1 col-end-25 w-full opacity-0", {
-            ["benifit2"]: swiperInView,
-          })}
+          className={classNames(
+            "col-start-1 col-end-25 w-full opacity-0 md:col-start-2 md:col-end-24",
+            {
+              ["benifit2"]: swiperInView,
+            }
+          )}
           modules={[Navigation, Pagination, Autoplay]}
           pagination={{ el: ".custom-pagination", clickable: true }}
           navigation={{
@@ -155,14 +156,18 @@ export const Benefit = memo(() => {
                 </span>
                 <div
                   ref={imageRef}
-                  className={classNames("flex w-full gap-[61px] px-[101px]")}
+                  className={classNames(
+                    "flex w-full gap-[30px] px-[101px] md:gap-[120px] md:px-[20px]"
+                  )}
                 >
                   {benefits[i].images.map((image, j) => (
                     <Image
-                      className={classNames("aspect-square")}
-                      style={{
-                        width: "calc(calc(100% - 122px) / 3)",
-                      }}
+                      className={classNames("aspect-square ", styles.swiperImg)}
+                      style={
+                        {
+                          // width: "calc(calc(100% - 122px) / 3)",
+                        }
+                      }
                       key={`benefit-${i + 1}-${j + 1}`}
                       alt={`benefit-${i + 1}-${j + 1}`}
                       src={image}
@@ -180,9 +185,11 @@ export const Benefit = memo(() => {
         </Swiper>
         <button
           className={classNames(
-            "right-arrow right-32px absolute bottom-[121px] z-[30] mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:right-[64px] md:flex lg:right-[120px]",
+            "right-arrow right-32px absolute bottom-[121px] z-[30] mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:right-[64px] md:flex md:opacity-0 lg:right-[120px]",
             {
               "!hidden": imageSize === undefined,
+
+              ["benifit2"]: swiperInView,
             }
           )}
           style={{
