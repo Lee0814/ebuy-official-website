@@ -25,11 +25,13 @@ type Position = {
   top: number;
 };
 
+
+
 export const Header = memo(() => {
   const t = useI18n("navbar");
 
   // start 切换语言
-
+  const [firsr, setFirst] = useState(false);
   const router = useRouter();
 
   const { lang, detectedLang, setLang } = useI18nContext();
@@ -71,20 +73,18 @@ export const Header = memo(() => {
 
   // start 下滚隐藏头部 上滚显示头部
 
-  const { showHeader, headerType, setShowHeader } = useHeaderContext();
-
+  let { showHeader, headerType, setShowHeader, setHeaderType } =
+    useHeaderContext();
   const [lastScroll, setLastScroll] = useState<Position>();
 
   const scroll = useScroll();
-
   useEffect(() => {
     //初始化
-
     if (!scroll) return;
 
     if (!lastScroll) {
+      console.log(1);
       setLastScroll(scroll);
-
       setShowHeader(true);
 
       return;
@@ -95,6 +95,7 @@ export const Header = memo(() => {
     if (scroll.top > lastScroll.top) {
       setShowHeader(false);
     } else {
+      setHeaderType("white");
       setShowHeader(true);
     }
 
@@ -124,7 +125,7 @@ export const Header = memo(() => {
           [styles["out"]]: !showHeader,
         },
 
-        styles[headerType!]
+        styles[headerType!] || styles["init"]
       )}
     >
       <div

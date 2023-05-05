@@ -71,8 +71,14 @@ const logos = [
   [logo17, logo27, logo37, logo47, logo57],
   [logo11, logo21, logo31, logo41, logo51],
   [logo12, logo22, logo32, logo42, logo52],
+  [logo11, logo21, logo31, logo41, logo51],
+  [logo12, logo22, logo32, logo42, logo52],
+  [logo13, logo23, logo33, logo43, logo53],
+  [logo14, logo24, logo34, logo44, logo54],
+  [logo15, logo25, logo35, logo45, logo55],
+  [logo16, logo26, logo36, logo46, logo56],
+  [logo17, logo27, logo37, logo47, logo57],
 ];
-
 
 export const Partner = memo(() => {
   const [partnerRef1, titleInView1] = useInView({
@@ -91,12 +97,16 @@ export const Partner = memo(() => {
         {_logos.map((src, j) => (
           <div
             key={`partner-logo-${i}-${j}`}
-            className={classNames("flex h-[144px] items-center justify-center")}
+            className={classNames(
+              "flex h-[144px] w-[144px] items-center justify-center"
+            )}
           >
             <Image
               src={src}
               alt={`partner logo ${i} ${j}`}
-              className={classNames("max-h-[120px] max-w-[120px]")}
+              className={classNames(
+                "max-h-[120px]   min-w-[100px] max-w-[120px]"
+              )}
             />
           </div>
         ))}
@@ -180,7 +190,7 @@ export const Partner = memo(() => {
             <div
               ref={partnerRef}
               className={classNames(
-                "grid w-full max-w-full auto-cols-[20%] grid-flow-col justify-between lg:auto-cols-[16.666666%] xl:auto-cols-[14.285714%]"
+                "md:27% grid w-full max-w-full auto-cols-[30%] grid-flow-col justify-between lg:auto-cols-[16%] "
               )}
               style={{
                 transform: `translateX(-${offset}px)`,

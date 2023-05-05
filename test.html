@@ -1,50 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>getBoundingClientRect()示例</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
   <style>
-    #box {
-      width: 200px;
-      height: 200px;
-      background-color: red;
-      position: absolute;
-      top: 100px;
-      left: 100px;
-    }
-    .countrySelect{
-  transition:all 0.3 ease;
+    body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
 }
 
-.countrySelect:hover{
-  transform: translateY(-10px);
+.parallax-container {
+    position: relative;
+    background-image: url('https://picsum.photos/1200/800');
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
+.parallax-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    text-align: center;
+}
+
+h1 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 24px;
+}
   </style>
 </head>
-<body style="height:10000px ;">
-  <div class="countrySelect" id="box"></div>
-  <script>
-    // 获取元素
-    var box = document.getElementById("box");
+<body>
 
-    // 获取元素的位置和大小信息
-    var rect = box.getBoundingClientRect();
-
-    // 输出元素的位置和大小信息
-    console.log("left: " + rect.left);
-    console.log("top: " + rect.top);
-    console.log("right: " + rect.right);
-    console.log("bottom: " + rect.bottom);
-    console.log("width: " + rect.width);
-    console.log("height: " + rect.height);
-
-    // 输出元素的top属性值
-    console.log("top: " + rect.top + "px");
-    window.addEventListener("scroll",()=>{
-       console.log("top: " + rect.top);
-
-    console.log("bottom: " + rect.bottom);
-    })
-  </script>
+ <div class="parallax-container">
+        <div class="parallax-content">
+            <h1>滚动效果示例</h1>
+            <p>这是一个简单的滚动效果示例。</p>
+        </div>
+    </div>
+    <div style="height: 1000px;"></div>
 </body>
+<script>
+  document.addEventListener('scroll', function () {
+    var parallaxContainer = document.querySelector('.parallax-container');
+    var parallaxContent = document.querySelector('.parallax-content');
+    var scrollPosition = window.scrollY;
+
+    parallaxContainer.style.backgroundPositionY = (scrollPosition * 0.5) + 'px';
+    parallaxContent.style.transform = `translate(-50%, calc(-50% + ${scrollPosition * 0.3}px))`;
+});
+</script>
 </html>

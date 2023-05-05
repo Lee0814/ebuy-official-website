@@ -24,7 +24,6 @@ export const Location = memo(() => {
   const [locationRef1, titleInView1] = useInView({ type: "title" });
   const [locationRef2, titleInView2] = useInView({ type: "title" });
   const t = useI18n("home");
-  const [outerRadio, setOuter] = useState<number>(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const companyInfo = countries.map((country, index) => ({
     country: t(`location-${index + 1}-country` as any),
@@ -35,7 +34,7 @@ export const Location = memo(() => {
   const mapRef = useRef<HTMLDivElement>(null);
 
   return (
-    <section className={classNames(" bg-[#fbfbfb] ")}>
+    <section className={classNames(" bg-[#fff] ")}>
       <div className={classNames("ebuy-container py-[76px]")}>
         <div className={classNames("col-start-1 col-end-25")}>
           <div
@@ -93,6 +92,9 @@ export const Location = memo(() => {
         <div
           ref={mapRef}
           className={classNames("relative col-start-1 col-end-25 ")}
+          style={{
+            boxShadow: "20px 20px 0px 0px #F9F9F9",
+          }}
         >
           <Image
             className={classNames("h-full w-full")}
@@ -109,7 +111,7 @@ export const Location = memo(() => {
           >
             <div
               className={classNames(
-                "pb-[32px] text-center  text-[16px]  leading-[39px] text-[#333333] md:text-[24px]"
+                "pb-[16px] text-center text-[16px] leading-[39px]  text-[#333333]  md:pb-[24px] md:text-[24px] lg:pb-[32px]"
               )}
             >
               {companyInfo[currentIndex].name}

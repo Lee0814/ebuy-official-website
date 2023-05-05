@@ -1,3 +1,19 @@
+import img1 from "./images/1.jpg";
+import img10 from "./images/10.jpg";
+import img11 from "./images/11.jpg";
+import img12 from "./images/12.jpg";
+import img13 from "./images/13.jpg";
+import img14 from "./images/14.jpg";
+import img15 from "./images/15.jpg";
+import img2 from "./images/2.jpg";
+import img3 from "./images/3.jpg";
+import img4 from "./images/4.jpg";
+import img5 from "./images/5.jpg";
+import img6 from "./images/6.jpg";
+import img7 from "./images/7.jpg";
+import img8 from "./images/8.jpg";
+import img9 from "./images/9.jpg";
+
 import { useI18n, useInView } from "@/hooks";
 import { rAFWithControl } from "@/utils";
 import { useInViewport } from "ahooks";
@@ -8,25 +24,33 @@ import styles from "./styles.module.scss";
 export const Evaluation = memo(() => {
   const dom = useRef<HTMLDivElement>(null);
   const t = useI18n("home");
-
+  const images = [
+    img1,
+    img2,
+    img3,
+    img4,
+    img5,
+    img6,
+    img7,
+    img8,
+    img9,
+    img10,
+    img11,
+    img12,
+    img13,
+    img14,
+    img15,
+    img7,
+  ];
   const [evaluationRef1, titleInView1] = useInView({ type: "title" });
   const [evaluationRef2, titleInView2] = useInView({ type: "title" });
 
-  const evaluations = [
-    "https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPngcb45e33c055d2e6fd779884efdfcd0fe8f1fe7b32c7d8a00272a0ef67872b6c3",
-
-    "https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng98a71cc90415baa63400b2cb3f34d911c94531f43a08fc1cdb5ea88bdf2b904d",
-
-    "https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng339ecc6429bcff7c0053b1ecd50d5e8f1252077115b7cb7b9863d62c410248fd",
-
-    "https://lanhu.oss-cn-beijing.aliyuncs.com/SketchPng9e0fcf8cbdb8d1c74bc9ebb4f7cfb93a3f51fd86c191271129233f1aac7e3bf8",
-  ];
   const evalutionProps: Array<
     Array<{
       name: string;
       desc: string;
       text: string;
-      img: string;
+      img: any;
     }>
   > = [];
   for (let i = 0; i < 16; i++) {
@@ -37,7 +61,7 @@ export const Evaluation = memo(() => {
       desc: t(`evaluation-${i + 1}-customer-people` as any),
       text: t(`evaluation-${i + 1}-customer-text` as any),
       // img: evaluations[Math.floor(Math.random() * 4)],
-      img: evaluations[0],
+      img: images[i],
     });
   }
   //偏移逻辑
@@ -47,11 +71,11 @@ export const Evaluation = memo(() => {
   // 所有的列
   const [cols, setCols] = useState(
     evalutionProps.map((column, index) => (
-      <div key={index} className={classNames("!min-w-[500px] ")}>
-        <div className={classNames("mb-[76px] min-h-[276px] md:mr-[100px]")}>
+      <div key={index} className={classNames("!min-w-[568px] ")}>
+        <div className={classNames("mb-[56px] mr-[61px] min-h-[276px]")}>
           <ECard eva={evalutionProps[index][0]} />
         </div>
-        <div className={classNames(" md:ml-[100px]")}>
+        <div className={classNames(" ml-[61px]")}>
           <ECard eva={evalutionProps[index][1]} />
         </div>
       </div>
@@ -151,7 +175,7 @@ export const Evaluation = memo(() => {
           {/* 固定窗口 */}
           <div
             className={classNames(
-              "col-start-1 col-end-25 w-full overflow-x-hidden "
+              "col-start-1 col-end-25 w-full overflow-x-hidden  py-[10px]"
             )}
           >
             {/* 超出部分 */}

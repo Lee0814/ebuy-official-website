@@ -1,9 +1,10 @@
-import { useI18n, useInView, useWindowSize } from "@/hooks";
-import classNames from "classnames";
-import { memo, useMemo } from "react";
-
 import { Link } from "@/components/link";
+import { useI18n, useInView, useWindowSize } from "@/hooks";
+import { useHeaderContext } from "@/states";
+import { useScroll } from "ahooks";
+import classNames from "classnames";
 import { useRouter } from "next/router";
+import { memo, useEffect, useMemo } from "react";
 import styles from "./styles.module.scss";
 
 const ratio = 8 / 5;

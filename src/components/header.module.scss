@@ -1,29 +1,35 @@
 // 透明的
 .transparent {
-  color: #000;
-  background: #fff;
+  color: #fff;
+  background: none;
   .contract {
     color: #7a7a7a;
     // color: #d1d1d1;
   }
 }
 
-.frosted-glass {
-  backdrop-filter: blur(10px);
-  // background: rgba(255, 255, 255, 0.3);
-   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
-  background: #fff;
+
+//第一次展示
+
+.init{
+  color: #ffffff;
+  background: none;
   .contract {
-    color: #7a7a7a;
-    // color: #d1d1d1;
+
+    color: #d1d1d1;
   }
 }
 
 .white {
-  color: #000;
-  background-color: #fff;
+  backdrop-filter: blur(10px);
+  // background: rgba(255, 255, 255, 0.3);
+   box-shadow: 0 2px 1px rgba(163, 163, 163, 0.2);
+  background: #fff;
+  .contract {
+    color: #7a7a7a;
+    // color: #d1d1d1;
 }
-
+}
 .mobile {
   color: #000;
   background-color: #fff;

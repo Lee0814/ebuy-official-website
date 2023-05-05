@@ -5,6 +5,7 @@ import { useCallback, useEffect, useState } from "react";
 import { Autoplay, Pagination, Swiper as _Swiper } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import { useI18nContext } from "@/states";
 import one from "./images/1.png";
 import two from "./images/2.png";
 import three from "./images/3.png";
@@ -16,7 +17,6 @@ import cartHighlight from "./images/cart-h.png";
 import cart from "./images/cart.png";
 import dollarHighlight from "./images/dollar-h.png";
 import dollar from "./images/dollar.png";
-
 
 const images = [
   {
@@ -43,7 +43,7 @@ const images = [
 const Business = () => {
   const t = useI18n("home");
   const { md } = useResponsive();
-
+  const { lang, detectedLang, setLang } = useI18nContext();
   const businesses = images.map((image, index) => ({
     title: t(`business-${index + 1}-title` as any),
     title2: t(`business-${index + 1}-title-2` as any),
@@ -54,12 +54,6 @@ const Business = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const [titleRef, titleInView] = useInView({ type: "title" });
-  // const [textRef, textInView] = useInView({
-  //   type: "context",
-  // });
-  // const [imgRef, imgInView] = useInView({ type: "context" });
-
-  const afterMouse = (index: number) => {};
 
   const desktop = (
     <div className="ebuy-container">
@@ -72,7 +66,7 @@ const Business = () => {
         <div
           // ref={textRef}
           className={classNames(
-            "col-start-1 col-end-13 flex flex-1 flex-col pt-[20px]   lg:col-end-18",
+            "col-start-1  col-end-17 flex flex-1 flex-col   pt-[20px]",
             {
               // business1: textInView,
             }
@@ -89,7 +83,7 @@ const Business = () => {
               )}
               onMouseOver={() => setCurrentIndex(index)}
             >
-              <div className={classNames("flex items-center")}>
+              <div className={classNames("flex flex-wrap items-center")}>
                 <Image
                   className={classNames("mr-[14px] h-[30px] w-[30px]")}
                   alt={business.title}
@@ -111,20 +105,26 @@ const Business = () => {
                 </span>
                 <span
                   className={classNames(
-                    "ml-[8px] text-[18px] leading-[34px] text-[#B6863E]",
+                    "ml-[44px] text-[20px] leading-[34px] text-[#B6863E]",
                     {
                       ["text-[#F5F5F5]"]: currentIndex === index,
                     }
                   )}
                 >
                   {currentIndex === index
-                    ? `${business.title2 ? `【${business.title2}】` : ""}`
+                    ? `${
+                        business.title2
+                          ? lang === "en"
+                            ? `BNPL - ${business.title2}`
+                            : `（${business.title2}）`
+                          : ""
+                      }`
                     : business.title2}
                 </span>
               </div>
               <div
                 className={classNames(
-                  "ml-[46px] pt-[24px] text-[18px] leading-[29px] text-[#BDBDBD]",
+                  "ml-[46px] pt-[24px] text-[20px] leading-[29px] text-[#BDBDBD]",
                   {
                     ["hidden"]: currentIndex !== index,
                   }
@@ -139,16 +139,16 @@ const Business = () => {
         <div
           // ref={imgRef}
           className={classNames(
-            " col-start-14 col-end-25 flex items-start  lg:col-start-19"
+            "  col-start-18 col-end-25 flex flex-1 items-start  justify-end"
             // { business2: imgInView }
           )}
         >
           {businesses.map((business, index) => (
-            <div key={`business-${index + 1}`}>
+            <div className={classNames("")} key={`business-${index + 1}`}>
               <Image
                 loading="eager"
                 key={`business-pic-${index}`}
-                className={classNames("max-w-[290px]", {
+                className={classNames("w-full max-w-[290px]", {
                   ["visible md:hidden"]: currentIndex !== index,
                   ["business2"]: currentIndex == index,
                 })}

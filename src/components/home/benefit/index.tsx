@@ -1,5 +1,4 @@
 import { useI18n, useInView } from "@/hooks";
-import { useHeaderContext } from "@/states";
 import { useScroll, useSize } from "ahooks";
 import classNames from "classnames";
 import Image from "next/image";
@@ -53,18 +52,18 @@ export const Benefit = memo(() => {
   const scroll = useScroll();
   const benefitRef = useRef<HTMLDivElement>(null);
 
-  const showReadableHeader = useMemo(() => {
-    if (!scroll?.top || !benefitRef.current) return false;
-    return scroll.top > benefitRef.current.offsetTop - 70;
-  }, [scroll?.top]);
+  //导航栏变色逻辑
 
-  // 设置 header 样式
-  const { setHeaderType } = useHeaderContext({
-    headerType: "transparent",
-  });
-  useEffect(() => {
-    setHeaderType(showReadableHeader ? "frosted-glass" : "transparent");
-  }, [showReadableHeader]);
+  // const showReadableHeader = useMemo(() => {
+  //   if (!scroll?.top || !benefitRef.current) return false;
+  //   return scroll.top > benefitRef.current.offsetTop - 70;
+  // }, [scroll?.top]);
+
+  // // 设置 header 样式
+  // const { setHeaderType } = useHeaderContext();
+  // useEffect(() => {
+  //   setHeaderType(showReadableHeader ? "frosted-glass" : "transparent");
+  // }, [showReadableHeader]);
 
   // 同步按钮位置
   const imageRef = useRef(null);
@@ -78,7 +77,7 @@ export const Benefit = memo(() => {
       ref={benefitRef}
       className={classNames(
         styles.benefit,
-        "bg-[#fff9f0] bg-center bg-no-repeat pb-[40px] pt-[64px] bg-blend-normal"
+        "bg-[#fff9f0]  pb-[40px] pt-[58px] "
       )}
     >
       <div
@@ -86,17 +85,24 @@ export const Benefit = memo(() => {
           "ebuy-container relative flex flex-col items-center justify-center"
         )}
       >
-        <span
+        <div
           ref={titleRef}
           className={classNames(
-            " col-start-1 col-end-25 mb-[72px] text-center text-[28px] font-[400] leading-[40px] text-[#E79A44] md:text-[26px] md:font-[500] md:leading-[31px]"
+            " col-start-1 col-end-25 mb-[45px]  text-center text-[26px] font-[400] leading-[40px] text-[#E79A44] md:text-[26px] md:font-[500] md:leading-[31px]"
           )}
         >
-          {t("benefit-title")}
-        </span>
+          <span
+            className={classNames(
+              "inline-block  px-[130px] pb-[27px]  pt-[12px] ",
+              styles.benefitTitle
+            )}
+          >
+            {t("benefit-title")}
+          </span>
+        </div>
         <button
           className={classNames(
-            "left-arrow left-32px absolute z-[30] mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:left-[64px] md:flex md:opacity-0 lg:left-[120px]",
+            "left-arrow absolute left-[32px] z-[30] mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:left-[16px] md:flex md:opacity-0 lg:left-[72px]",
             {
               "!hidden": imageSize === undefined,
               ["benifit2"]: swiperInView,
@@ -142,7 +148,7 @@ export const Benefit = memo(() => {
               <div className={classNames("flex flex-col items-center")}>
                 <span
                   className={classNames(
-                    "mb-[24px] text-[44px] font-[600] leading-[62px] text-[#333333] md:text-[42px] md:font-bold md:leading-[51px]"
+                    "mb-[24px] text-[42px] font-[600] leading-[62px] text-[#333333] md:text-[42px] md:font-bold md:leading-[51px]"
                   )}
                 >
                   {benefits[currentBenefitIndex].title}
@@ -156,9 +162,7 @@ export const Benefit = memo(() => {
                 </span>
                 <div
                   ref={imageRef}
-                  className={classNames(
-                    "flex w-full gap-[30px] px-[101px] md:gap-[120px] md:px-[20px]"
-                  )}
+                  className={classNames("flex w-full justify-between")}
                 >
                   {benefits[i].images.map((image, j) => (
                     <Image
@@ -185,7 +189,7 @@ export const Benefit = memo(() => {
         </Swiper>
         <button
           className={classNames(
-            "right-arrow right-32px absolute bottom-[121px] z-[30] mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:right-[64px] md:flex md:opacity-0 lg:right-[120px]",
+            "right-arrow  absolute  z-[30] mt-[30px] hidden h-[77px] w-[48px] items-center justify-center rounded-[12px] bg-white md:right-[16px] md:flex md:opacity-0 lg:right-[72px]",
             {
               "!hidden": imageSize === undefined,
 

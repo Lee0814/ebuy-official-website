@@ -46,7 +46,7 @@ export const Footer = memo(() => {
         : setAttention("电话号码不能为空");
     } else {
       axios
-        .post("http://192.168.6.38/core/api/manage/contactUs", {
+        .post(process.env.API_URL!, {
           fistName: formValue.firstName,
           lastName: formValue.lastName,
           phone: `${countryCode} ${formValue.phone}`,
@@ -171,7 +171,7 @@ export const Footer = memo(() => {
               </span>
               <input
                 className={classNames(
-                  "h-[56px] w-full rounded-[4px] pl-8 pr-8 md:pl-[96px]",
+                  "h-[56px] w-full rounded-r-[4px] pl-8 pr-8 md:pl-[96px]",
                   // {
                   //   [header.errorForm]: isError,
                   // },
@@ -243,7 +243,7 @@ export const Footer = memo(() => {
       <div className={classNames("bg-[#1d1f21]")}>
         <div
           className={classNames(
-            "ebuy-container !flex flex-col justify-between pb-[34px] pt-[72px] text-[28px]  leading-[20px] text-[#acacac] text-[400] md:flex-row md:text-[14px]"
+            "ebuy-container !flex flex-col justify-between pb-[34px] pt-[72px] text-[28px]  leading-[20px] text-[#acacac] text-[400] md:flex-row md:pb-[unset] md:text-[14px]"
           )}
         >
           {/* 食材供应 */}
@@ -405,14 +405,7 @@ export const Footer = memo(() => {
             "mt-[86px] flex flex-col justify-center px-8 pb-[34px] text-[24px] text-[#acacac] text-[400] md:mt-[100px] md:flex-row md:items-center md:space-x-[120px] md:text-[12px] md:leading-[17px]"
           )}
         >
-          <div>川ICP备XXXXXXX号 | 版权所有</div>
-          <div
-            className={classNames(
-              "pb-[24px] pt-[12px] md:pb-0 md:pt-0 md:leading-10"
-            )}
-          >
-            总部地址：81AClemenceauAve,UESquare,Suite17.S239918
-          </div>
+          copyright© 2023 32 Quallty Rd,Singapore 618804
         </div>
       </div>
       {/* end 信息 */}

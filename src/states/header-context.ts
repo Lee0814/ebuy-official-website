@@ -8,7 +8,7 @@ import {
   useState,
 } from "react";
 
-type HeaderType = "transparent" | "frosted-glass" | "white";
+type HeaderType = "transparent" | "frosted-glass" | "white" | "firstshow";
 
 export const HeaderContext = createContext({
   showChangeLang: false as boolean,
@@ -25,7 +25,9 @@ export const useProvideHeader = (): UseProvideReturn<
 > => {
   const [showChangeLang, setShowChangeLang] = useState<boolean>(false);
   const [showHeader, setShowHeader] = useState<boolean>(true);
-  const [headerType, setHeaderType] = useState<HeaderType | undefined>("white");
+  const [headerType, setHeaderType] = useState<HeaderType | undefined>(
+    "firstshow"
+  );
 
   return {
     HeaderProvider: HeaderContext.Provider,
