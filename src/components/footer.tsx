@@ -6,21 +6,41 @@ import classNames from "classnames";
 import Image from "next/image";
 import { memo, useState } from "react";
 import {
+  CountryData,
   CountryIso2,
   CountrySelector,
   defaultCountries,
 } from "react-international-phone";
 import "react-international-phone/style.css";
-import header from "./header.module.scss";
+import { default as header, default as styles } from "./header.module.scss";
+
+import countries from "@/types/countries";
+
+// 防抖
+function debounce(func: any, delay: number) {
+  let timer: NodeJS.Timer;
+  return function () {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func();
+    }, delay);
+  };
+}
 
 export const Footer = memo(() => {
   const lang = useI18nContext().lang;
   const t = useI18n("footer");
 
-  const [isShow, setIsShow] = useState(false);
+  const [showError, setError] = useState({
+    isShow: false,
+    text: "",
+  });
   const [country, setCountry] = useState<CountryIso2>("cn");
   const [countryCode, setCountryCode] = useState<string>("+86");
-  const [attention, setAttention] = useState("");
+  const [showAttention, setAttention] = useState({
+    isShow: false,
+    text: "发送成功，客服将尽快与您联系",
+  });
   //选择国家的回调
   const selectedCountry = (country: any) => {
     const { iso2 } = country;
@@ -42,11 +62,15 @@ export const Footer = memo(() => {
   const submitForm = () => {
     if (formValue.phone.replace(" ", "").length == 0) {
       lang === "en"
-        ? setAttention("Telephone number cannot be empty")
-        : setAttention("电话号码不能为空");
+        ? setError({ isShow: true, text: "Telephone number cannot be empty" })
+        : setError({ isShow: true, text: "电话号码不能为空" });
+      setTimeout(() => {
+        setError({ ...showError, isShow: false });
+      }, 5000);
+      return;
     } else {
       axios
-        .post(process.env.API_URL!, {
+        .post("http://192.168.6.38/core/api/manage/contactUs", {
           fistName: formValue.firstName,
           lastName: formValue.lastName,
           phone: `${countryCode} ${formValue.phone}`,
@@ -64,20 +88,31 @@ export const Footer = memo(() => {
               help: "",
             });
             lang === "en"
-              ? setAttention("Send successfully,we'll contact you soon!")
-              : setAttention("发送成功，客服将尽快与您联系");
+              ? setAttention({
+                  isShow: true,
+                  text: "Send successfully,we'll contact you soon!",
+                })
+              : setAttention({
+                  isShow: true,
+                  text: "发送成功，客服将尽快与您联系",
+                });
+            setTimeout(() => {
+              setAttention({ ...showAttention, isShow: false });
+            }, 5000);
           } else {
-            setAttention(res.data.msg);
+            setAttention({ isShow: true, text: res.data.msg });
+            setTimeout(() => {
+              setAttention({ ...showAttention, isShow: false });
+            }, 5000);
           }
         })
         .catch(() => {
-          setAttention("发送失败，请检查网络");
+          setError({ isShow: true, text: "发送失败，请检查网络" });
+          setTimeout(() => {
+            setError({ ...showError, isShow: false });
+          }, 5000);
         });
     }
-    setIsShow(true);
-    setTimeout(() => {
-      setIsShow(false);
-    }, 2000);
   };
 
   return (
@@ -148,7 +183,8 @@ export const Footer = memo(() => {
               </div>
             </div>
           </div>
-          <div className={classNames("flex flex-col space-y-[16px]")}>
+          {/* 国家选择栏 */}
+          <div className={classNames("relative flex flex-col space-y-[16px]")}>
             <span
               className={classNames(
                 "after:ml-[4px] after:text-[24px] after:font-[500] after:leading-[36px] after:text-[#ed3838] after:content-['*']"
@@ -161,6 +197,8 @@ export const Footer = memo(() => {
                 selectedCountry={country}
                 onSelect={selectedCountry}
                 className={classNames("hidden md:block")}
+                countries={countries}
+                key={1}
               />
               <span
                 className={classNames(
@@ -175,7 +213,10 @@ export const Footer = memo(() => {
                   // {
                   //   [header.errorForm]: isError,
                   // },
-                  header.defaultInput
+                  header.defaultInput,
+                  {
+                    [styles.errorForm]: showError.isShow,
+                  }
                 )}
                 value={formValue.phone}
                 onChange={(e) =>
@@ -184,6 +225,30 @@ export const Footer = memo(() => {
                 type="text"
               />
             </div>
+            {
+              <div
+                className={classNames(
+                  "absolute right-[0%] top-[0] translate-y-[0] text-[24px]  text-[#ED3838]",
+
+                  showError.isShow ? "footerattentionIn" : "footerattentionOut"
+                )}
+              >
+                {showError.text}
+              </div>
+            }
+            {showAttention.isShow && (
+              <div
+                className={classNames(
+                  "absolute left-[50%] top-[0] translate-x-[-50%] rounded bg-[#e4e4e4] px-5 py-4 text-center  text-[24px] text-[#353434]",
+
+                  showAttention.isShow
+                    ? "footerattentionIn"
+                    : "footerattentionOut"
+                )}
+              >
+                {showAttention.text}
+              </div>
+            )}
           </div>
           <div className={classNames("flex flex-col space-y-[16px]")}>
             <span>{t("email")}</span>
@@ -219,23 +284,13 @@ export const Footer = memo(() => {
           )}
         >
           <button
-            onClick={submitForm}
+            onClick={debounce(submitForm, 500)}
             className={classNames(
               " bg-[#ED3838] px-[78px] py-[19px] text-[24px] leading-[36px] text-white hover:bg-[#b92b2b]"
             )}
           >
             {t("submit")}
           </button>
-          {
-            <div
-              className={classNames(
-                "absolute left-[70%] top-[50%] translate-y-[-50%] text-[24px]  text-[#ED3838]",
-                isShow ? "footerattentionIn" : "footerattentionOut"
-              )}
-            >
-              {attention}
-            </div>
-          }
         </div>
       </div>
       {/* end 表单 */}

@@ -68,7 +68,10 @@ body {
   max-height: 300px;
   max-width: 600px;
 }
+.react-international-phone-country-selector-dropdown li:nth-child(3){
 
+  border-bottom:2px solid rgb(187, 187, 187) ;
+}
 
 /* 动画 */
 /* 上移动画 */
@@ -133,20 +136,19 @@ body {
 @keyframes moveDownFoot{
    from {
     opacity: 1;
+
   }
   to {
     opacity: 0;
-    transform :translateY(30%);
+
   }
 }
 @keyframes moveUpFoot {
       from {
     opacity: 0;
-      transform :translateY(0);
   }
   to {
     opacity: 1;
-    transform :translateY(-50%);
   }
 }
 /* 鼠标hover动画 */

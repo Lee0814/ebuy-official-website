@@ -10,12 +10,14 @@ export const ProfileCard = (props: { direction?: boolean }) => {
         ["flex-row-reverse"]: direction,
       })}
     >
-      <div className={classNames("flex w-[30%] justify-center")}>
+      {/* 左侧图片 */}
+      <div className={classNames("flex w-[30%] min-w-[242px] justify-center")}>
         <img
           src="https://lanhu-dds-backend.oss-cn-beijing.aliyuncs.com/merge_image/imgs/4ac218e13e6c42aebed6cbcfc1507488_mergeImage.png"
           alt=""
         />
       </div>
+      {/* 右侧文字 */}
       <div
         className={classNames(
           " flex w-[68%] flex-col justify-between py-[27px]"

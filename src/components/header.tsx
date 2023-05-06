@@ -74,7 +74,7 @@ export const Header = memo(() => {
   // start 下滚隐藏头部 上滚显示头部
 
   let { showHeader, headerType, setShowHeader, setHeaderType } =
-    useHeaderContext();
+    useHeaderContext({ headerType: "transparent" });
   const [lastScroll, setLastScroll] = useState<Position>();
 
   const scroll = useScroll();
@@ -83,7 +83,6 @@ export const Header = memo(() => {
     if (!scroll) return;
 
     if (!lastScroll) {
-      console.log(1);
       setLastScroll(scroll);
       setShowHeader(true);
 
@@ -95,7 +94,11 @@ export const Header = memo(() => {
     if (scroll.top > lastScroll.top) {
       setShowHeader(false);
     } else {
-      setHeaderType("white");
+      if (scroll.top) setHeaderType("white");
+      else {
+        setHeaderType("transparent");
+      }
+
       setShowHeader(true);
     }
 
@@ -115,7 +118,7 @@ export const Header = memo(() => {
   return (
     <header
       className={classNames(
-        "h-[70px] w-full py-[10px] lg:h-[114px]",
+        "h-[70px] w-full py-[10px]  lg:h-[114px]",
 
         styles["in"],
 
@@ -125,12 +128,12 @@ export const Header = memo(() => {
           [styles["out"]]: !showHeader,
         },
 
-        styles[headerType!] || styles["init"]
+        styles[headerType! || "transparent"]
       )}
     >
       <div
         className={classNames(
-          "ebuy-container flex h-full items-center justify-between"
+          "ebuy-container flex h-full items-center justify-between "
         )}
       >
         <Image

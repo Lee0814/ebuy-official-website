@@ -1,10 +1,5 @@
 import img1 from "./images/1.jpg";
 import img10 from "./images/10.jpg";
-import img11 from "./images/11.jpg";
-import img12 from "./images/12.jpg";
-import img13 from "./images/13.jpg";
-import img14 from "./images/14.jpg";
-import img15 from "./images/15.jpg";
 import img2 from "./images/2.jpg";
 import img3 from "./images/3.jpg";
 import img4 from "./images/4.jpg";
@@ -35,12 +30,12 @@ export const Evaluation = memo(() => {
     img8,
     img9,
     img10,
-    img11,
-    img12,
-    img13,
-    img14,
-    img15,
-    img7,
+    // img11,
+    // img12,
+    // img13,
+    // img14,
+    // img15,
+    // img7,
   ];
   const [evaluationRef1, titleInView1] = useInView({ type: "title" });
   const [evaluationRef2, titleInView2] = useInView({ type: "title" });
@@ -53,7 +48,7 @@ export const Evaluation = memo(() => {
       img: any;
     }>
   > = [];
-  for (let i = 0; i < 16; i++) {
+  for (let i = 0; i < 10; i++) {
     if (!evalutionProps[Math.floor(i / 2)])
       evalutionProps[Math.floor(i / 2)] = [];
     evalutionProps[Math.floor(i / 2)].push({

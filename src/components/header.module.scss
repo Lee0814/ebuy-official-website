@@ -1,23 +1,12 @@
 // 透明的
 .transparent {
-  color: #fff;
-  background: none;
-  .contract {
-    color: #7a7a7a;
-    // color: #d1d1d1;
-  }
-}
-
-
-//第一次展示
-
-.init{
   color: #ffffff;
   background: none;
   .contract {
 
     color: #d1d1d1;
   }
+ transition: background-color 0.15s ease-in-out 0s;
 }
 
 .white {
@@ -129,15 +118,15 @@
 .defaultInput {
   border: 1px solid #dddddd;
 
-  transition: all 0.2s ease;
+
 }
 
 .defaultInput:hover,
 .defaultInput:focus {
   outline: none;
-  border: 1px solid rgb(0, 0, 0);
+  border: 1.8px solid #ed3838;
 }
 .errorForm {
   outline: none;
-  border: 1px solid rgb(255, 0, 0);
+  border: 1.8px solid #ed3838;
 }

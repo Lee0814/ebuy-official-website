@@ -103,7 +103,7 @@ export const Location = memo(() => {
           />
           <div
             className={classNames(
-              "absolute  left-[50px] top-[40px] flex w-[35%] flex-col items-start   justify-between bg-[#fff] px-2 py-[20px] md:px-6 md:py-[40px]  "
+              "absolute  left-[50px] top-[40px] flex flex-col items-start justify-between bg-[#fff]   px-2 py-[20px] md:w-[40%] md:px-6 md:py-[40px] lg:w-[35%]  "
             )}
             style={{
               boxShadow: "0px 2px 15px 0px rgba(11,36,40,0.28)",

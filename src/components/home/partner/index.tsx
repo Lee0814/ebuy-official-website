@@ -5,6 +5,7 @@ import classNames from "classnames";
 import Image from "next/image";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import logo11 from "./images/logo-1-1.png";
+import logo11x from "./images/logo-1-1x.png";
 import logo12 from "./images/logo-1-2.png";
 import logo13 from "./images/logo-1-3.png";
 import logo14 from "./images/logo-1-4.png";
@@ -27,6 +28,7 @@ import logo34 from "./images/logo-3-4.png";
 import logo35 from "./images/logo-3-5.png";
 import logo36 from "./images/logo-3-6.png";
 import logo37 from "./images/logo-3-7.png";
+import logo37x from "./images/logo-3-7x.png";
 
 import logo41 from "./images/logo-4-1.png";
 import logo42 from "./images/logo-4-2.png";
@@ -69,15 +71,14 @@ const logos = [
   [logo15, logo25, logo35, logo45, logo55],
   [logo16, logo26, logo36, logo46, logo56],
   [logo17, logo27, logo37, logo47, logo57],
-  [logo11, logo21, logo31, logo41, logo51],
-  [logo12, logo22, logo32, logo42, logo52],
-  [logo11, logo21, logo31, logo41, logo51],
+
+  [logo11x, logo21, logo31, logo41, logo51],
   [logo12, logo22, logo32, logo42, logo52],
   [logo13, logo23, logo33, logo43, logo53],
   [logo14, logo24, logo34, logo44, logo54],
   [logo15, logo25, logo35, logo45, logo55],
   [logo16, logo26, logo36, logo46, logo56],
-  [logo17, logo27, logo37, logo47, logo57],
+  [logo17, logo27, logo37x, logo47, logo57],
 ];
 
 export const Partner = memo(() => {

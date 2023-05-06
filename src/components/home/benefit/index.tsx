@@ -16,6 +16,7 @@ import benefit_3_1 from "./images/benefit-3-1.png";
 import benefit_3_2 from "./images/benefit-3-2.png";
 import benefit_3_3 from "./images/benefit-3-3.png";
 
+import { useHeaderContext } from "@/states";
 import styles from "./styles.module.scss";
 
 const allImages = [
@@ -60,9 +61,11 @@ export const Benefit = memo(() => {
   // }, [scroll?.top]);
 
   // // 设置 header 样式
-  // const { setHeaderType } = useHeaderContext();
+  // const { setHeaderType } = useHeaderContext({ headerType: "transparent" });
   // useEffect(() => {
-  //   setHeaderType(showReadableHeader ? "frosted-glass" : "transparent");
+  //   console.log(showReadableHeader);
+
+  //   setHeaderType(showReadableHeader ? "white" : "transparent");
   // }, [showReadableHeader]);
 
   // 同步按钮位置

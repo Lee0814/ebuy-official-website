@@ -9,6 +9,7 @@ import { useI18nContext } from "@/states";
 import one from "./images/1.png";
 import two from "./images/2.png";
 import three from "./images/3.png";
+import four from "./images/4.png";
 import boxHighlight from "./images/box-h.png";
 import box from "./images/box.png";
 import carHighlight from "./images/car-h.png";
@@ -35,7 +36,7 @@ const images = [
     iconHighlight: carHighlight,
   },
   {
-    picture: one,
+    picture: four,
     iconNormal: dollar,
     iconHighlight: dollarHighlight,
   },
