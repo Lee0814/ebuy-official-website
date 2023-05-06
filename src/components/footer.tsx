@@ -284,7 +284,7 @@ export const Footer = memo(() => {
           )}
         >
           <button
-            onClick={debounce(submitForm, 500)}
+            onClick={debounce(submitForm, 200)}
             className={classNames(
               " bg-[#ED3838] px-[78px] py-[19px] text-[24px] leading-[36px] text-white hover:bg-[#b92b2b]"
             )}

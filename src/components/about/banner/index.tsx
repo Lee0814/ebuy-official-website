@@ -23,10 +23,14 @@ export const Banner = memo(() => {
 
   return (
     <section
-      style={!bannerOverflow ? { aspectRatio: ratio } : { height: "100vh" }}
+      style={
+        !bannerOverflow
+          ? { aspectRatio: ratio }
+          : { height: "calc(100vh - 114px)" }
+      }
       className={classNames(
         styles.banner,
-        "-mt-[70px] w-full bg-cover bg-bottom pt-[70px] lg:-mt-[114px]"
+        "-mt-[70px] w-full bg-cover bg-bottom pt-[70px] lg:-mt-[0px]"
       )}
     >
       <div

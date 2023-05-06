@@ -31,8 +31,13 @@ export const Header = memo(() => {
   const t = useI18n("navbar");
 
   // start 切换语言
-  const [firsr, setFirst] = useState(false);
+
   const router = useRouter();
+  const [isAbout, setIsAbout] = useState(false);
+
+  useEffect(() => {
+    setIsAbout(router.asPath.includes("about"));
+  }, [router.asPath]);
 
   const { lang, detectedLang, setLang } = useI18nContext();
 
@@ -128,7 +133,7 @@ export const Header = memo(() => {
           [styles["out"]]: !showHeader,
         },
 
-        styles[headerType! || "transparent"]
+        isAbout ? styles["white"] : styles[headerType! || "transparent"]
       )}
     >
       <div

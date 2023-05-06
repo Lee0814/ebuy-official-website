@@ -1,10 +1,13 @@
-import { Banner, Profile } from "@/components/about";
+import { Banner, Env, Finance, Mission, Profile } from "@/components/about";
 import { getI18nStaticPaths, getI18nStaticProps } from "@/utils";
 export default function About() {
   return (
     <>
       <Banner />
       <Profile />
+      <Mission />
+      <Finance />
+      <Env />
     </>
   );
 }
