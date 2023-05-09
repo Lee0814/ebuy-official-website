@@ -1,12 +1,11 @@
 import officialAccount from "@/assets/images/official-account.jpg";
-import { useI18n } from "@/hooks";
+import { useI18n, useResponsive } from "@/hooks";
 import { useI18nContext } from "@/states";
 import axios from "axios";
 import classNames from "classnames";
 import Image from "next/image";
 import { memo, useState } from "react";
 import {
-  CountryData,
   CountryIso2,
   CountrySelector,
   defaultCountries,
@@ -30,6 +29,7 @@ function debounce(func: any, delay: number) {
 export const Footer = memo(() => {
   const lang = useI18nContext().lang;
   const t = useI18n("footer");
+  const { md } = useResponsive();
 
   const [showError, setError] = useState({
     isShow: false,
@@ -115,6 +115,333 @@ export const Footer = memo(() => {
     }
   };
 
+  //英语移动版
+  const suplyes = [
+    t("veg"),
+    t("dried"),
+    t("fruit"),
+    t("buns"),
+    t("frozon"),
+    t("drinks"),
+  ];
+  const mobileSuply = (
+    <div className={classNames("bg-[#1d1f21]")}>
+      {/* start 信息 */}
+      <div
+        className={classNames(
+          "ebuy-container !flex flex-col justify-between pb-[34px] pt-[72px] text-[28px]  leading-[20px] text-[#acacac] text-[400] md:flex-row md:pb-[unset] md:text-[14px]"
+        )}
+      >
+        {/* 食材供应 */}
+        <div className={classNames(`col-start-1 col-end-6`)}>
+          {/* 标题 */}
+          <div
+            className={classNames(
+              "mb-8 text-[32px] font-[600] leading-[100%] text-white md:mb-[25px] md:text-[20px] md:leading-[28px]"
+            )}
+          >
+            {t("supply")}
+          </div>
+          <div
+            className={classNames(
+              "flex w-full flex-wrap items-center justify-start  "
+            )}
+          >
+            {suplyes.map((item, index) => (
+              <div
+                className={classNames(" mb-[20px] pr-6 leading-[40px]")}
+                key={index}
+              >
+                {item}
+              </div>
+            ))}
+          </div>
+          <li className={classNames("mt-[10px] list-none")}>
+            <span className={classNames("leading-[100%]")}>
+              {t("merchant")}
+            </span>
+          </li>
+        </div>
+        {/* 第二个 */}
+        <div className={classNames("col-start-8 col-end-13 mt-[72px] md:mt-0")}>
+          <div
+            className={classNames(
+              "mb-5 text-[32px] font-[600] leading-[100%] text-white md:mb-[25px] md:text-[20px] md:leading-[28px]"
+            )}
+          >
+            {t("other")}
+          </div>
+          <div
+            className={classNames(
+              "flex w-full flex-wrap items-center justify-start  "
+            )}
+          >
+            <div className={classNames("my-3 pr-6 leading-[40px]")}>
+              {t("cooperation")}
+            </div>
+            <div className={classNames("my-3 pr-6 leading-[40px]")}>
+              {t("storage")}
+            </div>
+            <div className={classNames(" my-3 pr-6 leading-[40px]")}>
+              {t("distributin")}
+            </div>
+            <div className={classNames(" my-3 pr-6 leading-[40px]")}>
+              {t("provisioning")}
+            </div>
+          </div>
+        </div>
+        {/* 第三个 */}
+        <div
+          className={classNames(
+            "col-start-15 col-end-21 mt-[50px] leading-[100%] md:mt-0"
+          )}
+        >
+          <ul className={classNames("space-y-[12px]")}>
+            <li
+              className={classNames(
+                "text-[32px] font-[600] text-white md:text-[20px] md:leading-[28px]"
+              )}
+            >
+              {t("contact")}
+            </li>
+            <li
+              className={classNames(
+                "pt-8 text-[44px] font-[600] leading-[100%] text-[#ededed] md:pt-0  md:text-[24px] md:leading-[33px]"
+              )}
+            >
+              {t("phone")}
+            </li>
+            <li
+              className={classNames(
+                "pt-6 leading-[100%] md:pt-0 md:leading-[20px]"
+              )}
+            >
+              {t("address")}
+            </li>
+            <li
+              className={classNames(
+                "pt-6 leading-[100%] md:pt-0 md:leading-[20px]"
+              )}
+            >
+              {t("email-detail")}
+            </li>
+            <li
+              className={classNames(
+                "pt-6 leading-[100%] md:pt-0 md:leading-[20px]"
+              )}
+            >
+              {t("time")}
+            </li>
+          </ul>
+        </div>
+        {/* 第四个 */}
+        <div className={classNames("col-start-22  mt-[72px] md:mt-0")}>
+          <ul>
+            <li
+              className={classNames(
+                "mb-[25px] text-[32px] font-[600] leading-[45px] text-white md:text-[20px] md:leading-[28px]"
+              )}
+            >
+              {t("follow")}
+            </li>
+            <li
+              className={classNames(
+                "mb-[8px] h-[260px] w-[260px] bg-white md:h-[89px] md:w-[89px]"
+              )}
+            >
+              <Image
+                className={classNames("h-full w-full")}
+                src={officialAccount}
+                alt="official account"
+              ></Image>
+            </li>
+            <li
+              className={classNames(
+                "pt-[12px] leading-[100%] md:pt-0 md:leading-[20px]"
+              )}
+            >
+              {t("wechat")}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        className={classNames(
+          "mt-[86px] flex flex-col justify-center px-8 pb-[34px] text-[24px] text-[#acacac] text-[400] md:mt-[100px] md:flex-row md:items-center md:space-x-[120px] md:text-[12px] md:leading-[17px]"
+        )}
+      >
+        {t("company")}
+      </div>
+      {/* end 信息 */}
+    </div>
+  );
+  const deskSuply = (
+    <div className={classNames("bg-[#1d1f21]")}>
+      {/* start 信息 */}
+      <div
+        className={classNames(
+          "ebuy-container !flex flex-col justify-between pb-[34px] pt-[72px] text-[28px]  leading-[20px] text-[#acacac] text-[400] md:flex-row md:pb-[unset] md:text-[14px]"
+        )}
+      >
+        {/* 食材供应 */}
+        <div className={classNames(`col-start-1 col-end-6`)}>
+          {/* 标题 */}
+          <div
+            className={classNames(
+              "mb-8 text-[32px] font-[600] leading-[100%] text-white md:mb-[25px] md:text-[20px] md:leading-[28px]"
+            )}
+          >
+            {t("supply")}
+          </div>
+          <ul
+            className={classNames(
+              "flex max-w-[568px] justify-between leading-[100%] md:flex-col md:space-y-[12px] md:leading-[20px]"
+            )}
+          >
+            <li
+              className={classNames("flex flex-col md:block md:space-x-[28px]")}
+            >
+              <span>{t("veg")}</span>
+              <span className={classNames("my-[24px] md:my-0")}>
+                {t("fruit")}
+              </span>
+            </li>
+            <li
+              className={classNames("flex flex-col md:block md:space-x-[28px]")}
+            >
+              <span>{t("buns")}</span>
+              <span className={classNames("my-[24px] md:my-0")}>
+                {t("dried")}
+              </span>
+            </li>
+            <li
+              className={classNames("flex flex-col md:block md:space-x-[28px]")}
+            >
+              <span>{t("frozon")}</span>
+              <span className={classNames("my-[24px] md:my-0")}>
+                {t("drinks")}
+              </span>
+            </li>
+          </ul>
+          <li className={classNames("mt-[10px] list-none")}>
+            <span className={classNames("leading-[100%]")}>
+              {t("merchant")}
+            </span>
+          </li>
+        </div>
+        {/* 第二个 */}
+        <div className={classNames("col-start-8 col-end-13 mt-[72px] md:mt-0")}>
+          <div
+            className={classNames(
+              "mb-5 text-[32px] font-[600] leading-[100%] text-white md:mb-[25px] md:text-[20px] md:leading-[28px]"
+            )}
+          >
+            {t("other")}
+          </div>
+          <ul
+            className={classNames(
+              "flex flex-wrap justify-between leading-[100%] md:block md:space-y-[12px] md:leading-[20px]"
+            )}
+          >
+            <li className={classNames("py-3 md:py-0")}>{t("cooperation")}</li>
+            <li className={classNames("list-none py-3 md:py-0")}>
+              {t("storage")}
+            </li>
+            <li className={classNames("list-none py-3 md:py-0")}>
+              {t("distributin")}
+            </li>
+            <li className={classNames("list-none py-3 md:py-0")}>
+              {t("provisioning")}
+            </li>
+          </ul>
+        </div>
+        {/* 第三个 */}
+        <div
+          className={classNames(
+            "col-start-15 col-end-21 mt-[50px] leading-[100%] md:mt-0"
+          )}
+        >
+          <ul className={classNames("space-y-[12px]")}>
+            <li
+              className={classNames(
+                "text-[32px] font-[600] text-white md:text-[20px] md:leading-[28px]"
+              )}
+            >
+              {t("contact")}
+            </li>
+            <li
+              className={classNames(
+                "pt-8 text-[44px] font-[600] leading-[100%] text-[#ededed] md:pt-0  md:text-[24px] md:leading-[33px]"
+              )}
+            >
+              {t("phone")}
+            </li>
+            <li
+              className={classNames(
+                "pt-6 leading-[100%] md:pt-0 md:leading-[20px]"
+              )}
+            >
+              {t("address")}
+            </li>
+            <li
+              className={classNames(
+                "pt-6 leading-[100%] md:pt-0 md:leading-[20px]"
+              )}
+            >
+              {t("email-detail")}
+            </li>
+            <li
+              className={classNames(
+                "overflow-x-hidden whitespace-nowrap pt-6 leading-[100%] md:pt-0 md:leading-[20px] "
+              )}
+              style={{ width: "calc(100% + 40px)" }}
+            >
+              {t("time")}
+            </li>
+          </ul>
+        </div>
+        {/* 第四个 */}
+        <div className={classNames("col-start-22  mt-[72px] md:mt-0")}>
+          <ul>
+            <li
+              className={classNames(
+                "mb-[25px] text-[32px] font-[600] leading-[45px] text-white md:text-[20px] md:leading-[28px]"
+              )}
+            >
+              {t("follow")}
+            </li>
+            <li
+              className={classNames(
+                "mb-[8px] h-[260px] w-[260px] bg-white md:h-[89px] md:w-[89px]"
+              )}
+            >
+              <Image
+                className={classNames("h-full w-full")}
+                src={officialAccount}
+                alt="official account"
+              ></Image>
+            </li>
+            <li
+              className={classNames(
+                "pt-[12px] leading-[100%] md:pt-0 md:leading-[20px]"
+              )}
+            >
+              {t("wechat")}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div
+        className={classNames(
+          "mt-[86px] flex flex-col justify-center px-8 pb-[34px] text-[24px] text-[#acacac] text-[400] md:mt-[100px] md:flex-row md:items-center md:space-x-[120px] md:text-[12px] md:leading-[17px]"
+        )}
+      >
+        {t("company")}
+      </div>
+      {/* end 信息 */}
+    </div>
+  );
+
   return (
     <footer className={classNames("bg-white")} id="message">
       {/* start 表单 */}
@@ -140,19 +467,22 @@ export const Footer = memo(() => {
             "col-start-1 col-end-25 space-y-[32px]  text-[24px] font-[400] leading-[36px] text-[#666666]"
           )}
         >
+          {/* 姓+名 */}
           <div
             className={classNames(
               "flex flex-col md:flex-row md:justify-between"
             )}
           >
-            {/* 姓 */}
+            {/* 名 */}
             <div
-              className={classNames("flex flex-col space-y-[16px] md:w-[45%]")}
+              className={classNames(
+                "flex flex-col  md:w-[45%] md:items-start md:pt-0"
+              )}
             >
               <span>{t("first-name")}</span>
               <input
                 className={classNames(
-                  "h-[56px] w-full max-w-[650px] rounded-[4px] px-8 py-4",
+                  " mt-4 h-[56px]  w-full rounded-[4px] px-8 py-4",
                   header.defaultInput
                 )}
                 value={formValue.firstName}
@@ -162,25 +492,24 @@ export const Footer = memo(() => {
                 type="text"
               />
             </div>
+            {/* 姓 */}
             <div
-              className={classNames("flex flex-col md:w-[45%] md:items-end")}
+              className={classNames(
+                "flex flex-col pt-8 md:w-[45%] md:items-start md:pt-0"
+              )}
             >
-              <div
-                className={classNames("w-full max-w-[650px] space-y-[16px]")}
-              >
-                <span>{t("last-name")}</span>
-                <input
-                  className={classNames(
-                    "h-[56px] w-full rounded-[4px] px-8 py-4",
-                    header.defaultInput
-                  )}
-                  value={formValue.lastName}
-                  onChange={(e) =>
-                    setFormValue({ ...formValue, lastName: e.target.value })
-                  }
-                  type="text"
-                />
-              </div>
+              <span>{t("last-name")}</span>
+              <input
+                className={classNames(
+                  "mt-4 h-[56px] w-full rounded-[4px] px-8 py-4",
+                  header.defaultInput
+                )}
+                value={formValue.lastName}
+                onChange={(e) =>
+                  setFormValue({ ...formValue, lastName: e.target.value })
+                }
+                type="text"
+              />
             </div>
           </div>
           {/* 国家选择栏 */}
@@ -210,9 +539,6 @@ export const Footer = memo(() => {
               <input
                 className={classNames(
                   "h-[56px] w-full rounded-r-[4px] pl-8 pr-8 md:pl-[96px]",
-                  // {
-                  //   [header.errorForm]: isError,
-                  // },
                   header.defaultInput,
                   {
                     [styles.errorForm]: showError.isShow,
@@ -294,176 +620,7 @@ export const Footer = memo(() => {
         </div>
       </div>
       {/* end 表单 */}
-      {/* start 信息 */}
-      <div className={classNames("bg-[#1d1f21]")}>
-        <div
-          className={classNames(
-            "ebuy-container !flex flex-col justify-between pb-[34px] pt-[72px] text-[28px]  leading-[20px] text-[#acacac] text-[400] md:flex-row md:pb-[unset] md:text-[14px]"
-          )}
-        >
-          {/* 食材供应 */}
-          <div className={classNames(`col-start-1 col-end-6`)}>
-            {/* 标题 */}
-            <div
-              className={classNames(
-                "mb-8 text-[32px] leading-[100%] text-[600] text-white md:mb-[25px] md:text-[20px] md:leading-[28px]"
-              )}
-            >
-              餐饮食材供应
-            </div>
-
-            <ul
-              className={classNames(
-                "flex max-w-[568px] justify-between leading-[100%] md:flex-col md:space-y-[12px] md:leading-[20px]"
-              )}
-            >
-              <li
-                className={classNames(
-                  "flex flex-col md:block md:space-x-[28px]"
-                )}
-              >
-                <span>新鲜蔬菜</span>
-                <span className={classNames("my-[24px] md:my-0")}>
-                  新鲜水果
-                </span>
-              </li>
-              <li
-                className={classNames(
-                  "flex flex-col md:block md:space-x-[28px]"
-                )}
-              >
-                <span>营养面食</span>
-                <span className={classNames("my-[24px] md:my-0")}>
-                  干活调料
-                </span>
-              </li>
-              <li
-                className={classNames(
-                  "flex flex-col md:block md:space-x-[28px]"
-                )}
-              >
-                <span>肉类冻品</span>
-                <span className={classNames("my-[24px] md:my-0")}>
-                  酒水饮料
-                </span>
-              </li>
-            </ul>
-            <li className={classNames("mt-[10px] list-none")}>
-              <span className={classNames("leading-[100%]")}>
-                ebuy商家端订货App（最快当日送货）
-              </span>
-            </li>
-          </div>
-          {/* 第二个 */}
-          <div
-            className={classNames("col-start-8 col-end-13 mt-[72px] md:mt-0")}
-          >
-            <div
-              className={classNames(
-                "mb-5 text-[32px] leading-[100%] text-[600] text-white md:mb-[25px] md:text-[20px] md:leading-[28px]"
-              )}
-            >
-              其他服务
-            </div>
-            <ul
-              className={classNames(
-                "flex flex-wrap justify-between leading-[100%] md:block md:space-y-[12px] md:leading-[20px]"
-              )}
-            >
-              <li className={classNames("py-3 md:py-0")}>批发合作</li>
-              <li className={classNames("list-none py-3 md:py-0")}>共享仓储</li>
-              <li className={classNames("list-none py-3 md:py-0")}>
-                定制化供应服务
-              </li>
-              <li className={classNames("list-none py-3 md:py-0")}>
-                ebuymart线上生鲜超市（次日达）
-              </li>
-            </ul>
-          </div>
-          {/* 第三个 */}
-          <div
-            className={classNames(
-              "col-start-15 col-end-21 mt-[50px] leading-[100%] md:mt-0"
-            )}
-          >
-            <ul className={classNames("space-y-[12px]")}>
-              <li
-                className={classNames(
-                  "text-[32px] text-[600] text-white md:text-[20px] md:leading-[28px]"
-                )}
-              >
-                联系我们
-              </li>
-              <li
-                className={classNames(
-                  "pt-8 text-[44px] leading-[100%] text-[#ededed] text-[600] md:pt-0  md:text-[24px] md:leading-[33px]"
-                )}
-              >
-                9774-5658
-              </li>
-              <li
-                className={classNames(
-                  "pt-6 leading-[100%] md:pt-0 md:leading-[20px]"
-                )}
-              >
-                地址：32 Quallity Road,Singapore 618804
-              </li>
-              <li
-                className={classNames(
-                  "pt-6 leading-[100%] md:pt-0 md:leading-[20px]"
-                )}
-              >
-                联系邮箱：ebuysdnbhd@gmail.com
-              </li>
-              <li
-                className={classNames(
-                  "pt-6 leading-[100%] md:pt-0 md:leading-[20px]"
-                )}
-              >
-                服务时间：周一至周五 9:00 am——6:00 pm
-              </li>
-            </ul>
-          </div>
-          {/* 第四个 */}
-          <div className={classNames("col-start-22  mt-[72px] md:mt-0")}>
-            <ul>
-              <li
-                className={classNames(
-                  "mb-[25px] text-[32px] text-[600] text-white md:text-[20px] md:leading-[28px]"
-                )}
-              >
-                关注我们
-              </li>
-              <li
-                className={classNames(
-                  "mb-[8px] h-[260px] w-[260px] bg-white md:h-[89px] md:w-[89px]"
-                )}
-              >
-                <Image
-                  className={classNames("h-full w-full")}
-                  src={officialAccount}
-                  alt="official account"
-                ></Image>
-              </li>
-              <li
-                className={classNames(
-                  "pt-[12px] leading-[100%] md:pt-0 md:leading-[20px]"
-                )}
-              >
-                Ebuy官方微信公众号
-              </li>
-            </ul>
-          </div>
-        </div>
-        <div
-          className={classNames(
-            "mt-[86px] flex flex-col justify-center px-8 pb-[34px] text-[24px] text-[#acacac] text-[400] md:mt-[100px] md:flex-row md:items-center md:space-x-[120px] md:text-[12px] md:leading-[17px]"
-          )}
-        >
-          copyright© 2023 32 Quallty Rd,Singapore 618804
-        </div>
-      </div>
-      {/* end 信息 */}
+      {lang === "en" && md ? mobileSuply : deskSuply}
     </footer>
   );
 });

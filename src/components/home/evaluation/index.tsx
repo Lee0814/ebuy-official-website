@@ -67,7 +67,7 @@ export const Evaluation = memo(() => {
   const [cols, setCols] = useState(
     evalutionProps.map((column, index) => (
       <div key={index} className={classNames("!min-w-[568px] ")}>
-        <div className={classNames("mb-[56px] mr-[61px] min-h-[276px]")}>
+        <div className={classNames("mb-[56px] mr-[61px] min-h-[336px]")}>
           <ECard eva={evalutionProps[index][0]} />
         </div>
         <div className={classNames(" ml-[61px]")}>

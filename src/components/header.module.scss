@@ -3,8 +3,8 @@
   color: #ffffff;
   background: none;
   .contract {
+    @apply md:text-[#d1d1d1] text-white
 
-    color: #d1d1d1;
   }
  transition: background-color 0.15s ease-in-out 0s;
 }
@@ -19,10 +19,10 @@
     // color: #d1d1d1;
 }
 }
-.mobile {
-  color: #000;
-  background-color: #fff;
-}
+// .mobile {
+//   color: #fff !important;
+
+// }
 
 @keyframes in {
   0% {
@@ -116,7 +116,8 @@
   border: 1px solid rgb(0, 0, 0);
 }
 .defaultInput {
-  border: 1px solid #dddddd;
+  border: 1.8px solid #dddddd;
+  transition: border 0.4s ease;
 
 
 }

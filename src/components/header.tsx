@@ -123,7 +123,7 @@ export const Header = memo(() => {
   return (
     <header
       className={classNames(
-        "h-[70px] w-full py-[10px]  lg:h-[114px]",
+        "h-[92px] w-full py-[10px]  lg:h-[114px]",
 
         styles["in"],
 
@@ -183,7 +183,7 @@ export const Header = memo(() => {
                 "hidden flex-col text-[17px] md:gap-[20px] lg:flex lg:flex-row lg:gap-[40px]",
 
                 {
-                  ["absolute right-0 top-[50px] w-[200px] gap-[10px] text-ellipsis bg-white p-[10px] underline"]:
+                  ["absolute right-0 top-[50px] w-[200px] gap-[10px] text-ellipsis bg-white p-[10px] text-black underline"]:
                     lg,
 
                   ["!flex"]: showMenu,
