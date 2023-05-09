@@ -184,28 +184,31 @@ const BusinessTest = () => {
   useEffect(() => () => clearTimeout(timer), []);
 
   const mobile = (
-    <div className={classNames("overflow-hidden pb-[40px] md:pb-[unset]")}>
+    <div
+      className={classNames(
+        "!w-[100vw] overflow-hidden pb-[40px] md:pb-[unset]"
+      )}
+    >
       <Swiper
         slidesPerView={1}
         modules={[Pagination, Autoplay]}
         pagination={{ el: ".custom-pagination", clickable: true }}
-        className={classNames("w-[614px] overflow-visible")}
+        className={classNames("w-[666px] overflow-visible")}
         onActiveIndexChange={(swiper) => setCurrentIndex(swiper.realIndex)}
-        onAutoplayPause={autoPlay}
-        autoplay
-        loop
       >
         {businesses.map((business, index) => (
           <SwiperSlide
-            className={classNames(
-              "mx-[18px] my-[18px] flex w-full rounded-[16px]"
-            )}
-            style={{
-              boxShadow: "0px 0px 11px 0px rgba(52,30,30,0.25)",
-            }}
+            className={classNames("  box-border  flex justify-center ")}
             key={`business-title-${index}`}
           >
-            <div className={classNames("relative  flex w-full justify-center")}>
+            <div
+              className={classNames(
+                "relative flex w-[644px] justify-center rounded-[16px]"
+              )}
+              style={{
+                boxShadow: "0px 0px 11px 0px rgba(52,30,30,0.25)",
+              }}
+            >
               <div className={classNames("h-[718px] w-[356px] ")}>
                 <Image
                   className="h-full w-full"
