@@ -203,7 +203,7 @@ const BusinessTest = () => {
           >
             <div
               className={classNames(
-                "relative flex w-[644px] justify-center rounded-[16px]"
+                "relative mt-[10px] flex w-[644px] justify-center rounded-[16px]"
               )}
               style={{
                 boxShadow: "0px 0px 11px 0px rgba(52,30,30,0.25)",
@@ -211,14 +211,14 @@ const BusinessTest = () => {
             >
               <div className={classNames("h-[718px] w-[356px] ")}>
                 <Image
-                  className="h-full w-full"
+                  className="h-full w-full pt-[25px]"
                   src={images[index].pictureM}
                   alt={""}
                 />
               </div>
               <div
                 className={classNames(
-                  "absolute bottom-0 flex  min-h-[270px]  w-full flex-col rounded-b-[16px] px-[24px] py-[30px]",
+                  "absolute bottom-0 flex  min-h-[245px]  w-full flex-col rounded-b-[16px] px-[24px] py-[30px]",
                   {
                     ["bg-[#1D1F21] md:bg-[#3D3D3D]"]: true,
                   }
@@ -271,7 +271,9 @@ const BusinessTest = () => {
   );
 
   return (
-    <section className={classNames("w-full bg-[#fbfbfb] md:min-h-[900px]")}>
+    <section
+      className={classNames("w-full bg-white md:min-h-[900px] md:bg-[#fbfbfb]")}
+    >
       <div className={classNames("pt-[72px]")}>
         {/* 标题 容器*/}
         <div

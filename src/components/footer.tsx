@@ -116,7 +116,7 @@ export const Footer = memo(() => {
   };
 
   //英语移动版
-  const suplyes = [
+  const supply = [
     t("veg"),
     t("dried"),
     t("fruit"),
@@ -124,7 +124,7 @@ export const Footer = memo(() => {
     t("frozon"),
     t("drinks"),
   ];
-  const mobileSuply = (
+  const mobileSupply = (
     <div className={classNames("bg-[#1d1f21]")}>
       {/* start 信息 */}
       <div
@@ -147,10 +147,10 @@ export const Footer = memo(() => {
               "flex w-full flex-wrap items-center justify-start  "
             )}
           >
-            {suplyes.map((item, index) => (
+            {supply.map((item, index) => (
               <div
                 className={classNames(" mb-[20px] pr-6 leading-[40px]")}
-                key={index}
+                key={`supply-${index}`}
               >
                 {item}
               </div>
@@ -227,7 +227,7 @@ export const Footer = memo(() => {
             </li>
             <li
               className={classNames(
-                "pt-6 leading-[100%] md:pt-0 md:leading-[20px]"
+                "!w-[100vw] overflow-x-hidden pt-6 leading-[100%] md:pt-0 md:leading-[20px]"
               )}
             >
               {t("time")}
@@ -275,7 +275,7 @@ export const Footer = memo(() => {
       {/* end 信息 */}
     </div>
   );
-  const deskSuply = (
+  const deskSupply = (
     <div className={classNames("bg-[#1d1f21]")}>
       {/* start 信息 */}
       <div
@@ -620,7 +620,7 @@ export const Footer = memo(() => {
         </div>
       </div>
       {/* end 表单 */}
-      {lang === "en" && md ? mobileSuply : deskSuply}
+      {lang === "en" && md ? mobileSupply : deskSupply}
     </footer>
   );
 });

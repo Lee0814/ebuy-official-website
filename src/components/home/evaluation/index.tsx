@@ -66,7 +66,10 @@ export const Evaluation = memo(() => {
   // 所有的列
   const [cols, setCols] = useState(
     evalutionProps.map((column, index) => (
-      <div key={index} className={classNames("!min-w-[568px] ")}>
+      <div
+        key={`evaluation-${index}`}
+        className={classNames("!min-w-[568px] ")}
+      >
         <div className={classNames("mb-[56px] mr-[61px] min-h-[336px]")}>
           <ECard eva={evalutionProps[index][0]} />
         </div>
@@ -121,7 +124,7 @@ export const Evaluation = memo(() => {
     <section
       ref={dom}
       className={classNames(
-        "w-full bg-[#fff] py-[45px]  md:pb-[100px] md:pt-[72px]"
+        "w-full bg-[#fff] py-[28px]  md:pb-[100px] md:pt-[72px]"
       )}
     >
       {/* 主体 */}

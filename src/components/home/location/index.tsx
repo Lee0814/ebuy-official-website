@@ -58,7 +58,7 @@ export const Location = memo(() => {
       >
         {companyInfo.map((company, index) => (
           <div
-            key={index}
+            key={`company-${index}`}
             onClick={() => setCurrentIndex(index)}
             className={classNames(
               "flex cursor-pointer flex-col items-center  ",
@@ -131,6 +131,7 @@ export const Location = memo(() => {
     >
       {countries.map((value, index) => (
         <div
+          key={`country-${index}`}
           className={classNames(styles.accordion, {
             [styles.accordionOpen]: index === activeMobileIndex,
           })}
@@ -167,7 +168,7 @@ export const Location = memo(() => {
   );
   return (
     <section className={classNames(" bg-[#fff] ")}>
-      <div className={classNames("ebuy-container py-[76px]")}>
+      <div className={classNames("ebuy-container pt-[72px]")}>
         <div className={classNames("col-start-1 col-end-25")}>
           <div
             ref={locationRef1}
