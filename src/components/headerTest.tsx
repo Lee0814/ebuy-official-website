@@ -61,9 +61,10 @@ export const Header = memo(() => {
 
   // start 菜单切换
 
-  //用于 outsideClick
   const actionRef = useRef<HTMLDivElement>(null);
+
   const [showMenu, setShowMenu] = useState(false);
+
   // useClickAway(() => setShowMenu(false), actionRef);
 
   // end 菜单切换
@@ -76,11 +77,10 @@ export const Header = memo(() => {
 
   const scroll = useScroll();
   useEffect(() => {
-    if (showMenu) {
-      setShowHeader(true);
-      return;
-    }
-
+    // if (showMenu) {
+    //   setShowHeader(true);
+    //   return;
+    // }
     //初始化
     if (!scroll) return;
 
@@ -100,7 +100,6 @@ export const Header = memo(() => {
       else {
         setHeaderType("transparent");
       }
-
       setShowHeader(true);
     }
 
@@ -113,42 +112,17 @@ export const Header = memo(() => {
 
   const { lg } = useResponsive();
 
-  const listPage = (
-    <div
-      className={classNames(styles.headerMenu, {
-        [styles.activeMenu]: showMenu,
-      })}
-    >
-      <ul className={classNames(styles.headerLists)}>
-        <li className={classNames(styles.listItem)}>
-          <Link href="/">{t("home")}</Link>
-        </li>
-
-        <li className={classNames(styles.listItem)}>
-          <Link href="/about">{t("about")}</Link>
-        </li>
-
-        <li className={classNames(styles.listItem)}>
-          <Link href="/">{t("download")}</Link>
-        </li>
-
-        <li className={classNames(styles.listItem)}>
-          <Link href="/">{t("cooperation")}</Link>
-        </li>
-
-        <li className={classNames(styles.listItem)}>
-          <Link href="/">{t("join")}</Link>
-        </li>
-      </ul>
-    </div>
-  );
-
   // end 手机端 header
 
+  const listClick = () => {
+    console.log(1);
+
+    setShowMenu(!showMenu);
+  };
   return (
     <header
       className={classNames(
-        " h-[92px] w-full  py-[10px] lg:h-[114px]",
+        "relative h-[92px] w-full  py-[10px] lg:h-[114px]",
 
         styles["in"],
 
@@ -157,13 +131,13 @@ export const Header = memo(() => {
 
           [styles["out"]]: !showHeader,
         },
-
-        styles[showMenu ? "white" : headerType! || "transparent"]
+        // styles[showMenu ? "white" : headerType! || "transparent"]
+        styles[headerType! || "transparent"]
       )}
     >
       <div
         className={classNames(
-          "ebuy-container  flex h-full items-center justify-between "
+          "ebuy-container flex h-full items-center justify-between "
         )}
       >
         <Image
@@ -192,7 +166,7 @@ export const Header = memo(() => {
                   [styles["action-icon-close"]]: showMenu,
                 }
               )}
-              onClick={() => setShowMenu(!showMenu)}
+              onClick={listClick}
             >
               <span></span>
 
@@ -205,10 +179,9 @@ export const Header = memo(() => {
 
             <ul
               className={classNames(
-                "hidden flex-col text-[17px] md:gap-[20px] lg:flex lg:flex-row lg:gap-[40px]",
-
+                "flex flex-col text-[17px] md:gap-[20px] lg:flex lg:flex-row lg:gap-[40px]",
                 {
-                  ["flex"]: !lg,
+                  ["hidden"]: lg,
                 }
               )}
             >
@@ -259,7 +232,37 @@ export const Header = memo(() => {
           </div>
         </div>
       </div>
-      {listPage}
+      <div
+        className={classNames(showMenu ? "block" : "hidden", styles.headerMenu)}
+      >
+        <ul className={classNames("flex flex-col")}>
+          <li>
+            <Link href="/">{t("home")}</Link>
+          </li>
+
+          <li>
+            <Link href="/about">{t("about")}</Link>
+          </li>
+
+          <li>
+            <Link href="/">{t("download")}</Link>
+          </li>
+
+          <li>
+            <Link href="/">{t("cooperation")}</Link>
+          </li>
+
+          <li>
+            <Link href="/">{t("join")}</Link>
+          </li>
+        </ul>
+      </div>
+
+      {/* .headerMenu{
+  @apply  absolute top-[100%] w-full bg-white;
+   height: calc(100vh - 92px);
+
+} */}
     </header>
   );
 });

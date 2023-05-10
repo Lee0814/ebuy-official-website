@@ -11,18 +11,14 @@
 
 .white {
   backdrop-filter: blur(10px);
-  // background: rgba(255, 255, 255, 0.3);
    box-shadow: 0 2px 1px rgba(163, 163, 163, 0.2);
+   transition: all 0.2s ease;
   background: #fff;
   .contract {
     color: #7a7a7a;
     // color: #d1d1d1;
 }
 }
-// .mobile {
-//   color: #fff !important;
-
-// }
 
 @keyframes in {
   0% {
@@ -58,6 +54,38 @@
   animation-duration: 0.3s;
 }
 
+
+
+.headerMenu{
+  @apply  absolute top-[92px] w-full bg-white ;
+    transition: all .4s  ease;
+   border-top: 1px solid #eee;
+   opacity: 0;
+   height: 200px;
+   z-index: -1;
+}
+
+.activeMenu{
+    transition: all .4s  ease;
+ height: calc(100vh - 92px);
+ opacity: 1;
+ z-index: 10;
+ display: block;
+}
+.headerLists{
+  text-align: center;
+    width: 70%;
+    margin: 0 auto;
+}
+
+.listItem{
+   padding: 0 0 24px 0;
+    margin: 40px  0 0 0;
+    border-bottom: 1px solid #eee;
+}
+
+
+//footer样式
 .action-icon {
   @apply relative h-[30px] w-[35px];
 

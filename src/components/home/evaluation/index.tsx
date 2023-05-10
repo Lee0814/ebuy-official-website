@@ -10,7 +10,7 @@ import img8 from "./images/8.jpg";
 import img9 from "./images/9.jpg";
 
 import { useI18n, useInView } from "@/hooks";
-import { rAFWithControl } from "@/utils";
+import { rAFWithControl } from "@/utils/rAF-with-control2";
 import { useInViewport } from "ahooks";
 import classNames from "classnames";
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from "react";
@@ -102,10 +102,8 @@ export const Evaluation = memo(() => {
   }, [animation]);
   useEffect(() => {
     if (!inViewport || !ratio) return stopAnimation();
-    if (inViewport && ratio > 0.35) {
+    if (inViewport) {
       startAnimation();
-    } else {
-      stopAnimation();
     }
   }, [inViewport, ratio]);
   useEffect(() => {

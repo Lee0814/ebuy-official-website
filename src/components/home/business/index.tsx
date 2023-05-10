@@ -5,6 +5,8 @@ import { useCallback, useEffect, useState } from "react";
 import { Autoplay, Pagination, Swiper as _Swiper } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 
+import styles from "./style.module.scss";
+
 import { useI18nContext } from "@/states";
 import one from "./images/1.png";
 import two from "./images/2.png";
@@ -19,26 +21,35 @@ import cart from "./images/cart.png";
 import dollarHighlight from "./images/dollar-h.png";
 import dollar from "./images/dollar.png";
 
+import oneM from "./images/1-m.png";
+import twoM from "./images/2-m.png";
+import threeM from "./images/3-m.png";
+import fourM from "./images/4-m.png";
+
 const images = [
   {
     picture: one,
     iconNormal: cart,
     iconHighlight: cartHighlight,
+    pictureM: oneM,
   },
   {
     picture: two,
     iconNormal: box,
     iconHighlight: boxHighlight,
+    pictureM: twoM,
   },
   {
     picture: three,
     iconNormal: car,
     iconHighlight: carHighlight,
+    pictureM: threeM,
   },
   {
     picture: four,
     iconNormal: dollar,
     iconHighlight: dollarHighlight,
+    pictureM: fourM,
   },
 ];
 const Business = () => {
@@ -168,92 +179,108 @@ const Business = () => {
   const autoPlay = useCallback((swiper: _Swiper) => {
     timer = setTimeout(() => {
       swiper.autoplay?.start();
-    }, 5000);
+    }, 50000);
   }, []);
   useEffect(() => () => clearTimeout(timer), []);
 
   const mobile = (
-    <div className={classNames("overflow-hidden pb-[40px] md:pb-[unset]")}>
+    <div
+      className={classNames(
+        "!w-[100vw] overflow-hidden pb-[40px] md:pb-[unset]"
+      )}
+    >
       <Swiper
         slidesPerView={1}
         modules={[Pagination, Autoplay]}
-        pagination={{ el: ".custom-pagination", clickable: true }}
-        className={classNames("w-[614px] overflow-visible")}
+        className={classNames("w-[666px] overflow-visible")}
         onActiveIndexChange={(swiper) => setCurrentIndex(swiper.realIndex)}
-        onAutoplayPause={autoPlay}
-        autoplay
-        loop
       >
         {businesses.map((business, index) => (
-          <SwiperSlide key={`business-title-${index}`}>
+          <SwiperSlide
+            className={classNames("  box-border  flex justify-center ")}
+            key={`business-title-${index}`}
+          >
             <div
               className={classNames(
-                "mb-[60px] flex h-[185px] items-center justify-center transition-all duration-300"
+                "businessShadow relative mt-[10px] flex w-[644px] justify-center rounded-[16px]",
+                styles.swiperBox
               )}
             >
               <div
+                className={classNames("h-[718px] ", {
+                  ["w-[356px]"]: index === 0 || index === 3,
+                  ["w-full"]: index === 1 || index === 2,
+                })}
+              >
+                <Image
+                  style={{
+                    height: index === 0 || index === 3 ? "100%" : "68%",
+                  }}
+                  className={classNames({
+                    ["pt-[25px]"]: index === 0 || index === 3,
+                  })}
+                  src={images[index].pictureM}
+                  alt={""}
+                />
+              </div>
+              <div
                 className={classNames(
-                  "flex h-full w-[614px] flex-col items-center justify-center rounded-[16px] bg-[#1D1F21] px-[24px] py-[30px] transition-all duration-300",
+                  "absolute bottom-0 flex  min-h-[245px]  w-full flex-col rounded-b-[16px] px-[24px] py-[30px]",
                   {
-                    ["!h-[140px] !w-[552px]"]: currentIndex !== index,
+                    ["bg-[#1D1F21] md:bg-[#3D3D3D]"]: true,
                   }
                 )}
               >
-                <div className={classNames("flex items-center pb-[12px]")}>
+                <div className={classNames("flex flex-wrap items-center")}>
                   <Image
                     className={classNames("mr-[14px] h-[30px] w-[30px]")}
                     alt={business.title}
-                    src={business.iconHighlight}
+                    src={business.iconNormal}
                   />
                   <span
                     className={classNames(
-                      "text-[26px] leading-[39px] text-white"
+                      "text-[26px] leading-[39px] text-[#3A2D1B]",
+                      {
+                        ["text-[#F5F5F5]"]: true,
+                      }
                     )}
                   >
                     {business.title}
                   </span>
+                  <span
+                    className={classNames(
+                      "ml-[44px] text-[20px] leading-[34px] text-[#B6863E]",
+                      {
+                        ["text-[#F5F5F5]"]: true,
+                      }
+                    )}
+                  >
+                    {business.title2
+                      ? lang === "en"
+                        ? `BNPL - ${business.title2}`
+                        : `（${business.title2}）`
+                      : ""}
+                  </span>
                 </div>
                 <div
                   className={classNames(
-                    "text-center text-[18px] leading-[29px] text-[#BDBDBD]"
+                    "ml-[46px] pt-[24px] text-[20px] leading-[29px] text-[#BDBDBD]"
                   )}
                 >
                   {business.description}
                 </div>
               </div>
             </div>
-            <div
-              className={classNames(
-                "flex h-[982px] items-center justify-center transition-all duration-300",
-                {
-                  ["!justify-end"]: index === currentIndex - 1,
-                  ["!justify-start"]: index === currentIndex + 1,
-                }
-              )}
-            >
-              <Image
-                loading="eager"
-                className={classNames("w-[348px] transition-all duration-300", {
-                  ["!w-[486px]"]: currentIndex === index,
-                  ["!max-h-[822px] !max-w-full"]: currentIndex !== index,
-                })}
-                src={business.picture}
-                alt={business.title}
-              />
-            </div>
           </SwiperSlide>
         ))}
-        <div
-          className={classNames(
-            "custom-pagination mt-[41px] flex justify-center !space-x-[24px] md:!space-x-[12px]"
-          )}
-        ></div>
       </Swiper>
     </div>
   );
 
   return (
-    <section className={classNames("w-full bg-[#fbfbfb] md:min-h-[900px]")}>
+    <section
+      className={classNames("w-full bg-white md:min-h-[900px] md:bg-[#fbfbfb]")}
+    >
       <div className={classNames("pt-[72px]")}>
         {/* 标题 容器*/}
         <div

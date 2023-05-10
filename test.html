@@ -7,28 +7,51 @@
     <title>Document</title>
     <style>
 .blinds {
-  display: flex;
-  width: 300px;
-  height: 300px;
+  border:1px solid black;
+  width:400px;
+  height: 700px;
+
+}
+*{
+    margin: 0;
+    padding: 0;
+}
+li{
+    list-style: none;
 }
 
-.blind {
-  flex: 1;
-  width: 100%;
-  background-color: #ccc;
-  transition: all 0.5s ease-out;
+.list-item{
+    padding: 0 0 12px 0;
+    margin: 20px  0 0 0;
+    border-bottom: 1px solid #eee;
 }
-
-.blind:hover {
-  transform: scaleY(0);
+.lists{
+    text-align: center;
+    width: 80%;
+    margin: 0 auto;
 }
     </style>
 </head>
 <body>
     <div class="blinds">
-  <div class="blind"></div>
-  <div class="blind"></div>
-  <div class="blind"></div>
+                    <ul class="lists">
+                        <li class="list-item">首页</li>
+                         <li class="list-item">关于我们</li>
+                          <li class="list-item">下载</li>
+                          <li class="list-item">商业合作</li>
+                          <li class="list-item">加入我们</li>
+                    </ul>
 </div>
 </body>
+
+<script>
+     function resizeHandler() {
+            window.scale = document.documentElement.clientWidth <= 750
+                ? Math.min(1, document.documentElement.clientWidth / 750)
+                : 1;
+            document.documentElement.style.fontSize = max(16 * scale,14) + "px";
+          }
+          resizeHandler();
+          addEventListener("resize", resizeHandler);
+</script>
 </html>

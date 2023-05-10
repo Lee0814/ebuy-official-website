@@ -132,6 +132,7 @@ export const Location = memo(() => {
       {countries.map((value, index) => (
         <div
           key={`country-${index}`}
+          onClick={() => arrowClick(index)}
           className={classNames(styles.accordion, {
             [styles.accordionOpen]: index === activeMobileIndex,
           })}
@@ -155,10 +156,7 @@ export const Location = memo(() => {
               {companyInfo[index].address}
             </span>
           </div>
-          <div
-            onClick={() => arrowClick(index)}
-            className={classNames(styles.arrow, "")}
-          >
+          <div className={classNames(styles.arrow, "")}>
             {" "}
             <Image alt="" src={arrow} />
           </div>

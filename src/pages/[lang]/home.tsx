@@ -1,7 +1,7 @@
 import {
   Banner,
   Benefit,
-  BusinessTest,
+  Business,
   Evaluation,
   Location,
   Partner,
@@ -13,8 +13,8 @@ export default function Home() {
     <>
       <Banner />
       <Benefit />
-      {/* <Business /> */}
-      <BusinessTest />
+      <Business />
+
       <Partner />
       <Evaluation />
       <Location />

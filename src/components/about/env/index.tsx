@@ -30,8 +30,26 @@ export const Env = () => {
           <Image className={classNames(style.scale)} alt="" src={one} />
         </div>
 
-        <div className={classNames(style.box, style.emptyBox)}>
-          <div className={classNames(style.scale, "h-full w-full")}></div>
+        <div className={classNames(style.box)}>
+          <div
+            className={classNames(
+              style.emptyBox,
+              "flex h-full w-full flex-col justify-center pl-10"
+            )}
+          >
+            <span
+              className={classNames("text-[48px] leading-[67px] text-white ")}
+            >
+              发展
+            </span>
+            <span
+              className={classNames(
+                "pt-[7px] text-[44px] leading-[44px] text-white"
+              )}
+            >
+              development
+            </span>
+          </div>
         </div>
         <div className={classNames(style.box)}>
           <Image className={classNames(style.scale)} alt="" src={three} />
@@ -51,7 +69,6 @@ export const Env = () => {
         <div className={classNames(style.box)}>
           <div
             className={classNames(
-              style.scale,
               style.emptyBox,
               "flex h-full w-full flex-col justify-center pl-10"
             )}
