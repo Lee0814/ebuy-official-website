@@ -119,7 +119,10 @@ export const Header = memo(() => {
         [styles.activeMenu]: showMenu,
       })}
     >
-      <ul className={classNames(styles.headerLists)}>
+      <ul
+        onClick={() => setShowMenu(false)}
+        className={classNames(styles.headerLists)}
+      >
         <li className={classNames(styles.listItem)}>
           <Link href="/">{t("home")}</Link>
         </li>

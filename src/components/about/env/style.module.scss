@@ -1,8 +1,6 @@
 .box{
-  width: calc(calc(100% - 48px) / 3) !important;
-  height: auto;
-  border-radius: 8px;
-   overflow: hidden;
+@apply  h-auto rounded-lg ;
+
 }
 
 .emptyBox{
@@ -14,6 +12,23 @@ border-radius: 8px;
 
 
 // }
+
+.container{
+  display: grid;
+grid-template-columns: 32% 32% 32%;
+  grid-template-rows: 1fr 1fr;
+  justify-content: space-between;
+  grid-row-gap:72px
+
+}
+
+.phoneContainer{
+  display: grid;
+grid-template-columns: 48% 48%;
+
+  justify-content: space-between;
+  grid-row-gap:32px
+}
 
 .scale{
   width: 100%;

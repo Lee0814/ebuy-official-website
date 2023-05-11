@@ -15,14 +15,14 @@ export const Finance = () => {
       </div>
       <div
         className={classNames(
-          "col-start-1 col-end-25 pt-[32px] text-[20px] leading-[31px]"
+          "col-start-1 col-end-25 pt-[32px] text-[26px] leading-[44px] md:text-[20px] md:leading-[31px]"
         )}
       >
         {t("finance-1")}
       </div>
       <div
         className={classNames(
-          "col-start-1 col-end-25 pb-[56px] pt-[30px] text-[20px] leading-[32px]"
+          "col-start-1 col-end-25 pb-[56px] pt-[30px] text-[26px] leading-[44px] md:text-[20px] md:leading-[32px]"
         )}
       >
         {t("finance-2")}

@@ -25,7 +25,7 @@ export const Banner = memo(() => {
     <section className={classNames(styles.banner)}>
       <div
         className={classNames(
-          "ebuy-container !flex h-full flex-col items-start justify-center text-white"
+          "ebuy-container !flex h-full flex-col items-center justify-center text-white md:items-start"
         )}
       >
         <span

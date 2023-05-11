@@ -18,7 +18,7 @@ export const Mission = () => {
         >
           <div
             className={classNames(
-              " flex w-[74%] flex-col justify-between rounded-lg bg-[rgba(255,255,255,0.84)] px-[86px] py-[72px]"
+              "my-[40px] flex w-full flex-col justify-between rounded-lg bg-[rgba(255,255,255,0.84)] px-[86px] py-[40px] md:my-[unset] md:w-[74%] md:py-[72px]"
             )}
           >
             <div className={classNames("flex flex-col items-center")}>
@@ -29,7 +29,7 @@ export const Mission = () => {
               </div>
               <div
                 className={classNames(
-                  "pt-[32px] text-center text-[20px] leading-[31px] text-[#333]"
+                  "pt-[32px] text-center text-[26px] leading-[44px] text-[#333] md:text-[20px] md:leading-[31px]"
                 )}
               >
                 {t("mission-text")}
@@ -43,7 +43,7 @@ export const Mission = () => {
               </div>
               <div
                 className={classNames(
-                  "pt-[32px] text-center text-[20px] leading-[31px] text-[#333]"
+                  "pt-[32px] text-center text-[26px] leading-[44px] text-[#333] md:text-[20px] md:leading-[31px]"
                 )}
               >
                 {t("vision-text")}

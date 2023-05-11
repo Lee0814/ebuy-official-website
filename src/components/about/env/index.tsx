@@ -1,4 +1,4 @@
-import { useI18n } from "@/hooks";
+import { useI18n, useResponsive } from "@/hooks";
 import classNames from "classnames";
 import Image from "next/image";
 import one from "./images/1.png";
@@ -8,6 +8,7 @@ import five from "./images/5.png";
 import style from "./style.module.scss";
 export const Env = () => {
   const t = useI18n("about");
+  const { md } = useResponsive();
   return (
     <section
       className={classNames(
@@ -21,9 +22,11 @@ export const Env = () => {
       >
         {t("environment-title")}
       </div>
+      {/* 第一层 */}
       <div
         className={classNames(
-          "col-start-1 col-end-25 flex justify-between gap-[24px] pb-[72px]"
+          "col-start-1 col-end-25 ",
+          !md ? style.container : style.phoneContainer
         )}
       >
         <div className={classNames(style.box)}>
@@ -38,13 +41,13 @@ export const Env = () => {
             )}
           >
             <span
-              className={classNames("text-[48px] leading-[67px] text-white ")}
+              className={classNames(" text-[48px] leading-[67px] text-white ")}
             >
               发展
             </span>
             <span
               className={classNames(
-                "pt-[7px] text-[44px] leading-[44px] text-white"
+                "pt-[7px] text-[36px] leading-[44px] text-white md:text-[36px]"
               )}
             >
               development
@@ -54,12 +57,6 @@ export const Env = () => {
         <div className={classNames(style.box)}>
           <Image className={classNames(style.scale)} alt="" src={three} />
         </div>
-      </div>
-      <div
-        className={classNames(
-          "col-start-1 col-end-25 flex justify-between gap-[24px] pb-[72px]"
-        )}
-      >
         <div className={classNames(style.box)}>
           <Image className={classNames(style.scale)} alt="" src={four} />
         </div>
@@ -70,7 +67,7 @@ export const Env = () => {
           <div
             className={classNames(
               style.emptyBox,
-              "flex h-full w-full flex-col justify-center pl-10"
+              "flex h-full  w-full flex-col justify-center pl-10"
             )}
           >
             <span
@@ -80,7 +77,7 @@ export const Env = () => {
             </span>
             <span
               className={classNames(
-                "pt-[7px] text-[44px] leading-[44px] text-white"
+                "pt-[7px] text-[36px] leading-[44px] text-white"
               )}
             >
               create

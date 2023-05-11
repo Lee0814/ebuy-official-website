@@ -6,8 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
-.blinds {
-  border:1px solid black;
+.bdivnds {
+  border:1px sodivd black;
   width:400px;
   height: 700px;
 
@@ -16,42 +16,37 @@
     margin: 0;
     padding: 0;
 }
-li{
-    list-style: none;
-}
 
-.list-item{
-    padding: 0 0 12px 0;
-    margin: 20px  0 0 0;
-    border-bottom: 1px solid #eee;
+
+.divst-item{
+
+    border: 1px solid black;
 }
-.lists{
-    text-align: center;
-    width: 80%;
-    margin: 0 auto;
+.divsts{
+    margin: auto;
+      display: grid;
+  grid-template-columns: 30% 30% 30%;
+  grid-template-rows: 1fr 1fr;
+  justify-content: space-between;
+  width: 600px;
+  height: 400px;
 }
     </style>
 </head>
 <body>
-    <div class="blinds">
-                    <ul class="lists">
-                        <li class="list-item">首页</li>
-                         <li class="list-item">关于我们</li>
-                          <li class="list-item">下载</li>
-                          <li class="list-item">商业合作</li>
-                          <li class="list-item">加入我们</li>
+    <div class="bdivnds">
+                    <ul class="divsts">
+                        <div class="divst-item">首页</div>
+                         <div class="divst-item">关于我们</div>
+                          <div class="divst-item">下载</div>
+                          <div class="divst-item">商业合作</div>
+                          <div class="divst-item">加入我们</div>
+                          <div class="divst-item">加入我们</div>
                     </ul>
 </div>
 </body>
 
 <script>
-     function resizeHandler() {
-            window.scale = document.documentElement.clientWidth <= 750
-                ? Math.min(1, document.documentElement.clientWidth / 750)
-                : 1;
-            document.documentElement.style.fontSize = max(16 * scale,14) + "px";
-          }
-          resizeHandler();
-          addEventListener("resize", resizeHandler);
+
 </script>
 </html>

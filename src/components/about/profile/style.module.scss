@@ -1,0 +1,22 @@
+.deskBg{
+    background: url(./images/bg.png);
+
+    background-repeat: no-repeat;
+    background-position:calc(calc(calc(100vw - 1440px) / 2) - 200px)  2%;
+
+}
+
+
+
+.mobileBg1{
+   background: url(./images/bg.png);
+    background-size:60% 40% ;
+    background-repeat: no-repeat;
+    background-position:30%  30%;
+}
+.mobileBg2{
+   background: url(./images/bg.png);
+    background-size:70% 40% ;
+    background-repeat: no-repeat;
+    background-position:10px  60%;
+}
