@@ -132,15 +132,15 @@ export const Header = memo(() => {
         </li>
 
         <li className={classNames(styles.listItem)}>
-          <Link href="/">{t("download")}</Link>
+          <Link href="/download">{t("download")}</Link>
         </li>
 
         <li className={classNames(styles.listItem)}>
-          <Link href="/">{t("cooperation")}</Link>
+          <Link href="/cooperation">{t("cooperation")}</Link>
         </li>
 
         <li className={classNames(styles.listItem)}>
-          <Link href="/">{t("join")}</Link>
+          <Link href="/joinus">{t("join")}</Link>
         </li>
       </ul>
     </div>
@@ -224,15 +224,15 @@ export const Header = memo(() => {
               </li>
 
               <li>
-                <Link href="/">{t("download")}</Link>
+                <Link href="/download">{t("download")}</Link>
               </li>
 
               <li>
-                <Link href="/">{t("cooperation")}</Link>
+                <Link href="/cooperation">{t("cooperation")}</Link>
               </li>
 
               <li>
-                <Link href="/">{t("join")}</Link>
+                <Link href="/joinus">{t("join")}</Link>
               </li>
             </ul>
           </div>
