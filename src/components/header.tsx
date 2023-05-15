@@ -19,6 +19,8 @@ import styles from "./header.module.scss";
 
 import logo from "@/assets/images/logo.svg";
 
+import logo_m from "@/assets/image/logo-m.png"
+
 type Position = {
   left: number;
 
