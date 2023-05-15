@@ -65,7 +65,7 @@ export const PropertyCardRight = (props: {
         </div>
         <div
           className={classNames(
-            "pb-[16px] pt-[8px] text-[26px] leading-[44px] text-[#333] md:text-[20px] md:leading-[31px]"
+            "py-[32px] text-[26px] leading-[44px] text-[#333] md:pb-[16px] md:pt-[8px] md:text-[20px] md:leading-[31px]"
           )}
         >
           {descData.text}

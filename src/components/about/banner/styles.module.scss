@@ -25,10 +25,9 @@
 @media screen and (max-width: 768px)  {
 .banner{
    background-image: url("./images/banner-bg-m.png");
-   background-repeat: no-repeat;
-  background-size:auto auto;
-  background-position:center center;
-    @apply h-[360px] -mt-[92px] pt-[70px] lg:-mt-[114px];
-
+  //  background-repeat: no-repeat;
+  // background-size:auto auto;
+  // background-position:center center;
+    @apply h-[360px] -mt-[92px] pt-[70px]
 }
 }

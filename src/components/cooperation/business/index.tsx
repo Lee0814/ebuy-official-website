@@ -4,6 +4,8 @@ import { memo } from "react";
 import { PropertyCardLeft } from "./PropertiCardLeft";
 import { PropertyCardRight } from "./PropertiCardRight";
 
+
+
 import d1 from "./images/1.png";
 import style from "./style.module.scss";
 
@@ -11,12 +13,17 @@ import d2 from "./images/2.png";
 import d3 from "./images/3.png";
 import d4 from "./images/4.png";
 
+import m1 from "./images/1m.png";
+import m2 from "./images/2m.png";
+import m3 from "./images/3m.png";
+import m4 from "./images/4m.png";
+
 export const Business = memo(() => {
   const images = [
-    { m: [d1], d: [d1] },
-    { m: [d2], d: [d2] },
-    { m: [d3], d: [d3] },
-    { m: [d4], d: [d4] },
+    { m: [m1], d: [d1] },
+    { m: [m2], d: [d2] },
+    { m: [m3], d: [d3] },
+    { m: [m4], d: [d4] },
   ];
   const { md } = useResponsive();
   const t = useI18n("about");
@@ -68,7 +75,10 @@ export const Business = memo(() => {
       </div>
       <div className={classNames("w-full   bg-[#f5f5f5] md:bg-[unset] ")}>
         <div className="ebuy-container !block">
-          <PropertyCardRight descData={descDatas[0]} width={"w-[364px]"} />
+          <PropertyCardRight
+            descData={descDatas[0]}
+            width={"w-full md:w-[364px]"}
+          />
         </div>
       </div>
       <div
@@ -79,7 +89,7 @@ export const Business = memo(() => {
         <div className="ebuy-container !block">
           <PropertyCardRight
             descData={descDatas[1]}
-            width={"w-[461px] md:w-[340px]"}
+            width={"w-full md:w-[340px]"}
           />
         </div>
       </div>

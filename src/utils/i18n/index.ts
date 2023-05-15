@@ -10,12 +10,16 @@ import zhCommon from "./locales/zh/common.json";
 import zhFooter from "./locales/zh/footer.json";
 import zhHome from "./locales/zh/home.json";
 import zhNavbar from "./locales/zh/navbar.json";
+//语言导入
+import enJoinus from "./locales/en/joinus.json";
+import zhJoinus from "./locales/zh/joinus.json";
 type Trans = {
   common: typeof enCommon;
   navbar: typeof enNavbar;
   home: typeof enHome;
   footer: typeof enFooter;
   about: typeof enAbout;
+  joinus:typeof enJoinus
 };
 export type Lang = "en" | "zh-CN";
 export type NS = keyof Trans;
@@ -34,6 +38,7 @@ const i18n: I18n = {
     home: enHome,
     footer: enFooter,
     about: enAbout,
+    joinus:enJoinus
   },
   "zh-CN": {
     common: zhCommon,
@@ -41,6 +46,7 @@ const i18n: I18n = {
     home: zhHome,
     footer: zhFooter,
     about: zhAbout,
+    joinus:zhJoinus
   },
 };
 

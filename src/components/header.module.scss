@@ -7,6 +7,11 @@
 
   }
  transition: background-color 0.15s ease-in-out 0s;
+ .action-icon{
+  span{
+    @apply border-[#fff];
+  }
+ }
 }
 
 .white {
@@ -17,7 +22,12 @@
   .contract {
     color: #7a7a7a;
     // color: #d1d1d1;
-}
+ }
+ .action-icon{
+  span{
+    @apply border-[#a7a7a7];
+  }
+ }
 }
 
 @keyframes in {
@@ -86,9 +96,10 @@
 }
 
 
-//footer样式
+
+
 .action-icon {
-  @apply relative h-[30px] w-[35px];
+  @apply relative h-[18px] w-[30px];
 
   span {
     @apply absolute left-0 w-full rounded-full border-[2px] border-[#ED3838] transition-all duration-300;
@@ -98,15 +109,15 @@
     }
 
     &:nth-child(2) {
-      @apply top-[15px];
+      @apply top-[11px];
     }
 
     &:nth-child(3) {
-      @apply top-[15px];
+      @apply top-[11px];
     }
 
     &:nth-child(4) {
-      @apply top-[28px];
+      @apply top-[21px];
     }
   }
 }
@@ -116,23 +127,25 @@
     @apply absolute left-[1.5px];
 
     &:nth-child(1) {
-      @apply left-[19px] top-[30px] w-0 border-0;
+      @apply left-[19px] top-[25px] w-0 border-0;
     }
 
     &:nth-child(2) {
-      @apply top-[15px] w-[35px] rotate-45 transform;
+      @apply top-[12px] w-[30px] rotate-45 transform;
     }
 
     &:nth-child(3) {
-      @apply top-[15px] w-[35px] -rotate-45 transform;
+      @apply top-[12px] w-[30px] -rotate-45 transform;
     }
 
     &:nth-child(4) {
-      @apply left-[19px] top-[30px] w-0 border-0;
+      @apply left-[19px] top-[25px] w-0 border-0;
     }
   }
 }
 
+
+//footer样式
 .container {
   height: 56px;
   box-sizing: border-box;
