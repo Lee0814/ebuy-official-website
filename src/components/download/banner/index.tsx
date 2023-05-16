@@ -1,21 +1,31 @@
 import classNames from "classnames";
 import styles from "./styles.module.scss"
 import phone_m from './images/phone1-m.png'
+import phone from './images/phone1.png'
 import Image from "next/image";
 import app_1 from "./images/app-1-m.png"
 import ecode from "./images/ecode-m.png"
-import { useI18n, useInView, useWindowSize } from "@/hooks";
+import { useI18n, useInView, useWindowSize ,useResponsive} from "@/hooks";
+// import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+
+
+// console.log(window);
 
 export const Banner = () => {
   const t=useI18n('download')
+ 
+  // 切换手机大图
+  const { md } = useResponsive();
+
   return (
     <section className={classNames('w-full',styles.banner)}>
       <div className={
         classNames('ebuy-container !flex flex-col pb-[25px] md:flex-row-reverse justify-between h-full')
         }>
-        {/* 手机图 */}
+        {/* 手机大图 */}
         <div className={classNames('pt-[88px] md:flex-1 md:flex md:justify-center')}>
-          <Image src={phone_m} alt="" className={classNames('w-[431px] mx-auto md:w-[374px]')}></Image>
+          <Image src={!md ? phone : phone_m} alt="" className={classNames('w-[431px]  md:translate-y-[-10%] mx-auto md:w-[374px] ' )}></Image>
         </div>
 
         {/* 文字内容区域 */}
@@ -42,4 +52,4 @@ export const Banner = () => {
 };
 
 
-
+ 

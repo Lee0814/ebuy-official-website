@@ -17,9 +17,8 @@ import { Link } from "./link";
 
 import styles from "./header.module.scss";
 
+import logo_m from "@/assets/images/logo-m.png";
 import logo from "@/assets/images/logo.svg";
-
-import logo_m from "@/assets/image/logo-m.png"
 
 type Position = {
   left: number;
@@ -113,7 +112,7 @@ export const Header = memo(() => {
 
   // start 手机端 header
 
-  const { lg } = useResponsive();
+  const { lg, md } = useResponsive();
 
   const listPage = (
     <div
@@ -150,6 +149,46 @@ export const Header = memo(() => {
 
   // end 手机端 header
 
+  //不同页面header逻辑
+
+  const keywords = ["about", "joinus", "cooperation", "download"];
+  const regexp = new RegExp(keywords.join("|"), "i");
+  const [isHome, setHome] = useState(true);
+  const [nowLogo, setLogo] = useState(logo);
+  useEffect(() => {
+    if (
+      regexp.test(router.asPath.split("/")[router.asPath.split("/").length - 1])
+    ) {
+      setHome(() => false);
+    } else {
+      setHome(() => true);
+    }
+
+    if (router.asPath.split("/").includes("download") && md) {
+      setLogo(logo_m);
+    } else {
+      setLogo(logo);
+    }
+  }, [router.asPath, md]);
+
+  const currentHeaderType = () => {
+    if (showMenu) {
+      return "white";
+    } else {
+      //移动端
+      if (md) {
+        return headerType! || "transparent";
+      }
+      //电脑端
+      else {
+        if (isHome) return headerType! || "transparent";
+        else {
+          return "white";
+        }
+      }
+    }
+  };
+
   return (
     <header
       className={classNames(
@@ -163,7 +202,7 @@ export const Header = memo(() => {
           [styles["out"]]: !showHeader,
         },
 
-        styles[showMenu ? "white" : headerType! || "transparent"]
+        styles[currentHeaderType()]
       )}
     >
       <div
@@ -172,7 +211,7 @@ export const Header = memo(() => {
         )}
       >
         <Image
-          src={logo}
+          src={headerType === "white" ? logo : nowLogo}
           alt="ebuy"
           height={50}
           className={classNames(" col-start-1 col-end-6 w-[146px]")}

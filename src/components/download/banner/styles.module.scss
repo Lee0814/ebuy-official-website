@@ -1,7 +1,18 @@
 .banner{
-    background: url('./images/bg-m.png');
+    background: url('./images/bg.jpg');
     background-size:100% 100%;
-    @apply h-[100vh] md:h-[714px] bg-center bg-repeat mt-[-92px] pt-[92px] md:mt-[-114px];
+    @apply md:h-[600px] md:bg-center md:bg-repeat ;
   
-
 }
+
+@media screen and (max-width: 768px)  {
+    .banner{
+        background-image: url("./images/bg-m.png");
+        background-repeat: no-repeat;
+        background-size:auto auto;
+        background-position:center center;
+        @apply h-[100vh] bg-center bg-repeat -mt-[92px] pt-[92px] lg:-mt-[114px];
+    
+    }
+}
+    
