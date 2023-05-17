@@ -10,11 +10,11 @@ import zhCommon from "./locales/zh/common.json";
 import zhFooter from "./locales/zh/footer.json";
 import zhHome from "./locales/zh/home.json";
 import zhNavbar from "./locales/zh/navbar.json";
-//joinus语言导入
 import enJoinus from "./locales/en/joinus.json";
 import zhJoinus from "./locales/zh/joinus.json";
 import enDownload from "./locales/en/download.json"
 import zhDownload from "./locales/zh/download.json"
+
 type Trans = {
   common: typeof enCommon;
   navbar: typeof enNavbar;

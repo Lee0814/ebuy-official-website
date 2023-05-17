@@ -48,7 +48,7 @@ export const Banner = memo(() => {
             }
           )}
         >
-          cooperation
+          COOPERATION
         </span>
       </div>
     </section>

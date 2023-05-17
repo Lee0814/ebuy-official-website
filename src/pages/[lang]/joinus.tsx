@@ -1,10 +1,11 @@
-import { Banner, Title } from "@/components/joinus";
+import { Banner, Title ,Content} from "@/components/joinus";
 import { getI18nStaticPaths, getI18nStaticProps } from "@/utils";
 export default function About() {
   return (
     <>
       <Banner />
       <Title />
+      <Content/>
     </>
   );
 }

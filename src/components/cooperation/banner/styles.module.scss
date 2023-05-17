@@ -2,9 +2,9 @@
   background-image: url("./images/banner-bg.png");
 
 
-   background-repeat: no-repeat;
-  background-size:100% auto;
-  background-position:center center;
+    background-repeat: no-repeat;
+    background-size:100% 100%;
+    background-position:center center;
     @apply h-[360px]  -mt-[92px] pt-[70px] lg:-mt-[114px];
 
   // "-mt-[92px] w-full bg-cover bg-bottom pt-[70px] lg:-mt-[114px]"
@@ -14,20 +14,19 @@
 @media screen and (min-width: 768.1px) and (max-width: 1400px) {
 .banner{
 
-   background-repeat: no-repeat;
-  background-size:auto auto;
-  background-position:center center;
+    background-repeat: no-repeat;
+    background-size:auto auto;
+    background-position:center center;
     @apply h-[500px] -mt-[92px] pt-[70px] lg:-mt-[114px];
-
 }
 }
 
 @media screen and (max-width: 768px)  {
 .banner{
-   background-image: url("./images/banner-bg-m.png");
-   background-repeat: no-repeat;
-  background-size:auto auto;
-  background-position:center center;
+    background-image: url("./images/banner-bg-m.png");
+    background-repeat: no-repeat;
+    background-size:100% 100%;
+    background-position:center center;
     @apply h-[360px] -mt-[92px] pt-[70px] lg:-mt-[114px];
 
 }
