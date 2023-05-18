@@ -5,6 +5,19 @@
   
 }
 
+.title{
+    @apply pb-[32px] font-[700] text-[#fff] text-[50px] md:text-[3.75rem] md:pb-[48px] md:leading-[69px];
+}
+
+.sub_ul{
+    @apply text-[#fff] text-[26px] leading-[36px] pb-[56px] md:text-[24px] md:text-[#fff] md:pb-[58px];
+}
+
+.phone{
+    @apply w-[431px] md:w-[374px];
+}
+
+
 @media screen and (max-width: 768px)  {
     .banner{
         background-image: url("./images/bg-m.png");
@@ -15,4 +28,109 @@
     
     }
 }
+// @media screen and (min-width: 1292px) and (max-width: 1317px) {
+//     .banner{
+//         background-repeat: no-repeat;
+//         background-size:auto auto;
+//         background-position:center center;
+//         @apply h-[600px];
     
+//     }
+//     .title{
+//         @apply  text-[58px]
+//     }
+//     }
+
+// @media screen and (min-width: 1158px) and (max-width: 1291px) {
+//     .banner{
+//         background-repeat: no-repeat;
+//         background-size:auto auto;
+//         background-position:center center;
+//         @apply h-[600px];
+    
+//     }
+//     .title{
+//         @apply  text-[56px]
+//     }
+// }
+
+// @media screen and (min-width: 1112px) and (max-width: 1157px) {
+//     .banner{
+//         background-repeat: no-repeat;
+//         background-size:auto auto;
+//         background-position:center center;
+//         @apply h-[600px];
+    
+//     }
+//     .title{
+//         @apply  text-[54px]
+//     }
+// }
+
+// @media screen and (min-width: 1066px) and (max-width: 1111px) {
+//     .banner{
+//         background-repeat: no-repeat;
+//         background-size:auto auto;
+//         background-position:center center;
+//         @apply h-[600px];
+    
+//     }
+//     .title{
+//         @apply  text-[48px]
+//     }
+// }
+
+// @media screen and (min-width: 1020px) and (max-width: 1065px) {
+//     .banner{
+//         background-repeat: no-repeat;
+//         background-size:auto auto;
+//         background-position:center center;
+//         @apply h-[600px];
+    
+//     }
+//     .title{
+//         @apply  text-[44px]
+//     }
+// }
+
+// @media screen and (min-width: 974px) and (max-width: 1019px) {
+//     .banner{
+//         background-repeat: no-repeat;
+//         background-size:auto auto;
+//         background-position:center center;
+//         @apply h-[600px];
+    
+//     }
+//     .title{
+//         @apply  text-[40px]
+//     }
+// }
+
+// @media screen and (min-width: 905px) and (max-width: 973px) {
+//     .banner{
+//         background-repeat: no-repeat;
+//         background-size:auto auto;
+//         background-position:center center;
+//         @apply h-[600px];
+    
+//     }
+//     .title{
+//         @apply  text-[34px]
+//     }
+// }
+
+// @media screen and (min-width: 768px) and (max-width: 904px) {
+//     .banner{
+//         background-repeat: no-repeat;
+//         background-size:auto auto;
+//         background-position:center center;
+//         @apply h-[600px];
+    
+//     }
+//     .title{
+//         @apply  text-[32px] md:h-[0px] md:mb-[24px]
+//     }
+// }
+
+
+

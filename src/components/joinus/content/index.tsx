@@ -24,10 +24,10 @@ export const Content=()=>{
     const showLists=()=>{
         if(lang==='en'){
              return(
-            <ul className={classNames(styles.sub_ul)} >
+            <ul className={classNames('md:mb-[12px]',styles.sub_ul)} >
               {lists.map((item,index)=>(
-                <li key={index} className={classNames(styles.sub_li)}>
-                    <Image src={pm4} alt="" className={classNames('md:leading-11 lending-[22px]',styles.sub_li_img)}></Image>
+                <li key={index} className={classNames('leading-[26px] md:leading-[31px]',styles.sub_li)}>
+                    <Image src={pm4} alt="" className={classNames('md:leading-[11px] lending-[22px]',styles.sub_li_img)}></Image>
                     {item}
                 </li>
               ))}
@@ -35,10 +35,10 @@ export const Content=()=>{
             )
         }else{
             return(
-                <ul className={classNames(styles.sub_ul)} >
+                <ul className={classNames(' md:mb-[12px]',styles.sub_ul)} >
                   {lists2.map((item,index)=>(
-                    <li key={index} className={classNames(styles.sub_li)}>
-                        <Image src={pm4} alt="" className={classNames('md:leading-11 lending-[22px] md-[24px]',styles.sub_li_img)}></Image>
+                    <li key={index} className={classNames('leading-[26px] md:leading-[31px]',styles.sub_li)}>
+                        <Image src={pm4} alt="" className={classNames('md:leading-[11px] lending-[22px]',styles.sub_li_img)}></Image>
                         {item}
                     </li>
                   ))}
@@ -50,14 +50,14 @@ export const Content=()=>{
     return(
         <section className={classNames('ebuy-container !flex flex-col')}>
             {/* 上 */}
-            <div  className={classNames('flex-col-reverse md:mb-[72px]',styles.sub_container)}>
-                <div className={classNames('rounded-8 bg-blur-6 z-20 ',styles.shadow_custom,styles.sub_context)}>
+            <div  className={classNames('flex-col-reverse md:mb-[72px] mb-[72px] rounded-8 bg-blur-6',styles.sub_container,md?styles.shadow_custom:'',md?styles.opcity:'')}>
+                <div className={classNames('md:rounded-8 md:bg-blur-6 md:z-20',!md?styles.shadow_custom:'',styles.sub_context,styles.opcity)}>
                     <div className={
-                        classNames('font-inter leading-11 md:ml-[24px] ml-[32px]',styles.sub_title)
+                        classNames('font-inter leading-[11px] md:ml-[24px] ml-[32px]',styles.sub_title)
                         }>{t("content-title1")}
                     </div>
                     <div className={
-                        classNames('md:mr-[31px] md:mb-[43px] ml-[32px] mb-[63px] mr-[38px]')
+                        classNames('md:mr-[31px] md:mb-[43px] ml-[32px] mb-[63px] mr-[38px] leading-[44px] md:leading-[30px]',styles.sub_text)
                         }>{t("content1")}
                     </div>
                 </div>
@@ -66,34 +66,34 @@ export const Content=()=>{
                 </Image>
             </div>
             {/* 中 */}
-            <div  className={classNames('flex-col',styles.sub_container)}>
-                <Image src={!md?p2:m2} alt="" className={classNames('w-full mt-[72px]',styles.img)}></Image>
-                <div className={classNames('rounded-8 bg-blur-6 md:z-20 md:-ml-[40px]',styles.shadow_custom,styles.sub_context)}>
+            <div  className={classNames('flex-col rounded-8 bg-blur-6',styles.sub_container,md?styles.shadow_custom:'',md?styles.opcity:'')}>
+                <Image src={!md?p2:m2} alt="" className={classNames('w-full',styles.img)}></Image>
+                <div className={classNames('md:rounded-8 md:bg-blur-6 md:z-20 md:-ml-[40px]',!md?styles.shadow_custom:'',styles.sub_context,styles.opcity)}>
                     <div className={
-                        classNames('font-inter leading-11 md:ml-[25px] mr-[39px] ml-[32px]',styles.sub_title)
+                        classNames('font-inter leading-[11px] md:ml-[25px] mr-[39px] ml-[32px]',styles.sub_title)
                         }>{t("content-title2")}
                     </div>
                     <div className={
-                        classNames('md:mr-[31px] md:mb-[43px] ml-[32px] mr-[38px] mb-[63px]')
+                        classNames('md:mr-[31px] md:mb-[43px] ml-[32px] mr-[52px] mb-[63px] leading-[44px] md:leading-[30px]' ,styles.sub_text)
                         }>{t("content2")}
                     </div>
                 </div>   
             </div>
             {/* 下 */}
-            <div  className={classNames('flex-col-reverse',styles.sub_container)}>
-                <div className={classNames('rounded-8 bg-blur-6 md:z-20 md:shrink-0 ',styles.shadow_custom,styles.sub_context)}>
+            <div  className={classNames('flex-col-reverse rounded-8 bg-blur-6 mt-[72px]',styles.sub_container,md?styles.shadow_custom:'',md?styles.opcity:'')}>
+                <div className={classNames('md:rounded-8 md:bg-blur-6 md:z-20 md:shrink-0 ',!md?styles.shadow_custom:'',styles.sub_context,styles.opcity)}>
                     <div className={
-                        classNames('font-inter leading-11 md:ml-[24px] ml-[33px]',styles.sub_title)
+                        classNames('font-inter leading-[11px] md:ml-[24px] ml-[33px] ',styles.sub_title)
                         }>{t("content-title3")}
                     </div>
                     <div className={
-                        classNames('md:mr-[24px] md:mb-[12px] ml-[33px] mr-[101px] mb-[36px]')
+                        classNames('md:mr-[24px]  ml-[33px] mr-[101px] mb-[36px] md:mb-[12px] leading-[44px] md:leading-[30px]',styles.sub_text)
                         }>{t("content3")}
                     </div>
                     { showLists()}
                 </div>
                 <Image src={!md?p3:m3} alt="" className={
-                    classNames('md:-ml-[40px] md:shrink-0 w-full mt-[72px]  ',styles.img)
+                    classNames('md:-ml-[40px] md:shrink-0 w-full ',styles.img)
                     }>
                 </Image>
             </div>

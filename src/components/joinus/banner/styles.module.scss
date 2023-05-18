@@ -3,7 +3,7 @@
     background-repeat: no-repeat;
     background-size:100% auto;
     background-position:center center;
-    @apply h-[280px]  mt-[0px] pt-[70px] ;
+    @apply h-[280px]  mt-[-3px] pt-[70px] ;
 
   // "-mt-[92px] w-full bg-cover bg-bottom pt-[70px] lg:-mt-[114px]"
 }
@@ -42,9 +42,6 @@
   @media screen and (max-width: 768px)  {
   .banner{
       background-image: url("./images/banner-bg-m.png");
-      //  background-repeat: no-repeat;
-      // background-size:auto auto;
-      // background-position:center center;
       @apply h-[360px] -mt-[92px] pt-[70px]
   }
 }

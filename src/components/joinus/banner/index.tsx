@@ -31,7 +31,7 @@ export const Banner = memo(() => {
         <span
           ref={slogan1Ref}
           className={classNames(
-            " whitespace-pre-wrap text-center text-[44px] font-[550] leading-[62px] tracking-[4px] first-letter:mb-[9px]  md:pb-3  md:text-[50px] md:leading-[70px]",
+            " whitespace-pre-wrap text-center text-[44px] font-[550] leading-[62px] tracking-[4px] first-letter:mb-[9px]  md:pb-3  md:text-[50px] md:leading-[70px] md:mt-[68px]",
             {
               head1: slogan1InView,
             }
