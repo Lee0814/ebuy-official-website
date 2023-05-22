@@ -63,7 +63,7 @@ export const PropertyCardLeft = (props: {
         <div>
           <span
             className={classNames(
-              "bg-[#f5f5f5] px-[44px] py-[12px] text-[20px] leading-[24px] text-[#ED3838] "
+              "bg-[#f5f5f5] px-[44px] py-[12px] text-[20px] leading-[24px] text-[#ED3838]"
             )}
           >
             {descData.button}

@@ -13,6 +13,12 @@ export const PropertyCardRight = (props: {
 }) => {
   const { md } = useResponsive();
   const { descData, width } = props;
+  // console.log(props);
+  console.log(props.descData.button)
+  
+  
+ 
+
 
   return (
     <div

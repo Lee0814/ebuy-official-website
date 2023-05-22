@@ -53,22 +53,22 @@ export const Business = memo(() => {
       text: "Build your logistics team with Low-Cost.",
       text2: "Service is only available during the day (9am-9pm).",
       img: images[2],
-      button: "Settle in",
+      button: "Contact",
     },
     {
       title: "Consignment",
       text: `Put your goods on our platforms("EBuy易购生鲜" and "EBuyMart" for B2B and B2C respectively) to sale for grabing more customers and orders.`,
 
       img: images[3],
-      button: "Settle in",
+      button: "Contact",
     },
   ];
   return (
-    <section className={classNames("  py-[72px]", {})}>
+    <section className={classNames("  py-[72px] md:pb-0", {})}>
       {/* 标题 */}
       <div
         className={classNames(
-          "w-full pb-[72px] pt-[100px] text-center text-[42px] font-[700] leading-[51px] text-[#333]"
+          "w-full pb-[72px] pt-[30px] text-center text-[42px] font-[700] leading-[51px] text-[#333]"
         )}
       >
         Grow your business in singapore
@@ -103,7 +103,7 @@ export const Business = memo(() => {
       </div>
       <div
         className={classNames(
-          "col-start-1 col-end-25 w-full md:bg-[#fbfbfb]   "
+          "col-start-1 col-end-25 w-full md:bg-[#fbfbfb]"
         )}
       >
         <div className="ebuy-container !block">

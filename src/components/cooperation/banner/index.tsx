@@ -31,7 +31,7 @@ export const Banner = memo(() => {
         <span
           ref={slogan1Ref}
           className={classNames(
-            " w-[40%] whitespace-pre-wrap text-center text-[44px] font-[600] leading-[62px] tracking-[4px] first-letter:mb-[9px]  md:pb-3  md:text-[50px] md:leading-[70px]",
+            " w-[40%] whitespace-pre-wrap text-center  text-[44px] font-[600] leading-[62px] tracking-[4px] first-letter:mb-[9px] md:pb-3 md:text-[50px] md:leading-[70px] md:w-[100%] md:text-right",
             {
               head1: slogan1InView,
             }
@@ -42,7 +42,7 @@ export const Banner = memo(() => {
         <span
           ref={slogan2Ref}
           className={classNames(
-            "mb-[22px] w-[40%] whitespace-pre-wrap text-center text-[44px] font-[600] leading-[62px] first-letter:mb-[9px]  md:pb-3  md:text-[40px] md:leading-[70px]",
+            "mb-[22px] w-[40%] whitespace-pre-wrap text-center text-[44px] font-[600] leading-[62px] first-letter:mb-[9px] md:pb-3 md:text-[40px] md:leading-[70px] md:w-[100%] md:text-right",
             {
               head2: slogan2InView,
             }

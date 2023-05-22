@@ -12,10 +12,10 @@
 }
 
 .help_ul{
-    @apply flex md:flex-row mb-[100px] md:justify-around flex-col md:items-center text-[#000000] text-center;
+    @apply flex md:flex-row mb-[100px] md:justify-around flex-col md:items-center text-[#000000] text-center ;
 }
 .ul_content{
-    @apply text-center flex md:flex-col md:items-center w-[100%] items-center 
+    @apply text-center flex md:flex-col md:items-center w-[100%] items-center ;
 }
 .help_li{
     @apply flex flex-col  items-center md:w-[29%] w-[100%];
@@ -25,9 +25,10 @@
     letter-spacing: 1px
 }
 .li_content{
-    @apply md:text-[20px] md:leading-[32px] leading-[44px] text-[26px] mb-[63px] md:mb-[0px]  md:ml-0 ml-[88px] text-left md:text-center;
+    @apply md:text-[20px] md:leading-[32px] leading-[44px] text-[26px] mb-[63px] md:mb-[0px]  md:ml-0 ml-[88px] text-left md:text-center md:h-[128px];
     letter-spacing:0.88px;
 }
 .ul_img{
-    @apply mr-[32px] w-[56px]
+    @apply mr-[32px] w-[56px] md:mr-0
 }
+
