@@ -1,13 +1,13 @@
-.deskBg{
-
-
+.title{
+    @apply md:w-full w-[64%] md:pb-[49px] md:pt-[28px] text-center text-[42px] font-[700] 
+    md:leading-[51px] text-[#333] leading-[54px] pt-[56px] pb-[32px]  md:static top-[440px]   
 }
 
-
-
-.mobileBg1{
-
+.pm5_content{
+    @apply w-full flex items-start
 }
-.mobileBg2{
 
+.pm5_img{
+    @apply w-[24px] h-[24px] mr-[10px] translate-y-[10px] md:translate-y-[4px]
 }
+

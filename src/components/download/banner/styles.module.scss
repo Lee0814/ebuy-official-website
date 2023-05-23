@@ -104,7 +104,7 @@
     }
     .content{
         @apply  flex-col  pb-0 translate-x-[-5%];
-        height: 100vh;
+        height: 100%;
     }
     .phone{ 
         @apply  block mx-auto  w-[431px]   mt-[202px]
@@ -118,7 +118,7 @@
         @apply mb-[25px] pb-0 
     }
     .text_content{
-        @apply  static z-0 
+        @apply  static z-0 mt-[85px]
     }
     .ecode_content{
         @apply pb-[24px]

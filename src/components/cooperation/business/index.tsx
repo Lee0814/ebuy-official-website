@@ -3,7 +3,8 @@ import classNames from "classnames";
 import { memo } from "react";
 import { PropertyCardLeft } from "./PropertiCardLeft";
 import { PropertyCardRight } from "./PropertiCardRight";
-
+import styles from './style.module.scss'
+import Image from "next/image";
 
 
 import d1 from "./images/1.png";
@@ -17,6 +18,7 @@ import m1 from "./images/1m.png";
 import m2 from "./images/2m.png";
 import m3 from "./images/3m.png";
 import m4 from "./images/4m.png";
+import pm5 from "./images/5.png"
 
 export const Business = memo(() => {
   const images = [
@@ -29,22 +31,32 @@ export const Business = memo(() => {
   const t = useI18n("about");
   const descDatas: Array<{
     title?: string;
-    text: string;
+    text: any;
     img: any;
-    text2?: string;
-    button: string;
+    text2?: any;
+    text3?: any;
+    button: any;
   }> = [
     {
       text: "We can be your agent in Singapore and bring your goods to every street in Singapore through our mobile shopping mall.",
-      text2:
-        " If you have a product to expand the market, welcome to contact us.",
+      text2:"If you have a product to expand the market, welcome to contact us.",
       img: images[0],
       button: "Settle in",
     },
     {
       title: "Storage Sharing",
-      text: "We can be your agent in Singapore and bring your goods to every street in Singapore through our mobile shopping mall.",
-
+      text:(<section className={classNames(styles.pm5_content, 'h-[55px]')}>
+         <Image src={pm5} alt='' className={classNames(style.pm5_img)}></Image>
+         {"Shipping and storing your goods at more efficiently and lower cost."}
+      </section>),
+      text2:(<section className={classNames(styles.pm5_content,'h-[20px]')}>
+          <Image src={pm5} alt='' className={classNames(style.pm5_img)}></Image>
+          {"Deliver your goods on demand anytime, anywhere."}
+      </section>),
+      text3:(<section className={classNames(styles.pm5_content)}>
+        <Image src={pm5} alt='' className={classNames(style.pm5_img)}></Image>
+        {"Dedicated storage space is also supported."}
+      </section>),
       img: images[1],
       button: "Contact",
     },
@@ -64,51 +76,50 @@ export const Business = memo(() => {
     },
   ];
   return (
-    <section className={classNames("  py-[72px] md:pb-0", {})}>
+    <section className={classNames(" md:py-[72px] md:pb-0")}>
       {/* 标题 */}
-      <div
-        className={classNames(
-          "w-full pb-[72px] pt-[30px] text-center text-[42px] font-[700] leading-[51px] text-[#333]"
-        )}
-      >
-        Grow your business in singapore
+      <div className={classNames('w-full flex justify-center relative ')}>
+        <span className={classNames(styles.title,'absolute')}>Grow your business in singapore</span>
       </div>
-      <div className={classNames("w-full   bg-[#f5f5f5] md:bg-[unset] ")}>
-        <div className="ebuy-container !block">
+      <div className={classNames("w-full mb:bg-[#f5f5f5] bg-white md:bg-[unset] ")}>
+        <div className="ebuy-container !block text-center">
           <PropertyCardRight
-            descData={descDatas[0]}
-            width={"w-full md:w-[364px]"}
+            descData={descDatas}
+            type={"right1"}
+            width={"w-full md:w-[364px]  mb-[56px] md:mb-0"}
           />
         </div>
       </div>
-      <div
-        className={classNames("w-full  md:bg-[#fbfbfb]  ", {
+      <div className={classNames("w-full md:bg-[#fbfbfb]  bg-[#f5f5f5]", {
           [style.mobileBg2]: md,
         })}
       >
         <div className="ebuy-container !block">
           <PropertyCardRight
-            descData={descDatas[1]}
+            descData={descDatas}
+            type={"right2"}
             width={"w-full md:w-[340px]"}
           />
         </div>
       </div>
-      <div className={classNames("  w-full bg-[#f5f5f5] md:bg-white  ")}>
+      <div className={classNames("  w-full bg-white  ")}>
         <div className="ebuy-container !block">
           <PropertyCardLeft
-            descData={descDatas[2]}
+            descData={descDatas}
+            type={"left1"}
             width={"w-full md:w-[475px]"}
           />
         </div>
       </div>
       <div
         className={classNames(
-          "col-start-1 col-end-25 w-full md:bg-[#fbfbfb]"
+          "col-start-1 col-end-25 w-full md:bg-[#fbfbfb] bg-[#f5f5f5]"
         )}
       >
         <div className="ebuy-container !block">
           <PropertyCardRight
-            descData={descDatas[3]}
+            descData={descDatas}
+            type={"right3"}
             width={"w-full md:w-[428px]"}
           />
         </div>

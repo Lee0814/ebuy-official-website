@@ -1,7 +1,5 @@
 .banner {
-  background-image: url("./images/banner-bg.png");
-
-
+    background-image: url("./images/banner-bg.png");
     background-repeat: no-repeat;
     background-size:100% auto !important;
     background-position:center center;
@@ -11,14 +9,14 @@
 }
 
 
-@media screen and (min-width: 768.1px) and (max-width: 1400px) {
+@media screen and (min-width: 768.1px) and (max-width: 1440px) {
   .banner{
 
       background-repeat: no-repeat;
       background-size:auto 100% !important;
       background-position:center center ;
       // @apply h-[500px] -mt-[92px] pt-[70px] lg:mt-[-70px] ;
-      @apply h-[280px] ;
+      @apply h-[280px] w-full;
 
   }
 }
