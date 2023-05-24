@@ -5,7 +5,7 @@ import chart from "./images/chart.png";
 export const Finance = () => {
   const t = useI18n("about");
   return (
-    <section className={classNames("ebuy-container py-[72px] text-[#333]")}>
+    <section className={classNames("ebuy-container py-[72px] pb-0 text-[#333]")}>
       <div
         className={classNames(
           "col-start-1 col-end-25 text-[42px] font-[700] leading-[51px]"

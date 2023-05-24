@@ -55,7 +55,7 @@ export const DownloadApp=()=>{
         <section>
              {/* 上 */}
              <div className={classNames('ebuy-container',styles.content1)}>
-                <Image src={nowPhoto(phone1_m,phone1)} alt="" className={classNames(' w-[515px]  block mx-auto')}></Image>
+                <Image src={nowPhoto(phone1_m,phone1)} alt="" className={classNames(' w-[515px]  block mx-auto md:mx-0')}></Image>
                 <div className={classNames(styles.download)}>
                     <div>
                         <div className={classNames(styles.download_title)}>{t('downloadApp')}</div>
@@ -88,7 +88,7 @@ export const DownloadApp=()=>{
                         <Image src={ecode} alt="" className={classNames(styles.ecode)}></Image>
                     </div>
                 </div> 
-                <Image src={nowPhoto(phone2_m,phone2)} alt="" className={classNames(' w-[532px]  block mx-auto')}></Image>
+                <Image src={nowPhoto(phone2_m,phone2)} alt="" className={classNames(' w-[532px] block mx-auto md:mx-0')}></Image>
            
             </div>
         </section>

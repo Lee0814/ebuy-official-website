@@ -4,6 +4,12 @@
   background-repeat: no-repeat;
 }
 
+.bg_m{
+  background-image: url(./images/bg-m.png);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 @media screen and (max-width: 768px) {
   .bg {
     background-size: contain;

@@ -1,4 +1,4 @@
-import { useI18n, useInView, useWindowSize } from "@/hooks";
+import { useI18n, useResponsive,useInView, useWindowSize } from "@/hooks";
 import classNames from "classnames";
 import { memo, useMemo } from "react";
 
@@ -8,7 +8,7 @@ import styles from "./styles.module.scss";
 const ratio = 8 / 5;
 export const Banner = memo(() => {
   const t = useI18n("about");
-
+  const {md}=useResponsive()
   const router = useRouter();
 
   // 处理banner高度
@@ -22,10 +22,10 @@ export const Banner = memo(() => {
   const [slogan2Ref, slogan2InView] = useInView();
 
   return (
-    <section className={classNames(styles.banner)}>
+    <section className={classNames(!md?styles.banner_pc:styles.banner_m,'overflow-hidden')}>
       <div
         className={classNames(
-          "ebuy-container !flex h-full flex-col items-center justify-center text-white md:items-start"
+          "ebuy-container !flex h-full flex-col items-center justify-center text-white md:items-start mt-[54px] md:mt-0"
         )}
       >
         <span

@@ -1,27 +1,50 @@
-.banner {
+.banner_pc {
     background-image: url("./images/banner-bg.png");
     background-repeat: no-repeat;
-    background-size:100% auto !important;
+    background-size:cover;
     background-position:center center;
     @apply h-[280px]  mt-[0px] pt-[70px];
 }
 
-@media screen and (min-width: 768.1px) and (max-width: 1400px) {
-  .banner{
-    background-repeat: no-repeat;
-    background-size:auto 100% !important;
-    background-position:center center ;
-    @apply h-[280px] w-full;
+.banner_m {
+  background-image: url("./images/banner-bg-m.png");
+  background-repeat: no-repeat;
+  background-size:cover;
+  background-position:center center;
+  @apply h-[360px] mt-[-114px];
+}
+
+// @media screen and (min-width: 768.1px) and (max-width: 1400px) {
+//   .banner{
+//     background-repeat: no-repeat;
+//     background-size:auto 100% !important;
+//     background-position:center center ;
+//     @apply h-[280px] w-full;
+//   }
+// }
+
+// @media screen and (max-width: 768px)  {
+// .banner{
+//     background-image: url("./images/banner-bg-m.png");
+//     background-repeat: no-repeat;
+//     background-size:100% 100%;
+//     background-position:center center;
+//     @apply h-[360px] -mt-[92px] pt-[70px] lg:-mt-[114px];
+
+// }
+// }
+
+@media screen and (min-width: 768px) and (max-width: 1024px)  {
+  .banner_pc{
+    height: 500px;
+    background-size:cover;
+    background-position: center top;
   }
 }
 
-@media screen and (max-width: 768px)  {
-.banner{
-    background-image: url("./images/banner-bg-m.png");
-    background-repeat: no-repeat;
-    background-size:100% 100%;
-    background-position:center center;
-    @apply h-[360px] -mt-[92px] pt-[70px] lg:-mt-[114px];
-
-}
+@media screen and (max-width: 768px) {
+  .banner_pc {
+    background-size: contain;
+    background-position: center top;
+  }
 }

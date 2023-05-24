@@ -12,12 +12,12 @@ export const Env = () => {
   return (
     <section
       className={classNames(
-        "ebuy-container text-42px py-[72px] pt-[28px] font-[600] leading-[51px]"
+        "ebuy-container text-42px py-[72px] pb-0  font-[600] leading-[51px]"
       )}
     >
       <div
         className={classNames(
-          "col-start-1 col-end-25 pb-[72px] text-center text-[42px] font-[700] leading-[51px]"
+          "col-start-1 col-end-25 md:pb-[72px] pb-[56px] text-center text-[42px] font-[700] leading-[51px]"
         )}
       >
         {t("environment-title")}

@@ -280,9 +280,9 @@ export const Header = memo(() => {
 
           {/* 联系我们 */}
 
-          <div className={classNames("flex text-[16px]", styles["contract"])}>
+          <div className={classNames("flex md:text-[16px] items-center text-[28px]", styles["contract"])}>
             <Link
-              className={classNames("px-[15px] text-[16px] font-[500]")}
+              className={classNames("md:px-[15px] px-[24px] md:text-[16px] text-[24px] font-[500]")}
               href="#message"
             >
               {t("contact")}
@@ -295,7 +295,7 @@ export const Header = memo(() => {
             <div className={classNames("relative")}>
               <div
                 onClick={changeLang}
-                className={classNames("cursor-pointer pl-[15px] font-[500]")}
+                className={classNames("cursor-pointer md:pl-[15px] pl-[24px] pr-[10px] font-[500]")}
               >
                 {lang === "zh-CN" ? "En" : "简体"}
               </div>
