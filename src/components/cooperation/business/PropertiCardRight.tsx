@@ -2,8 +2,8 @@ import { useResponsive } from "@/hooks";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
-import {useEffect} from 'react'
-import { start } from "repl";
+import {useEffect} from 'react';
+import styles from "./style.module.scss"
 
 export const PropertyCardRight = (props: {
   descData:  Array<{
@@ -112,14 +112,18 @@ const nowBtn=(type:any)=>{
     <div
       className={classNames(
         "col-start-1 col-end-25 flex flex-col items-center justify-between  md:flex-row  md:justify-start",
-        {}
+        {
+          ["md:py-[72px]"]:type==='right2',
+          ["md:pt-[82px] md:pb-[72px]"]:type==='right3'
+        }
       )}
     >
       {/* 左侧图片 */}
-      <div className={classNames("flex justify-end md:min-w-[342px] ")}>
+      <div className={classNames("flex justify-end md:min-w-[342px]")}>
         <Image
-          className={classNames("h-auto  md:w-[340px] mt-[72px] md:mt-0", width,{
-            ["md:!w-[446px]"]:type==="right2"
+          className={classNames("h-auto  md:w-[340px] mt-[72px] md:mt-0 md:shrink-0 md:h-[100%]", width,{
+            ["md:!w-[446px] md:shrink-0"]:type==="right2",
+            ["md:!w-[428px]"]:type==="right3",
           })}
           src={nowPic(type)}
           alt=""
@@ -127,11 +131,11 @@ const nowBtn=(type:any)=>{
       </div>
       {/* 右侧文字 */}
       <div
-        className={classNames(
-          "flex flex-col justify-between pl-[20px] pt-[56px] md:min-h-[289px] md:w-[60%] md:!items-start md:py-[25px] w-full ml-[32px] md:pl-[36px]",
+        className={classNames('md:!items-start',type==='right2'?styles.right_content2:styles.right_content1,
           {
-            ["md:!items-start"]:type==='right1',
+            ["md:!items-start md:ml-[54px]"]:type==='right1',
             ["md:!translate-y-[-11%]"]:type==='right1',
+            ["md:pl-[110px]"]:type==='right3',
           }
         )}
       >
@@ -140,7 +144,7 @@ const nowBtn=(type:any)=>{
             "text-[42px] font-[700] leading-[51px] text-[#333] mb-[32px] md:mb-0",
             {
               ["hidden"]: !nowTitle(type),
-              ["ml-[34px] md:!mt-[74px] md:!pt-0"]:type==='right2',
+              ["ml-[34px] md:!pt-0"]:type==='right2',
             }
           )}
         >
@@ -150,25 +154,22 @@ const nowBtn=(type:any)=>{
           ["md:!h-[100%] md:flex md:flex-col md:justify-start"]:type==='right2'
         })}>
           <div
-            className={classNames(
-              "md:pb-[16px] md:pt-[8px] text-[26px] leading-[44px] text-[#333] md:text-[20px] md:leading-[31px] md:mb-[32px] mb-[68px] md:mt-[90px] md:w-[98%]",
+            className={classNames(styles.right2_text,
               {
                 ["mt-[84px] !mb-[10px] md:!text-start"]:type==='right1',
-                // ["md:!mt-[44px] md:!mb-[44px]"]:type==='right2',
-                ["md:!mt-[44px] md:!mb-0"]:type==='right2',
+                ["md:!mt-[30px] md:!mb-0"]:type==='right2',
+                ["md:!mt-[44px] md:pb-[40px]"]:type==='right3',
               }
-              // }
               )}
           >
             {nowText(type)}
           </div>
           <div
-            className={classNames(
-              "text-[26px] leading-[44px] text-[#333]  md:text-[20px] md:leading-[31px] mb-[72px]",
+            className={classNames(styles.right2_text2,
               {
                 ["hidden"]: !nowText2(type),
                 ["md:!text-start md:!mb-[120px]"]:type==='right1',
-                // ["md:!mb-[70px]"]:type==='right2',
+                ["md:!mt-[12px] md:!mb-0 "]:type==='right2',
               }
             )}
           >
@@ -180,7 +181,8 @@ const nowBtn=(type:any)=>{
               "text-[26px] leading-[44px] text-[#333]  md:text-[20px] md:leading-[31px] mb-[72px]",
               {
                 ["hidden"]: !nowText3(type),
-                // ["md:!mb-[5px]"]:type==='right2',
+                ["md:!mt-[30px] md:!mb-[84px]"]:type==='right2',
+
               }
             )}
           >
@@ -195,7 +197,7 @@ const nowBtn=(type:any)=>{
               {
                 [" !bg-[#F5F5F5]"]:type==='right1', 
                 ["hover:!bg-[#ED3838] hover:!text-white"]:type,
-                // ["md:!translate-y-[-100px]"]:type==='right2'
+                ["md:ml-[30px]"]:type==='right2'
               }
             )}
           >

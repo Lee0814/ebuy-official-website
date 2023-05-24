@@ -30,7 +30,7 @@ export const PropertyCardLeft = (props: {
       {/* 左侧 */}
       <div
         className={classNames(
-          "flex flex-col  justify-between pt-[56px] md:min-h-[289px] md:w-[60%] md:py-[27px] md:pl-[20px]"
+          "flex flex-col  justify-between pt-[56px] md:min-h-[289px] md:w-[58%] md:py-[27px] md:pl-[20px]"
         )}
       >
         <div
@@ -38,6 +38,7 @@ export const PropertyCardLeft = (props: {
             "text-[42px] font-[700] leading-[51px] text-[#333] ",
             {
               ["hidden"]: !descData[2].title,
+              ["md:mb-[45px]"]:type==='left1',
             }
           )}
         >
@@ -47,7 +48,7 @@ export const PropertyCardLeft = (props: {
           {/* 文本 */}
           <div
             className={classNames(
-              " md:py-[32px] pt-[32px] text-[26px] leading-[44px] text-[#333]  md:pb-[16px] md:pt-[8px]  md:text-[20px] md:leading-[31px]"
+              " md:py-[32px] pt-[32px] text-[26px] leading-[44px] text-[#333]  md:pb-[16px] md:pt-[8px] md:text-[20px] md:leading-[31px] md:h-[31px]"
             )}
           >
             {descData[2].text}
@@ -77,12 +78,12 @@ export const PropertyCardLeft = (props: {
       </div>
       {/* 右侧图片 */}
       <div
-        className={classNames(
-          "flex    justify-end md:min-w-[342px] md:pl-[50px]"
-        )}
+        className={classNames("flex justify-end md:min-w-[342px] md:pl-[28px] md:flex-1",{
+          ["md:w-[475px]"]:type==='left1'
+        })}
       >
         <Image
-          className={classNames("h-auto  md:w-[340px]", width)}
+          className={classNames("h-auto md:w-[340px]", width)}
           src={md?descData[2].img.m[0]:descData[2].img.d[0]}
           alt=""
         />

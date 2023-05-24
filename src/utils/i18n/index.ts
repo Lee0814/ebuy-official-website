@@ -14,6 +14,8 @@ import enJoinus from "./locales/en/joinus.json";
 import zhJoinus from "./locales/zh/joinus.json";
 import enDownload from "./locales/en/download.json"
 import zhDownload from "./locales/zh/download.json"
+import enCooperation from "./locales/en/cooperation.json"
+import zhCooperation from "./locales/zh/cooperation.json"
 
 type Trans = {
   common: typeof enCommon;
@@ -22,7 +24,8 @@ type Trans = {
   footer: typeof enFooter;
   about: typeof enAbout;
   joinus:typeof enJoinus;
-  download:typeof enDownload
+  download:typeof enDownload;
+  cooperation:typeof enCooperation
 };
 export type Lang = "en" | "zh-CN";
 export type NS = keyof Trans;
@@ -42,7 +45,8 @@ const i18n: I18n = {
     footer: enFooter,
     about: enAbout,
     joinus:enJoinus,
-    download:enDownload
+    download:enDownload,
+    cooperation:enCooperation
   },
   "zh-CN": {
     common: zhCommon,
@@ -51,7 +55,8 @@ const i18n: I18n = {
     footer: zhFooter,
     about: zhAbout,
     joinus:zhJoinus,
-    download:zhDownload
+    download:zhDownload,
+    cooperation:zhCooperation
   },
 };
 

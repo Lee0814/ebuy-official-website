@@ -28,9 +28,9 @@ export const Business = memo(() => {
     { m: [m4], d: [d4] },
   ];
   const { md } = useResponsive();
-  const t = useI18n("about");
+  const t = useI18n("cooperation");
   const descDatas: Array<{
-    title?: string;
+    title?: any;
     text: any;
     img: any;
     text2?: any;
@@ -38,48 +38,48 @@ export const Business = memo(() => {
     button: any;
   }> = [
     {
-      text: "We can be your agent in Singapore and bring your goods to every street in Singapore through our mobile shopping mall.",
-      text2:"If you have a product to expand the market, welcome to contact us.",
+      text:(<>{t('title1_text')}</>),
+      text2:(<>{t('title1_text2')}</>),
       img: images[0],
-      button: "Settle in",
+      button:(<>{t('button1')}</>),
     },
     {
-      title: "Storage Sharing",
+      title:(<>{t('title2')}</>),
       text:(<section className={classNames(styles.pm5_content, 'h-[55px]')}>
          <Image src={pm5} alt='' className={classNames(style.pm5_img)}></Image>
-         {"Shipping and storing your goods at more efficiently and lower cost."}
+         {t('title2_text')}
       </section>),
       text2:(<section className={classNames(styles.pm5_content,'h-[20px]')}>
           <Image src={pm5} alt='' className={classNames(style.pm5_img)}></Image>
-          {"Deliver your goods on demand anytime, anywhere."}
+          {t('title2_text2')}
       </section>),
       text3:(<section className={classNames(styles.pm5_content)}>
         <Image src={pm5} alt='' className={classNames(style.pm5_img)}></Image>
-        {"Dedicated storage space is also supported."}
-      </section>),
+        {t('title2_text3')}
+      </section>),   
       img: images[1],
-      button: "Contact",
+      button:(<>{t('button2')}</>),
     },
     {
-      title: "Truck Rental",
-      text: "Build your logistics team with Low-Cost.",
-      text2: "Service is only available during the day (9am-9pm).",
+      title: (<>{t('title3')}</>),
+      text: (<>{t('title3_text')}</>),
+      text2:(<>{t('title3_text2')}</>),
       img: images[2],
-      button: "Contact",
+      button:(<>{t('button2')}</>),
     },
     {
       title: "Consignment",
       text: `Put your goods on our platforms("EBuy易购生鲜" and "EBuyMart" for B2B and B2C respectively) to sale for grabing more customers and orders.`,
 
       img: images[3],
-      button: "Contact",
+      button:(<>{t('button2')}</>),
     },
   ];
   return (
     <section className={classNames(" md:py-[72px] md:pb-0")}>
       {/* 标题 */}
       <div className={classNames('w-full flex justify-center relative ')}>
-        <span className={classNames(styles.title,'absolute')}>Grow your business in singapore</span>
+        <span className={classNames(styles.title,'absolute')}>{t('title1')}</span>
       </div>
       <div className={classNames("w-full mb:bg-[#f5f5f5] bg-white md:bg-[unset] ")}>
         <div className="ebuy-container !block text-center">

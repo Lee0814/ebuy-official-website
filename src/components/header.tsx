@@ -124,25 +124,25 @@ export const Header = memo(() => {
         onClick={() => setShowMenu(false)}
         className={classNames(styles.headerLists)}
       >
-        <li className={classNames(styles.listItem)}>
-          <Link href="/">{t("home")}</Link>
-        </li>
+        <Link href="/">
+          <li className={classNames(styles.listItem)}>{t("home")}</li>
+        </Link>
 
-        <li className={classNames(styles.listItem)}>
-          <Link href="/about">{t("about")}</Link>
-        </li>
+        <Link href="/about">
+          <li className={classNames(styles.listItem)}>{t("about")}</li>
+        </Link>
 
-        <li className={classNames(styles.listItem)}>
-          <Link href="/download">{t("download")}</Link>
-        </li>
+        <Link href="/download">
+          <li className={classNames(styles.listItem)}>{t("download")}</li>
+        </Link>
 
-        <li className={classNames(styles.listItem)}>
-          <Link href="/cooperation">{t("cooperation")}</Link>
-        </li>
+        <Link href="/cooperation">
+          <li className={classNames(styles.listItem)}>{t("cooperation")}</li>
+        </Link>
 
-        <li className={classNames(styles.listItem)}>
-          <Link href="/joinus">{t("join")}</Link>
-        </li>
+        <Link href="/joinus">
+          <li className={classNames(styles.listItem)}>{t("join")}</li>
+        </Link>
       </ul>
     </div>
   );
