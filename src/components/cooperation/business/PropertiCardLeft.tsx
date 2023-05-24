@@ -17,13 +17,12 @@ export const PropertyCardLeft = (props: {
 }) => {
   const { md } = useResponsive();
   const { descData, width ,type} = props;
-  console.log(type);
 
   const titledom = <div className={classNames()}>{descData[2].title}</div>;
   return (
     <div
       className={classNames(
-        "col-start-1 col-end-25 flex flex-col-reverse items-center justify-between py-[72px] md:flex-row   ",
+        "col-start-1 col-end-25 flex flex-col-reverse items-center justify-between py-[72px] md:flex-row",
         {}
       )}
     >

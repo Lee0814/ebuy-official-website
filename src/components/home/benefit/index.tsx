@@ -63,7 +63,6 @@ export const Benefit = memo(() => {
   // // 设置 header 样式
   // const { setHeaderType } = useHeaderContext({ headerType: "transparent" });
   // useEffect(() => {
-  //   console.log(showReadableHeader);
 
   //   setHeaderType(showReadableHeader ? "white" : "transparent");
   // }, [showReadableHeader]);

@@ -22,7 +22,7 @@ export const Banner = memo(() => {
   const [slogan2Ref, slogan2InView] = useInView();
 
   return (
-    <section className={classNames(styles.banner)}>
+    <section className={classNames(styles.banner,"md:relative md:h-[100%]")}>
       <div
         className={classNames(
           "ebuy-container !flex h-full flex-col items-center justify-center text-white md:items-start"

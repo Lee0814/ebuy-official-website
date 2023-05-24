@@ -1,4 +1,12 @@
 .bg{
-  background: url(./images/bg.png);
+  background-image: url(./images/aaaa.png);
   background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 768px) {
+  .bg {
+    background-size: contain;
+    background-position: center top;
+  }
 }

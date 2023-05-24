@@ -15,7 +15,6 @@ import { useI18n, useInView, useWindowSize ,useResponsive} from "@/hooks";
 export const Content=()=>{
     const t = useI18n("joinus");
     const {lang}=useI18nContext()
-    console.log(lang);
     
     const { md } = useResponsive();
     // 第三部分ul遍历

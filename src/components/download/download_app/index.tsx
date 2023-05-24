@@ -36,7 +36,6 @@ export const DownloadApp=()=>{
         nowWindowSize=windowSize.width
     }
     MyComponent()
-    // console.log(nowWindowSize);
     // end监听浏览器窗口宽度变化
 
     // 判断窗口大小渲染相应图片内容

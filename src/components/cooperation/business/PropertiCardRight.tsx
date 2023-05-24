@@ -19,14 +19,11 @@ export const PropertyCardRight = (props: {
 }) => {
   const { md } = useResponsive();
   const { descData, width ,type} = props;
-  console.log(descData[0].button);
   
 function BtnComponent(){
   useEffect(()=>{
     let myButton =document.getElementsByClassName("btn")
-      // console.log(myButton);
       const btns=Array.from(myButton)
-      // console.log(btns[0]) 
   })
 }
 BtnComponent()
@@ -111,7 +108,7 @@ const nowBtn=(type:any)=>{
   return (
     <div
       className={classNames(
-        "col-start-1 col-end-25 flex flex-col items-center justify-between  md:flex-row  md:justify-start",
+        "col-start-1 col-end-25 flex flex-col items-center justify-between  md:flex-row",
         {
           ["md:py-[72px]"]:type==='right2',
           ["md:pt-[82px] md:pb-[72px]"]:type==='right3'
