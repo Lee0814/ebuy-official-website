@@ -61,12 +61,12 @@ export const Content=()=>{
                     </div>
                 </div>
                 <Image src={!md?p1:m1} alt="" className={
-                    classNames('md:-ml-[40px] md:shrink-0 w-full  md:!mb-[unset] ',styles.img)}>
+                    classNames('md:-ml-[40px] md:shrink-0 w-full  md:!mb-[unset] ',styles.img_right)}>
                 </Image>
             </div>
             {/* 中 */}
             <div  className={classNames('flex-col rounded-8 bg-blur-6',styles.sub_container,md?styles.shadow_custom:'',md?styles.opcity:'')}>
-                <Image src={!md?p2:m2} alt="" className={classNames('w-full',styles.img)}></Image>
+                <Image src={!md?p2:m2} alt="" className={classNames('w-full',styles.image_left)}></Image>
                 <div className={classNames('md:rounded-8 md:bg-blur-6 md:z-20 md:-ml-[40px]',!md?styles.shadow_custom:'',styles.sub_context,styles.opcity)}>
                     <div className={
                         classNames('font-inter leading-[11px] md:ml-[25px] mr-[39px] ml-[32px]',styles.sub_title)
@@ -92,7 +92,7 @@ export const Content=()=>{
                     { showLists()}
                 </div>
                 <Image src={!md?p3:m3} alt="" className={
-                    classNames('md:-ml-[40px] md:shrink-0 w-full ',styles.img)
+                    classNames('md:-ml-[40px] md:shrink-0 w-full ',styles.img_right)
                     }>
                 </Image>
             </div>

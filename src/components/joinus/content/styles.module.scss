@@ -20,8 +20,8 @@
   @apply md:ml-[24px] md:text-[20px] text-[26px];
 }
 
-.img{
-  @apply md:h-[100%] md:w-[41%] md:min-w-[494px] md:z-0 h-[336px] mb-[72px] md:mb-0;
+.img_right,.image_left{
+  @apply md:h-[100%] md:w-[494px] md:z-0 h-[336px] mb-[72px] md:mb-0 ;
 }
 
 .sub_ul{
@@ -35,14 +35,41 @@
   @apply md:h-[16px] md:w-[16px] h-[24px] w-[24px] md:mr-[10px] mr-[12px] ;
 }
 
-@media screen and (min-width: 1463px) and (max-width:1500px){
-  .img {
-    transform: scale(0.98,0.98);
+// 右边图
+$right-img-start-width: 1440;
+$right-img-end-width: 1745;
+$right-img-scale: 0.98;
+$right-img-translate: -10;
+$right-img-scale-step: 0.02;
+$right-img-translate-step: 10;
+
+@for $width from $right-img-start-width to $right-img-end-width + $right-img-translate-step {
+  $scale: $right-img-scale - ($width - $right-img-start-width) / 400 * $right-img-scale-step;
+  $translate: $right-img-translate - ($width - $right-img-start-width) / 24 * $right-img-translate-step;
+  @media screen and (min-width: #{$width}px) {
+    .img_right {
+      transform: scale(#{$scale}, #{$scale}) translate(#{$translate}px, 0);
+    }
   }
 }
-@media screen and (min-width: 1500.1px) and (max-width:1550px){
-  .img {
-    transform: scale(0.96,0.96);
+
+// 左边图
+$left-img-start-width: 1440;
+$left-img-end-width: 1745;
+$left-img-scale: 0.98;
+$left-img-translate: 10;
+$left-img-scale-step: 0.02;
+$left-img-translate-step: -10;
+
+@for $width from $left-img-start-width to $left-img-end-width + $left-img-translate-step {
+  $scale: $left-img-scale - ($width - $left-img-start-width) / 400 * $left-img-scale-step;
+  $translate: $left-img-translate - ($width - $left-img-start-width) / 24 * $left-img-translate-step;
+  @media screen and (min-width: #{$width}px) {
+    .image_left{
+      transform: scale(#{$scale}, #{$scale}) translate(#{$translate}px,0);
+    }
   }
 }
+
+
 
