@@ -1,9 +1,10 @@
-import { useI18n,useResponsive, useInView, useWindowSize } from "@/hooks";
+import { useI18n, useResponsive,useInView, useWindowSize } from "@/hooks";
 import classNames from "classnames";
-import { memo, useMemo } from "react";
-
+import { memo, useMemo , useRef,useEffect,useState} from "react";
 import { useRouter } from "next/router";
 import styles from "./styles.module.scss";
+import { useScroll } from "ahooks";
+
 
 const ratio = 8 / 5;
 export const Banner = memo(() => {
@@ -21,12 +22,37 @@ export const Banner = memo(() => {
   const [slogan1Ref, slogan1InView] = useInView();
   const [slogan2Ref, slogan2InView] = useInView();
 
+  /* start 文字随滚动条渐淡移动 */
+  //获取banner元素节点
+  const bgRef=useRef<HTMLElement>(null)
+  const [opacityValue,setOpacityValue]=useState(1)
+  const [distance,setDistance]=useState(0)
+  
+  // 监听滚动
+  const scroll = useScroll();
+  useEffect(() => {
+    const totalDistance:any=bgRef.current?.getBoundingClientRect().height;
+    // console.log(totalDistance+114);
+    const nowDistance=totalDistance+114
+    
+    if(window.scrollY>nowDistance) setOpacityValue(0)
+    else{
+      setOpacityValue(1-(window.scrollY/nowDistance))
+    }
+    setDistance(window.scrollY*0.38)
+  }, [scroll]);
+  /* end 文字随滚动条渐淡移动 */
+
   return (
-    <section className={classNames(!md?styles.banner_pc:styles.banner_m,"md:relative md:h-[100%] overflow-hidden")}>
+    <section  ref={bgRef} className={classNames(!md?styles.banner_pc:styles.banner_m,"md:relative md:h-[100%] overflow-hidden")}>
       <div
         className={classNames(
           "ebuy-container !flex h-full flex-col items-center justify-center text-white md:items-start  mt-[54px] md:mt-0"
         )}
+        style={{
+          opacity:opacityValue,
+          transform:`translateY(${distance}px)`
+        }}
       >
         <span
           ref={slogan1Ref}

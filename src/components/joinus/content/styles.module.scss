@@ -34,3 +34,15 @@
 .sub_li_img{
   @apply md:h-[16px] md:w-[16px] h-[24px] w-[24px] md:mr-[10px] mr-[12px] ;
 }
+
+@media screen and (min-width: 1463px) and (max-width:1500px){
+  .img {
+    transform: scale(0.98,0.98);
+  }
+}
+@media screen and (min-width: 1500.1px) and (max-width:1550px){
+  .img {
+    transform: scale(0.96,0.96);
+  }
+}
+
