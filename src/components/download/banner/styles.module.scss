@@ -42,18 +42,26 @@
     .banner{
         background-image: url("./images/bg-m.png");
         background-repeat: no-repeat;
-        background-size:100% 100%;
-        background-position:center center;
-        @apply h-[100%] bg-center bg-repeat -mt-[92px] pt-[92px] lg:-mt-[114px] z-0;
+        background-size:contain;
+        background-position:center top;
+        @apply h-[100%] -mt-[92px] pt-[92px] lg:-mt-[114px] z-0;
     }
+}
+
+@media screen{
+    .banner {
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center top;
+      }
 }
 
 @media screen and (min-width: 1070.1px) and (max-width: 1200px) {
     .banner{
         background-repeat: no-repeat;
-        background-size:100% 100%;
+        background-size:cover;
         background-position:center center;
-        @apply h-[600px]  bg-center bg-repeat pt-0 z-0;
+        @apply h-[600px] pt-0 z-0;
     }
     .phone{ 
         @apply w-[350px] translate-x-[40%] block
@@ -67,9 +75,9 @@
     .banner{
         background-image: url("./images/bg-m.png");
         background-repeat: no-repeat;
-        background-size:100% 100%;
-        background-position:center center;
-        @apply  bg-center bg-repeat z-0 shrink-0;
+        background-size:cover;
+        background-position:center top;
+        @apply  z-0 shrink-0;
         height: 100%
     }
     .content{
@@ -98,9 +106,9 @@
     .banner{
         background-image: url("./images/bg-m.png");
         background-repeat: no-repeat;
-        background-size:100% 100%;
-        background-position:center center;
-        @apply h-[100%]  bg-center bg-repeat z-0 ;
+        background-size:cover;
+        background-position:center top;
+        @apply h-[100%] z-0 ;
     }
     .content{
         @apply  flex-col  pb-0 translate-x-[-5%];

@@ -68,8 +68,8 @@ export const Business = memo(() => {
       button:(<>{t('button2')}</>),
     },
     {
-      title: "Consignment",
-      text: `Put your goods on our platforms("EBuy易购生鲜" and "EBuyMart" for B2B and B2C respectively) to sale for grabing more customers and orders.`,
+      title: (<>{t('title4')}</>),
+      text: (<>{t('title4_text')}</>),
 
       img: images[3],
       button:(<>{t('button2')}</>),
