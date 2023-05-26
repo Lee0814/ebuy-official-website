@@ -2,8 +2,10 @@ import { useResponsive } from "@/hooks";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
-import {useEffect} from 'react';
+import {useEffect,useState} from 'react';
 import styles from "./style.module.scss"
+import rightStyle from "./right.module.scss"
+
 
 export const PropertyCardRight = (props: {
   descData:  Array<{
@@ -20,15 +22,7 @@ export const PropertyCardRight = (props: {
   const { md } = useResponsive();
   const { descData, width ,type} = props;
   
-function BtnComponent(){
-  useEffect(()=>{
-    let myButton =document.getElementsByClassName("btn")
-      const btns=Array.from(myButton)
-  })
-}
-BtnComponent()
-
- 
+  const [windowWidth, setWindowWidth] = useState(0);
 
   // 图片渲染
   const isMd=(num:number)=>{
@@ -104,25 +98,67 @@ const nowBtn=(type:any)=>{
       break
   }
 }
+
+useEffect(() => {
+  const updateWindowWidth = () => {
+      setWindowWidth(window.innerWidth);
+  };
+  window.addEventListener('resize', updateWindowWidth);
+  return () => window.removeEventListener('resize', updateWindowWidth);
+}, []);
+const windowSize=windowWidth<=1024.9&&windowWidth>=768
+
+const nowImg=(type:any)=>{
+  if(type==='right1'){
+    if(!md){
+      if(windowSize){
+        return descData[0].img.m[0]
+      }else{
+        return nowPic(type)
+      }
+    }else{
+      return nowPic(type)
+    }
+  }else if(type==='right2'){
+    if(!md){
+      if(windowSize){
+        return descData[1].img.m[0]
+      }else{
+        return nowPic(type)
+      }
+    }else{
+      return nowPic(type)
+    }
+  }else if(type==='right3'){
+    if(!md){
+      if(windowSize){
+        return descData[3].img.m[0]
+      }else{
+        return nowPic(type)
+      }
+    }else{
+      return nowPic(type)
+    }
+  }
+}
   
   return (
     <div
-      className={classNames(
-        "col-start-1 col-end-25 flex flex-col items-center justify-between  md:flex-row",
-        {
+      className={classNames(rightStyle.right_contanier,{
           ["md:py-[72px]"]:type==='right2',
           ["md:pt-[82px] md:pb-[72px]"]:type==='right3'
         }
       )}
     >
       {/* 左侧图片 */}
-      <div className={classNames("flex justify-end md:min-w-[342px]")}>
+      <div className={classNames(rightStyle.right_imgContanier)}>
         <Image
-          className={classNames("h-auto  md:w-[340px] mt-[72px] md:mt-0 md:shrink-0 md:h-[100%]", width,{
+          className={classNames(rightStyle.right_img, width,{
             ["md:!w-[446px] md:shrink-0"]:type==="right2",
             ["md:!w-[428px]"]:type==="right3",
+            ["md:!w-full"]:windowSize&&type
           })}
-          src={nowPic(type)}
+          src={nowImg(type)}
           alt=""
         />
       </div>
@@ -133,6 +169,7 @@ const nowBtn=(type:any)=>{
             ["md:!items-start md:ml-[54px]"]:type==='right1',
             ["md:!translate-y-[-11%]"]:type==='right1',
             ["md:pl-[110px]"]:type==='right3',
+            ["md:!w-full"]:windowSize&&type
           }
         )}
       >

@@ -1,0 +1,19 @@
+.right_contanier{
+    @apply col-start-1 col-end-25 flex flex-col items-center justify-between  md:flex-row
+}
+
+.right_imgContanier{
+    @apply flex justify-end md:min-w-[342px]
+}
+.right_img{
+    @apply h-auto  md:w-[340px] mt-[72px] md:mt-0 md:shrink-0 md:h-[100%]
+}
+
+@media screen and (min-width:768px) and (max-width:1024.9px){
+    .right_contanier{
+        @apply flex-col
+    }
+    .right_imgContanier{
+        @apply md:justify-center 
+    }
+}

@@ -2,6 +2,7 @@ import { useResponsive } from "@/hooks";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
+import {useEffect,useState} from 'react';
 
 export const PropertyCardLeft = (props: {
   descData:  Array<{
@@ -19,6 +20,17 @@ export const PropertyCardLeft = (props: {
   const { descData, width ,type} = props;
 
   const titledom = <div className={classNames()}>{descData[2].title}</div>;
+  
+  const [windowWidth, setWindowWidth] = useState(0);
+  useEffect(() => {
+    const updateWindowWidth = () => {
+        setWindowWidth(window.innerWidth);
+    };
+    window.addEventListener('resize', updateWindowWidth);
+    return () => window.removeEventListener('resize', updateWindowWidth);
+  }, []);
+  const windowSize=windowWidth<=1024.9&&windowWidth>=768
+
   return (
     <div
       className={classNames(

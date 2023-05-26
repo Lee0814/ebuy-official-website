@@ -28,7 +28,6 @@ export const Content=()=>{
     }, []);
     console.log(windowWidth);
     const windowSize=windowWidth<=1024.9&&windowWidth>=768
-    // console.log(windowSize);
     const nowImg1:any=()=>{
         if(!md){
             if(windowSize){
