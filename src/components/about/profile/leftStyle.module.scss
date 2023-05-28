@@ -1,0 +1,50 @@
+.left_contanier{
+    @apply col-start-1 col-end-25 flex flex-col-reverse items-center justify-between py-[72px] md:flex-row md:pb-[72px]  md:pt-[unset]
+}
+.left_content{
+    @apply flex flex-col  justify-between pt-[56px] md:min-h-[289px] md:w-[100%] md:py-[27px] md:pl-[20px] md:justify-between
+}
+.left_title{
+    @apply  text-[42px] font-[600]
+}
+.left_text{
+    @apply  py-[32px] text-[26px] leading-[44px] text-[#333] md:pb-[16px] md:pt-[8px] md:text-[20px] md:leading-[31px]
+}
+.left_text2{
+    @apply  text-[26px] leading-[44px] text-[#333]  md:text-[20px] md:leading-[31px]
+}
+
+.left_images_contanier{
+    @apply flex justify-between md:min-w-[342px] 
+}
+.left_img1,.left_img2{
+    @apply h-auto md:w-[374px] w-[100%];
+}
+
+.left_img_contanier{
+    @apply flex justify-end md:min-w-[342px] md:pl-[50px] 
+}
+.left_img{
+    @apply h-auto  md:w-[340px]
+}
+
+@media screen and (min-width:768.9px) and (max-width:1024.9px){
+    .left_contanier{
+        @apply flex-col-reverse  bg-[#f5f5f5] w-[100vw] translate-x-[-64px]
+    }
+    .left_content{
+        @apply w-[86%] pl-0 py-0
+    }
+    .left_img{
+        transform: scale(0.87) !important;
+    }
+    .left_images_contanier{
+        @apply w-full flex justify-center mt-[72px]
+    }
+    .left_img1{
+        @apply mr-[32px] 
+    }
+    .left_text{
+        @apply pb-[0px]
+    }
+}

@@ -1,5 +1,5 @@
 .right_content1,.right_content2{
-    @apply flex flex-col justify-between pl-[20px] pt-[56px] md:min-h-[289px] md:w-[60%]  md:py-[25px] w-full ml-[32px] md:ml-[36px] md:pl-[36px]
+    @apply flex flex-col justify-between pl-[20px] pt-[56px] md:min-h-[289px] md:w-[60%]  md:py-[25px] w-full ml-[32px] md:ml-0 md:pl-0
 }
 .title{
     @apply md:w-full w-[64%] md:pb-[49px] md:pt-[28px] text-center text-[42px] font-[700] 
@@ -15,7 +15,7 @@
 }
 
 .right2_text{
-    @apply md:pb-[16px] md:pt-[8px] text-[26px] leading-[44px] text-[#333] md:text-[20px] md:leading-[31px] md:mb-[32px] mb-[68px] md:mt-[90px] md:w-[98%]
+    @apply md:pb-[16px] md:pt-[8px] text-[26px] leading-[44px] text-[#333] md:text-[20px] md:leading-[31px] md:mb-[32px] mb-[68px] md:mt-[90px] 
 }
 
 .right2_text2{
@@ -27,25 +27,38 @@
         margin-bottom: 32px !important;
     }
 }
-
-@media screen and (min-width:842.1px) and (max-width:926px){
-    .right_content2 .right2_text,.right2_text2{
-        margin-bottom: 32px !important;
-    }
-}
-@media screen and (min-width:824.1px) and (max-width:842px){
-    .right_content2 .right2_text{
-        margin-bottom: 32px !important;
-    }
+@media screen and (min-width:768px) and (max-width:1024.9px){
     .right_content2 .right2_text2{
-        margin-bottom: 60px !important;
-    }
-}
+         margin-bottom: 0px !important;
+         margin-top: 0px !important;
+     }
+ }
 
-@media screen and (min-width:768.1px) and (max-width:824px){
-    .right_content2 .right2_text2{
-        margin-bottom: 60px !important;
-        margin-top: 60px !important;
-    }
-}
+// @media screen and (min-width:842.1px) and (max-width:926px){
+//     .right_content2 .right2_text,.right2_text2{
+//         margin-bottom: 32px !important;
+//     }
+// }
+// @media screen and (min-width:824.1px) and (max-width:842px){
+//     .right_content2 .right2_text{
+//         margin-bottom: 32px !important;
+//     }
+//     .right_content2 .right2_text2{
+//         margin-bottom: 60px !important;
+//     }
+// }
+
+// @media screen and (min-width:768.1px) and (max-width:824px){
+//     .right_content2 .right2_text2{
+//         margin-bottom: 60px !important;
+//         margin-top: 60px ;
+//     }
+// }
+
+// @media screen and (min-width:1454px) {
+//    .right2_text{
+//         // @apply pb-0 ;
+//         // margin-bottom: -5px !important;
+//     }
+// }
 

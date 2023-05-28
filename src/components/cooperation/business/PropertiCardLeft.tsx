@@ -1,8 +1,8 @@
-import { useResponsive } from "@/hooks";
+import { useResponsive ,windowSizeRange} from "@/hooks";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
-import {useEffect,useState} from 'react';
+import leftStyle from './left.module.scss'
 
 export const PropertyCardLeft = (props: {
   descData:  Array<{
@@ -14,39 +14,44 @@ export const PropertyCardLeft = (props: {
     button: string;
   }> ;
   width?: string;
-  type?:string;
+  type?:any;
 }) => {
   const { md } = useResponsive();
   const { descData, width ,type} = props;
+  const windowWidth=windowSizeRange();
+  const windowSize=windowWidth<=1024.9&&windowWidth>=768
+  const window=windowWidth>1454
+  const middleWindow=windowWidth>=1025&&windowWidth<=1057
+  const nowImg=(type:any)=>{
+    if(type==='left1'){
+      if(!md){
+        if(windowSize){
+          return descData[2].img.m[0]
+        }else{
+          return descData[2].img.d[0]
+        }
+      }else{
+        return descData[2].img.d[0]
+      }
+    }
+  }
 
   const titledom = <div className={classNames()}>{descData[2].title}</div>;
-  
-  const [windowWidth, setWindowWidth] = useState(0);
-  useEffect(() => {
-    const updateWindowWidth = () => {
-        setWindowWidth(window.innerWidth);
-    };
-    window.addEventListener('resize', updateWindowWidth);
-    return () => window.removeEventListener('resize', updateWindowWidth);
-  }, []);
-  const windowSize=windowWidth<=1024.9&&windowWidth>=768
 
   return (
     <div
-      className={classNames(
-        "col-start-1 col-end-25 flex flex-col-reverse items-center justify-between py-[72px] md:flex-row",
-        {}
-      )}
+      className={classNames(leftStyle.left_contanier)}
     >
       {/* 左侧 */}
       <div
-        className={classNames(
-          "flex flex-col  justify-between pt-[56px] md:min-h-[289px] md:w-[58%] md:py-[27px] md:pl-[20px]"
+        className={classNames(leftStyle.left_content,
+          {
+          ["md:w-[43%]"]:window
+        }
         )}
       >
         <div
-          className={classNames(
-            "text-[42px] font-[700] leading-[51px] text-[#333] ",
+          className={classNames(leftStyle.left_title,
             {
               ["hidden"]: !descData[2].title,
               ["md:mb-[45px]"]:type==='left1',
@@ -55,7 +60,7 @@ export const PropertyCardLeft = (props: {
         >
           {descData[2].title}
         </div>
-        <div className={classNames('mb-[72px]')}>
+        <div className={classNames(leftStyle.left_text)}>
           {/* 文本 */}
           <div
             className={classNames(
@@ -69,7 +74,8 @@ export const PropertyCardLeft = (props: {
               "text-[26px] leading-[44px]  text-[#333]  md:text-[20px] md:leading-[31px]",
               {
                 ["hidden"]: !descData[2].text2,
-                ["mt-[28px]"]:type==='left1'
+                ["mt-[28px]"]:type==='left1',
+                ["md:pt-[28px]"]:middleWindow
               }
             )}
           >
@@ -78,24 +84,24 @@ export const PropertyCardLeft = (props: {
         </div>
         {/* 按钮 */}
         <Link href='#message'>
-          <span
-            className={classNames(
-              "bg-[#f5f5f5] md:px-[44px] px-[29px] py-[12px] md:text-[20px] text-[28px] rounded-md leading-[24px] text-[#ED3838] hover:bg-[#ED3838] hover:text-white"
-            )}
-          >
+          <span className={classNames(leftStyle.left_btn)}>
             {descData[2].button}
           </span>
         </Link>
       </div>
       {/* 右侧图片 */}
       <div
-        className={classNames("flex justify-end md:min-w-[342px] md:pl-[28px] md:flex-1",{
-          ["md:w-[475px]"]:type==='left1'
+        className={classNames(leftStyle.left_imgContanier,{
+          ["md:w-[475px]"]:type==='left1',
+          ["md:!w-full"]:windowSize&&type
         })}
       >
         <Image
-          className={classNames("h-auto md:w-[340px]", width)}
-          src={md?descData[2].img.m[0]:descData[2].img.d[0]}
+          className={classNames("h-auto md:w-[340px]", width,{
+            ["md:!w-full"]:windowSize&&type,
+            ["md:pl-0"]:window&&type
+          })}
+          src={nowImg(type)}
           alt=""
         />
       </div>

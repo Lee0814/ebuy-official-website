@@ -62,11 +62,12 @@ export const Profile = memo(() => {
         <BossCard />
       </div>
       <div
-        className={classNames(
-          "ebuy-container w-full bg-[#f5f5f5] md:bg-[unset] "
-        )}
-      >
-        <PropertyCardLeft descData={descDatas[0]} width={"w-[410px]"} />
+        className={classNames("ebuy-container w-full bg-[#f5f5f5] md:bg-[unset]")}>
+        <PropertyCardLeft  
+          descData={descDatas[0]}
+          type={"left1"}
+          width={"w-[410px]"} 
+        />
       </div>
       <div
         className={classNames("ebuy-container w-full  ", {
@@ -75,6 +76,7 @@ export const Profile = memo(() => {
       >
         <PropertyCardRight
           descData={descDatas[1]}
+          type={"right1"}
           width={"w-[456px] md:w-[340px]"}
         />
       </div>
@@ -85,12 +87,14 @@ export const Profile = memo(() => {
       >
         <PropertyCardLeft
           descData={descDatas[2]}
+          type={"left2"}
           width={"w-full md:w-[415px]"}
         />
       </div>
       <div className={classNames("ebuy-container w-full   ")}>
         <PropertyCardRight
           descData={descDatas[3]}
+          type={"right2"}
           width={"w-full md:w-[340px]"}
         />
       </div>
@@ -101,11 +105,13 @@ export const Profile = memo(() => {
       >
         <PropertyCardLeft
           descData={descDatas[4]}
+          type={"left3"}
           width={"w-full md:w-[340px]"}
         />
       </div>
       <div className={classNames("ebuy-container w-full   ")}>
         <PropertyCardRight
+         type={"right3"}
           descData={descDatas[5]}
           width={"w-[410px] md:w-[393px]"}
         />

@@ -1,11 +1,10 @@
-import { useI18n, useResponsive } from "@/hooks";
+import { useI18n, useResponsive,windowSizeRange } from "@/hooks";
 import classNames from "classnames";
 import { memo } from "react";
 import { PropertyCardLeft } from "./PropertiCardLeft";
 import { PropertyCardRight } from "./PropertiCardRight";
 import styles from './style.module.scss'
 import Image from "next/image";
-
 
 import d1 from "./images/1.png";
 import style from "./style.module.scss";
@@ -18,7 +17,7 @@ import m1 from "./images/1m.png";
 import m2 from "./images/2m.png";
 import m3 from "./images/3m.png";
 import m4 from "./images/4m.png";
-import pm5 from "./images/5.png"
+import pm5 from "./images/5.png";
 
 export const Business = memo(() => {
   const images = [
@@ -29,6 +28,10 @@ export const Business = memo(() => {
   ];
   const { md } = useResponsive();
   const t = useI18n("cooperation");
+  const windowWidth=windowSizeRange();
+  const windowSize=windowWidth<=1024.9&&windowWidth>=768
+  const lgWindow=windowWidth>=1454
+   
   const descDatas: Array<{
     title?: any;
     text: any;
@@ -45,7 +48,9 @@ export const Business = memo(() => {
     },
     {
       title:(<>{t('title2')}</>),
-      text:(<section className={classNames(styles.pm5_content, 'h-[55px]')}>
+      text:(<section className={classNames(styles.pm5_content, 'h-[55px]',{
+        ['md:!h-[20px]']:lgWindow
+      })}>
          <Image src={pm5} alt='' className={classNames(style.pm5_img)}></Image>
          {t('title2_text')}
       </section>),
@@ -75,12 +80,16 @@ export const Business = memo(() => {
       button:(<>{t('button2')}</>),
     },
   ];
+
   return (
     <section className={classNames(" md:py-[72px] md:pb-0")}>
       {/* 标题 */}
-      <div className={classNames('w-full flex justify-center relative ')}>
+      <div className={classNames('w-full flex justify-center relative',{
+        ["md:hidden"]:windowSize,
+      })}>
         <span className={classNames(styles.title,'absolute')}>{t('title1')}</span>
       </div>
+
       <div className={classNames("w-full mb:bg-[#f5f5f5] bg-white md:bg-[unset] ")}>
         <div className="ebuy-container !block text-center">
           <PropertyCardRight
@@ -98,7 +107,7 @@ export const Business = memo(() => {
           <PropertyCardRight
             descData={descDatas}
             type={"right2"}
-            width={"w-full md:w-[340px]"}
+            width={"w-full md:w-[461px]"}
           />
         </div>
       </div>

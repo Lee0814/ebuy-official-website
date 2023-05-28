@@ -1,6 +1,7 @@
-import { useResponsive } from "@/hooks";
+import { useResponsive,windowSizeRange } from "@/hooks";
 import classNames from "classnames";
 import Image from "next/image";
+import rightStyle from "./rightStyle.module.scss";
 export const PropertyCardRight = (props: {
   descData: {
     title: string;
@@ -9,74 +10,77 @@ export const PropertyCardRight = (props: {
     text2: string;
   };
   width?: string;
+  type?:any;
 }) => {
   const { md } = useResponsive();
-  const { descData, width } = props;
+  const { descData, width ,type} = props;
   const images = (
     <div
-      className={classNames(
-        "flex   justify-between md:min-w-[342px] md:pl-[50px]"
-      )}
+      className={classNames(rightStyle.right_images_contanier)}
     >
       <Image
-        className={classNames("h-auto w-[48%]  md:w-[340px]", width)}
+        className={classNames(rightStyle.right_img1,width)}
         src={md ? descData.img.m[0] : descData.img.d[0]}
         alt=""
       />
       <Image
-        className={classNames("h-auto  w-[48%] md:w-[340px]", width)}
+        className={classNames(rightStyle.right_img2, width)}
         src={md ? descData.img.m[1] : descData.img.d[1]}
         alt=""
       />
     </div>
   );
 
+  const windowSize=windowSizeRange()
+  const middleWindow=windowSize>=768.9&&windowSize<=1024.9
+  const showImg=()=>{
+    if(!md){
+      if(middleWindow){
+        return descData.img.m[0] 
+      }else{
+        return descData.img.d[0] 
+      }
+    }else{
+      return descData.img.m[0] 
+    }
+  }
+  
   const image = (
-    <div
-      className={classNames(
-        "flex    justify-end md:min-w-[342px] md:pl-[50px]"
-      )}
-    >
+    <div className={classNames(rightStyle.right_img_contanier)}>
       <Image
-        className={classNames("h-auto  md:w-[340px]", width)}
-        src={md ? descData.img.m[0] : descData.img.d[0]}
+        className={classNames("h-auto  md:w-[340px]", width,{
+          ["md:!w-[455px]"]:middleWindow&&type==='right1',
+          ["md:!w-full"]:middleWindow&&type==='right2',
+          ["md:!w-[410px]"]:middleWindow&&type==='right3'
+        })}
+        // src={md ? descData.img.m[0] : descData.img.d[0]}
+        src={showImg()}
         alt=""
       />
     </div>
   );
+  
 
   return (
-    <div
-      className={classNames(
-        "col-start-1 col-end-25 flex flex-col items-center justify-between py-[72px] md:flex-row md:pb-[72px]  md:pt-[unset]",
-        {}
-      )}
-    >
+    <div className={classNames(rightStyle.right_contanier)}>
       {/* 左侧图片 */}
       {md && descData.img.m.length == 2 ? images : image}
+
       {/* 右侧文字 */}
-      <div
-        className={classNames(
-          "flex  flex-col  justify-between pl-[20px] pt-[56px] md:min-h-[289px] md:w-[71%] md:py-[27px]"
-        )}
-      >
-        <div className={classNames(" text-[42px] font-[600]")}>
-          {descData.title}
-        </div>
-        <div
-          className={classNames(
-            "py-[32px] text-[26px] leading-[44px] text-[#333] md:pb-[16px] md:pt-[8px] md:text-[20px] md:leading-[31px]"
-          )}
-        >
-          {descData.text}
-        </div>
-        <div
-          className={classNames(
-            "text-[26px] leading-[44px] text-[#333]  md:text-[20px] md:leading-[31px]"
-          )}
-        >
-          {descData.text2}
-        </div>
+      <div className={classNames(rightStyle.right_content,{
+        ['mb-[72px]']:middleWindow&&type==='right2'||type==='right1',
+      })}>
+          <div className={classNames(rightStyle.right_title)}>
+            {descData.title}
+          </div>
+
+          <div className={classNames(rightStyle.right_text)}>
+            {descData.text}
+          </div>
+
+          <div className={classNames(rightStyle.right_text2)}>
+            {descData.text2}
+          </div>
       </div>
     </div>
   );

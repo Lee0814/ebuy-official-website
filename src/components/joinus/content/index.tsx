@@ -10,24 +10,14 @@ import m2 from "./images/2-m.png"
 import m3 from "./images/3-m.png"
 import pm4 from "./images/4.png"
 import { useHeaderContext, useI18nContext } from "@/states";
-import { useI18n, useInView, useWindowSize ,useResponsive} from "@/hooks";
-import { useEffect, useState } from 'react';
+import { useI18n, windowSizeRange,useResponsive} from "@/hooks";
 
 export const Content=()=>{
     const t = useI18n("joinus");
     const {lang}=useI18nContext()
-    
     const { md } = useResponsive();
-    const [windowWidth, setWindowWidth] = useState(0);
-    useEffect(() => {
-        const updateWindowWidth = () => {
-            setWindowWidth(window.innerWidth);
-        };
-        window.addEventListener('resize', updateWindowWidth);
-        return () => window.removeEventListener('resize', updateWindowWidth);
-    }, []);
-    console.log(windowWidth);
-    const windowSize=windowWidth<=1024.9&&windowWidth>=768
+    const windowSize=windowSizeRange()
+
     const nowImg1:any=()=>{
         if(!md){
             if(windowSize){

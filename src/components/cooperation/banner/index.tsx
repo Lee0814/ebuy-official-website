@@ -32,7 +32,6 @@ export const Banner = memo(() => {
   const scroll = useScroll();
   useEffect(() => {
     const totalDistance:any=bgRef.current?.getBoundingClientRect().height;
-    // console.log(totalDistance+114);
     const nowDistance=totalDistance+114
     
     if(window.scrollY>nowDistance) setOpacityValue(0)

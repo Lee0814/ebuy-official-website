@@ -1,13 +1,10 @@
 .deskBg{
     background: url(./images/bg.png);
-
     background-repeat: no-repeat;
     // background-position:calc(calc(calc(100vw - 1440px) / 2) - 200px)  2%;
     background-size: 48.8% 500px;
     background-position:10% 2% ;
 }
-
-
 
 .mobileBg1{
    background: url(./images/bg.png);
@@ -20,4 +17,10 @@
     background-size:70% 40% ;
     background-repeat: no-repeat;
     background-position:10px  60%;
+}
+
+@media screen and (min-width:768.9px) and (max-width:1024.9px){
+  .deskBg{
+    background-position:55% 1% ;
+  }
 }

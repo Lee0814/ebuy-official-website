@@ -1,10 +1,9 @@
-import { useResponsive } from "@/hooks";
+import {useI18n,useResponsive ,windowSizeRange} from "@/hooks";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
-import {useEffect,useState} from 'react';
-import styles from "./style.module.scss"
-import rightStyle from "./right.module.scss"
+import styles from "./style.module.scss";
+import rightStyle from "./right.module.scss";
 
 
 export const PropertyCardRight = (props: {
@@ -17,13 +16,14 @@ export const PropertyCardRight = (props: {
     button: string;
   }> ;
   width?: string;
-  type?:string;
+  type?:any;
 }) => {
   const { md } = useResponsive();
   const { descData, width ,type} = props;
+  const windowWidth=windowSizeRange();
+  const windowSize=windowWidth<=1024.9&&windowWidth>=768
+  const t = useI18n("cooperation");
   
-  const [windowWidth, setWindowWidth] = useState(0);
-
   // 图片渲染
   const isMd=(num:number)=>{
     if(md){
@@ -42,15 +42,15 @@ export const PropertyCardRight = (props: {
       }
   }
 
-    // title渲染
-    const nowTitle=(type:any)=>{
-      if(type==='right1'){
-        return descData[0].title
-      }else if(type==='right2'){
-        return descData[1].title
-      }else if(type==='right3'){
-        return descData[3].title
-      }
+  // title渲染
+  const nowTitle=(type:any)=>{
+    if(type==='right1'){
+      return descData[0].title
+    }else if(type==='right2'){
+      return descData[1].title
+    }else if(type==='right3'){
+      return descData[3].title
+    }
   }
 
    // text2渲染
@@ -92,21 +92,12 @@ const nowBtn=(type:any)=>{
       break;
     case 'right2':
       return descData[1].button;
-       break;
+      break;
     case 'right3':
       return descData[3].button;
-      break
+      break;
   }
 }
-
-useEffect(() => {
-  const updateWindowWidth = () => {
-      setWindowWidth(window.innerWidth);
-  };
-  window.addEventListener('resize', updateWindowWidth);
-  return () => window.removeEventListener('resize', updateWindowWidth);
-}, []);
-const windowSize=windowWidth<=1024.9&&windowWidth>=768
 
 const nowImg=(type:any)=>{
   if(type==='right1'){
@@ -143,33 +134,56 @@ const nowImg=(type:any)=>{
 }
   
   return (
-    <div
+    <section
       className={classNames(rightStyle.right_contanier,{
           ["md:py-[72px]"]:type==='right2',
-          ["md:pt-[82px] md:pb-[72px]"]:type==='right3'
+          ["md:pt-[72px] md:pb-[72px]"]:type==='right3',
         }
       )}
     >
+     
       {/* 左侧图片 */}
-      <div className={classNames(rightStyle.right_imgContanier)}>
-        <Image
-          className={classNames(rightStyle.right_img, width,{
-            ["md:!w-[446px] md:shrink-0"]:type==="right2",
-            ["md:!w-[428px]"]:type==="right3",
-            ["md:!w-full"]:windowSize&&type
-          })}
-          src={nowImg(type)}
-          alt=""
-        />
+      <div className={classNames(rightStyle.right_imgContanier,{
+        ["md:flex md:flex-col-reverse md:relative"]:windowSize&&type==='right1'
+      })}>
+
+        {/* 标题 */}
+        {windowSize&&type==='right1'?
+          <div className={classNames('w-full flex justify-center relative',{
+          })}>
+            <span className={classNames(styles.title,'absolute',{
+              ["md:mt-[28px] "]:windowSize&&type==='right1'
+            })}>{t('title1')}</span>
+          </div>
+        :null}
+        <div className={classNames({
+           ["md:relative md:w-full"]:type==="right1"&&!windowSize,
+        })}>
+          {type==='right1'&&!windowSize?<div className={classNames(rightStyle.right_shadow)}></div>:null}
+          <Image
+            className={classNames(rightStyle.right_img, width,{
+              ["md:!w-[364px] md:!h-[306px] md:z-20 md:absolute md:top-[-160px]"]:type==="right1"&&!windowSize,
+              ["md:!w-[461px] md:!shrink-0"]:type==="right2"&&!windowSize,
+              ["md:!w-[428px]"]:type==="right3"&&!windowSize,
+              ["md:!w-full"]:windowSize&&type,
+            })}
+            src={nowImg(type)}
+            alt=""
+          />
+        </div>
       </div>
       {/* 右侧文字 */}
       <div
         className={classNames('md:!items-start',type==='right2'?styles.right_content2:styles.right_content1,
           {
-            ["md:!items-start md:ml-[54px]"]:type==='right1',
+            ["md:!items-start md:ml-[54px] md:text-start"]:type==='right1',
+            ["md:!text-center"]:windowSize&&type==='right1',
             ["md:!translate-y-[-11%]"]:type==='right1',
+            ["md:!w-[55%]"]:!windowSize&&type==='right2',
+            ["md:!w-[52%]"]:!windowSize&&type==='right3',
             ["md:pl-[110px]"]:type==='right3',
-            ["md:!w-full"]:windowSize&&type
+            ["md:!w-full md:!ml-0 md:!pl-0"]:windowSize&&type,
+            ["md:!pb-0"]:windowSize&&type,
           }
         )}
       >
@@ -179,20 +193,26 @@ const nowImg=(type:any)=>{
             {
               ["hidden"]: !nowTitle(type),
               ["ml-[34px] md:!pt-0"]:type==='right2',
+              ["md:mt-[31px]"]:windowSize&&type==='right3',
+              ["md:!mt-[31px]"]:windowSize&&type==='right2'
             }
           )}
         >
           {nowTitle(type)}
         </div>
         <div  className={classNames({
-          ["md:!h-[100%] md:flex md:flex-col md:justify-start"]:type==='right2'
+          ["md:!h-[100%] md:flex md:flex-col md:justify-start"]:type==='right2',
         })}>
           <div
             className={classNames(styles.right2_text,
               {
-                ["mt-[84px] !mb-[10px] md:!text-start"]:type==='right1',
+                ["mt-[84px] !mb-[10px]"]:type==='right1',
                 ["md:!mt-[30px] md:!mb-0"]:type==='right2',
                 ["md:!mt-[44px] md:pb-[40px]"]:type==='right3',
+                ["md:!w-full md:!mt-[22px]  md:!leading-[44px] md:!pb-0 md:!mb-[72px]"]:windowSize&&type==='right3',
+                ["md:!w-full md:!pb-0 "]:windowSize&&type==='right2',
+                ["md:!mt-0"]:windowSize&&type==='right1',
+                
               }
               )}
           >
@@ -202,8 +222,10 @@ const nowImg=(type:any)=>{
             className={classNames(styles.right2_text2,
               {
                 ["hidden"]: !nowText2(type),
-                ["md:!text-start md:!mb-[120px]"]:type==='right1',
-                ["md:!mt-[12px] md:!mb-0 "]:type==='right2',
+                ["md:!mb-[120px]"]:type==='right1',
+                ["md:!mt-[12px] md:!mb-0"]:type==='right2',
+                ["md:!mb-[72px]"]:windowSize&&type==='right1'
+                
               }
             )}
           >
@@ -224,14 +246,16 @@ const nowImg=(type:any)=>{
           </div>
         </div>
         {/* 按钮 */}
-        <Link href='#message' className={classNames("mb-[84px] md:mb-0 btn")}>
+        <Link href='#message' className={classNames("mb-[84px] md:mb-0 btn",{
+          ["md:w-full md:mb-[30px]"]:windowSize&&type==='right1',
+        })}>
           <span 
             className={classNames(
               "md:bg-[#f5f5f5] md:px-[44px] px-[29px] py-[12px] rounded-md md:text-[20px] text-[28px] leading-[24px] text-[#ED3838] bg-white",
               {
                 [" !bg-[#F5F5F5]"]:type==='right1', 
                 ["hover:!bg-[#ED3838] hover:!text-white"]:type,
-                ["md:ml-[30px]"]:type==='right2'
+                ["md:ml-[30px]"]:type==='right2',
               }
             )}
           >
@@ -239,6 +263,6 @@ const nowImg=(type:any)=>{
           </span>
         </Link>
       </div>
-    </div>
+    </section>
   );
 };
