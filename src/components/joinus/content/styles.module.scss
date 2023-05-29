@@ -89,20 +89,20 @@ $left-img-translate-step: -10;
 // 屏幕变小时图片自适应
 @media screen and (min-width:1048px)  and (max-width:1088px) {
   .img_left,.img_right{
-    height: auto;
-    transform: scale(1.04) 
+    // height: auto;
+    transform: scale(1.04,1.04) 
   }
 }
 @media screen and (min-width:1027px)  and (max-width:1047.9px) {
   .img_left,.img_right{
-    height: auto;
-    transform: scale(1.06) 
+    // height: 100%;
+    transform: scale(1.06,1.06) 
   }
 }
 @media screen and (min-width:1025px)  and (max-width:1027.9px) {
   .img_left,.img_right{
-    height: auto;
-    transform: scale(1.08) 
+    // height: auto;
+    transform: scale(1.08,1.08) 
   }
 }
 @media screen and (min-width:768px)  and (max-width:1024.9px) {

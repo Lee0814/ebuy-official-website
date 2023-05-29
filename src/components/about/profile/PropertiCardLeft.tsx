@@ -53,9 +53,8 @@ export const PropertyCardLeft = (props: {
       />
       <Image
         className={classNames(leftStyle.left_img2, width,{
-          ["!w-[327px] !h-[327px]"]:windowSize<=768&&type==='left1'
+          ["!w-[327px] !h-[327px]"]:windowSize<=768&&type==='left1',
         })}
-        // src={md ? descData.img.m[1] : descData.img.d[1]}
         src={showImg2(1)}
         alt=""
       />

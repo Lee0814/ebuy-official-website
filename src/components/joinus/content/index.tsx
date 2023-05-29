@@ -16,7 +16,8 @@ export const Content=()=>{
     const t = useI18n("joinus");
     const {lang}=useI18nContext()
     const { md } = useResponsive();
-    const windowSize=windowSizeRange()
+    const windowWidth=windowSizeRange()
+    const windowSize=windowWidth>=768&&windowWidth<=1024
 
     const nowImg1:any=()=>{
         if(!md){
@@ -129,7 +130,7 @@ export const Content=()=>{
                         { showLists()}
                     </div>
                     <Image src={nowImg3()} alt="" className={
-                        classNames('md:-ml-[40px] md:shrink-0 w-full ',styles.img_right)
+                        classNames('md:-ml-[40px]  w-full ',styles.img_right)
                         }>
                     </Image>
                 </div>
