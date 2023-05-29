@@ -83,7 +83,7 @@ export const Content=()=>{
         <section className={classNames('ebuy-container !flex flex-col ',styles.all_container)}>
             {/* 上 */}
            <div className={classNames(styles.mar_r)}>
-                <div className={classNames('flex-col-reverse md:mb-[72px] mb-[72px] rounded-8 bg-blur-6 max-w-auto',styles.sub_container,md?styles.shadow_custom:'',md?styles.opcity:'')}>
+                <div className={classNames('flex-col-reverse md:mb-[72px] mb-[72px] rounded-8 bg-blur-6 max-w-auto',styles.sub_container_right1,md?styles.shadow_custom:'',md?styles.opcity:'')}>
                     <div className={classNames('md:rounded-8 md:bg-blur-6 md:z-20',!md?styles.shadow_custom:'',styles.sub_context,styles.opcity)}>
                         <div className={
                             classNames('font-inter leading-[11px] md:ml-[24px] ml-[32px]',styles.sub_title)
@@ -117,7 +117,7 @@ export const Content=()=>{
            </div>
            {/* 下 */}
             <div className={classNames(styles.mar_r)}>
-                <div  className={classNames('flex-col-reverse rounded-8 bg-blur-6 mt-[72px]',styles.sub_container,md?styles.shadow_custom:'',md?styles.opcity:'')}>
+                <div  className={classNames('flex-col-reverse rounded-8 bg-blur-6 mt-[72px]',styles.sub_container_right2,md?styles.shadow_custom:'',md?styles.opcity:'')}>
                     <div className={classNames('md:rounded-8 md:bg-blur-6 md:z-20 md:shrink-0 ',!md?styles.shadow_custom:'',styles.sub_context,styles.opcity)}>
                         <div className={
                             classNames('font-inter leading-[11px] md:ml-[24px] ml-[33px] ',styles.sub_title)

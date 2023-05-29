@@ -22,8 +22,8 @@
     @apply flex items-center w-[238px] h-[78px] border border-solid border-[#979797] rounded-[8px] mr-[45px] md:mr-0;
 }
 .ecode_store{
-    @apply w-[48px] h-[48px] ml-[15px] mr-[24px] bg-[#575555]
-}
+    @apply w-[238px] h-[78px] md:h-[100%]   mr-[45px]                      
+}    
 .ecode_text{
     @apply text-[#575555] font-[700] text-[26px]
 }
@@ -53,9 +53,5 @@
     .content2{
         flex-direction: column-reverse !important;
     }
-    // .download_title{
-    //     @apply leading-[44px]
-    // }
-    
     
 }

@@ -4,7 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import styles from "./style.module.scss";
 import rightStyle from "./right.module.scss";
-
+import { useI18nContext } from "@/states";
 
 export const PropertyCardRight = (props: {
   descData:  Array<{
@@ -18,6 +18,7 @@ export const PropertyCardRight = (props: {
   width?: string;
   type?:any;
 }) => {
+  const {lang}=useI18nContext()
   const { md } = useResponsive();
   const { descData, width ,type} = props;
   const windowWidth=windowSizeRange();
@@ -132,10 +133,20 @@ const nowImg=(type:any)=>{
     }
   }
 }
+
+const animate=()=>{
+  if (type==='right1') {
+    return rightStyle.right_contanier1
+  }else if(type==='right2'){
+    return rightStyle.right_contanier2
+  }else if(type==='right3'){
+    return rightStyle.right_contanier3
+  }
+}
   
   return (
     <section
-      className={classNames(rightStyle.right_contanier,{
+      className={classNames(animate(),{
           ["md:py-[72px]"]:type==='right2',
           ["md:pt-[72px] md:pb-[72px]"]:type==='right3',
         }
@@ -194,7 +205,8 @@ const nowImg=(type:any)=>{
               ["hidden"]: !nowTitle(type),
               ["ml-[34px] md:!pt-0"]:type==='right2',
               ["md:mt-[31px]"]:windowSize&&type==='right3',
-              ["md:!mt-[31px]"]:windowSize&&type==='right2'
+              ["md:!mt-[31px]"]:windowSize&&type==='right2',
+              ["!mb-[32px]"]:type==='right2'&&lang==='zh-CN'&&windowWidth<=768,
             }
           )}
         >
@@ -207,15 +219,19 @@ const nowImg=(type:any)=>{
             className={classNames(styles.right2_text,
               {
                 ["mt-[84px] !mb-[10px]"]:type==='right1',
+                ["!mb-0"]:type==='right2'&&lang==='zh-CN'&&windowWidth<=768,
+                // ["!my-[32px]"]:type==='right2'&&lang==='zh-CN'&&windowWidth>768,
                 ["md:!mt-[30px] md:!mb-0"]:type==='right2',
                 ["md:!mt-[44px] md:pb-[40px]"]:type==='right3',
                 ["md:!w-full md:!mt-[22px]  md:!leading-[44px] md:!pb-0 md:!mb-[72px]"]:windowSize&&type==='right3',
                 ["md:!w-full md:!pb-0 "]:windowSize&&type==='right2',
                 ["md:!mt-0"]:windowSize&&type==='right1',
+                ["!mt-[40px]"]:lang==='zh-CN'&&windowWidth<=768&&type==='right1'
                 
               }
               )}
           >
+            {/* 第一行 */}
             {nowText(type)}
           </div>
           <div
@@ -224,11 +240,15 @@ const nowImg=(type:any)=>{
                 ["hidden"]: !nowText2(type),
                 ["md:!mb-[120px]"]:type==='right1',
                 ["md:!mt-[12px] md:!mb-0"]:type==='right2',
-                ["md:!mb-[72px]"]:windowSize&&type==='right1'
+                ["md:!mb-[72px]"]:windowSize&&type==='right1',
+                ["!my-[32px]"]:type==='right2'&&lang==='zh-CN'&&windowWidth<=768,
+                // ["!my-[32px]"]:type==='right2'&&lang==='zh-CN'&&windowWidth>768,
                 
               }
             )}
           >
+            {/* 第2行 */}
+
             {nowText2(type)}
           </div>
 
@@ -242,6 +262,7 @@ const nowImg=(type:any)=>{
               }
             )}
           >
+            {/* 第3行 */}
             {nowText3(type)}
           </div>
         </div>

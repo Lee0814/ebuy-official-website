@@ -7,6 +7,7 @@ import { BossCard } from "./bossCard";
 import d1 from "./images/1-1.png";
 import style from "./style.module.scss";
 
+
 import d2 from "./images/2-1.png";
 import d4 from "./images/4-1.png";
 import d5 from "./images/5-1.png";
@@ -49,8 +50,9 @@ export const Profile = memo(() => {
 
   return (
     <section
-      className={classNames("  py-[72px]", {
+      className={classNames("py-[72px]", {
         [style.deskBg]: !md,
+
       })}
     >
       {/* 老板介绍 */}

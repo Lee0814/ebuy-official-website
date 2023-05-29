@@ -33,3 +33,18 @@
     }
     
 }
+
+// 定义动画---右图左文本 .left_contanier依次进入
+@keyframes slide-in-left {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+}
+  
+  /* 应用动画 */
+  .left_contanier {
+    animation:slide-in-left  1.4s ease-out;
+  }

@@ -60,3 +60,33 @@
         @apply block
     }
 }
+
+.left_content_zh{
+    @apply md:text-[20px] 
+}
+.left_content_zh p{
+    @apply md:leading-[33px]
+ }
+ .left_content_zh p:first-child{
+     @apply md:mb-[20px]
+  }
+ 
+@media screen and (min-width:1481px){
+    .left_content_zh{
+        @apply pb-[50px]
+    }
+    .left_content_zh p:first-child{
+        @apply md:mb-[25px] md:pb-0
+     }
+}
+
+@media screen and (max-width:1480.9px){
+    .left_content_zh p{
+        @apply md:leading-[31px]
+     }
+     .left_content_zh p:first-child{
+        @apply md:mb-[16px]
+     }
+}
+
+

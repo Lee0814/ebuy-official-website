@@ -27,38 +27,24 @@
         margin-bottom: 32px !important;
     }
 }
-@media screen and (min-width:768px) and (max-width:1024.9px){
+@media screen and (min-width:768.9x) and (max-width:1024.9px){
     .right_content2 .right2_text2{
          margin-bottom: 0px !important;
          margin-top: 0px !important;
      }
  }
 
-// @media screen and (min-width:842.1px) and (max-width:926px){
-//     .right_content2 .right2_text,.right2_text2{
-//         margin-bottom: 32px !important;
-//     }
-// }
-// @media screen and (min-width:824.1px) and (max-width:842px){
-//     .right_content2 .right2_text{
-//         margin-bottom: 32px !important;
-//     }
-//     .right_content2 .right2_text2{
-//         margin-bottom: 60px !important;
-//     }
-// }
-
-// @media screen and (min-width:768.1px) and (max-width:824px){
-//     .right_content2 .right2_text2{
-//         margin-bottom: 60px !important;
-//         margin-top: 60px ;
-//     }
-// }
-
-// @media screen and (min-width:1454px) {
-//    .right2_text{
-//         // @apply pb-0 ;
-//         // margin-bottom: -5px !important;
-//     }
-// }
-
+// 定义动画---右图左文本 .right_contanier依次进入
+@keyframes slide-in-title {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+}
+  /* 应用动画 */
+  .title {
+    animation:slide-in-title  0.8s ease-out;
+  }
+ 

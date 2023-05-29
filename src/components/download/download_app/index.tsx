@@ -3,8 +3,8 @@ import phone1 from "./images/phone1.png";
 import phone2 from "./images/phone2.png";
 import phone1_m from "./images/phone1-m.png";
 import phone2_m from "./images/phone2-m.png";
-import ecode from "./images/ecode.jpg"
-import store from "./images/store.png"
+import ecode from "./images/ecode.png"
+import store from "./images/apple_store.png"
 import classNames from "classnames";
 import styles from "./styles.module.scss";
 import { useI18n, useInView, windowSizeRange, useResponsive } from "@/hooks";
@@ -61,12 +61,7 @@ export const DownloadApp = () => {
                     </div>
                     {/* 二维码 */}
                     <div className={classNames(styles.ecode_content)}>
-                        <div ref={codeElement1} className={classNames(styles.ecode_top, {
-                        })}>
-                            {/* {md?download():''} */}
-                            <Image src={store} alt="" className={classNames(styles.ecode_store)}></Image>
-                            <div className={classNames(styles.ecode_text)}>App Store</div>
-                        </div>
+                        <Image ref={codeElement1} src={store} alt="" className={classNames(styles.ecode_store)}></Image>
                         <Image src={ecode} alt="" className={classNames(styles.ecode)}></Image>
                     </div>
                 </div>
@@ -81,10 +76,7 @@ export const DownloadApp = () => {
                     </div>
                     {/* 二维码 */}
                     <div className={classNames(styles.ecode_content)}>
-                        <div ref={codeElement2} className={classNames(styles.ecode_top)}>
-                            <Image src={store} alt="" className={classNames(styles.ecode_store)}></Image>
-                            <div className={classNames(styles.ecode_text)}>App Store</div>
-                        </div>
+                        <Image ref={codeElement2} src={store} alt="" className={classNames(styles.ecode_store)}></Image>
                         <Image src={ecode} alt="" className={classNames(styles.ecode)}></Image>
                     </div>
                 </div>

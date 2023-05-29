@@ -1,7 +1,8 @@
 import { useResponsive,windowSizeRange } from "@/hooks";
 import classNames from "classnames";
 import Image from "next/image";
-import leftStyle from "./leftStyle.module.scss"
+import leftStyle from "./leftStyle.module.scss";
+import { useI18nContext } from "@/states";
 
 export const PropertyCardLeft = (props: {
   descData: {
@@ -69,7 +70,6 @@ export const PropertyCardLeft = (props: {
       <Image
         className={classNames(leftStyle.left_img, width,{
           ["md:!w-full"]:middleWindow&&type==='left3'||type==='left2'
-          // ["md:!w-full"]:middleWindow&&type==='left2'
         })}
         // src={md ? descData.img.m[0] : descData.img.d[0]}
         src={showImg1()}
@@ -92,33 +92,108 @@ export const PropertyCardLeft = (props: {
       return images
     }
   }
+
+  const lang = useI18nContext().lang;
+  const windowNow=windowSize>768
+  const langChangeView=()=>{
+    if(windowNow){
+      if(!md){
+        if(lang==='en'){
+          return (
+            <div className={classNames(leftStyle.left_content,{
+              ['mt-[30px]']:middleWindow&&type==='left1'
+            })}>
+              
+              <div className={classNames(leftStyle.left_title,{
+                ["mb-[30px]"]:middleWindow&&type==='left3'
+              })}>
+                {descData.title}
+              </div>
+      
+              <div className={classNames(leftStyle.left_text,{
+                ["!mb-[36px] !mt-[35px]"]:middleWindow&&type==='left2',
+                ["!mb-[22px]"]:middleWindow&&type==='left3'
+              })}>
+                {descData.text}
+              </div>
+              
+              <div className={classNames(leftStyle.left_text2)}>
+                {descData.text2}
+              </div>
+            </div>
+          )
+        }else if(lang==='zh-CN'){
+          return (
+            <div className={classNames(leftStyle.left_content,{
+              ['mt-[30px]']:middleWindow&&type==='left1'
+            })}>
+
+              {/* 标题 */}
+              <div className={classNames(leftStyle.left_title,{
+                ["mb-[30px]"]:middleWindow&&type==='left3'&&!(windowSize>768&&windowSize<=1024)
+              })}>
+                {descData.title}
+              </div>
+
+              {/* text内容 */}
+              <div className={classNames(leftStyle.left_content_zh,{
+                ["mt-[30px]"]:windowNow&&(type==='left2'||type==='left3')&&!(windowSize>768&&windowSize<=1024),
+                ['!mb-[100px]']:(windowSize>768&&windowSize<=1024)&&type==='left1',
+                ['!mb-[40px]']:(windowSize>768&&windowSize<=1024)&&type==='left2'||type==='left3',
+              })}>
+                  <p className={classNames(leftStyle.left_text,{
+                    ['mb-[30px]']:windowNow&&(type==='left2'||type==='left3')
+                  })}>
+                    {descData.text}
+                  </p>
+                  
+                  <p className={classNames(leftStyle.left_text2)}>
+                    {descData.text2}
+                  </p>
+              </div>
+            </div>
+          )
+        }
+      }
+    }else{
+      return(
+        <div className={classNames(leftStyle.left_content,{
+          ['mt-[30px]']:middleWindow&&type==='left1'
+        })}>
+
+          {/* 标题 */}
+          <div className={classNames(leftStyle.left_title,{
+            ["mb-[30px]"]:middleWindow&&type==='left3'
+          })}>
+            {descData.title}
+          </div>
+
+          {/* text内容 */}
+          <div className={classNames(leftStyle.left_text,{
+            ["!mb-[36px] !mt-[35px]"]:middleWindow&&type==='left2',
+            ["!mb-[22px]"]:middleWindow&&type==='left3'
+          })}>
+            {descData.text}
+          </div>
+          
+          <div className={classNames(leftStyle.left_text2)}>
+            {descData.text2}
+          </div>
+        </div>
+      )
+    }
+  }
+
+
   return (
     <div className={classNames(leftStyle.left_contanier,{
+      ["!pb-[0px]"]:middleWindow&&type==='left1'&&(windowSize>768&&windowSize<=1024)&&lang==='zh-CN',
+      ["!pb-[55px]"]:middleWindow&&(type==='left2'||type==='left3')&&(windowSize>768&&windowSize<=1024),
     })}>
       {/* 左侧文字 */}
-      <div className={classNames(leftStyle.left_content,{
-        ['mt-[30px]']:middleWindow&&type==='left1'
-      })}>
-        
-        <div className={classNames(leftStyle.left_title,{
-          ["mb-[30px]"]:middleWindow&&type==='left3'
-        })}>
-          {descData.title}
-        </div>
+      {langChangeView()}
 
-        <div className={classNames(leftStyle.left_text,{
-          ["!mb-[36px] !mt-[35px]"]:middleWindow&&type==='left2',
-          ["!mb-[22px]"]:middleWindow&&type==='left3'
-        })}>
-          {descData.text}
-        </div>
-        
-        <div className={classNames(leftStyle.left_text2)}>
-          {descData.text2}
-        </div>
-      </div>
       {/* 右侧图片 */}
-      {/* {md && descData.img.m.length == 2 ? images : image} */}
       {nowImg()}
     </div>
   );

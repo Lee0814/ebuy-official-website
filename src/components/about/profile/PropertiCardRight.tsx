@@ -2,6 +2,8 @@ import { useResponsive,windowSizeRange } from "@/hooks";
 import classNames from "classnames";
 import Image from "next/image";
 import rightStyle from "./rightStyle.module.scss";
+import { useI18nContext } from "@/states";
+
 export const PropertyCardRight = (props: {
   descData: {
     title: string;
@@ -13,6 +15,7 @@ export const PropertyCardRight = (props: {
   type?:any;
 }) => {
   const { md } = useResponsive();
+  const lang = useI18nContext().lang;
   const { descData, width ,type} = props;
   const images = (
     <div
@@ -46,7 +49,9 @@ export const PropertyCardRight = (props: {
   }
   
   const image = (
-    <div className={classNames(rightStyle.right_img_contanier)}>
+    <div className={classNames(rightStyle.right_img_contanier,{
+      ["md:!translate-y-[-72px]"]:middleWindow&&type==='right3'&&(windowSize>768&&windowSize<=1024)&&lang==='zh-CN'
+    })}>
       <Image
         className={classNames("h-auto  md:w-[340px]", width,{
           ["md:!w-[455px]"]:middleWindow&&type==='right1',
@@ -61,27 +66,88 @@ export const PropertyCardRight = (props: {
   );
   
 
+  const windowNow=windowSize>768
+  const langChangeView=()=>{
+    if(windowNow){
+      if(!md){
+        if(lang==='en'){
+          return (
+            <div className={classNames(rightStyle.right_content,{
+              ['mb-[72px]']:middleWindow&&type==='right2'||type==='right1',
+            })}>
+                <div className={classNames(rightStyle.right_title)}>
+                  {descData.title}
+                </div>
+      
+                <div className={classNames(rightStyle.right_text)}>
+                  {descData.text}
+                </div>
+      
+                <div className={classNames(rightStyle.right_text2)}>
+                  {descData.text2}
+                </div>
+            </div>
+          )
+        }else if(lang==='zh-CN'){
+          return (
+            <div className={classNames(rightStyle.right_content,{
+              ['mb-[72px]']:middleWindow&&type==='right2'||type==='right1',
+            })}>
+                <div className={classNames(rightStyle.right_title,{
+              ['!mt-[30px]']:windowSize>=1528&&(type==='right2'||type==='right1'),
+              ['!mt-[16px]']:(windowSize>768&&windowSize<=1024)&&type==='right2',
+
+                })}>
+                  {descData.title}
+                </div>
+      
+               <div className={classNames(rightStyle.right_content_zh,{
+                ['!pb-[60px]']:windowNow&&type==='right3',
+                ['!mb-[20px]']:(windowSize>768&&windowSize<=1024)&&type,
+                
+               })}>
+                  <p className={classNames(rightStyle.right_text)}>
+                    {descData.text}
+                  </p>
+                  <p className={classNames(rightStyle.right_text2)}>
+                    {descData.text2}
+                  </p>
+               </div>
+            </div>
+          )
+        }
+      }
+    }else{
+      return(
+        <div className={classNames(rightStyle.right_content,{
+          ['mb-[72px]']:middleWindow&&type==='right2'||type==='right1',
+        })}>
+            <div className={classNames(rightStyle.right_title)}>
+              {descData.title}
+            </div>
+  
+            <div className={classNames(rightStyle.right_text)}>
+              {descData.text}
+            </div>
+  
+            <div className={classNames(rightStyle.right_text2)}>
+              {descData.text2}
+            </div>
+        </div>
+      )
+    }
+  }
+
   return (
-    <div className={classNames(rightStyle.right_contanier)}>
+    <div className={classNames(rightStyle.right_contanier,{
+      ["translate-y-[72px]"]:middleWindow&&type==='right3'&&(windowSize>768&&windowSize<=1024)&&lang==='zh-CN'
+    })}>
       {/* 左侧图片 */}
       {md && descData.img.m.length == 2 ? images : image}
 
       {/* 右侧文字 */}
-      <div className={classNames(rightStyle.right_content,{
-        ['mb-[72px]']:middleWindow&&type==='right2'||type==='right1',
-      })}>
-          <div className={classNames(rightStyle.right_title)}>
-            {descData.title}
-          </div>
+      {langChangeView()}
 
-          <div className={classNames(rightStyle.right_text)}>
-            {descData.text}
-          </div>
-
-          <div className={classNames(rightStyle.right_text2)}>
-            {descData.text2}
-          </div>
-      </div>
     </div>
   );
 };

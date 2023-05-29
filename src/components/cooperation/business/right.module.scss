@@ -1,5 +1,5 @@
-.right_contanier{
-    @apply col-start-1 col-end-25 flex flex-col items-center justify-between  md:flex-row
+.right_contanier1,.right_contanier2,.right_contanier3{
+    @apply col-start-1 col-end-25 flex flex-col items-center justify-between  md:flex-row 
 }
 
 .right_imgContanier{
@@ -13,11 +13,35 @@
 }
 
 @media screen and (min-width:768px) and (max-width:1024.9px){
-    .right_contanier{
+  .right_contanier1,.right_contanier2,.right_contanier3{
         @apply flex-col
     }
     .right_imgContanier{
         @apply md:justify-center 
     }
 }
+
+
+
+// 定义动画---右图左文本 .right_contanier依次进入
+@keyframes slide-in-right {
+    from {
+      transform: translateY(100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+}
+  
+  /* 应用动画 */
+  .right_contanier1 {
+    animation:slide-in-right  1s ease-out;
+  }
+  .right_contanier2 {
+    animation:slide-in-right  1.2s ease-out;
+  }
+   .right_contanier3 {
+    animation:slide-in-right  1.6s ease-out;
+  }
+
 

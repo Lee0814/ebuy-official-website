@@ -5,6 +5,7 @@ import { PropertyCardLeft } from "./PropertiCardLeft";
 import { PropertyCardRight } from "./PropertiCardRight";
 import styles from './style.module.scss'
 import Image from "next/image";
+import { useI18nContext } from "@/states";
 
 import d1 from "./images/1.png";
 import style from "./style.module.scss";
@@ -27,9 +28,10 @@ export const Business = memo(() => {
     { m: [m4], d: [d4] },
   ];
   const { md } = useResponsive();
+  const {lang}=useI18nContext()
   const t = useI18n("cooperation");
   const windowWidth=windowSizeRange();
-  const windowSize=windowWidth<=1024.9&&windowWidth>=768
+  const windowSize=windowWidth<=1024.9&&windowWidth>=768.9
   const lgWindow=windowWidth>=1454
    
   const descDatas: Array<{
@@ -48,13 +50,14 @@ export const Business = memo(() => {
     },
     {
       title:(<>{t('title2')}</>),
-      text:(<section className={classNames(styles.pm5_content, 'h-[55px]',{
-        ['md:!h-[20px]']:lgWindow
+      text:(<section className={classNames(styles.pm5_content, lang === 'en'?'h-[55px]':'',{
+        ['md:!h-[20px]']:lgWindow,
+        // ["!h-[20px]"]:lang==='zh-CN'&&windowWidth<=768
       })}>
          <Image src={pm5} alt='' className={classNames(style.pm5_img)}></Image>
          {t('title2_text')}
       </section>),
-      text2:(<section className={classNames(styles.pm5_content,'h-[20px]')}>
+      text2:(<section className={classNames(styles.pm5_content,lang === 'en'?'h-[20px]':'')}>
           <Image src={pm5} alt='' className={classNames(style.pm5_img)}></Image>
           {t('title2_text2')}
       </section>),
@@ -87,7 +90,9 @@ export const Business = memo(() => {
       <div className={classNames('w-full flex justify-center relative',{
         ["md:hidden"]:windowSize,
       })}>
-        <span className={classNames(styles.title,'absolute')}>{t('title1')}</span>
+        <span className={classNames(styles.title,'absolute',{
+          ["!pb-0"]:lang==='zh-CN'&&windowWidth<=768
+        })}>{t('title1')}</span>
       </div>
 
       <div className={classNames("w-full mb:bg-[#f5f5f5] bg-white md:bg-[unset] ")}>

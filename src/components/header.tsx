@@ -224,7 +224,7 @@ export const Header = memo(() => {
             "col-start-6 col-end-25  flex  h-full flex-row-reverse items-center justify-start gap-[21px] lg:flex-col-reverse lg:items-end lg:justify-between lg:gap-[0px] lg:py-[12px] "
           )}
         >
-          <div className={classNames("relative")}>
+          <div className={classNames("relative bottom-[4px]")}>
             <div
               ref={actionRef}
               className={classNames(

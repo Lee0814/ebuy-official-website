@@ -36,3 +36,31 @@
     @apply items-start w-full translate-y-[-60px] 
     }
 }
+
+.boss_content_zh{
+    @apply pt-[27px] min-h-[240px] w-full flex-1 translate-y-[-72px] flex-col justify-between pl-[20px] md:flex md:w-[100%] md:translate-y-[unset] md:py-[27px]
+}
+.boss_profile_zh{
+    @apply md:text-[20px] md:mt-[-100px]
+}
+.boss_profile_zh p{
+   @apply md:leading-[31px]
+}
+.boss_profile_zh p:first-child{
+    @apply md:mb-[25px]
+ }
+
+@media screen and (min-width:768.1px) and (max-width:1196.9px){
+    .boss_content_zh{
+        @apply min-h-[276px]
+    }
+}
+@media screen and (min-width:768.1px) and (max-width:1024px){
+    .boss_content_zh{
+        @apply md:mt-[-50px] ;
+    }
+    .boss_profile_zh{
+        margin-bottom: 30px !important;
+        
+    }
+}

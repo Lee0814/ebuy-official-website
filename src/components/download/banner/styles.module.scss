@@ -27,7 +27,7 @@
     @apply pt-[88px]  pb-[85px] md:min-w-[374px] md:flex md:items-center right-0 md:pt-0 md:h-[600px] md:w-full;
 }
 .phone{
-    @apply w-[431px] md:w-[374px] md:mt-[36px] block mx-auto md:mr-0 ;
+    @apply w-[431px] md:w-[374px] md:mt-[36px] block mx-auto md:mr-0 
 }
 
 .footer_text{
@@ -64,7 +64,7 @@
         @apply h-[600px] pt-0 z-0;
     }
     .phone{ 
-        @apply w-[350px] translate-x-[40%] block
+        @apply w-[350px] translate-x-[40%] block 
     }
     .ebuy_container{
         @apply translate-x-[-8%]
@@ -95,7 +95,7 @@
         @apply mb-[25px] pb-0 
     }
     .text_content{
-        @apply  static z-0 mt-[85px]
+        @apply  static z-0 mt-[85px] 
     }
     .ecode_content{
         @apply pb-[24px]
@@ -136,6 +136,35 @@
     }
 
 }
+
+// 定义动画---手机图片
+@keyframes slide-in {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+}
+  
+  /* 应用动画 */
+  .phone {
+    animation: slide-in 0.8s ease-out;
+  }
+
+
+  // 定义动画---banner文字
+@keyframes slide-in-text {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+}
+  .text_content{
+    animation: slide-in-text 0.8s ease-out;
+  }
 
 
 

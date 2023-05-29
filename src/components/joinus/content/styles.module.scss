@@ -10,7 +10,7 @@
 .opcity{
   @apply bg-white bg-opacity-80
 }
-.sub_container,.sub_container_left{
+.sub_container_right1,.sub_container_right2,.sub_container_left{
   @apply w-full flex items-center md:justify-between md:flex-row md:w-[100%];
 }
 
@@ -106,7 +106,7 @@ $left-img-translate-step: -10;
   }
 }
 @media screen and (min-width:768px)  and (max-width:1024.9px) {
-  .sub_container,.sub_container_left{
+  .sub_container_right1,.sub_container_right2,.sub_container_left{
     @apply md:flex md:flex-col md:justify-center
   }
 
@@ -134,12 +134,35 @@ $left-img-translate-step: -10;
   .sub_text2{
     @apply md:my-[36px]  md:text-[26px] md:leading-[44px]
   }
-  .sub_container{
+  .sub_container_right1{
     // @apply md:overflow-y-auto;
     flex-direction: column-reverse !important;
   }
 
 }
+
+// 定义动画
+@keyframes slide-in-right {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+/* 应用动画 */
+.sub_container_right1 {
+  animation:slide-in-right  0.8s ease-out;
+}
+.sub_container_right2 {
+  animation:slide-in-right  1.2s ease-out;
+}
+.sub_container_left {
+  animation:slide-in-right  1s ease-out;
+}
+
+
+
 
 
 

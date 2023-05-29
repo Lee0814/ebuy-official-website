@@ -40,4 +40,34 @@
         @apply pb-0 
     }
 }
+
+.right_content_zh{
+    @apply md:text-[20px] 
+}
+.right_content_zh p{
+    @apply md:leading-[33px]
+ }
+ .right_content_zh p:first-child{
+     @apply md:mb-[30px]
+  }
+ 
+@media screen and (min-width:1481px){
+    .right_content_zh{
+        @apply pt-0
+    }
+    .right_content_zh p:first-child{
+        @apply md:mb-[25px] md:pb-0 mt-[25px]
+     }
+}
+
+@media screen and (max-width:1480.9px){
+    .right_content_zh p{
+        @apply md:leading-[31px]
+     }
+     .right_content_zh p:first-child{
+        @apply md:mb-[16px]
+     }
+}
+
+
   
