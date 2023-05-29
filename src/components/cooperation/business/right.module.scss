@@ -12,7 +12,7 @@
     @apply md:w-[288px] md:h-[273px] md:bg-[#EEEEEE] md:z-0 md:absolute md:top-[-110px] md:left-[70px]
 }
 
-@media screen and (min-width:768px) and (max-width:1024.9px){
+@media screen and (min-width:769px) and (max-width:1024.9px){
   .right_contanier1,.right_contanier2,.right_contanier3{
         @apply flex-col
     }

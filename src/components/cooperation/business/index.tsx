@@ -31,7 +31,7 @@ export const Business = memo(() => {
   const {lang}=useI18nContext()
   const t = useI18n("cooperation");
   const windowWidth=windowSizeRange();
-  const windowSize=windowWidth<=1024.9&&windowWidth>=768.9
+  const windowSize=windowWidth<=1024.9&&windowWidth>=76
   const lgWindow=windowWidth>=1454
    
   const descDatas: Array<{
@@ -52,7 +52,11 @@ export const Business = memo(() => {
       title:(<>{t('title2')}</>),
       text:(<section className={classNames(styles.pm5_content, lang === 'en'?'h-[55px]':'',{
         ['md:!h-[20px]']:lgWindow,
-        // ["!h-[20px]"]:lang==='zh-CN'&&windowWidth<=768
+        ['mb-[16px]']:windowWidth>=769&&windowWidth<=795&&lang==='en',
+        ['mb-[-12px]']:windowWidth>=796&&windowWidth<=1024&&lang==='en',
+        ['mb-[12px]']:windowWidth>=1454&&lang==='zh-CN',
+        ['mb-[8px]']:windowWidth>=1454&&lang==='en',
+
       })}>
          <Image src={pm5} alt='' className={classNames(style.pm5_img)}></Image>
          {t('title2_text')}
@@ -61,7 +65,16 @@ export const Business = memo(() => {
           <Image src={pm5} alt='' className={classNames(style.pm5_img)}></Image>
           {t('title2_text2')}
       </section>),
-      text3:(<section className={classNames(styles.pm5_content)}>
+      text3:(<section className={classNames(styles.pm5_content,{
+        ['mt-[-30px]']:windowWidth>=796&&windowWidth<=1024&&lang==='en',
+        ['!mt-[2px]']:windowWidth>=796&&windowWidth<=926&&lang==='en',
+        ['!mt-[-10px]']:windowWidth>=796&&windowWidth<=926&&lang==='en',
+        ['!mt-[-16px]']:windowWidth>=769&&windowWidth<=925&&lang==='zh-CN',
+        ['mt-0']:windowWidth>=796&&windowWidth<=926&&lang==='en',
+        ['!mt-[-32px]']:windowWidth>=1088&&windowWidth<=1120&&lang==='en',
+        ['mt-[-48px]']:windowWidth>=927&&windowWidth<=1024&&lang==='zh-CN',
+        ['mt-[-32px]']:windowWidth>=1025&&windowWidth<=1120&&lang==='zh-CN',
+      })}>
         <Image src={pm5} alt='' className={classNames(style.pm5_img)}></Image>
         {t('title2_text3')}
       </section>),   

@@ -20,7 +20,7 @@
     @apply  text-[42px] font-[700] leading-[51px] text-[#333] 
 }
 
-@media screen and (min-width:768px) and (max-width:1024.9px){
+@media screen and (min-width:769px) and (max-width:1024.9px){
     .left_contanier{
         @apply md:flex md:flex-col-reverse md:w-full ;
         align-items: flex-start;

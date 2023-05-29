@@ -40,7 +40,9 @@ export const PropertyCardLeft = (props: {
 
   return (
     <div
-      className={classNames(leftStyle.left_contanier)}
+      className={classNames(leftStyle.left_contanier,{
+        ["!items-start"]:windowWidth<=768&&type
+      })}
     >
       {/* 左侧 */}
       <div

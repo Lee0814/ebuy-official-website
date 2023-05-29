@@ -22,7 +22,7 @@ export const PropertyCardRight = (props: {
   const { md } = useResponsive();
   const { descData, width ,type} = props;
   const windowWidth=windowSizeRange();
-  const windowSize=windowWidth<=1024.9&&windowWidth>=768
+  const windowSize=windowWidth<=1024.9&&windowWidth>=769
   const t = useI18n("cooperation");
   
   // 图片渲染
@@ -195,6 +195,7 @@ const animate=()=>{
             ["md:pl-[110px]"]:type==='right3',
             ["md:!w-full md:!ml-0 md:!pl-0"]:windowSize&&type,
             ["md:!pb-0"]:windowSize&&type,
+            ["!ml-0 !pl-0"]:windowWidth<=768&&type
           }
         )}
       >
@@ -220,7 +221,6 @@ const animate=()=>{
               {
                 ["mt-[84px] !mb-[10px]"]:type==='right1',
                 ["!mb-0"]:type==='right2'&&lang==='zh-CN'&&windowWidth<=768,
-                // ["!my-[32px]"]:type==='right2'&&lang==='zh-CN'&&windowWidth>768,
                 ["md:!mt-[30px] md:!mb-0"]:type==='right2',
                 ["md:!mt-[44px] md:pb-[40px]"]:type==='right3',
                 ["md:!w-full md:!mt-[22px]  md:!leading-[44px] md:!pb-0 md:!mb-[72px]"]:windowSize&&type==='right3',
