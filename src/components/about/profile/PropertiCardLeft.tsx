@@ -18,7 +18,7 @@ export const PropertyCardLeft = (props: {
   const { descData, width,type} = props;
 
   const windowSize=windowSizeRange()
-  const middleWindow=windowSize>=768.9&&windowSize<=1024.9
+  const middleWindow=windowSize>768&&windowSize<=1024.9
   const showImg1=()=>{
     if(!md){
       if(middleWindow){
@@ -69,7 +69,9 @@ export const PropertyCardLeft = (props: {
       })}>
       <Image
         className={classNames(leftStyle.left_img, width,{
-          ["md:!w-full"]:middleWindow&&type==='left3'||type==='left2'
+          ["md:!w-full"]:middleWindow&&type==='left3'||type==='left2',
+          ["md:!w-[394px]"]:type==='left3',
+          ["md:!w-[415px]"]:type==='left2',
         })}
         // src={md ? descData.img.m[0] : descData.img.d[0]}
         src={showImg1()}
@@ -105,19 +107,23 @@ export const PropertyCardLeft = (props: {
             })}>
               
               <div className={classNames(leftStyle.left_title,{
-                ["mb-[30px]"]:middleWindow&&type==='left3'
+                ["mb-[30px]"]:middleWindow&&type==='left3',
               })}>
                 {descData.title}
               </div>
       
               <div className={classNames(leftStyle.left_text,{
                 ["!mb-[36px] !mt-[35px]"]:middleWindow&&type==='left2',
-                ["!mb-[22px]"]:middleWindow&&type==='left3'
+                ["!mb-[22px]"]:middleWindow&&type==='left3',
+                ["!mt-[-48px]"]:middleWindow&&type=='left1',
+
               })}>
                 {descData.text}
               </div>
               
-              <div className={classNames(leftStyle.left_text2)}>
+              <div className={classNames(leftStyle.left_text2,{
+                ["translate-y-[-30px]"]:middleWindow&&type=='left1',
+              })}>
                 {descData.text2}
               </div>
             </div>
@@ -130,7 +136,10 @@ export const PropertyCardLeft = (props: {
 
               {/* 标题 */}
               <div className={classNames(leftStyle.left_title,{
-                ["mb-[30px]"]:middleWindow&&type==='left3'&&!(windowSize>768&&windowSize<=1024)
+                ["mb-[30px]"]:middleWindow&&type==='left3'&&!(windowSize>768&&windowSize<=1024),
+                ["mb-[16px]"]:type==='left1',
+                ["mb-[-12px]"]:(type==='left2'||type==='left3'),
+                ["!mb-[12px] !mt-[12px]"]:middleWindow&&type=='left1',
               })}>
                 {descData.title}
               </div>
@@ -140,9 +149,10 @@ export const PropertyCardLeft = (props: {
                 ["mt-[30px]"]:windowNow&&(type==='left2'||type==='left3')&&!(windowSize>768&&windowSize<=1024),
                 ['!mb-[100px]']:(windowSize>768&&windowSize<=1024)&&type==='left1',
                 ['!mb-[40px]']:(windowSize>768&&windowSize<=1024)&&type==='left2'||type==='left3',
+
               })}>
                   <p className={classNames(leftStyle.left_text,{
-                    ['mb-[30px]']:windowNow&&(type==='left2'||type==='left3')
+                    ['mb-[30px]']:windowNow&&(type==='left2'||type==='left3'),
                   })}>
                     {descData.text}
                   </p>

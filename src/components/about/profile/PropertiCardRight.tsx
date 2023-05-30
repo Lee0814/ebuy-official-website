@@ -92,10 +92,13 @@ export const PropertyCardRight = (props: {
           return (
             <div className={classNames(rightStyle.right_content,{
               ['mb-[72px]']:middleWindow&&type==='right2'||type==='right1',
+              // ['mt-[-20px]']:lang==='zh-CN'&&type==='right2'
             })}>
-                <div className={classNames(rightStyle.right_title,{
+                <div className={classNames(rightStyle.right_title,'mb-[16px]',{
               ['!mt-[30px]']:windowSize>=1528&&(type==='right2'||type==='right1'),
               ['!mt-[16px]']:(windowSize>768&&windowSize<=1024)&&type==='right2',
+              ['!mb-[16px]']:type==='right2'&&(windowSize>=1025&&windowSize<=1452),
+              ['!mb-[0px]']:type&&windowSize>1452
 
                 })}>
                   {descData.title}
@@ -122,7 +125,8 @@ export const PropertyCardRight = (props: {
         <div className={classNames(rightStyle.right_content,{
           ['mb-[72px]']:middleWindow&&type==='right2'||type==='right1',
         })}>
-            <div className={classNames(rightStyle.right_title)}>
+            <div className={classNames(rightStyle.right_title,{
+            })}>
               {descData.title}
             </div>
   

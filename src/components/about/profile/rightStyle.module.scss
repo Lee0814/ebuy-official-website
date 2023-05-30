@@ -2,13 +2,13 @@
     @apply col-start-1 col-end-25 flex flex-col items-center justify-between py-[72px] md:flex-row md:pb-[72px]  md:pt-[unset]
 }
 .right_content{
-    @apply flex  flex-col  justify-between pl-[20px] pt-[56px] md:min-h-[289px] md:w-[71%] md:py-[27px]
+    @apply flex  flex-col  justify-between pl-[20px] pt-[56px] md:min-h-[289px] md:w-[63%] md:py-[27px] 
 }
 .right_title{
-    @apply  text-[42px] font-[600]
+    @apply  text-[42px] font-[600] 
 }
 .right_text{
-    @apply  py-[32px] text-[26px] leading-[44px] text-[#333] md:pb-[16px] md:pt-[8px] md:text-[20px] md:leading-[31px]
+    @apply  py-[32px] text-[26px] leading-[44px] text-[#333] md:pb-[16px] md:pt-[20px] md:text-[20px] md:leading-[31px]
 }
 .right_text2{
     @apply  text-[26px] leading-[44px] text-[#333]  md:text-[20px] md:leading-[31px]

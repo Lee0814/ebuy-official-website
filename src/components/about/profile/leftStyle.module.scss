@@ -2,13 +2,13 @@
     @apply col-start-1 col-end-25 flex flex-col-reverse items-center justify-between py-[72px] md:flex-row md:pb-[72px]  md:pt-[unset]
 }
 .left_content{
-    @apply flex flex-col  justify-between pt-[56px] md:min-h-[289px] md:w-[100%] md:py-[27px] md:pl-[20px] md:justify-between
+    @apply flex flex-col  justify-between pt-[56px] md:min-h-[289px] md:w-[61%] md:py-[27px] md:pl-[20px] md:justify-between
 }
 .left_title{
     @apply  text-[42px] font-[600]
 }
 .left_text{
-    @apply  py-[32px] text-[26px] leading-[44px] text-[#333] md:pb-[16px] md:pt-[8px] md:text-[20px] md:leading-[31px]
+    @apply  py-[32px] text-[26px] leading-[44px] text-[#333] md:pb-[16px] md:pt-[20px] md:text-[20px] md:leading-[31px]
 }
 .left_text2{
     @apply  text-[26px] leading-[44px] text-[#333]  md:text-[20px] md:leading-[31px]
@@ -88,5 +88,6 @@
         @apply md:mb-[16px]
      }
 }
+
 
 

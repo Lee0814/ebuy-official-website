@@ -18,10 +18,14 @@ export const BossCard = () => {
         if(lang==='en'){
           return (
             <div className={classNames(bossStyle.boss_content)}>
-                <div className={classNames(bossStyle.boss_name)}>
+                <div className={classNames(bossStyle.boss_name,{
+                })}>
                   {t("boss-name")}
                 </div>
-                <div className={classNames(bossStyle.boss_profile1)}>
+                <div className={classNames(bossStyle.boss_profile1,{
+                  ['mt-[30px]']:windowWidth>768&&windowWidth<=1024
+
+                })}>
                   {t("boss-profile-1")}
                 </div>
                 <div className={classNames(bossStyle.boss_profile2)}>
