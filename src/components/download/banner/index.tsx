@@ -12,7 +12,6 @@ import { useEffect, useState,useRef } from "react";
 export const Banner = () => {
   const t=useI18n('download')
   const imgElement=useRef(null)
-  console.log(imgElement);
   
   // 切换手机大图
   const { md } = useResponsive();
@@ -20,9 +19,7 @@ export const Banner = () => {
    //点击跳转苹果商城下载
    useEffect(() => {
     const downloadApp = (element: any) => {
-        const handleClick = () => {
-          console.log(1);
-          
+        const handleClick = () => {          
             window.location.href ="https://apps.apple.com/cn/app/ebuy%E6%98%93%E8%B4%AD%E7%94%9F%E9%B2%9C/id1072583697?l=en";
         };
         element.addEventListener("click", handleClick);
