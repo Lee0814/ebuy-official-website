@@ -69,9 +69,9 @@ export const PropertyCardLeft = (props: {
       })}>
       <Image
         className={classNames(leftStyle.left_img, width,{
-          ["md:!w-full"]:middleWindow&&type==='left3'||type==='left2',
+          // ["md:!w-full"]:middleWindow&&type==='left3'||type==='left2',
           ["md:!w-[394px]"]:type==='left3',
-          ["md:!w-[415px]"]:type==='left2',
+          ["md:!w-[415px]"]:middleWindow&&type==='left2',
         })}
         // src={md ? descData.img.m[0] : descData.img.d[0]}
         src={showImg1()}

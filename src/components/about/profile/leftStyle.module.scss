@@ -28,7 +28,7 @@
     @apply flex justify-end md:min-w-[342px] md:pl-[50px] 
 }
 .left_img{
-    @apply h-auto  md:w-[340px]
+    @apply h-auto  
 }
 
 @media screen and (min-width:768.9px) and (max-width:1024.9px){
@@ -89,5 +89,10 @@
      }
 }
 
+@media screen and (min-width: 768.1px) and (max-width:1024.9px){
+.left_img {
+    width: 100% !important;
+}
+}
 
 
