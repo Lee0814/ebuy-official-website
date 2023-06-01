@@ -22,8 +22,8 @@ import dollarHighlight from "./images/dollar-h.png";
 import dollar from "./images/dollar.png";
 
 import oneM from "./images/1-m.png";
-import twoM from "./images/2-m.png";
-import threeM from "./images/3-m.png";
+import twoM from "./images/3-m.png";
+import threeM from "./images/2-m.png";
 import fourM from "./images/4-m.png";
 
 const images = [

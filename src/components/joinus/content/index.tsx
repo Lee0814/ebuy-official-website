@@ -10,7 +10,7 @@ import m2 from "./images/2-m.png"
 import m3 from "./images/3-m.png"
 import pm4 from "./images/4.png"
 import { useHeaderContext, useI18nContext } from "@/states";
-import { useI18n, windowSizeRange,useResponsive} from "@/hooks";
+import { useI18n,useInView, windowSizeRange,useResponsive} from "@/hooks";
 
 export const Content=()=>{
     const t = useI18n("joinus");
@@ -78,11 +78,36 @@ export const Content=()=>{
             )
         }
     }
+    const [top, topInView] = useInView({ type: "context" });
+    const [center, centerInView] = useInView({ type: "context" });
+    const [bottom, bottomInView] = useInView({ type: "context" });
+
+    const moveChangeTop=()=>{
+        if(windowWidth<=1024){
+            return {topMove:topInView}
+        }else{
+            return {rightMove:topInView} 
+        }
+    }
+    const moveChangeCenter=()=>{
+        if(windowWidth<=1024){
+            return {topMove:centerInView}
+        }else{
+            return {leftMove:centerInView} 
+        }
+    }
+    const moveChangeBottom=()=>{
+        if(windowWidth<=1024){
+            return {topMove:bottomInView}
+        }else{
+            return {rightMove:bottomInView} 
+        }
+    }
    
     return(
         <section className={classNames('ebuy-container !flex flex-col ',styles.all_container)}>
             {/* 上 */}
-           <div className={classNames(styles.mar_r)}>
+           <div ref={top} className={classNames(styles.mar_r1,moveChangeTop())}>
                 <div className={classNames('flex-col-reverse md:mb-[72px] mb-[72px] rounded-8 bg-blur-6 max-w-auto',styles.sub_container_right1,md?styles.shadow_custom:'',md?styles.opcity:'')}>
                     <div className={classNames('md:rounded-8 md:bg-blur-6 md:z-20',!md?styles.shadow_custom:'',styles.sub_context,styles.opcity)}>
                         <div className={
@@ -100,7 +125,7 @@ export const Content=()=>{
                 </div>
            </div>
             {/* 中 */}
-           <div className={classNames(styles.mar_l)}>
+           <div ref={center} className={classNames(styles.mar_l,moveChangeCenter())}>
             <div  className={classNames('flex-col rounded-8 bg-blur-6',styles.sub_container_left,md?styles.shadow_custom:'',md?styles.opcity:'')}>
                     <Image src={nowImg2()} alt="" className={classNames('w-full',styles.img_left)}></Image>
                     <div className={classNames('md:rounded-8 md:bg-blur-6 md:z-20 md:-ml-[40px]',!md?styles.shadow_custom:'',styles.sub_context_left,styles.opcity)}>
@@ -116,7 +141,7 @@ export const Content=()=>{
                 </div>
            </div>
            {/* 下 */}
-            <div className={classNames(styles.mar_r)}>
+            <div ref={bottom} className={classNames(styles.mar_r2,moveChangeBottom())}>
                 <div  className={classNames('flex-col-reverse rounded-8 bg-blur-6 mt-[72px]',styles.sub_container_right2,md?styles.shadow_custom:'',md?styles.opcity:'')}>
                     <div className={classNames('md:rounded-8 md:bg-blur-6 md:z-20 md:shrink-0 ',!md?styles.shadow_custom:'',styles.sub_context,styles.opcity)}>
                         <div className={

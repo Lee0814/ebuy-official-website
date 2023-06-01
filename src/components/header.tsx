@@ -11,7 +11,7 @@ import Image from "next/image";
 
 import { useRouter } from "next/router";
 
-import { memo, useEffect, useRef, useState } from "react";
+import React,{ memo, useEffect, useRef, useState } from "react";
 
 import { Link } from "./link";
 
@@ -76,6 +76,9 @@ export const Header = memo(() => {
   const [lastScroll, setLastScroll] = useState<Position>();
 
   const scroll = useScroll();
+  const headerElement = useRef<HTMLDivElement>(null);
+  const headerHeight:any = headerElement.current?.getBoundingClientRect().height;
+  
   useEffect(() => {
     if (showMenu) {
       setShowHeader(true);
@@ -84,29 +87,29 @@ export const Header = memo(() => {
 
     //初始化
     if (!scroll) return;
-
+    
     if (!lastScroll) {
-      setLastScroll(scroll);
+      setLastScroll(headerHeight);
       setShowHeader(true);
 
-      return;
+      return;                        
     }
 
     //向下滑动
 
-    if (scroll.top > lastScroll.top) {
+    // if (scroll.top > lastScroll.top) {
+    if (scroll.top > headerHeight*1.5) {
       setShowHeader(false);
     } else {
-      if (scroll.top) setHeaderType("white");
+      if (scroll.top&&!isHome) setHeaderType("white");
       else {
         setHeaderType("transparent");
       }
 
       setShowHeader(true);
     }
-
     setLastScroll(scroll);
-  }, [scroll]);
+  }, [scroll,headerHeight]);
 
   // end 下滚隐藏头部 上滚显示头部
 
@@ -190,7 +193,7 @@ export const Header = memo(() => {
   };
 
   return (
-    <header
+    <header ref={headerElement}
       className={classNames(
         " h-[92px] w-full  py-[10px] lg:h-[114px]",
 

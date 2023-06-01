@@ -232,3 +232,16 @@ body {
     opacity: 0;
    animation:moveDownFoot 0.5s 0s 1 ease forwards;
 }
+
+.leftMove{
+  opacity: 0;
+ animation:moveLeft 1s 0s 1 ease forwards;
+}
+.rightMove{
+  opacity: 0;
+ animation:moveRight 1s 0s 1 ease forwards;
+}
+.topMove{
+  opacity: 0;
+   animation:moveUp 1s 0s 1 ease forwards;
+}
