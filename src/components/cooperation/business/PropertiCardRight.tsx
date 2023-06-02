@@ -1,10 +1,11 @@
-import {useI18n,useResponsive ,windowSizeRange} from "@/hooks";
+import {useI18n,useResponsive ,windowSizeRange,useInView} from "@/hooks";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./style.module.scss";
 import rightStyle from "./right.module.scss";
 import { useI18nContext } from "@/states";
+import { useEffect,useRef,useState } from "react";
 
 export const PropertyCardRight = (props: {
   descData:  Array<{
@@ -134,6 +135,7 @@ const nowImg=(type:any)=>{
   }
 }
 
+const [rightRef, rightInView] = useInView({ type: "context" });
 const animate=()=>{
   if (type==='right1') {
     return rightStyle.right_contanier1
@@ -143,10 +145,20 @@ const animate=()=>{
     return rightStyle.right_contanier3
   }
 }
-  
+ const moveAnimation=()=>{
+  if(windowWidth>1024){
+    return {topMove:rightInView}
+  }else{
+    if(type==='right1'){
+      return {no:rightInView}
+    }else{
+      return {topMove:rightInView}
+    }
+  }
+ }
   return (
-    <section
-      className={classNames(animate(),{
+    <section ref={rightRef}
+      className={classNames(animate(),moveAnimation(),{
           ["md:py-[72px]"]:type==='right2',
           ["md:pt-[72px] md:pb-[72px]"]:type==='right3',
         }
@@ -171,8 +183,8 @@ const animate=()=>{
            ["md:relative md:w-full"]:type==="right1"&&!windowSize,
         })}>
           {type==='right1'&&!windowSize?<div className={classNames(rightStyle.right_shadow)}></div>:null}
-          <Image
-            className={classNames(rightStyle.right_img, width,{
+          <Image 
+            className={classNames(type==='right1'?rightStyle.right_img1:rightStyle.right_img, width,{
               ["md:!w-[364px] md:!h-[306px] md:z-20 md:absolute md:top-[-160px]"]:type==="right1"&&!windowSize,
               ["md:!w-[461px] md:!shrink-0"]:type==="right2"&&!windowSize,
               ["md:!w-[428px]"]:type==="right3"&&!windowSize,

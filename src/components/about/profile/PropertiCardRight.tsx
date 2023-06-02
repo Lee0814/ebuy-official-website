@@ -1,4 +1,4 @@
-import { useResponsive,windowSizeRange } from "@/hooks";
+import { useResponsive,windowSizeRange,useInView } from "@/hooks";
 import classNames from "classnames";
 import Image from "next/image";
 import rightStyle from "./rightStyle.module.scss";
@@ -142,8 +142,9 @@ export const PropertyCardRight = (props: {
     }
   }
 
+  const [rightionRef, rightInView] = useInView({ type: "context" }); 
   return (
-    <div className={classNames(rightStyle.right_contanier,{
+    <div ref={rightionRef} className={classNames(rightStyle.right_contanier,{topMove:rightInView},{
       ["translate-y-[72px]"]:middleWindow&&type==='right3'&&(windowSize>768&&windowSize<=1024)&&lang==='zh-CN'
     })}>
       {/* 左侧图片 */}

@@ -147,12 +147,6 @@
     }
 }
   
-  /* 应用动画 */
-  .phone {
-    animation: slide-in 1s ease-out;
-  }
-
-
   // 定义动画---banner文字
 @keyframes slide-in-text {
     from {
@@ -162,9 +156,17 @@
       transform: translateX(0);
     }
 }
+  
+@media screen and (min-width:1071px){
+     /* 应用动画 */
+  .phone {
+    animation: slide-in 1s ease-out;
+  }
   .text_content{
     animation: slide-in-text 1s ease-out;
   }
+}
+
 
 
 

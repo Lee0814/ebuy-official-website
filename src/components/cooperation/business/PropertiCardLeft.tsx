@@ -1,4 +1,4 @@
-import { useResponsive ,windowSizeRange} from "@/hooks";
+import { useResponsive ,windowSizeRange,useInView} from "@/hooks";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
@@ -38,9 +38,12 @@ export const PropertyCardLeft = (props: {
 
   const titledom = <div className={classNames()}>{descData[2].title}</div>;
 
+  const [leftRef, leftInView1] = useInView({ type: "context" });
+
+
   return (
-    <div
-      className={classNames(leftStyle.left_contanier,{
+    <div ref={leftRef}
+      className={classNames(leftStyle.left_contanier,{topMove:leftInView1},{
         ["!items-start"]:windowWidth<=768&&type
       })}
     >

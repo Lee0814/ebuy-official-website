@@ -1,5 +1,5 @@
 .right_contanier{
-    @apply col-start-1 col-end-25 flex flex-col items-center justify-between py-[72px] md:flex-row md:pb-[72px]  md:pt-[unset]
+    @apply col-start-1 col-end-25 flex flex-col items-center justify-between py-[72px] md:flex-row md:pb-[72px]  md:pt-[unset] opacity-0
 }
 .right_content{
     @apply flex  flex-col  justify-between pl-[20px] pt-[56px] md:min-h-[289px] md:w-[63%] md:py-[27px] 

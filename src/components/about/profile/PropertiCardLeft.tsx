@@ -1,4 +1,4 @@
-import { useResponsive,windowSizeRange } from "@/hooks";
+import { useResponsive,windowSizeRange,useInView } from "@/hooks";
 import classNames from "classnames";
 import Image from "next/image";
 import leftStyle from "./leftStyle.module.scss";
@@ -194,9 +194,9 @@ export const PropertyCardLeft = (props: {
     }
   }
 
-
+  const [leftionRef, leftInView] = useInView({ type: "context" }); 
   return (
-    <div className={classNames(leftStyle.left_contanier,{
+    <div ref={leftionRef} className={classNames(leftStyle.left_contanier,{topMove:leftInView},{
       ["!pb-[0px]"]:middleWindow&&type==='left1'&&(windowSize>768&&windowSize<=1024)&&lang==='zh-CN',
       ["!pb-[55px]"]:middleWindow&&(type==='left2'||type==='left3')&&(windowSize>768&&windowSize<=1024),
     })}>

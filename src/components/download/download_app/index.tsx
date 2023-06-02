@@ -48,13 +48,25 @@ export const DownloadApp = () => {
             return pic1
         }
     }
+  const [downloadRef1, downloadInView1] = useInView({ type: "context" });
+  const [downloadRef2, downloadInView2] = useInView({ type: "context" });
+  const [phoneRef1, phoneInView1] = useInView({ type: "context" });
+  const [phoneRef2, phoneInView2] = useInView({ type: "context" });
+  const [textRef1, textInView1] = useInView({ type: "context" });
+  const [textRef2, textInView2] = useInView({ type: "context" });
 
     return (
         <section>
             {/* 上 */}
-            <div className={classNames('ebuy-container', styles.content1)}>
-                <Image src={nowPhoto(phone1_m, phone1)} alt="" className={classNames(' w-[515px]  block mx-auto md:mx-0')}></Image>
-                <div className={classNames(styles.download)}>
+            <div ref={downloadRef1} className={classNames('ebuy-container', styles.content1,nowWindowSize<1071?{topMove:downloadInView1}:{},{
+                ["opacity-0"]:nowWindowSize<1071
+            })}>
+                <Image ref={phoneRef1} src={nowPhoto(phone1_m, phone1)} alt="" className={classNames(' w-[515px]  block mx-auto md:mx-0 ',nowWindowSize>1070?{rightMove:phoneInView1}:{},{
+                    ["opacity-0"]:nowWindowSize>1070
+                })}></Image>
+                <div ref={textRef1} className={classNames(styles.download,nowWindowSize>1070?{leftMove:textInView1}:{},{
+                    ["opacity-0"]:nowWindowSize>1070
+                })}>
                     <div>
                         <div className={classNames(styles.download_title)}>{t('downloadApp')}</div>
                         <div className={classNames(styles.download_text)}>{t('downloadTxet')}</div>
@@ -68,8 +80,12 @@ export const DownloadApp = () => {
             </div>
 
             {/* 下 */}
-            <div className={classNames('ebuy-container !flex-col-reverse md:!flex-row', styles.content2)}>
-                <div className={classNames(styles.download)}>
+            <div ref={downloadRef2}  className={classNames('ebuy-container !flex-col-reverse md:!flex-row', styles.content2,nowWindowSize<1071?{topMove:downloadInView2}:{},{
+                 ["opacity-0"]:nowWindowSize<1071
+            })}>
+                <div ref={textRef2} className={classNames(styles.download,nowWindowSize>1070?{rightMove:textInView2}:{},{
+                     ["opacity-0"]:nowWindowSize>1070
+                })}>
                     <div>
                         <div className={classNames(styles.download_title)}>{t('downloadApp')}</div>
                         <div className={classNames(styles.download_text)}>{t('downloadTxet')}</div>
@@ -80,7 +96,9 @@ export const DownloadApp = () => {
                         <Image src={ecode} alt="" className={classNames(styles.ecode)}></Image>
                     </div>
                 </div>
-                <Image src={nowPhoto(phone2_m, phone2)} alt="" className={classNames(' w-[532px] block mx-auto md:mx-0')}></Image>
+                <Image ref={phoneRef2} src={nowPhoto(phone2_m, phone2)} alt="" className={classNames(' w-[532px] block mx-auto md:mx-0',nowWindowSize>1070?{leftMove:phoneInView2}:{},{
+                    ["opacity-0"]:nowWindowSize>1070
+                })}></Image>
 
             </div>
         </section>

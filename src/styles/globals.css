@@ -97,6 +97,16 @@ body {
     transform :translateY(0%);
   }
 }
+@keyframes noMove {
+  from {
+    opacity: 0;
+    transform :translateX(0%);
+  }
+  to {
+    opacity: 1;
+    transform :translateX(0%);
+  }
+}
 
 @keyframes opacitiChange {
   from {
@@ -235,13 +245,22 @@ body {
 
 .leftMove{
   opacity: 0;
- animation:moveLeft 1s 0s 1 ease forwards;
+  animation:moveLeft .6s 0s 1 ease forwards;
 }
 .rightMove{
   opacity: 0;
- animation:moveRight 1s 0s 1 ease forwards;
+  animation:moveRight .6s 0s 1 ease forwards;
 }
 .topMove{
   opacity: 0;
-   animation:moveUp 1s 0s 1 ease forwards;
+   animation:moveUp .6s 0s 1 ease forwards;
+}
+.topMove2{
+  opacity: 0;
+   animation:moveUp .6s 0.4s 1 ease forwards;
+}
+
+.no{
+  opacity: 0;
+  animation:noMove .1s 0s 1 ease forwards;
 }

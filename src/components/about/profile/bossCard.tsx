@@ -1,9 +1,10 @@
-import { useI18n ,windowSizeRange,useResponsive} from "@/hooks";
+import { useI18n ,windowSizeRange,useResponsive,useInView} from "@/hooks";
 import classNames from "classnames";
 import Image from "next/image";
 import boss from "./images/boss.png";
 import bossStyle from "./boss.module.scss"
 import { useI18nContext } from "@/states";
+import { type } from "os";
 
 export const BossCard = () => {
   const t = useI18n("about");  
@@ -64,9 +65,10 @@ export const BossCard = () => {
       )
     }
   }
+  const [bossRef, biossInView2] = useInView({ type: "context" });
 
   return (
-    <div className={classNames(bossStyle.boss_container)}>
+    <div ref={bossRef} className={classNames(bossStyle.boss_container,windowWidth>1024?{topMove:biossInView2}:{no:biossInView2})}>
       {/* 左侧图片 */}
       <div className={classNames(bossStyle.boss_img_container)}>
         <Image className={classNames(bossStyle.boss_img)}

@@ -12,7 +12,7 @@ import { useEffect, useState,useRef } from "react";
 export const Banner = () => {
   const t=useI18n('download')
   const imgElement=useRef(null)
-  
+  const phoneImg=useRef(null)
   // 切换手机大图
   const { md } = useResponsive();
 
@@ -33,12 +33,43 @@ export const Banner = () => {
     }
    }, [md]);
 
+  //  手机图逐渐放大的效果
+  const nowWindowSize:any=useWindowSize()
+   function PhoneScale() {
+    useEffect(() => {
+      function handleImgLoad() {
+        const img:any = phoneImg.current;
+        img.style.transform = 'scale(0.5)';
+        // if (nowWindowSize < 1071)  {// 在窗口宽度小于1071px时才执行缩放动画
+        const timer = setTimeout(() => {
+            img.style.transition = 'transform .5s ease-in-out';
+            img.style.transform = 'scale(1)';
+          }, 500);
+  
+          return () => clearTimeout(timer);
+        // }
+      }
+
+      const img:any = phoneImg.current;
+      if (img && img.complete && img.naturalHeight !== 0) {
+        handleImgLoad();
+      } else {
+        img.addEventListener('load', handleImgLoad);
+      }
+  
+      return () => img.removeEventListener('load', handleImgLoad);
+    }, []);
+  
+  }
+ 
+  PhoneScale()
+
   return (
     <section className={classNames('w-full',styles.banner)}>
       <div className={classNames('!flex',styles.content,styles.ebuy_container)}>
         {/* 手机大图 */}
         <div className={classNames(styles.phone_content)}>
-          <Image src={!md ? phone : phone_m} alt="" className={classNames(styles.phone)}></Image>
+          <Image ref={phoneImg} src={!md ? phone : phone_m} alt="" className={classNames(styles.phone)}></Image>
         </div>
 
         {/* 文字内容区域 */}

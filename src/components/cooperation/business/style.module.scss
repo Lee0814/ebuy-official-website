@@ -35,16 +35,16 @@
  }
 
 // 定义动画---右图左文本 .right_contanier依次进入
-@keyframes slide-in-title {
-    from {
-      transform: translateY(100%);
-    }
-    to {
-      transform: translateY(0);
-    }
-}
-  /* 应用动画 */
-  .title {
-    animation:slide-in-title  0.8s ease-out;
-  }
+// @keyframes slide-in-title {
+//     from {
+//       transform: translateY(100%);
+//     }
+//     to {
+//       transform: translateY(0);
+//     }
+// }
+//   /* 应用动画 */
+//   .title {
+//     animation:slide-in-title  0.8s ease-out;
+//   }
  
