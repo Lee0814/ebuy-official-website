@@ -58,7 +58,7 @@ export const useInView = ({
         if (!md) {
           if (wSize.width > 1024) {
             if (isJoinus) {
-              setInView(rect.top / 1.8 < wSize.height - rect.height * 1.5 - (offset ?? 0));
+              setInView(rect.top / 1.8 < wSize.height - rect.height  - (offset ?? 0));
             } 
             else if (isCooperation) {
               setInView(rect.top / 1.8 < wSize.height - rect.height * .8 - (offset ?? 0));
@@ -67,7 +67,7 @@ export const useInView = ({
             }
           } else {
             if (isJoinus) {
-              setInView(rect.top / 1.8 < wSize.height - rect.height * .2- (offset ?? 0));
+              setInView(rect.top / 1.8 < wSize.height - rect.height * .15- (offset ?? 0));
             } 
              else if (isCooperation) {
               setInView(rect.top / 1.8 < wSize.height - rect.height * .3 - (offset ?? 0));
@@ -77,8 +77,7 @@ export const useInView = ({
           }
         } else {
           if (isJoinus) {
-            console.log(1234);
-            setInView(rect.top / 1.8 < wSize.height - rect.height *.06 - (offset ?? 0));
+            setInView(rect.top / 1.8 < wSize.height - rect.height *.8 - (offset ?? 0));
           }  
           else if (isCooperation) {
             setInView(rect.top / 1.8 < wSize.height - rect.height * .4 - (offset ?? 0));

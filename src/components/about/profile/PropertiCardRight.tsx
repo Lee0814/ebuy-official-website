@@ -144,7 +144,7 @@ export const PropertyCardRight = (props: {
 
   const [rightionRef, rightInView] = useInView({ type: "context" }); 
   return (
-    <div ref={rightionRef} className={classNames(rightStyle.right_contanier,{topMove1:rightInView},{
+    <div ref={rightionRef} className={classNames(rightStyle.right_contanier,{topMove:rightInView},{
       ["translate-y-[72px]"]:middleWindow&&type==='right3'&&(windowSize>768&&windowSize<=1024)&&lang==='zh-CN'
     })}>
       {/* 左侧图片 */}

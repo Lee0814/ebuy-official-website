@@ -4,6 +4,9 @@
 .mar_r1,.mar_r2,.mar_l{
   @apply w-[100%] md:flex justify-center opacity-0
 }
+.mar_r1{
+  opacity: 1;
+}
 .shadow_custom {
     box-shadow: 0px 0px 14px 0px rgba(50,29,29,0.14);
   }
@@ -139,6 +142,37 @@ $left-img-translate-step: -10;
     flex-direction: column-reverse !important;
   }
 
+}
+
+@keyframes moveLeft {
+  from {
+    opacity: 0;
+    transform :translateX(-50%);
+  }
+  to {
+    opacity: 1;
+    transform :translateX(0%);
+  }
+}
+@keyframes moveUp {
+  from {
+    opacity: 0;
+    transform :translateY(50%);
+  }
+  to {
+    opacity: 1;
+    transform :translateY(0%);
+  }
+}
+@media screen and (min-width:1025px){
+  .mar_r1{
+    animation: moveLeft .5s ease-in;
+  }
+}
+@media screen and (max-width:1025px){
+  .mar_r1{
+    animation: moveUp .5s ease-in;
+  }
 }
 
 

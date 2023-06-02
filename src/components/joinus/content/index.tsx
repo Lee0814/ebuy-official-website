@@ -78,17 +78,10 @@ export const Content=()=>{
             )
         }
     }
-    const [top, topInView] = useInView({ type: "context" });
+
     const [center, centerInView] = useInView({ type: "context" });
     const [bottom, bottomInView] = useInView({ type: "context" });
 
-    const moveChangeTop=()=>{
-        if(windowWidth<=1024){
-            return {topMove:topInView}
-        }else{
-            return {rightMove:topInView} 
-        }
-    }
     const moveChangeCenter=()=>{
         if(windowWidth<=1024){
             return {topMove1:centerInView}
@@ -98,7 +91,7 @@ export const Content=()=>{
     }
     const moveChangeBottom=()=>{
         if(windowWidth<=1024){
-            return {topMove2:bottomInView}
+            return {topMove1:bottomInView}
         }else{
             return {rightMove:bottomInView} 
         }
@@ -107,7 +100,7 @@ export const Content=()=>{
     return(
         <section className={classNames('ebuy-container !flex flex-col ',styles.all_container)}>
             {/* 上 */}
-           <div ref={top} className={classNames(styles.mar_r1,moveChangeTop())}>
+           <div  className={classNames(styles.mar_r1)}>
                 <div className={classNames('flex-col-reverse md:mb-[72px] mb-[72px] rounded-8 bg-blur-6 max-w-auto',styles.sub_container_right1,md?styles.shadow_custom:'',md?styles.opcity:'')}>
                     <div className={classNames('md:rounded-8 md:bg-blur-6 md:z-20',!md?styles.shadow_custom:'',styles.sub_context,styles.opcity)}>
                         <div className={
