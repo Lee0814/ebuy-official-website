@@ -91,14 +91,14 @@ export const Content=()=>{
     }
     const moveChangeCenter=()=>{
         if(windowWidth<=1024){
-            return {topMove:centerInView}
+            return {topMove1:centerInView}
         }else{
             return {leftMove:centerInView} 
         }
     }
     const moveChangeBottom=()=>{
         if(windowWidth<=1024){
-            return {topMove:bottomInView}
+            return {topMove2:bottomInView}
         }else{
             return {rightMove:bottomInView} 
         }

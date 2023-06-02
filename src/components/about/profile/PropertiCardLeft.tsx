@@ -196,7 +196,7 @@ export const PropertyCardLeft = (props: {
 
   const [leftionRef, leftInView] = useInView({ type: "context" }); 
   return (
-    <div ref={leftionRef} className={classNames(leftStyle.left_contanier,{topMove:leftInView},{
+    <div ref={leftionRef} className={classNames(leftStyle.left_contanier,{topMove1:leftInView},{
       ["!pb-[0px]"]:middleWindow&&type==='left1'&&(windowSize>768&&windowSize<=1024)&&lang==='zh-CN',
       ["!pb-[55px]"]:middleWindow&&(type==='left2'||type==='left3')&&(windowSize>768&&windowSize<=1024),
     })}>

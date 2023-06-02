@@ -147,7 +147,7 @@ const animate=()=>{
 }
  const moveAnimation=()=>{
   if(windowWidth>1024){
-    return {topMove:rightInView}
+    return {topMove2:rightInView}
   }else{
     if(type==='right1'){
       return {no:rightInView}

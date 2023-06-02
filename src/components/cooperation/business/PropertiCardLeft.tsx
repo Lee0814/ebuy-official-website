@@ -43,7 +43,7 @@ export const PropertyCardLeft = (props: {
 
   return (
     <div ref={leftRef}
-      className={classNames(leftStyle.left_contanier,{topMove:leftInView1},{
+      className={classNames(leftStyle.left_contanier,{topMove1:leftInView1},{
         ["!items-start"]:windowWidth<=768&&type
       })}
     >

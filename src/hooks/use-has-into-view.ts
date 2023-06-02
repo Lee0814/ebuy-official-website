@@ -70,19 +70,20 @@ export const useInView = ({
               setInView(rect.top / 1.8 < wSize.height - rect.height * .2- (offset ?? 0));
             } 
              else if (isCooperation) {
-              setInView(rect.top / 1.8 < wSize.height - rect.height * .2 - (offset ?? 0));
+              setInView(rect.top / 1.8 < wSize.height - rect.height * .3 - (offset ?? 0));
             } else if (isAbout) {
-              setInView(rect.top / 1.8 < wSize.height - rect.height * .06 - (offset ?? 0));
+              setInView(rect.top / 1.8 < wSize.height - rect.height * .08 - (offset ?? 0));
             }
           }
         } else {
           if (isJoinus) {
-            setInView(rect.top / 1.8 < wSize.height - rect.height *.8 - (offset ?? 0));
+            console.log(1234);
+            setInView(rect.top / 1.8 < wSize.height - rect.height *.06 - (offset ?? 0));
           }  
           else if (isCooperation) {
             setInView(rect.top / 1.8 < wSize.height - rect.height * .4 - (offset ?? 0));
           } else if (isAbout) {
-            setInView(rect.top / 1.8 < wSize.height - rect.height * .06 - (offset ?? 0));
+            setInView(rect.top / 1.8 < wSize.height - rect.height * .1 - (offset ?? 0));
           }
         }
 
