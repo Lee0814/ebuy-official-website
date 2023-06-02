@@ -72,7 +72,7 @@ export const useInView = ({
              else if (isCooperation) {
               setInView(rect.top / 1.8 < wSize.height - rect.height * .3 - (offset ?? 0));
             } else if (isAbout) {
-              setInView(rect.top / 1.8 < wSize.height - rect.height * .08 - (offset ?? 0));
+              setInView(rect.top / 1.8 < wSize.height - rect.height * .36 - (offset ?? 0));
             }
           }
         } else {
@@ -82,7 +82,7 @@ export const useInView = ({
           else if (isCooperation) {
             setInView(rect.top / 1.8 < wSize.height - rect.height * .4 - (offset ?? 0));
           } else if (isAbout) {
-            setInView(rect.top / 1.8 < wSize.height - rect.height * .1 - (offset ?? 0));
+            setInView(rect.top / 1.8 < wSize.height - rect.height * .3 - (offset ?? 0));
           }
         }
 
