@@ -90,13 +90,13 @@ export const useInView = ({
           if(!md){
             if(isDownload){
               if(wSize.width>1070){
-                setInView(rect.top / 1.8 < wSize.height - rect.height * 1.1 - (offset ?? 0))
+                setInView(rect.top / 1.8 < wSize.height - rect.height * .8 - (offset ?? 0))
               }else{
-                setInView(rect.top / 1.8 < wSize.height - rect.height * 0.26 - (offset ?? 0))
+                setInView(rect.top / 1.8 < wSize.height - rect.height * 0.22 - (offset ?? 0))
               }
             }
           }else{
-            setInView(rect.top / 1.8 < wSize.height - rect.height * .26 - (offset ?? 0))
+            setInView(rect.top / 1.8 < wSize.height - rect.height * .28 - (offset ?? 0))
           }
         }
         down()
