@@ -2,10 +2,7 @@
   @apply md:w-full md:flex md:justify-center
 }
 .mar_r1,.mar_r2,.mar_l{
-  @apply w-[100%] md:flex justify-center opacity-0
-}
-.mar_r1{
-  opacity: 1;
+  @apply w-[100%] md:flex justify-center 
 }
 .shadow_custom {
     box-shadow: 0px 0px 14px 0px rgba(50,29,29,0.14);
@@ -162,16 +159,6 @@ $left-img-translate-step: -10;
   to {
     opacity: 1;
     transform :translateY(0%);
-  }
-}
-@media screen and (min-width:1025px){
-  .mar_r1{
-    animation: moveLeft .5s ease-in;
-  }
-}
-@media screen and (max-width:1025px){
-  .mar_r1{
-    animation: moveUp .5s ease-in;
   }
 }
 

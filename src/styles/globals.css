@@ -114,7 +114,7 @@ body {
 
   }
   to {
-    opacity: 1;
+    opacity: 1 ;
 
   }
 }
@@ -245,26 +245,26 @@ body {
 
 .leftMove{
   opacity: 0;
-  animation:moveLeft .5s 0s 1 ease forwards;
+  animation:moveLeft 0.5s 0s 1 linear forwards;
 }
 .rightMove{
   opacity: 0;
-  animation:moveRight .5s 0s 1 ease forwards;
+  animation:moveRight .5s 0s 1 linear forwards;
 }
 .topMove{
   opacity: 0;
-   animation:moveUp .5s 0s 1 ease forwards;
+   animation:moveUp .5s 0s 1 linear forwards;
 }
 .topMove1{
   opacity: 0;
-   animation:moveUp .5s 0.5s 1 ease forwards;
+   animation:moveUp .5s 0.5s 1 linear forwards;
 }
 .topMove2{
   opacity: 0;
-   animation:moveUp .5s .6s 1 ease forwards;
+   animation:moveUp .5s .6s 1 linear forwards;
 }
 
 .no{
   opacity: 0;
-  animation:noMove .1s 0s 1 ease forwards;
+  animation:noMove .1s 0s 1 linear forwards;
 }

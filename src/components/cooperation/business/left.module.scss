@@ -1,7 +1,6 @@
 .left_contanier{
-    @apply col-start-1 col-end-25 flex flex-col-reverse items-center justify-between py-[72px] md:flex-row opacity-0
+    @apply col-start-1 col-end-25 flex flex-col-reverse items-center justify-between py-[72px] md:flex-row
 }
-
 .left_imgContanier{
     @apply flex justify-end md:min-w-[342px] md:pl-[28px] md:flex-1
 }

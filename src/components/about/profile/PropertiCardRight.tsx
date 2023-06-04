@@ -3,6 +3,8 @@ import classNames from "classnames";
 import Image from "next/image";
 import rightStyle from "./rightStyle.module.scss";
 import { useI18nContext } from "@/states";
+import useScrollAnimation from '@/hooks/useScrollAnimation';
+import useScrollDirection from '@/hooks/useScrollDirection';
 
 export const PropertyCardRight = (props: {
   descData: {
@@ -142,9 +144,19 @@ export const PropertyCardRight = (props: {
     }
   }
 
-  const [rightionRef, rightInView] = useInView({ type: "context" }); 
+  // const [rightionRef, rightInView] = useInView({ type: "context" }); 
+  const scrollDirection = useScrollDirection();
+  const animate = () => {
+    // 检查窗口滚动方向
+    if (scrollDirection.isScrollUp) {
+      return useScrollAnimation("bottom", 50, 0.6);
+    } else {
+      return useScrollAnimation("bottom", -50, 0.6)
+    };
+  };
+
   return (
-    <div ref={rightionRef} className={classNames(rightStyle.right_contanier,{topMove:rightInView},{
+    <div ref={animate()} className={classNames(rightStyle.right_contanier,{
       ["translate-y-[72px]"]:middleWindow&&type==='right3'&&(windowSize>768&&windowSize<=1024)&&lang==='zh-CN'
     })}>
       {/* 左侧图片 */}

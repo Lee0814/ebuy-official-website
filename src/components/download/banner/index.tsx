@@ -8,6 +8,7 @@ import ecode from "./images/ecode-m.png"
 import { useI18n, useInView, useWindowSize ,useResponsive} from "@/hooks";
 // import { useRouter } from "next/router";
 import { useEffect, useState,useRef } from "react";
+import gsap from 'gsap';
 
 export const Banner = () => {
   const t=useI18n('download')
@@ -33,36 +34,40 @@ export const Banner = () => {
     }
    }, [md]);
 
-  //  手机图逐渐放大的效果
   const nowWindowSize:any=useWindowSize()
-   function PhoneScale() {
-    useEffect(() => {
-      function handleImgLoad() {
-        const img:any = phoneImg.current;
-        img.style.transform = 'scale(0.5)';
-        // if (nowWindowSize < 1071)  {// 在窗口宽度小于1071px时才执行缩放动画
-        const timer = setTimeout(() => {
-            img.style.transition = 'transform .5s ease-in-out';
-            img.style.transform = 'scale(1)';
-          }, 500);
-  
-          return () => clearTimeout(timer);
-        // }
+  //  手机图逐渐放大的效果
+  useEffect(() => {
+    function handleResize() {
+      const nowWindowSize = window.innerWidth;
+      if (nowWindowSize <= 1070) {
+        gsap.fromTo(
+          phoneImg.current,
+          { scale: 0.5, opacity: 1 },
+          {
+            duration: 1,
+            scale: 1,
+            opacity: 1,
+            ease: "power2.out",
+          }
+        );
       }
+    }
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
-      const img:any = phoneImg.current;
-      if (img && img.complete && img.naturalHeight !== 0) {
-        handleImgLoad();
-      } else {
-        img.addEventListener('load', handleImgLoad);
-      }
-  
-      return () => img.removeEventListener('load', handleImgLoad);
-    }, []);
-  
-  }
- 
-  PhoneScale()
+  useEffect(() => {
+    if (nowWindowSize > 1070) {
+      gsap.set(phoneImg.current, {
+        scale: 1,
+        opacity: 1,
+      });
+    }
+  }, []);
+
 
   return (
     <section className={classNames('w-full',styles.banner)}>

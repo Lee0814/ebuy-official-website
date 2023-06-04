@@ -2,7 +2,9 @@ import { useResponsive ,windowSizeRange,useInView} from "@/hooks";
 import classNames from "classnames";
 import Image from "next/image";
 import Link from "next/link";
-import leftStyle from './left.module.scss'
+import leftStyle from './left.module.scss';
+import useScrollAnimation from '@/hooks/useScrollAnimation';
+import useScrollDirection from '@/hooks/useScrollDirection';
 
 export const PropertyCardLeft = (props: {
   descData:  Array<{
@@ -38,12 +40,24 @@ export const PropertyCardLeft = (props: {
 
   const titledom = <div className={classNames()}>{descData[2].title}</div>;
 
-  const [leftRef, leftInView1] = useInView({ type: "context" });
+  const scrollDirection = useScrollDirection();
+  const animate = () => {
+    if (windowWidth > 1024) {
+      return useScrollAnimation("bottom", -50, 0.6);
+    } else {
+      // 检查窗口滚动方向
+      if (scrollDirection.isScrollUp) {
+        return useScrollAnimation("bottom", 50, 0.6);
+      } else {
+        return useScrollAnimation("bottom", -50, 0.6)
+      };
+    }
+  };
 
 
   return (
-    <div ref={leftRef}
-      className={classNames(leftStyle.left_contanier,{topMove:leftInView1},{
+    <div ref={animate()}
+      className={classNames(leftStyle.left_contanier,{
         ["!items-start"]:windowWidth<=768&&type
       })}
     >

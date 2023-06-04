@@ -1,8 +1,5 @@
 .right_contanier1,.right_contanier2,.right_contanier3{
-    @apply col-start-1 col-end-25 flex flex-col items-center justify-between  md:flex-row opacity-0
-}
-.right_contanier1{
-    opacity: 1;
+    @apply col-start-1 col-end-25 flex flex-col items-center justify-between  md:flex-row
 }
 .right_imgContanier{
     @apply flex justify-end md:min-w-[342px]

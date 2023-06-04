@@ -9,6 +9,8 @@ import classNames from "classnames";
 import styles from "./styles.module.scss";
 import { useI18n, useInView, windowSizeRange, useResponsive } from "@/hooks";
 import { useState, useEffect, useRef } from "react";
+import useScrollAnimation from '@/hooks/useScrollAnimation';
+import useScrollDirection from '@/hooks/useScrollDirection';
 
 export const DownloadApp = () => {
     const { md } = useResponsive()
@@ -21,7 +23,7 @@ export const DownloadApp = () => {
     useEffect(() => {
         const downloadApp = (element: any) => {
             const handleClick = () => {
-                window.location.href ="https://apps.apple.com/cn/app/ebuy%E6%98%93%E8%B4%AD%E7%94%9F%E9%B2%9C/id1072583697?l=en";
+                window.location.href = "https://apps.apple.com/cn/app/ebuy%E6%98%93%E8%B4%AD%E7%94%9F%E9%B2%9C/id1072583697?l=en";
             };
             element.addEventListener("click", handleClick);
             return () => element.removeEventListener("click", handleClick);
@@ -48,25 +50,45 @@ export const DownloadApp = () => {
             return pic1
         }
     }
-  const [downloadRef1, downloadInView1] = useInView({ type: "context" });
-  const [downloadRef2, downloadInView2] = useInView({ type: "context" });
-  const [phoneRef1, phoneInView1] = useInView({ type: "context" });
-  const [phoneRef2, phoneInView2] = useInView({ type: "context" });
-  const [textRef1, textInView1] = useInView({ type: "context" });
-  const [textRef2, textInView2] = useInView({ type: "context" });
+
+    const scrollDirection = useScrollDirection();
+    const animate = () => {
+        if (nowWindowSize <= 1070) {
+            if (scrollDirection.isScrollUp) {
+                return useScrollAnimation("bottom", 50, 0.6);
+            } else {
+                return useScrollAnimation("bottom", -50, 0.6)
+            };
+        } else {
+            return useScrollAnimation("bottom", 0, 0)
+        }
+    };
+
+    const animate1 = (element: any) => {
+        if (nowWindowSize > 1070) {
+            // // 检查窗口滚动方向
+            if (element === 'phoneRef1') {
+                return useScrollAnimation("right", -200, 0.6)
+            } else if (element === 'textRef1') {
+                return useScrollAnimation("left", -200, 0.6)
+            } else if (element === 'phoneRef2') {
+                return useScrollAnimation("left", -200, 0.6)
+            } else if (element === 'textRef2') {
+                return useScrollAnimation("right", -200, 0.6)
+            }
+        } else {
+            return useScrollAnimation("bottom", 0, 0)
+        }
+    }
+   
 
     return (
         <section>
             {/* 上 */}
-            <div ref={downloadRef1} className={classNames('ebuy-container', styles.content1,nowWindowSize<1071?{topMove:downloadInView1}:{},{
-                ["opacity-0"]:nowWindowSize<1071
-            })}>
-                <Image ref={phoneRef1} src={nowPhoto(phone1_m, phone1)} alt="" className={classNames(' w-[515px]  block mx-auto md:mx-0 ',nowWindowSize>1070?{rightMove:phoneInView1}:{},{
-                    ["opacity-0"]:nowWindowSize>1070
-                })}></Image>
-                <div ref={textRef1} className={classNames(styles.download,nowWindowSize>1070?{leftMove:textInView1}:{},{
-                    ["opacity-0"]:nowWindowSize>1070
-                })}>
+            <div ref={animate()} className={classNames('ebuy-container', styles.content1)}>
+             {/* @ts-ignore */}
+                <Image ref={animate1('phoneRef1')} src={nowPhoto(phone1_m, phone1)} alt="" className={classNames('w-[515px] block mx-auto md:mx-0')}></Image>
+                <div ref={animate1('textRef1')} className={classNames(styles.download)}>
                     <div>
                         <div className={classNames(styles.download_title)}>{t('downloadApp')}</div>
                         <div className={classNames(styles.download_text)}>{t('downloadTxet')}</div>
@@ -80,12 +102,8 @@ export const DownloadApp = () => {
             </div>
 
             {/* 下 */}
-            <div ref={downloadRef2}  className={classNames('ebuy-container !flex-col-reverse md:!flex-row', styles.content2,nowWindowSize<1071?{topMove:downloadInView2}:{},{
-                 ["opacity-0"]:nowWindowSize<1071
-            })}>
-                <div ref={textRef2} className={classNames(styles.download,nowWindowSize>1070?{rightMove:textInView2}:{},{
-                     ["opacity-0"]:nowWindowSize>1070
-                })}>
+            <div ref={animate()} className={classNames('ebuy-container !flex-col-reverse md:!flex-row', styles.content2)}>
+                <div ref={animate1('textRef2')} className={classNames(styles.download)}>
                     <div>
                         <div className={classNames(styles.download_title)}>{t('downloadApp')}</div>
                         <div className={classNames(styles.download_text)}>{t('downloadTxet')}</div>
@@ -96,10 +114,8 @@ export const DownloadApp = () => {
                         <Image src={ecode} alt="" className={classNames(styles.ecode)}></Image>
                     </div>
                 </div>
-                <Image ref={phoneRef2} src={nowPhoto(phone2_m, phone2)} alt="" className={classNames(' w-[532px] block mx-auto md:mx-0',nowWindowSize>1070?{leftMove:phoneInView2}:{},{
-                    ["opacity-0"]:nowWindowSize>1070
-                })}></Image>
-
+                {/* @ts-ignore */}
+                <Image ref={animate1('phoneRef2')} src={nowPhoto(phone2_m, phone2)} alt="" className={classNames(' w-[532px] block mx-auto md:mx-0')}></Image>
             </div>
         </section>
     )

@@ -127,7 +127,7 @@ export const Benefit = memo(() => {
         <Swiper
           ref={swiperRef}
           className={classNames(
-            "col-start-1 col-end-25 w-full opacity-0 md:col-start-2 md:col-end-24",
+            "col-start-1 col-end-25 w-full md:col-start-2 md:col-end-24 opacity-0",
             {
               ["benifit2"]: swiperInView,
             }
