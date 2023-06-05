@@ -160,10 +160,10 @@
 @media screen and (min-width:1071px){
      /* 应用动画 */
   .phone {
-    animation: slide-in 1s ease-out;
+    animation: slide-in 1s ease;
   }
   .text_content{
-    animation: slide-in-text 1s ease-out;
+    animation: slide-in-text 1s ease;
   }
 }
 

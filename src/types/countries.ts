@@ -1,9 +1,9 @@
 import { CountryData } from "react-international-phone";
 
 const countries: CountryData[] = [
-  ["China", ["asia"], "cn", "86", "..-........."],
   ["Singapore", ["asia"], "sg", "65", "....-...."],
   ["Malaysia", ["asia"], "my", "60", "..-....-...."],
+  ["China", ["asia"], "cn", "86", "..-........."],
   ["Afghanistan", ["asia"], "af", "93"],
   ["Albania", ["europe"], "al", "355"],
   ["Algeria", ["africa", "north-africa"], "dz", "213"],

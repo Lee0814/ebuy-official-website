@@ -35,8 +35,8 @@ export const Footer = memo(() => {
     isShow: false,
     text: "",
   });
-  const [country, setCountry] = useState<CountryIso2>("cn");
-  const [countryCode, setCountryCode] = useState<string>("+86");
+  const [country, setCountry] = useState<CountryIso2>("sg");
+  const [countryCode, setCountryCode] = useState<string>("+65");
   const [showAttention, setAttention] = useState({
     isShow: false,
     text: "发送成功，客服将尽快与您联系",
@@ -70,8 +70,8 @@ export const Footer = memo(() => {
       return;
     } else {
       axios
-        .post("http://192.168.6.38/core/api/manage/contactUs", {
-          fistName: formValue.firstName,
+        .post("https://www.ebuysgp.com/core/api/manage/contactUs", {
+          firstName: formValue.firstName,
           lastName: formValue.lastName,
           phone: `${countryCode} ${formValue.phone}`,
           email: formValue.email,
