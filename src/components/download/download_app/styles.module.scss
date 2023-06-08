@@ -22,13 +22,16 @@
     @apply flex items-center w-[238px] h-[78px] border border-solid border-[#979797] rounded-[8px] mr-[45px] md:mr-0;
 }
 .ecode_store{
-    @apply w-[238px] h-[78px] md:h-[100%]   mr-[45px]                      
+    @apply w-[238px] h-[78px] md:h-[100%]                       
 }    
 .ecode_text{
     @apply text-[#575555] font-[700] text-[26px]
 }
 .ecode{
-    @apply w-[120px] mt-[48px]
+    @apply w-[120px] 
+}
+.googlePlay{
+    @apply w-[258px] md:my-[32px] my-0 mx-[24px] md:mx-0
 }
 
 @media screen and (min-width: 768.1px) and (max-width: 1070px) {
@@ -48,10 +51,13 @@
         @apply flex-row items-end mt-[63px]
     }
     .ecode{
-        @apply ml-[45px] mt-0
+        @apply  mt-0
     }
     .content2{
         flex-direction: column-reverse !important;
     }
     
+    .googlePlay{
+        @apply my-0 mx-[24px]
+    }
 }

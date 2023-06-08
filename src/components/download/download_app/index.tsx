@@ -4,6 +4,7 @@ import phone2 from "./images/phone2.png";
 import phone1_m from "./images/phone1-m.png";
 import phone2_m from "./images/phone2-m.png";
 import ecode from "./images/ecode.png"
+import googlePlay from "./images/googlePlay.png"
 import store from "./images/apple_store.png"
 import classNames from "classnames";
 import styles from "./styles.module.scss";
@@ -11,6 +12,7 @@ import { useI18n, useInView, windowSizeRange, useResponsive } from "@/hooks";
 import { useState, useEffect, useRef } from "react";
 import useScrollAnimation from '@/hooks/useScrollAnimation';
 import useScrollDirection from '@/hooks/useScrollDirection';
+import { log } from "console";
 
 export const DownloadApp = () => {
     const { md } = useResponsive()
@@ -19,6 +21,8 @@ export const DownloadApp = () => {
 
     const codeElement1 = useRef(null);
     const codeElement2 = useRef(null);
+    const googlePlay1 = useRef(null)
+    const googlePlay2 = useRef(null)
     //点击跳转苹果商城下载
     useEffect(() => {
         const downloadApp = (element: any) => {
@@ -31,6 +35,24 @@ export const DownloadApp = () => {
         if (md) {
             const cleanup1 = downloadApp(codeElement1.current);
             const cleanup2 = downloadApp(codeElement2.current);
+            return () => {
+                cleanup1();
+                cleanup2();
+            };
+        }
+    }, [md]);
+    //点击跳转Google Play下载
+    useEffect(() => {
+        const googleApp = (element: any) => {
+            const handleClick = () => {
+                window.location.href = "https://play.google.com/store/apps/details?id=com.easybuy.administrator.easybuycustomer&hl=en";
+            };
+            element.addEventListener("click", handleClick);
+            return () => element.removeEventListener("click", handleClick);
+        };
+        if (md) {
+            const cleanup1 = googleApp(googlePlay1.current);
+            const cleanup2 = googleApp(googlePlay2.current);
             return () => {
                 cleanup1();
                 cleanup2();
@@ -80,13 +102,13 @@ export const DownloadApp = () => {
             return useScrollAnimation("bottom", 0, 0)
         }
     }
-   
+
 
     return (
         <section>
             {/* 上 */}
             <div ref={animate()} className={classNames('ebuy-container', styles.content1)}>
-             {/* @ts-ignore */}
+                {/* @ts-ignore */}
                 <Image ref={animate1('phoneRef1')} src={nowPhoto(phone1_m, phone1)} alt="" className={classNames('w-[515px] block mx-auto md:mx-0')}></Image>
                 <div ref={animate1('textRef1')} className={classNames(styles.download)}>
                     <div>
@@ -96,6 +118,7 @@ export const DownloadApp = () => {
                     {/* 二维码 */}
                     <div className={classNames(styles.ecode_content)}>
                         <Image ref={codeElement1} src={store} alt="" className={classNames(styles.ecode_store)}></Image>
+                        <Image ref={googlePlay1} src={googlePlay} alt="" className={classNames(styles.googlePlay)}></Image>
                         <Image src={ecode} alt="" className={classNames(styles.ecode)}></Image>
                     </div>
                 </div>
@@ -111,6 +134,7 @@ export const DownloadApp = () => {
                     {/* 二维码 */}
                     <div className={classNames(styles.ecode_content)}>
                         <Image ref={codeElement2} src={store} alt="" className={classNames(styles.ecode_store)}></Image>
+                        <Image ref={googlePlay2} src={googlePlay} alt="" className={classNames(styles.googlePlay)}></Image>
                         <Image src={ecode} alt="" className={classNames(styles.ecode)}></Image>
                     </div>
                 </div>
