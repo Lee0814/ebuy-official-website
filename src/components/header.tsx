@@ -36,7 +36,11 @@ export const Header = memo(() => {
   const { lang, detectedLang, setLang } = useI18nContext();
 
   const changeLang = () => {
-    const pathLang = locales.find((l) => router.asPath.startsWith(`/${l}`));
+    const index = (router.asPath).indexOf("#"); // 获取 "#" 的索引位置
+    if (index !== -1) {
+      router.asPath = (router.asPath).substring(0, index); // 获取 "#" 之前的子字符串
+    } 
+    const pathLang = locales.find((l) => router.asPath.startsWith(`/${l}`));    
 
     const pathLangIndex = locales.findIndex((l) =>
       router.asPath.startsWith(`/${l}`)
@@ -49,6 +53,7 @@ export const Header = memo(() => {
       : (detectedLangIndex + 1) % locales.length;
 
     setLang(locales[newLangIndex]);
+    console.log(router);
 
     if (!pathLang)
       return router.push(`/${locales[newLangIndex]}${router.asPath}`);
