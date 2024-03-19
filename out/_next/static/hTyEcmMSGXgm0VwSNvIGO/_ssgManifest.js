@@ -1,1 +1,0 @@
-self.__SSG_MANIFEST=new Set(["\u002F","\u002F[lang]","\u002F[lang]\u002Fabout","\u002F[lang]\u002Fcooperation","\u002F[lang]\u002Fdownload","\u002F[lang]\u002Fhome","\u002F[lang]\u002Fjoinus","\u002Fabout","\u002Fcooperation","\u002Fdownload","\u002Fjoinus"]);self.__SSG_MANIFEST_CB&&self.__SSG_MANIFEST_CB()

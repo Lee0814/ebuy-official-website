@@ -2,12 +2,12 @@
 
 # dependencies
 /node_modules
-/out
 /.pnp
 .pnp.js
 
 # testing
 /coverage
+/out
 
 # next.js
 /.next/
