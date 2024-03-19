@@ -1,11 +1,12 @@
 {
   "name": "ebuy-website",
   "version": "0.1.0",
+  "license": "",
   "private": true,
   "homepage": "https://Lee0814.github.io/ebuy-official-website",
   "scripts": {
     "dev": "next dev",
-    "build": "next build && next export",
+    "build": "next build",
     "deploy": "gh-pages -d out",
     "start": "next start",
     "lint": "next lint",
