@@ -53,7 +53,6 @@ export const Header = memo(() => {
       : (detectedLangIndex + 1) % locales.length;
 
     setLang(locales[newLangIndex]);
-    console.log(router);
 
     if (!pathLang)
       return router.push(`/${locales[newLangIndex]}${router.asPath}`);

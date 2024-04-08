@@ -1,4 +1,4 @@
-import { Footer, Header } from "@/components";
+import { Footer, Header ,WhatsApp} from "@/components";
 import { useProvideHeader, useProvideI18n } from "@/states";
 import classNames from "classnames";
 import type { AppProps } from "next/app";
@@ -33,6 +33,7 @@ export default function App({ Component, pageProps }: AppProps) {
           <Footer />
         </HeaderProvider>
       </I18nProvider>
+      <WhatsApp/>
     </>
   );
 }
