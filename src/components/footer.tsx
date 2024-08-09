@@ -1,3 +1,5 @@
+import HACCP from "../assets/images/HACCP.svg";
+import IOS_22000 from "../assets/images/ISO_22000.svg";
 import officialAccount from "@/assets/images/official-account.jpg";
 import { useI18n, useResponsive } from "@/hooks";
 import { useI18nContext } from "@/states";
@@ -59,6 +61,14 @@ export const Footer = memo(() => {
     help: "",
   });
 
+  // 证书
+  const openPdf_HACCP = async() => {
+    window.open("https://www.ebuysgp.com/HACCP.pdf",'_blank');
+  };
+  const openPdf_IOS = () => {
+    window.open("https://www.ebuysgp.com/ISO_22000.pdf",'_blank');
+  };
+
   const submitForm = () => {
     if (formValue.phone.replace(" ", "").length == 0) {
       lang === "en"
@@ -89,13 +99,13 @@ export const Footer = memo(() => {
             });
             lang === "en"
               ? setAttention({
-                  isShow: true,
-                  text: "Send successfully,we'll contact you soon!",
-                })
+                isShow: true,
+                text: "Send successfully,we'll contact you soon!",
+              })
               : setAttention({
-                  isShow: true,
-                  text: "发送成功，客服将尽快与您联系",
-                });
+                isShow: true,
+                text: "发送成功，客服将尽快与您联系",
+              });
             setTimeout(() => {
               setAttention({ ...showAttention, isShow: false });
             }, 5000);
@@ -265,12 +275,33 @@ export const Footer = memo(() => {
           </ul>
         </div>
       </div>
+      
       <div
         className={classNames(
-          "mt-[86px] flex flex-col justify-center px-8 pb-[34px] text-[24px] text-[#acacac] text-[400] md:mt-[100px] md:flex-row md:items-center md:space-x-[120px] md:text-[12px] md:leading-[17px]"
+          "mt-[46px] flex flex-col justify-center px-8 pb-[34px] text-[24px] text-[#acacac] text-[400] md:mt-[100px] md:flex-row md:items-center md:space-x-[120px] md:text-[12px] md:leading-[17px]"
         )}
       >
         {t("company")}
+      </div>
+      <div className={classNames("mt-[10px] pb-[20px] ebuy-container !flex flex-col justify-center items-center")}>
+        <ul className={classNames("flex items-center")}>
+          <li className={classNames("mb-[8px] h-[40px] w-[40px] bg-white mr-[40px]")}>
+            <Image
+              className={classNames("h-full w-full")}
+              src={HACCP}
+              alt="haccp"
+              onClick={openPdf_HACCP}
+            ></Image>
+          </li>
+          <li className={classNames("mb-[8px] h-[40px] w-[40px] bg-white")}>
+            <Image
+              className={classNames("h-full w-full")}
+              src={IOS_22000}
+              alt="ios 22000"
+              onClick={openPdf_IOS}
+            ></Image>
+          </li>
+        </ul>
       </div>
       {/* end 信息 */}
     </div>
@@ -431,11 +462,27 @@ export const Footer = memo(() => {
           </ul>
         </div>
       </div>
-      <div
-        className={classNames(
-          "mt-[86px] flex flex-col justify-center px-8 pb-[34px] text-[24px] text-[#acacac] text-[400] md:mt-[100px] md:flex-row md:items-center md:space-x-[120px] md:text-[12px] md:leading-[17px]"
-        )}
-      >
+      <div className={classNames("mt-[50px] flex justify-center ")}>
+        <ul className={classNames("flex justify-center")}>
+          <li className={classNames("mb-[8px] h-[20px] w-[20px] bg-white md:h-[50px] md:w-[50px] mr-[40px]")}>
+            <Image
+              className={classNames("h-full w-full")}
+              src={HACCP}
+              alt="haccp"
+              onClick={openPdf_HACCP}
+            ></Image>
+          </li>
+          <li className={classNames("mb-[8px] h-[20px] w-[20px] bg-white md:h-[50px] md:w-[50px]")}>
+            <Image
+              className={classNames("h-full w-full")}
+              src={IOS_22000}
+              alt="ios 22000"
+              onClick={openPdf_IOS}
+            ></Image>
+          </li>
+        </ul>
+      </div>
+      <div className={classNames("mt-[86px] flex flex-col justify-center px-8 pb-[34px] text-[24px] text-[#acacac] text-[400] md:mt-[20px] md:flex-row md:items-center md:space-x-[120px] md:text-[12px] md:leading-[17px]")}>
         {t("company")}
       </div>
       {/* end 信息 */}
