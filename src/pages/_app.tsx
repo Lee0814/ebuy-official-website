@@ -26,11 +26,15 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       <I18nProvider value={I18nValue}>
         <HeaderProvider value={HeaderValue}>
-          <Header />
+          <header className={classNames(Inter.variable, "font-sans")}>
+            <Header {...pageProps}/>
+          </header>
           <main className={classNames(Inter.variable, "font-sans")}>
             <Component {...pageProps} />
           </main>
-          <Footer />
+          <footer  className={classNames(Inter.variable, "font-sans")}>
+            <Footer {...pageProps}/>
+          </footer>
         </HeaderProvider>
       </I18nProvider>
       <WhatsApp/>

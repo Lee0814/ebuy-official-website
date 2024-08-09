@@ -62,11 +62,11 @@ export const Footer = memo(() => {
   });
 
   // 证书
-  const openPdf_HACCP = async() => {
-    window.open("https://www.ebuysgp.com/HACCP.pdf",'_blank');
+  const openPdf_HACCP = async () => {
+    window.open("https://www.ebuysgp.com/HACCP.pdf", '_blank');
   };
   const openPdf_IOS = () => {
-    window.open("https://www.ebuysgp.com/ISO_22000.pdf",'_blank');
+    window.open("https://www.ebuysgp.com/ISO_22000.pdf", '_blank');
   };
 
   const submitForm = () => {
@@ -237,7 +237,7 @@ export const Footer = memo(() => {
             </li>
             <li
               className={classNames(
-                "!w-[100vw] overflow-x-hidden pt-6 leading-[100%] md:pt-0 md:leading-[20px]"
+                "pt-6 leading-[100%] md:pt-0 md:leading-[20px]"
               )}
             >
               {t("time")}
@@ -245,18 +245,18 @@ export const Footer = memo(() => {
           </ul>
         </div>
         {/* 第四个 */}
-        <div className={classNames("col-start-22  mt-[72px] md:mt-0")}>
+        <div className={classNames("col-start-22  mt-[72px] md:mt-0 flex items-center")}>
           <ul>
             <li
               className={classNames(
-                "mb-[25px] text-[32px] font-[600] leading-[45px] text-white md:text-[20px] md:leading-[28px]"
+                " text-[32px] font-[600] leading-[45px] text-white md:text-[20px] md:leading-[28px]"
               )}
             >
               {t("follow")}
             </li>
             <li
               className={classNames(
-                "mb-[8px] h-[260px] w-[260px] bg-white md:h-[89px] md:w-[89px]"
+                "mb-[8px] h-[130px] w-[130px] bg-white md:h-[89px] md:w-[89px]"
               )}
             >
               <Image
@@ -273,35 +273,36 @@ export const Footer = memo(() => {
               {t("wechat")}
             </li>
           </ul>
+
+          <div className={classNames("ml-[20px]")}>
+            <ul className={classNames("flex items-center")}>
+              <li className={classNames("h-[130px] w-[130px] bg-white mr-[40px]")}>
+                <Image
+                  className={classNames("h-full w-full")}
+                  src={HACCP}
+                  alt="haccp"
+                  onClick={openPdf_HACCP}
+                ></Image>
+              </li>
+              <li className={classNames("h-[130px] w-[130px] bg-white")}>
+                <Image
+                  className={classNames("h-full w-full")}
+                  src={IOS_22000}
+                  alt="ios 22000"
+                  onClick={openPdf_IOS}
+                ></Image>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
-      
+
       <div
         className={classNames(
           "mt-[46px] flex flex-col justify-center px-8 pb-[34px] text-[24px] text-[#acacac] text-[400] md:mt-[100px] md:flex-row md:items-center md:space-x-[120px] md:text-[12px] md:leading-[17px]"
         )}
       >
         {t("company")}
-      </div>
-      <div className={classNames("mt-[10px] pb-[20px] ebuy-container !flex flex-col justify-center items-center")}>
-        <ul className={classNames("flex items-center")}>
-          <li className={classNames("mb-[8px] h-[40px] w-[40px] bg-white mr-[40px]")}>
-            <Image
-              className={classNames("h-full w-full")}
-              src={HACCP}
-              alt="haccp"
-              onClick={openPdf_HACCP}
-            ></Image>
-          </li>
-          <li className={classNames("mb-[8px] h-[40px] w-[40px] bg-white")}>
-            <Image
-              className={classNames("h-full w-full")}
-              src={IOS_22000}
-              alt="ios 22000"
-              onClick={openPdf_IOS}
-            ></Image>
-          </li>
-        </ul>
       </div>
       {/* end 信息 */}
     </div>
@@ -433,17 +434,17 @@ export const Footer = memo(() => {
         </div>
         {/* 第四个 */}
         <div className={classNames("col-start-22  mt-[72px] md:mt-0")}>
-          <ul>
+          <ul >
             <li
               className={classNames(
-                "mb-[25px] text-[32px] font-[600] leading-[45px] text-white md:text-[20px] md:leading-[28px]"
+                "mb-[26px] text-[32px] font-[600] leading-[45px] text-white md:text-[20px] md:leading-[28px]"
               )}
             >
               {t("follow")}
             </li>
             <li
               className={classNames(
-                "mb-[8px] h-[260px] w-[260px] bg-white md:h-[89px] md:w-[89px]"
+                "mb-[8px] h-[130px] w-[130px] bg-white md:h-[89px] md:w-[89px]"
               )}
             >
               <Image
@@ -452,35 +453,40 @@ export const Footer = memo(() => {
                 alt="official account"
               ></Image>
             </li>
-            <li
+            {/* <li
               className={classNames(
                 "pt-[12px] leading-[100%] md:pt-0 md:leading-[20px]"
               )}
             >
               {t("wechat")}
-            </li>
+            </li> */}
           </ul>
+
+          <div className={classNames("mt-[26px] flex flex-col justify-start ")}>
+            <div className={classNames("mb-[26px] text-[32px] font-[600] leading-[45px] text-white md:text-[20px] md:leading-[28px]"
+            )}>
+              我们的资质
+            </div>
+            <ul className={classNames("flex flex justify-start")}>
+              <li className={classNames("mb-[8px] h-[130px] w-[130px] bg-white md:h-[50px] md:w-[50px] mr-[40px]")}>
+                <Image
+                  className={classNames("h-full w-full")}
+                  src={HACCP}
+                  alt="haccp"
+                  onClick={openPdf_HACCP}
+                ></Image>
+              </li>
+              <li className={classNames("mb-[8px] h-[130px] w-[130px] bg-white md:h-[50px] md:w-[50px]")}>
+                <Image
+                  className={classNames("h-full w-full")}
+                  src={IOS_22000}
+                  alt="ios 22000"
+                  onClick={openPdf_IOS}
+                ></Image>
+              </li>
+            </ul>
+          </div>
         </div>
-      </div>
-      <div className={classNames("mt-[50px] flex justify-center ")}>
-        <ul className={classNames("flex justify-center")}>
-          <li className={classNames("mb-[8px] h-[20px] w-[20px] bg-white md:h-[50px] md:w-[50px] mr-[40px]")}>
-            <Image
-              className={classNames("h-full w-full")}
-              src={HACCP}
-              alt="haccp"
-              onClick={openPdf_HACCP}
-            ></Image>
-          </li>
-          <li className={classNames("mb-[8px] h-[20px] w-[20px] bg-white md:h-[50px] md:w-[50px]")}>
-            <Image
-              className={classNames("h-full w-full")}
-              src={IOS_22000}
-              alt="ios 22000"
-              onClick={openPdf_IOS}
-            ></Image>
-          </li>
-        </ul>
       </div>
       <div className={classNames("mt-[86px] flex flex-col justify-center px-8 pb-[34px] text-[24px] text-[#acacac] text-[400] md:mt-[20px] md:flex-row md:items-center md:space-x-[120px] md:text-[12px] md:leading-[17px]")}>
         {t("company")}
