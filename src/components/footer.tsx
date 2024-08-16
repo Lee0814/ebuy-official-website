@@ -422,12 +422,7 @@ export const Footer = memo(() => {
             >
               {t("email-detail")}
             </li>
-            <li
-              className={classNames(
-                "overflow-x-hidden whitespace-nowrap pt-6 leading-[100%] md:pt-0 md:leading-[20px] "
-              )}
-              style={{ width: "calc(100% + 40px)" }}
-            >
+            <li className={classNames("pt-6 leading-[100%] md:pt-0 md:leading-[20px]")}>
               {t("time")}
             </li>
           </ul>
