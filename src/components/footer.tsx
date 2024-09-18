@@ -78,6 +78,14 @@ export const Footer = memo(() => {
         setError({ ...showError, isShow: false });
       }, 5000);
       return;
+    } else if (!/^\d+$/.test(formValue.phone)) {
+      lang === "en"
+        ? setError({ isShow: true, text: "Telephone number must be numeric" })
+        : setError({ isShow: true, text: "电话号码必须是数字" });
+      setTimeout(() => {
+        setError({ ...showError, isShow: false });
+      }, 5000);
+      return;
     } else {
       axios
         .post("https://www.ebuysgp.com/core/api/manage/contactUs", {
@@ -460,10 +468,10 @@ export const Footer = memo(() => {
           <div className={classNames("mt-[26px] flex flex-col justify-start ")}>
             <div className={classNames("mb-[26px] text-[32px] font-[600] leading-[45px] text-white md:text-[20px] md:leading-[28px]"
             )}>
-              我们的资质
+              {lang === 'en' ? 'Qualifications' : '我们的资质'}
             </div>
             <ul className={classNames("flex flex justify-start")}>
-              <li className={classNames("mb-[8px] h-[130px] w-[130px] bg-white md:h-[50px] md:w-[50px] mr-[40px]")}>
+              <li className={classNames("mb-[8px] h-[130px] w-[130px] bg-white md:h-[50px] md:w-[50px] mr-[20px]")}>
                 <Image
                   className={classNames("h-full w-full")}
                   src={HACCP}
